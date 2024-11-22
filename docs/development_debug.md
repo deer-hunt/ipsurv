@@ -200,7 +200,6 @@ socket.herror: [Errno 1] Unknown host
 ```
 
 
-
 ## Not support Python 2.7 ?
 
 "IpSurv" doesn't support Python 2.7. However "IpSurv" has been developed to avoid using the latest Python specifications as much as possible, So you can refactor to Python 2.7 code easily.

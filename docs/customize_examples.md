@@ -37,8 +37,8 @@ There are several example programs of how to customize. Please refer to the comm
 
 **Program:** object_factory_original_headers.py
 
-```
-# python3 object_factory_original_headers.py
+```bash
+$ python object_factory_original_headers.py
 
  __  .______     _______. __    __  .______     ____    ____ 
 |  | |   _  \   /       ||  |  |  | |   _  \    \   \  /   / 
@@ -56,12 +56,11 @@ Complete!
 
 **Program:** extract_regex_data.py
 
-```
-# python3 extract_regex_data.py "#123456#" "#abcdef#" "#XYZ#" --headers=1
+```bash
+$ python extract_regex_data.py "#123456#" "#abcdef#" "#XYZ#" --headers=1
 
 original,my_text,crc,md5
 #123456#,123456,158520161,e10adc3949ba59abbe56e057f20f883e
 #abcdef#,abcdef,1267612143,e80b5017098950fc58aad83c8c14978e
 #XYZ#,XYZ,2099902701,e65075d550f9b5bf9992fa1d71a131be
 ```
-

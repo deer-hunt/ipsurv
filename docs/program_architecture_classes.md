@@ -5,7 +5,7 @@
 The following is overview of process flow. You would be better off checking the python code, because the process is simple and easy.
 
 
-#### *Initializing
+#### [Initializing]
 
 **1. Process start.**
 
@@ -19,7 +19,7 @@ The following is overview of process flow. You would be better off checking the 
 
 **5. Creating each class objects:** `ObjectFactory`
 
-#### *Process in each input row
+#### [Process in each input row]
 
 > The data is passed by `ValueData` object in each processes.
 
@@ -31,7 +31,7 @@ The following is overview of process flow. You would be better off checking the 
 
 **9. Outputting the result:** `Serializer`
 
-#### *Back to primary flow
+#### [Back to primary flow]
 
 **10. Process complete.**
 

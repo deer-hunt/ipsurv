@@ -102,9 +102,9 @@ Also you are able to disable to load Environment variable by `--disable_env` opt
 
 **Example:**
 
-```
-# IPSURV_ARGS='{"group": 8, "skip_duplicate": 1, "format": "network", "original": true, "sequence": true, "json": 2}'
-# export IPSURV_ARGS
+```bash
+$ IPSURV_ARGS='{"group": 8, "skip_duplicate": 1, "format": "network", "original": true, "sequence": true, "json": 2}'
+$ export IPSURV_ARGS
 
 RESULT:
 --
@@ -133,9 +133,9 @@ RESULT:
 |---------------|--------------|
 | `ipinfo_token`  |   ipinfo.io's token.        |
 
-```
-# IPSURV_CONF='{"ipinfo_token": "???????"}'
-# export IPSURV_CONF
+```bash
+$ IPSURV_CONF='{"ipinfo_token": "???????"}'
+$ export IPSURV_CONF
 ```
 
 ## Input behaviors

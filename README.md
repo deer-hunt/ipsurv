@@ -13,10 +13,10 @@
 
 ## Installation
 
-```
-# pip install ipsurv
+```bash
+$ pip install ipsurv
 or
-# pip3 install ipsurv
+$ pip3 install ipsurv
 ```
 
 ## Requirements
@@ -30,21 +30,21 @@ or
 
 **Specify IP using Argument**
 
-```
-cat ips.txt|python3 -m ipsurv 192.168.1.10
-cat ips.txt|python3 -m ipsurv 192.168.1.10 192.168.1.11
+```bash
+$ cat ips.txt|python3 -m ipsurv 192.168.1.10
+$ cat ips.txt|python3 -m ipsurv 192.168.1.10 192.168.1.11
 ```
 
 **Specify IP using PIPE**
 
-```
-cat ips.txt|python3 -m ipsurv
-cat apache.log|python3 -m ipsurv
+```bash
+$ cat ips.txt|python3 -m ipsurv
+$ cat apache.log|python3 -m ipsurv
 ```
 
 **Example result**
 
-```
+```bash
 8.8.8.8:53,8.8.8.0,US,ICMP_OK,TCP_OK,UDP_OK
 ```
 
@@ -59,8 +59,8 @@ cat apache.log|python3 -m ipsurv
 
 **Survey Self e.g.**
 
-```
-# ipsurv self
+```bash
+$ ipsurv self
 Ip: 144.160.*.*
 Hostname: 
 Organization: AS797 AT&T Services, Inc.
@@ -80,7 +80,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 - Skip duplicate by the group.
 - Autodetect IP in line. Trying to resolve the name automatically.
 - Autodetect delimiter-char.
-- Customize output format. There are various methods of specification in "format" option.
+- Customize output format. There are many format.
 - Output JSON format.
 - Show headers.
 - Check ICMP, TCP, UDP, HTTP.
@@ -109,23 +109,23 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 **Example options**
 
-```
-cat ips.txt|python3 -m ipsurv --group=24
-cat ips.txt|python3 -m ipsurv --group=network
-cat ips.txt|python3 -m ipsurv --format="{country},{name}"
-cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43}"
-cat /var/log/httpd/access_log|ipsurv --ident --no_original
+```bash
+$ cat ips.txt|python3 -m ipsurv --group=24
+$ cat ips.txt|python3 -m ipsurv --group=network
+$ cat ips.txt|python3 -m ipsurv --format="{country},{name}"
+$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43}"
+$ cat /var/log/httpd/access_log|ipsurv --ident --no_original
 
-cat ips.txt|python3 -m ipsurv --group=255.255.255.0
-cat ips.txt|python3 -m ipsurv --delimiter="\t"
-cat ips.txt|python3 -m ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
-cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
+$ cat ips.txt|python3 -m ipsurv --group=255.255.255.0
+$ cat ips.txt|python3 -m ipsurv --delimiter="\t"
+$ cat ips.txt|python3 -m ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
+$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
 ```
 
 ## Example result
 
-```
-# cat .dev/test/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
+```bash
+$ cat .dev/test/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
 
 original,status,group,country,name,cidr,http,http_h2
 www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
@@ -165,9 +165,9 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 
 In verbose mode, outputting internal data and behaviors in detail.
 
-```
-python3 -m ipsurv --verbose=2 #INFO
-python3 -m ipsurv --verbose=3 #DEBUG
+```bash
+$ python -m ipsurv --verbose=2 #INFO
+$ python -m ipsurv --verbose=3 #DEBUG
 ```
 
 ## Dependencies

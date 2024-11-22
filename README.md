@@ -9,7 +9,7 @@
 
 </div>
 
-<img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/blob/main/docs/images/ipsurv.gif" alt="ipsurv" width="100%" />
+<img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv.gif" alt="ipsurv" width="100%" />
 
 ## Installation
 

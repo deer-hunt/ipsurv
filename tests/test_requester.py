@@ -50,7 +50,7 @@ class TestIpInfoRequester:
         requester = IpInfoRequester(timeout=0.005)
 
         with pytest.raises(socket.timeout):
-            success, response = requester.request('96.112.1.1')
+            success, response = requester.request('53.112.1.0')
 
 
 class TestIpRdapRequester:
@@ -101,10 +101,10 @@ class TestIpRdapRequester:
 
     def test_timeout(self):
         country_detector = CountryDetector()
-        requester = RdapRequester(country_detector, timeout=0.005)
+        requester = RdapRequester(country_detector, timeout=0.001)
 
         with pytest.raises(Exception):
-            success, response = requester.request('66.10.1.1')
+            success, response = requester.request('53.10.1.0')
 
     def test_request_http(self):
         country_detector = CountryDetector()

@@ -35,18 +35,19 @@ $ pip3 install ipsurv
 
 ## Usage
 
-**Specify IP using Argument**
+**Specify Target using Argument**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv 192.168.1.10
-$ cat ips.txt|python3 -m ipsurv 192.168.1.10 192.168.1.11
+$ ipsurv 192.168.1.10
+$ ipsurv 192.168.1.10 192.168.1.11
+$ ipsurv test-example-sample-ipsurv.com
 ```
 
-**Specify IP using PIPE**
+**Specify Target using PIPE**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv
-$ cat apache.log|python3 -m ipsurv
+$ cat ips.txt|ipsurv
+$ cat apache.log|ipsurv
 ```
 
 **Example result**
@@ -96,7 +97,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 ## Command options
 
-```ipsurv``` have many options. Please read [Command Arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
+```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
 
 **Options**
 
@@ -117,16 +118,16 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 **Example options**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv --group=24
-$ cat ips.txt|python3 -m ipsurv --group=network
-$ cat ips.txt|python3 -m ipsurv --format="{country},{name}"
-$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43}"
+$ cat ips.txt|ipsurv --group=24
+$ cat ips.txt|ipsurv --group=network
+$ cat ips.txt|ipsurv --format="{country},{name}"
+$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43}"
 $ cat /var/log/httpd/access_log|ipsurv --ident --no_original
 
-$ cat ips.txt|python3 -m ipsurv --group=255.255.255.0
-$ cat ips.txt|python3 -m ipsurv --delimiter="\t"
-$ cat ips.txt|python3 -m ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
-$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
+$ cat ips.txt|ipsurv --group=255.255.255.0
+$ cat ips.txt|ipsurv --delimiter="\t"
+$ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
+$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
 ```
 
 ## Example result
@@ -174,8 +175,8 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 In verbose mode, outputting internal data and behaviors in detail.
 
 ```bash
-$ python -m ipsurv --verbose=2 #INFO
-$ python -m ipsurv --verbose=3 #DEBUG
+$ ipsurv --verbose=2 #INFO
+$ ipsurv --verbose=3 #DEBUG
 ```
 
 ## Customizing ipsurv
@@ -184,11 +185,11 @@ $ python -m ipsurv --verbose=3 #DEBUG
 
 **Classes for major customization**
 
-| Classes    | Description             | Example program |
-|----------------------|--------------|--------------------------------------------------|
-| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. | pipeline_customize.py                  |
-| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. | object_factory.py   |
-| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. | object_factory_original_headers.py                  |
+| Classes    | Description            |
+|----------------------|----------------------------------------------|
+| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. ```./examples/pipeline_customize.py```         |
+| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. ```./examples/object_factory.py```      |
+| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. ```./examples/object_factory_original_headers.py```      |
 
 
 ## Dependencies

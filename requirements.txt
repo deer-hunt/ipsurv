@@ -1,8 +1,2 @@
 dnspython>=2.0.0
 ipaddress>=1.0.0
-
-pytest>=7.0.1
-pytest-mock>=3.6.1
-pytest-cov>=4.0.0
-flake8>=5.0.4
-setuptools>=35.0.0

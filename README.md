@@ -4,13 +4,15 @@
 
 <div align="center">
 
-<a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>
 <a href="https://codecov.io/gh/deer-hunt/ipsurv"><img alt="Coverage" src="https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main"></a>
+<img alt="PyPI - Status" src="https://img.shields.io/pypi/status/ipsurv">
+<a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Newest PyPI version" src="https://img.shields.io/pypi/v/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
-<a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
+<a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=shield"/></a>
 
 </div>
@@ -34,18 +36,19 @@ $ pip3 install ipsurv
 
 ## Usage
 
-**Specify IP using Argument**
+**Specify Target using Argument**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv 192.168.1.10
-$ cat ips.txt|python3 -m ipsurv 192.168.1.10 192.168.1.11
+$ ipsurv 192.168.1.10
+$ ipsurv 192.168.1.10 192.168.1.11
+$ ipsurv test-example-sample-ipsurv.com
 ```
 
-**Specify IP using PIPE**
+**Specify Target using PIPE**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv
-$ cat apache.log|python3 -m ipsurv
+$ cat ips.txt|ipsurv
+$ cat apache.log|ipsurv
 ```
 
 **Example result**
@@ -95,7 +98,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 ## Command options
 
-```ipsurv``` have many options. Please read [Command Arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
+```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
 
 **Options**
 
@@ -116,16 +119,16 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 **Example options**
 
 ```bash
-$ cat ips.txt|python3 -m ipsurv --group=24
-$ cat ips.txt|python3 -m ipsurv --group=network
-$ cat ips.txt|python3 -m ipsurv --format="{country},{name}"
-$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43}"
+$ cat ips.txt|ipsurv --group=24
+$ cat ips.txt|ipsurv --group=network
+$ cat ips.txt|ipsurv --format="{country},{name}"
+$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43}"
 $ cat /var/log/httpd/access_log|ipsurv --ident --no_original
 
-$ cat ips.txt|python3 -m ipsurv --group=255.255.255.0
-$ cat ips.txt|python3 -m ipsurv --delimiter="\t"
-$ cat ips.txt|python3 -m ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
-$ cat ips.txt|python3 -m ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
+$ cat ips.txt|ipsurv --group=255.255.255.0
+$ cat ips.txt|ipsurv --delimiter="\t"
+$ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
+$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
 ```
 
 ## Example result
@@ -173,8 +176,8 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 In verbose mode, outputting internal data and behaviors in detail.
 
 ```bash
-$ python -m ipsurv --verbose=2 #INFO
-$ python -m ipsurv --verbose=3 #DEBUG
+$ ipsurv --verbose=2 #INFO
+$ ipsurv --verbose=3 #DEBUG
 ```
 
 ## Customizing ipsurv
@@ -183,11 +186,11 @@ $ python -m ipsurv --verbose=3 #DEBUG
 
 **Classes for major customization**
 
-| Classes    | Description             | Example program |
-|----------------------|--------------|--------------------------------------------------|
-| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. | pipeline_customize.py                  |
-| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. | object_factory.py   |
-| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. | object_factory_original_headers.py                  |
+| Classes    | Description            |
+|----------------------|----------------------------------------------|
+| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. ```./examples/pipeline_customize.py```         |
+| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. ```./examples/object_factory.py```      |
+| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. ```./examples/object_factory_original_headers.py```      |
 
 
 ## Dependencies

@@ -4,13 +4,15 @@
 
 <div align="center">
 
-<a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>
 <a href="https://codecov.io/gh/deer-hunt/ipsurv"><img alt="Coverage" src="https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main"></a>
+<img alt="PyPI - Status" src="https://img.shields.io/pypi/status/ipsurv">
+<a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Newest PyPI version" src="https://img.shields.io/pypi/v/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
-<a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
+<a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 
 </div>
 

@@ -1,15 +1,20 @@
 # IpSurv
 
-"IpSurv" is a command-line program for surveying IP addresses, host information, and more. Also "IpSurv" is extensible program by Python.
+```ipsurv``` is a command-line program for surveying IP addresses, host information, and more. Also ```ipsurv``` is extensible program by Python.
 
 <div align="center">
 
-[![CI - Test](https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml)
-[![Coverage](https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main)](https://codecov.io/gh/deer-hunt/ipsurv)
+<a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
+<a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
+<a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>
+<a href="https://codecov.io/gh/deer-hunt/ipsurv"><img alt="Coverage" src="https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main"></a>
+<a href="https://pypi.org/project/ipsurv/"><img alt="Newest PyPI version" src="https://img.shields.io/pypi/v/ipsurv.svg"></a>
+<a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
+<a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
 
 </div>
 
-<img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv.gif" alt="ipsurv" width="100%" />
+<img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv.gif" alt=```ipsurv``` width="100%" />
 
 ## Installation
 
@@ -50,7 +55,7 @@ $ cat apache.log|python3 -m ipsurv
 
 ## Survey-mode
 
-"IpSurv" have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
+```ipsurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
 
 | Survey-mode              | Description              |
 |-------------------|------------------------|
@@ -89,7 +94,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 ## Command options
 
-"IpSurv" have many options. Please read [Command Arguments(.md) reference](./docs/command_arguments.md).
+```ipsurv``` have many options. Please read [Command Arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
 
 **Options**
 
@@ -138,27 +143,28 @@ www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HT
 www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 ```
 
+## Documents
+
+| Title                       | Path                                        |
+|-------------------------------|---------------------------------------------|
+| **Command arguments reference**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md) |
+| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_examples.md)   |
+| **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/program_architecture_classes.md) |
+| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/customize_examples.md) |
+| **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
+
+
 ## Path summary
 
 | Directory        | Description                                         |
 |-----------------------|-----------------------------------------------------|
-| `.github`            | GitHub Actions files (actions, templates)          |
+| `.github`            | GitHub Actions files          |
 | `docs`               | Documentation files                                 |
 | `example_data`       | Sample data files for testing                       |
 | `examples`           | Example programs                 |
 | `ipsurv`             | Main package/Sources                            |
 | `tests`              | Test files                     |
 
-
-## Documents
-
-| Title                       | Path                                        |
-|-------------------------------|---------------------------------------------|
-| **Command arguments reference**    | [command_arguments.md](./docs/command_arguments.md) |
-| **Command examples**               | [command_examples.md](./docs/command_examples.md)   |
-| **Program architecture and Classes** | [program_architecture_classes.md](./docs/program_architecture_classes.md) |
-| **Customizing and Examples**       | [customize_examples.md](./docs/customize_examples.md) |
-| **Development and Debugging**          | [development_debug.md](./docs/development_debug.md)   |
 
 
 ## Debugging
@@ -170,7 +176,21 @@ $ python -m ipsurv --verbose=2 #INFO
 $ python -m ipsurv --verbose=3 #DEBUG
 ```
 
+## Customizing ipsurv
+
+```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. Please read ```program_architecture_classes.md```.
+
+**Classes for Major Customization**
+
+| Classes    | Description             | Example program |
+|----------------------|--------------|--------------------------------------------------|
+| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. | pipeline_customize.py                  |
+| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. | ./core/object_factory.py   |
+| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. | object_factory_original_headers.py                  |
+
+
 ## Dependencies
 
-```dnspython```, ```ipaddress```
+- [dnspython](https://github.com/rthalley/dnspython)
+
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-"ipsurv" is implemented with customizable program architecture. It provide extending features and several classes.
+"ipsurv" is implemented as customizable program architecture. It provide extending features and several classes.
 
 ## Program Architecture and Classes
 

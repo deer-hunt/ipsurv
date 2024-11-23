@@ -13,6 +13,7 @@
 <a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
 <a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=shield"/></a>
 
 </div>
 
@@ -197,3 +198,7 @@ $ ipsurv --verbose=3 #DEBUG
 - [dnspython](https://github.com/rthalley/dnspython)
 
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_large)

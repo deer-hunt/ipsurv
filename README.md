@@ -180,12 +180,12 @@ $ python -m ipsurv --verbose=3 #DEBUG
 
 ```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. Please read ```program_architecture_classes.md```.
 
-**Classes for Major Customization**
+**Classes for major customization**
 
 | Classes    | Description             | Example program |
 |----------------------|--------------|--------------------------------------------------|
 | **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. | pipeline_customize.py                  |
-| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. | ./core/object_factory.py   |
+| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. | object_factory.py   |
 | **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. | object_factory_original_headers.py                  |
 
 

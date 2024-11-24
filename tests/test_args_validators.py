@@ -13,6 +13,7 @@ class TestFormatValidator:
         args.delimiter = ','
         args.fixed_delimiter = ','
         args.sequence = True
+        args.add_ip = False
 
         return args
 
@@ -26,6 +27,7 @@ class TestFormatValidator:
         validator = FormatValidator(profiles, params)
 
         args.format = '{ip}'
+        args.ident = True
 
         format, params = validator.validate(args)
 

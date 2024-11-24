@@ -13,6 +13,7 @@ class TestArgValidator:
 
 class TestStdinLoader:
     def test_read_stdin(self, monkeypatch):
+        monkeypatch.setattr('select.select', lambda a, b, c, d: ("1\n4\n", None, None))
         monkeypatch.setattr('sys.stdin', io.StringIO("1\n4\n"))
         monkeypatch.setattr('sys.stdin.fileno', lambda: 0)
 

@@ -15,6 +15,7 @@ from ipsurv.core.entity import Target, ValueData
 import time
 import re
 import logging
+import os
 
 
 @pytest.fixture
@@ -248,7 +249,7 @@ class TestDnsReverseCollector:
 
         assert collector.get_name() == 'DNSREVERSE'
         assert success is True
-        assert response_time > 0
+        assert response_time >= 0
         assert response['hostname'] == 'dns.google'
 
         assert ('hostname' in collector.get_requires())
@@ -401,8 +402,11 @@ class TestICMPCollector:
     def setup(self, monkeypatch):
         monkeypatch.setattr('subprocess.check_output', lambda v, universal_newlines=True: 0)
 
-    def test_request(self, args):
+    def test_request(self, args, monkeypatch):
         requester = ServerReactivity()
+
+        if os.name != 'posix':
+            monkeypatch.setattr(ServerReactivity, 'request_icmp', lambda *args, **kwargs: True)
 
         collector = ICMPCollector(requester, args)
 

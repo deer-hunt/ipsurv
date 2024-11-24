@@ -1,6 +1,7 @@
 import socket
 import struct
 import subprocess
+import platform
 
 from ipsurv.requester.requester import Requester
 
@@ -13,7 +14,10 @@ class ServerReactivity(Requester):
         timeout = round(self.timeout)
         timeout = timeout if timeout > 0 else 1
 
-        subprocess.check_output(['ping', '-c', str(count), '-w', str(timeout), host], universal_newlines=True)
+        if platform.system() != 'Windows':
+            subprocess.check_output(['ping', '-c', str(count), '-w', str(timeout), host], universal_newlines=True)
+        else:
+            subprocess.check_output(['ping', '-n', str(count), '-w', str(timeout), host], universal_newlines=True)
 
         success = True
 
@@ -51,7 +55,7 @@ class ServerReactivity(Requester):
 
             conn.sendto(v, (host, port))
 
-            response, server = conn.recvfrom(8)
+            response, server = conn.recvfrom(4096)
 
             success = True
         except Exception as e:

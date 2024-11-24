@@ -147,6 +147,21 @@ www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HT
 www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 ```
 
+```bash
+$ ipsurv wikipedia.org --format="{ip},<default>" --json=2
+{
+  "original": "wikipedia.org",
+  "ip": "103.102.166.224",
+  "status": "OK",
+  "group": "",
+  "country": "US",
+  "name": "WIKIMEDIA-AP",
+  "network_start": "103.102.166.0",
+  "network_end": "103.102.166.255"
+}
+```
+
+
 ## Documents
 
 | Title                       | Path                                        |
@@ -176,13 +191,14 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 In verbose mode, outputting internal data and behaviors in detail.
 
 ```bash
-$ ipsurv --verbose=2 #INFO
-$ ipsurv --verbose=3 #DEBUG
+$ ipsurv ***** --verbose=2  #INFO
+$ ipsurv ***** --verbose=3  #DEBUG
 ```
 
 ## Customizing ipsurv
 
-```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. Please read ```program_architecture_classes.md```.
+```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. 
+And you can use ipsurv's internal classes in your program. Please read ```program_architecture_classes.md```.
 
 **Classes for major customization**
 
@@ -197,8 +213,3 @@ $ ipsurv --verbose=3 #DEBUG
 
 - [dnspython](https://github.com/rthalley/dnspython)
 
-
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_large)

@@ -16,7 +16,7 @@ class Constant:
   ipsurv self
 
 documents:
-  https://github.com/deer-hunt/ipsurv/docs/
+  https://github.com/deer-hunt/ipsurv/
   There are several documents, including "Command arguments reference", "Command examples", and more.
 '''
 

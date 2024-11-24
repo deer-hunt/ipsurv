@@ -1,3 +1,5 @@
 venv
 .dev
 .idea
+__pycache__
+.coverage

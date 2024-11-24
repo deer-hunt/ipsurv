@@ -4,7 +4,7 @@ import logging
 import os
 import sys
 from abc import ABC, abstractmethod
-from select import select
+import select
 
 
 class StrAction(argparse.Action):
@@ -86,7 +86,7 @@ class ArgsHelper:
 class StdinLoader:
     @staticmethod
     def read_stdin(timeout=2.0):
-        r, _, _ = select([sys.stdin], [], [], timeout)
+        r, _, _ = select.select([sys.stdin], [], [], timeout)
 
         if r:
             input_data = sys.stdin.read()

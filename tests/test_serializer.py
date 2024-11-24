@@ -20,7 +20,7 @@ def args(mocker):
     return args
 
 
-class TestSerializerClass(Serializer):
+class TempSerializerClass(Serializer):
     def build_row(self, data):
         # type: (ValueData) -> object
         return None
@@ -32,7 +32,7 @@ class TestSerializerClass(Serializer):
 class TestSerializer:
     @pytest.fixture(autouse=True)
     def setup(self, args):
-        self.serializer = TestSerializerClass(args)
+        self.serializer = TempSerializerClass(args)
 
     def test_set_survey_mode(self):
         self.serializer.set_survey_mode(1)

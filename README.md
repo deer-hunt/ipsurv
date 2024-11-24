@@ -136,7 +136,6 @@ $ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port
 
 ```bash
 $ cat ./example_data/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
-
 original,status,group,country,name,cidr,http,http_h2
 www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
 www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
@@ -150,7 +149,6 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 
 ```bash
 $ cat ./example_data/government.txt|ipsurv --sequence --add_ip
-
 1,www.whitehouse.gov,192.0.66.168,OK,,US,AUTOMATTIC,192.0.64.0,192.0.127.255
 2,www.state.gov,3.165.39.61,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255
 3,www.treasury.gov,23.50.118.187,OK,,US,AKAMAI,23.32.0.0,23.67.255.255

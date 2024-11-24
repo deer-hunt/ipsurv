@@ -47,6 +47,10 @@ class FormatValidator(ArgValidator):
             format = '{identifier}' + delimiter + format
             params = ['identifier'] + params
 
+        if args.add_ip:
+            format = '{ip}' + delimiter + format
+            params = ['ip'] + params
+
         if not args.no_original:
             format = '{original}' + delimiter + format
             params = ['original'] + params

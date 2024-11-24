@@ -42,14 +42,14 @@ $ pip3 install ipsurv
 ```bash
 $ ipsurv 192.168.1.10
 $ ipsurv 192.168.1.10 192.168.1.11
-$ ipsurv test-example-sample-ipsurv.com
+$ ipsurv test-example-sample-ipsurv.com --add_ip
 ```
 
 **Specify Target using PIPE**
 
 ```bash
 $ cat ips.txt|ipsurv
-$ cat apache.log|ipsurv
+$ cat apache.log|ipsurv --add_ip
 ```
 
 **Example result**
@@ -135,7 +135,7 @@ $ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port
 ## Example result
 
 ```bash
-$ cat .dev/test/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
+$ cat ./example_data/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
 
 original,status,group,country,name,cidr,http,http_h2
 www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
@@ -149,7 +149,16 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 ```
 
 ```bash
-$ ipsurv wikipedia.org --format="{ip},<default>" --json=2
+$ cat ./example_data/government.txt|ipsurv --sequence --add_ip
+
+1,www.whitehouse.gov,192.0.66.168,OK,,US,AUTOMATTIC,192.0.64.0,192.0.127.255
+2,www.state.gov,3.165.39.61,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255
+3,www.treasury.gov,23.50.118.187,OK,,US,AKAMAI,23.32.0.0,23.67.255.255
+4,www.gov.uk,151.101.192.144,OK,,US,SKYCA-3,151.101.0.0,151.101.255.255
+```
+
+```bash
+$ ipsurv wikipedia.org --format=default --json=2 --add_ip
 {
   "original": "wikipedia.org",
   "ip": "103.102.166.224",

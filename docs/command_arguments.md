@@ -345,7 +345,7 @@ Output format. Specify `Profile` or `Parameter`.
 | `simple`     | Group, Country.      |
 | `default`    | Group, Country, Network, Hostname.|
 | `detail`     | Default + Organization, CIDR, Address, Description.       |
-| `massive`    | Massive parameters. |
+| `heavy`    | Heavy parameters. |
 
 > You can see concrete profile's parameters by using `--headers=1` option.
 
@@ -408,6 +408,23 @@ RESULT:
 37.7749;-122.4194
 35.6895;139.6917
 ```
+
+### `--add_ip`
+
+Append "ip" to the output format. For example, use when the target is a hostname, etc.
+
+- **Type:** `bool`
+- **Default:** `False`
+- **Example:**
+
+```
+INPUT: --add_ip --format=default
+
+RESULT:
+www.whitehouse.gov,192.0.66.168,OK,,US,AUTOMATTIC,192.0.64.0,192.0.127.255
+www.state.gov,3.165.39.61,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255
+```
+
 
 ### `--ident`
 

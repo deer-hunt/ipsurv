@@ -56,7 +56,7 @@ You can specify output-format flexibly by `--format` option.
 
 ```bash
 $ cat list.txt|ipsurv --format=simple
-$ cat list.txt|ipsurv --format=hostname --ident
+$ cat list.txt|ipsurv --format=hostname --add_ip
 $ cat list.txt|ipsurv --format=geo
 $ cat list.txt|ipsurv --format="{country},{group},{geo},{original}"
 $ cat list.txt|ipsurv --format=timezone
@@ -153,7 +153,7 @@ $ cat list.txt|ipsurv --udp=1 --format="{ip},{udp},{udp_time}"
 
 ```bash
 $ cat list.txt|ipsurv --http=1
-$ cat list.txt|ipsurv --http=2 --format=country --ident
+$ cat list.txt|ipsurv --http=2 --format=country --add_ip
 $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_h2}"
 ```
 
@@ -161,8 +161,8 @@ $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_h2}"
 ## Apache log
 
 ```bash
-$ cat /var/log/httpd/access_log|ipsurv --format=country --ident --no_original
-$ cat /var/log/httpd/access_log|ipsurv --format=geo --ident --no_original
+$ cat /var/log/httpd/access_log|ipsurv --format=country --add_ip --no_original
+$ cat /var/log/httpd/access_log|ipsurv --format=geo --add_ip --no_original
 ```
 
 ## Survey Self

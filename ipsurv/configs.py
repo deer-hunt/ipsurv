@@ -12,7 +12,7 @@ class Constant:
   cat list.txt|ipsurv
   cat list.txt|ipsurv --format="hostname"
   cat list.txt|ipsurv --json=2
-  cat /var/log/httpd/access_log|ipsurv --ident --no_original
+  cat /var/log/httpd/access_log|ipsurv --add_ip --no_original
   ipsurv self
 
 documents:
@@ -58,9 +58,10 @@ class Config:
         'group': {'default': None, 'type': None, 'help': 'Grouping rule. ex: network, 24, 255.255.255.0'},
         'skip_duplicate': {'default': 0, 'type': int, 'help': 'Skip duplicate group. *2: It also skip checking server reactivity[icmp, tcp, udp].', 'choices': [0, 1, 2]},
 
-        'format': {'default': 'default', 'type': None, 'help': 'Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, geo, hostname etc.', 'action': 'StrAction'},
+        'format': {'default': 'default', 'type': None, 'help': 'Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, heavy, geo, hostname etc.', 'action': 'StrAction'},
         'no_original': {'default': False, 'help': 'Cancel outputting the original line automatically.', 'action': 'store_true'},
         'sequence': {'default': False, 'help': 'Append sequence number.', 'action': 'store_true'},
+        'add_ip': {'default': False, 'help': 'Append "ip" to the output format. For example, use when the target is a hostname, etc.', 'action': 'store_true'},
         'ident': {'default': False, 'help': 'Append identifier. Default identifier is ip.', 'action': 'store_true'},
         'enclose': {'default': None, 'type': str, 'help': 'Character of enclose in result line. If you specify "json" option, this option is disabled. ex: \'"\', "\'"'},
         'delimiter': {'default': None, 'type': str, 'help': 'Delimiter-char in result line.', 'action': 'StrAction'},
@@ -93,7 +94,7 @@ class Config:
         'simple': ['status', 'group', 'country'],
         'default': ['status', 'group', 'country', 'name', 'network_start', 'network_end'],
         'detail': ['status', 'group', 'country', 'name', 'handle', 'org', 'cidr', 'geo', 'address', 'description', 'hostname'],
-        'massive': ['status', 'group', 'country', 'timezone', 'name', 'handle', 'org', 'cidr', 'network_start', 'network_end', 'geo', 'address', 'description', 'hostname', 'errors']
+        'heavy': ['status', 'group', 'country', 'timezone', 'name', 'handle', 'org', 'cidr', 'network_start', 'network_end', 'geo', 'address', 'description', 'hostname', 'errors']
     }
 
     FORMAT_PARAMS = [

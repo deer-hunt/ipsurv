@@ -44,6 +44,7 @@ $ pip3 install ipsurv
 $ ipsurv 192.168.1.10
 $ ipsurv 192.168.1.10 192.168.1.11
 $ ipsurv test-example-sample-ipsurv.com --add_ip
+$ ipsurv x.x.x.x --format=geo
 ```
 
 **Specify Target using PIPE**
@@ -123,6 +124,8 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 ```bash
 $ cat ips.txt|ipsurv --group=24
 $ cat ips.txt|ipsurv --group=network
+$ cat ips.txt|ipsurv --format=country
+$ cat ips.txt|ipsurv --format=hostname
 $ cat ips.txt|ipsurv --format="{country},{name}"
 $ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43}"
 $ cat /var/log/httpd/access_log|ipsurv --ident --no_original

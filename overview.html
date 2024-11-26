@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IpSurv Overview &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
@@ -43,18 +42,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="ipsurv-overview">
+  <div class="section" id="ipsurv-overview">
 <h1>IpSurv Overview<a class="headerlink" href="#ipsurv-overview" title="Permalink to this headline">¶</a></h1>
-</section>
-<section id="installation">
+</div>
+<div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipsurv
 or
 $<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>ipsurv
 </pre></div>
 </div>
-</section>
-<section id="features">
+</div>
+<div class="section" id="features">
 <h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Grouping by IP or Subnet.</p></li>
@@ -68,8 +67,8 @@ $<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </s
 <li><p>Set timeout.</p></li>
 <li><p>Load env variable. And changing arguments and internal configures.</p></li>
 </ul>
-</section>
-<section id="usage">
+</div>
+<div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p><strong>Specify IP using Argument</strong></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10
@@ -85,7 +84,24 @@ $<span class="w"> </span>cat<span class="w"> </span>apache.log<span class="p">|<
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>self
 </pre></div>
 </div>
-<section id="example-result">
+<div class="section" id="example-options">
+<h2>Example options<a class="headerlink" href="#example-options" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">24</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span>network
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>country
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>hostname
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{name},{geo}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{ip_int},{handle},{port43}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--ident<span class="w"> </span>--no_original
+
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">255</span>.255.255.0
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--delimiter<span class="o">=</span><span class="s2">&quot;\t&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{group}\t{ip_int}\t{country}\t{handle}\t{port43}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}&quot;</span><span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--timeout<span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-result">
 <h2>Example result<a class="headerlink" href="#example-result" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>.dev/test/government.txt<span class="p">|</span>ipsurv<span class="w"> </span>--headers<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},{group},{country},{name},{cidr},{http},{http_h2}&quot;</span><span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span>
 
@@ -101,9 +117,9 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 </pre></div>
 </div>
 <p>For details, <a class="reference external" href="pages/command_arguments.html">Command arguments reference</a> / <a class="reference external" href="pages/command_examples.html">Command examples</a></p>
-</section>
-</section>
-<section id="debugging">
+</div>
+</div>
+<div class="section" id="debugging">
 <h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
 <p>In verbose mode, outputting internal data and behaviors in detail.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1">#INFO</span>
@@ -111,12 +127,12 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">
 </pre></div>
 </div>
 <p>For details, <a class="reference external" href="pages/development_debug.html">Development and Debugging</a></p>
-</section>
-<section id="customizing-ipsurv">
+</div>
+<div class="section" id="customizing-ipsurv">
 <h1>Customizing IpSurv<a class="headerlink" href="#customizing-ipsurv" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">`ipsurv`</span></code> is implemented as customizable program architecture. <code class="docutils literal notranslate"><span class="pre">`ipsurv`</span></code> provide extending features and several classes. Please read <code class="docutils literal notranslate"><span class="pre">`program_architecture_classes.md`</span></code>.</p>
 <p>For details, <a class="reference external" href="pages/program_architecture_classes.html">Program architecture and Classes</a> / <a class="reference external" href="pages/development_debug.html">Development and Debugging</a> / <a class="reference external" href="pages/customize_examples.html">Customizing and Examples</a></p>
-</section>
+</div>
 
 
             <div class="clearer"></div>
@@ -125,21 +141,27 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">IpSurv Overview</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#usage">Usage</a><ul>
-<li><a class="reference internal" href="#example-result">Example result</a></li>
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IpSurv Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-options">Example options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-result">Example result</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugging">Debugging</a></li>
-<li><a class="reference internal" href="#customizing-ipsurv">Customizing IpSurv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#customizing-ipsurv">Customizing IpSurv</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/development_debug.html">Development and Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/customize_examples.html">Customizing and Examples</a></li>
 </ul>
 
-  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="index.html"
@@ -159,7 +181,12 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Links</h3>
+	<ul>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
         </div>
       </div>
       <div class="clearer"></div>

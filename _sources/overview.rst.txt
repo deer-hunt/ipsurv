@@ -49,6 +49,26 @@ Usage
    $ ipsurv self
 
 
+Example options
+-------------------------------------------------------------
+
+.. code-block:: shell
+
+	$ cat ips.txt|ipsurv --group=24
+	$ cat ips.txt|ipsurv --group=network
+	$ cat ips.txt|ipsurv --format=country
+	$ cat ips.txt|ipsurv --format=hostname
+	$ cat ips.txt|ipsurv --format="{country},{name},{geo}"
+	$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43}"
+	$ cat /var/log/httpd/access_log|ipsurv --ident --no_original
+
+	$ cat ips.txt|ipsurv --group=255.255.255.0
+	$ cat ips.txt|ipsurv --delimiter="\t"
+	$ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}"
+	$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
+
+
+
 Example result
 -------------------------------------------------------------
 

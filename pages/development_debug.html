@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Development and Debugging &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
@@ -43,14 +42,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="development-and-debugging">
+  <div class="tex2jax_ignore mathjax_ignore section" id="development-and-debugging">
 <h1>Development and Debugging<a class="headerlink" href="#development-and-debugging" title="Permalink to this headline">¶</a></h1>
-<section id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This is description of development related “IpSurv”.
 You are able to customize “IpSurv”.</p>
-</section>
-<section id="program-specification">
+</div>
+<div class="section" id="program-specification">
 <h2>Program specification<a class="headerlink" href="#program-specification" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto docutils align-default">
 <thead>
@@ -68,19 +67,19 @@ You are able to customize “IpSurv”.</p>
 </tbody>
 </table>
 <p>*: “IpSurv” doesn’t support Python 2.7, However it’s easy to refactor to Python 2.7. See the bottom of this document.</p>
-</section>
-<section id="program-architecture-and-classes">
+</div>
+<div class="section" id="program-architecture-and-classes">
 <h2>Program Architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h2>
 <p>Please read <a class="reference internal" href="program_architecture_classes.html"><span class="doc std std-doc">Program Architecture and Classes(.md)</span></a>. There are description of several important classes.</p>
-</section>
-<section id="customizing-and-examples">
+</div>
+<div class="section" id="customizing-and-examples">
 <h2>Customizing and Examples<a class="headerlink" href="#customizing-and-examples" title="Permalink to this headline">¶</a></h2>
 <p>Please read <a class="reference internal" href="customize_examples.html"><span class="doc std std-doc">Customizing and Examples(.md)</span></a>. There are some example programs.</p>
-</section>
-<section id="debugging">
+</div>
+<div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
 <p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option in <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments(.md)</span></a>.</p>
-<section id="log-sample-and-description">
+<div class="section" id="log-sample-and-description">
 <h3>Log sample and description<a class="headerlink" href="#log-sample-and-description" title="Permalink to this headline">¶</a></h3>
 <p>The following is debugging log with each comments.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]          // Displaying verbose level.
@@ -246,9 +245,9 @@ socket.herror: [Errno 1] Unknown host
 [&#39;RDAP&#39;, &#39;DNSREVERSE&#39;, &#39;IPINFO&#39;]
 </pre></div>
 </div>
-</section>
-</section>
-<section id="not-support-python-2-7">
+</div>
+</div>
+<div class="section" id="not-support-python-2-7">
 <h2>Not support Python 2.7 ?<a class="headerlink" href="#not-support-python-2-7" title="Permalink to this headline">¶</a></h2>
 <p>“IpSurv” doesn’t support Python 2.7. However “IpSurv” has been developed to avoid using the latest Python specifications as much as possible, So you can refactor to Python 2.7 code easily.</p>
 <p><strong>Refactoring points</strong></p>
@@ -260,8 +259,8 @@ socket.herror: [Errno 1] Unknown host
 <blockquote>
 <div><p>And any other few modules.</p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -270,24 +269,23 @@ socket.herror: [Errno 1] Unknown host
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Development and Debugging</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#program-specification">Program specification</a></li>
-<li><a class="reference internal" href="#program-architecture-and-classes">Program Architecture and Classes</a></li>
-<li><a class="reference internal" href="#customizing-and-examples">Customizing and Examples</a></li>
-<li><a class="reference internal" href="#debugging">Debugging</a><ul>
-<li><a class="reference internal" href="#log-sample-and-description">Log sample and description</a></li>
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#not-support-python-2-7">Not support Python 2.7 ?</a></li>
-</ul>
-</li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
 </ul>
 
-  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="program_architecture_classes.html"
@@ -307,7 +305,12 @@ socket.herror: [Errno 1] Unknown host
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Links</h3>
+	<ul>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
         </div>
       </div>
       <div class="clearer"></div>

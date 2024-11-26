@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Command examples &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
@@ -43,12 +42,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="command-examples">
+  <div class="tex2jax_ignore mathjax_ignore section" id="command-examples">
 <h1>Command examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h1>
 <p>This is several command examples. You can understand some usage and features. In detail usage, Please read <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments reference</span></a>.</p>
-<section id="basic-usage">
+<div class="section" id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
-<section id="specifying-ip">
+<div class="section" id="specifying-ip">
 <h3>Specifying IP<a class="headerlink" href="#specifying-ip" title="Permalink to this headline">¶</a></h3>
 <p>Surveying a IP and some IPs.</p>
 <p><strong>Command:</strong></p>
@@ -60,8 +59,8 @@ $<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">8</span>.
 <span class="m">1</span>.1.1.1,OK,,AU,APNIC-LABS,1.1.1.0,1.1.1.255,one.one.one.one
 </pre></div>
 </div>
-</section>
-<section id="specifying-domain">
+</div>
+<div class="section" id="specifying-domain">
 <h3>Specifying domain<a class="headerlink" href="#specifying-domain" title="Permalink to this headline">¶</a></h3>
 <p>Surveying a domain and some domains.</p>
 <p><strong>Command:</strong></p>
@@ -73,8 +72,8 @@ www.reddit.com,NG,,US,SKYCA-3,151.101.0.0,151.101.255.255,
 stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
 </pre></div>
 </div>
-</section>
-<section id="multiple-rows-using-pipe">
+</div>
+<div class="section" id="multiple-rows-using-pipe">
 <h3>Multiple rows using pipe<a class="headerlink" href="#multiple-rows-using-pipe" title="Permalink to this headline">¶</a></h3>
 <p>“IpSurv” support the input by pipe. You are able to specify multiple rows.</p>
 <p><strong>Example:</strong></p>
@@ -84,9 +83,9 @@ www.state.gov,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255,server-3-165-39-26.nrt12.
 ~~~~~~
 </pre></div>
 </div>
-</section>
-</section>
-<section id="various-output-format">
+</div>
+</div>
+<div class="section" id="various-output-format">
 <h2>Various output-format<a class="headerlink" href="#various-output-format" title="Permalink to this headline">¶</a></h2>
 <p>You can specify output-format flexibly by <code class="docutils literal notranslate"><span class="pre">--format</span></code> option.</p>
 <p><strong>Example:</strong></p>
@@ -100,8 +99,8 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status}\t{ip}\t{hostname}&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="outputting-json">
+</div>
+<div class="section" id="outputting-json">
 <h2>Outputting JSON<a class="headerlink" href="#outputting-json" title="Permalink to this headline">¶</a></h2>
 <p>Outputting JSON by <code class="docutils literal notranslate"><span class="pre">--json</span></code> option.</p>
 <p><strong>Example:</strong></p>
@@ -127,8 +126,8 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 <span class="o">]</span>
 </pre></div>
 </div>
-</section>
-<section id="starting-line-number-and-ending-line-number">
+</div>
+<div class="section" id="starting-line-number-and-ending-line-number">
 <h2>Starting line-number and Ending line-number<a class="headerlink" href="#starting-line-number-and-ending-line-number" title="Permalink to this headline">¶</a></h2>
 <p>Set starting line-number and ending line-number.</p>
 <p><strong>Example:</strong></p>
@@ -136,8 +135,8 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--begin<span class="o">=</span><span class="m">25</span><span class="w"> </span>--end<span class="o">=</span><span class="m">50</span><span class="w"> </span>--sequence
 </pre></div>
 </div>
-</section>
-<section id="grouping">
+</div>
+<div class="section" id="grouping">
 <h2>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">¶</a></h2>
 <p>You are able to group by subnet or provider network by <code class="docutils literal notranslate"><span class="pre">--group</span></code> option. And Skipping the duplicate group using <code class="docutils literal notranslate"><span class="pre">--skip_duplicate</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">255</span>.255.255.0<span class="w"> </span>--skip_duplicate<span class="o">=</span><span class="m">1</span>
@@ -145,8 +144,8 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--skip_duplicate<span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-</section>
-<section id="timeout">
+</div>
+<div class="section" id="timeout">
 <h2>Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
 <p>Set request timeout.</p>
 <p><strong>Example:</strong></p>
@@ -154,46 +153,46 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--timeout<span class="o">=</span><span class="s2">&quot;3.5;4.5;3.2&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="check-icmp">
+</div>
+<div class="section" id="check-icmp">
 <h2>Check ICMP<a class="headerlink" href="#check-icmp" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{icmp},{icmp_time}&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="check-tcp-port">
+</div>
+<div class="section" id="check-tcp-port">
 <h2>Check TCP port<a class="headerlink" href="#check-tcp-port" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">80</span><span class="w"> </span>--format<span class="o">=</span>country
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{tcp},{tcp_time}&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="check-udp-port">
+</div>
+<div class="section" id="check-udp-port">
 <h2>Check UDP port<a class="headerlink" href="#check-udp-port" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">1</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">53</span><span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--sequence
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{udp},{udp_time}&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="check-http-response">
+</div>
+<div class="section" id="check-http-response">
 <h2>Check HTTP response<a class="headerlink" href="#check-http-response" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">1</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_h2}&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="apache-log">
+</div>
+<div class="section" id="apache-log">
 <h2>Apache log<a class="headerlink" href="#apache-log" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
 $<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>geo<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
 </pre></div>
 </div>
-</section>
-<section id="survey-self">
+</div>
+<div class="section" id="survey-self">
 <h2>Survey Self<a class="headerlink" href="#survey-self" title="Permalink to this headline">¶</a></h2>
 <p>Surveying self global IP and local IP information.</p>
 <p><strong>Command:</strong></p>
@@ -214,8 +213,8 @@ LocalIp:<span class="w"> </span><span class="m">10</span>.0.2.5
 LocalDns:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;8.8.8.8&#39;</span>,<span class="w"> </span><span class="s1">&#39;8.8.4.4&#39;</span><span class="o">]</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -224,32 +223,23 @@ LocalDns:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;8
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Command examples</a><ul>
-<li><a class="reference internal" href="#basic-usage">Basic usage</a><ul>
-<li><a class="reference internal" href="#specifying-ip">Specifying IP</a></li>
-<li><a class="reference internal" href="#specifying-domain">Specifying domain</a></li>
-<li><a class="reference internal" href="#multiple-rows-using-pipe">Multiple rows using pipe</a></li>
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#various-output-format">Various output-format</a></li>
-<li><a class="reference internal" href="#outputting-json">Outputting JSON</a></li>
-<li><a class="reference internal" href="#starting-line-number-and-ending-line-number">Starting line-number and Ending line-number</a></li>
-<li><a class="reference internal" href="#grouping">Grouping</a></li>
-<li><a class="reference internal" href="#timeout">Timeout</a></li>
-<li><a class="reference internal" href="#check-icmp">Check ICMP</a></li>
-<li><a class="reference internal" href="#check-tcp-port">Check TCP port</a></li>
-<li><a class="reference internal" href="#check-udp-port">Check UDP port</a></li>
-<li><a class="reference internal" href="#check-http-response">Check HTTP response</a></li>
-<li><a class="reference internal" href="#apache-log">Apache log</a></li>
-<li><a class="reference internal" href="#survey-self">Survey Self</a></li>
-</ul>
-</li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
 </ul>
 
-  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="development_debug.html"
@@ -269,7 +259,12 @@ LocalDns:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;8
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Links</h3>
+	<ul>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
         </div>
       </div>
       <div class="clearer"></div>

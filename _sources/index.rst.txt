@@ -50,8 +50,8 @@ IpSurv's documents
    pages/command_examples.md
    pages/customize_examples.md
 
-Module and Class reference
-==================
+Modules and Classes reference
+==================================
 
 The following is the documentation for the module and class. `Github source <https://github.com/deer-hunt/ipsurv/tree/main/ipsurv>`_
 
@@ -60,3 +60,6 @@ The following is the documentation for the module and class. `Github source <htt
 * :ref:`modindex`
 * :ref:`search`
 
+.. sidebar:: Links
+   - `GitHub <https://github.com/username/repository>`_
+   - `Documentation <https://your-docs-url>`_

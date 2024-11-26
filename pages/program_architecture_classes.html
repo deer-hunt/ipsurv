@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Program architecture and Classes &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
@@ -43,12 +42,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section class="tex2jax_ignore mathjax_ignore" id="program-architecture-and-classes">
+  <div class="tex2jax_ignore mathjax_ignore section" id="program-architecture-and-classes">
 <h1>Program architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h1>
-<section id="process-flow">
+<div class="section" id="process-flow">
 <h2>Process flow<a class="headerlink" href="#process-flow" title="Permalink to this headline">¶</a></h2>
 <p>The following is overview of process flow. You would be better off checking the python code, because the process is simple and easy.</p>
-<section id="initializing">
+<div class="section" id="initializing">
 <h3>[Initializing]<a class="headerlink" href="#initializing" title="Permalink to this headline">¶</a></h3>
 <p><strong>1. Process start.</strong></p>
 <p><strong>2. Creating basic class objects:</strong> <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code></p>
@@ -58,8 +57,8 @@
 <div><p>The following is description of “Survey IPs” mode.</p>
 </div></blockquote>
 <p><strong>5. Creating each class objects:</strong> <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code></p>
-</section>
-<section id="process-in-each-input-row">
+</div>
+<div class="section" id="process-in-each-input-row">
 <h3>[Process in each input row]<a class="headerlink" href="#process-in-each-input-row" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The data is passed by <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object in each processes.</p>
@@ -68,13 +67,13 @@
 <p><strong>7. Finding the group:</strong> <code class="docutils literal notranslate"><span class="pre">TargetGroup</span></code></p>
 <p><strong>8. Collecting the source data:</strong> <code class="docutils literal notranslate"><span class="pre">DataCollector</span></code>, <code class="docutils literal notranslate"><span class="pre">Requester</span></code></p>
 <p><strong>9. Outputting the result:</strong> <code class="docutils literal notranslate"><span class="pre">Serializer</span></code></p>
-</section>
-<section id="back-to-primary-flow">
+</div>
+<div class="section" id="back-to-primary-flow">
 <h3>[Back to primary flow]<a class="headerlink" href="#back-to-primary-flow" title="Permalink to this headline">¶</a></h3>
 <p><strong>10. Process complete.</strong></p>
-</section>
-</section>
-<section id="survey-mode">
+</div>
+</div>
+<div class="section" id="survey-mode">
 <h2>Survey-mode<a class="headerlink" href="#survey-mode" title="Permalink to this headline">¶</a></h2>
 <p>“IpSurv” have two Survey-mode. Those are “Survey IPs” and “Survey Self”.</p>
 <table class="colwidths-auto docutils align-default">
@@ -95,8 +94,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="configure-and-constant">
+</div>
+<div class="section" id="configure-and-constant">
 <h2>Configure and Constant<a class="headerlink" href="#configure-and-constant" title="Permalink to this headline">¶</a></h2>
 <p>The following is description of Configure and Constant.</p>
 <table class="colwidths-auto docutils align-default">
@@ -125,8 +124,8 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="objectfactory">
+</div>
+<div class="section" id="objectfactory">
 <h2>ObjectFactory<a class="headerlink" href="#objectfactory" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code> class provide customizing classes and creating original classes. Important classes are generated in <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code>.
 If you’d like to create original factory class , extending <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code>. And injecting to <code class="docutils literal notranslate"><span class="pre">IpSurvCmd</span></code> class.</p>
@@ -148,8 +147,8 @@ If you’d like to create original factory class , extending <code class="docuti
 </tr>
 </tbody>
 </table>
-</section>
-<section id="valuedata">
+</div>
+<div class="section" id="valuedata">
 <h2>ValueData<a class="headerlink" href="#valuedata" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ValueData</span></code> class is the role of storing data. It’s used by various process. <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object is created by <code class="docutils literal notranslate"><span class="pre">ValueDataFactory</span></code>.
 You are able to customize <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> class by <code class="docutils literal notranslate"><span class="pre">ValueDataFactory</span></code> class.</p>
@@ -168,8 +167,8 @@ You are able to customize <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-</section>
-<section id="target">
+</div>
+<div class="section" id="target">
 <h2>Target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Target</span></code> class is the role of target data for surveying. It includes “IP”, “URL”, “FQDN”, “port” or any other source data.
 <code class="docutils literal notranslate"><span class="pre">Target</span></code> object is created by <code class="docutils literal notranslate"><span class="pre">TargetParser</span></code> class. And <code class="docutils literal notranslate"><span class="pre">Target</span></code> object is stored as “target” in <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object, outputting with the name “target.*” in serializing.</p>
@@ -191,8 +190,8 @@ You are able to customize <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-</section>
-<section id="targetparser">
+</div>
+<div class="section" id="targetparser">
 <h2>TargetParser<a class="headerlink" href="#targetparser" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">TargetParser</span></code> class is the role of parsing input row and creating <code class="docutils literal notranslate"><span class="pre">Target</span></code> object. You are able to customize parsing process, and store original source data.</p>
 <table class="colwidths-auto docutils align-default">
@@ -213,8 +212,8 @@ You are able to customize <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-</section>
-<section id="pipeline">
+</div>
+<div class="section" id="pipeline">
 <h2>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class provide catching and customizing the data in each processing. <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class allows for modifying process behaviors or adding specifications without a lot of class extensions or changing the structure.
 It’s available to very fine data control.</p>
@@ -328,8 +327,8 @@ It’s available to very fine data control.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="datacollector">
+</div>
+<div class="section" id="datacollector">
 <h2>DataCollector<a class="headerlink" href="#datacollector" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DataCollector</span></code> class provide call <code class="docutils literal notranslate"><span class="pre">Requester</span></code> class and collect response data. Approximately, <code class="docutils literal notranslate"><span class="pre">DataCollector</span></code> class can be considered a wrapper class for <code class="docutils literal notranslate"><span class="pre">Request</span></code> class.</p>
 <table class="colwidths-auto docutils align-default">
@@ -350,8 +349,8 @@ It’s available to very fine data control.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="requester">
+</div>
+<div class="section" id="requester">
 <h2>Requester<a class="headerlink" href="#requester" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Requester</span></code> class provide requesting outer data.</p>
 <table class="colwidths-auto docutils align-default">
@@ -372,8 +371,8 @@ It’s available to very fine data control.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="serializer">
+</div>
+<div class="section" id="serializer">
 <h2>Serializer<a class="headerlink" href="#serializer" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Serializer</span></code> class provide displaying data and transforming data for presentation. <code class="docutils literal notranslate"><span class="pre">LineSerializer</span></code> class provide feature of line output. <code class="docutils literal notranslate"><span class="pre">JsonSerializer</span></code> class provide JSON output. Also, you are able to create original Serializer.</p>
 <table class="colwidths-auto docutils align-default">
@@ -456,8 +455,8 @@ It’s available to very fine data control.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="utils">
+</div>
+<div class="section" id="utils">
 <h2>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">./util</span></code>, there are some util classes. Those are used in various places.</p>
 <table class="colwidths-auto docutils align-default">
@@ -478,30 +477,30 @@ It’s available to very fine data control.</p>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="internal-specifications-misc">
+</div>
+<div class="section" id="internal-specifications-misc">
 <h2>Internal specifications / Misc<a class="headerlink" href="#internal-specifications-misc" title="Permalink to this headline">¶</a></h2>
-<section id="about-rdap-data">
+<div class="section" id="about-rdap-data">
 <h3>About “RDAP” Data<a class="headerlink" href="#about-rdap-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>RDAP data is JSON data by RDAP structure. However, the data like country code is not perfect. There is not country code rarely. In such cases, the country code is analyzed from the address.</p></li>
 <li><p>In rare cases, the RDAP server’s data may be incorrect.</p></li>
 </ul>
-</section>
-<section id="about-dnstxt-data">
+</div>
+<div class="section" id="about-dnstxt-data">
 <h3>About “DNSTXT” Data<a class="headerlink" href="#about-dnstxt-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>“DNSTXT” data is collected from TXT-record of “origin.asn.cymru.com”.</p></li>
 </ul>
-</section>
-<section id="about-ipinfo-data">
+</div>
+<div class="section" id="about-ipinfo-data">
 <h3>About “IPINFO” Data<a class="headerlink" href="#about-ipinfo-data" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>“IPINFO” data is collected from “ipinfo.io”.</p></li>
 </ul>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -510,38 +509,23 @@ It’s available to very fine data control.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="../index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Program architecture and Classes</a><ul>
-<li><a class="reference internal" href="#process-flow">Process flow</a><ul>
-<li><a class="reference internal" href="#initializing">[Initializing]</a></li>
-<li><a class="reference internal" href="#process-in-each-input-row">[Process in each input row]</a></li>
-<li><a class="reference internal" href="#back-to-primary-flow">[Back to primary flow]</a></li>
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
-</li>
-<li><a class="reference internal" href="#survey-mode">Survey-mode</a></li>
-<li><a class="reference internal" href="#configure-and-constant">Configure and Constant</a></li>
-<li><a class="reference internal" href="#objectfactory">ObjectFactory</a></li>
-<li><a class="reference internal" href="#valuedata">ValueData</a></li>
-<li><a class="reference internal" href="#target">Target</a></li>
-<li><a class="reference internal" href="#targetparser">TargetParser</a></li>
-<li><a class="reference internal" href="#pipeline">Pipeline</a></li>
-<li><a class="reference internal" href="#datacollector">DataCollector</a></li>
-<li><a class="reference internal" href="#requester">Requester</a></li>
-<li><a class="reference internal" href="#serializer">Serializer</a></li>
-<li><a class="reference internal" href="#utils">Utils</a></li>
-<li><a class="reference internal" href="#internal-specifications-misc">Internal specifications / Misc</a><ul>
-<li><a class="reference internal" href="#about-rdap-data">About “RDAP” Data</a></li>
-<li><a class="reference internal" href="#about-dnstxt-data">About “DNSTXT” Data</a></li>
-<li><a class="reference internal" href="#about-ipinfo-data">About “IPINFO” Data</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
 </ul>
 
-  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="command_arguments.html"
@@ -561,7 +545,12 @@ It’s available to very fine data control.</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Links</h3>
+	<ul>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
         </div>
       </div>
       <div class="clearer"></div>

@@ -1,0 +1,62 @@
+.. ipsurv documentation master file, created by
+   sphinx-quickstart on Mon Nov 25 15:23:21 2024.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to IpSurv
+==================================
+
+Welcome to IpSurv's documentation! This document explains the basic usage and system information.
+
+.. image:: images/ipsurv.gif
+   :alt: IpSurv
+   :align: center
+
+Github
+==================================
+
+The latest version and documentation may be found on GitHub. The Github URL is the following.
+
+.. raw:: html
+
+    Github URL <a href="https://github.com/deer-hunt/ipsurv" target="_blank">https://github.com/deer-hunt/ipsurv</a>
+
+Overview
+==================================
+
+**IpSurv Command**
+
+.. code-block:: shell
+
+   $ cat ips.txt|ipsurv 192.168.1.10
+   $ ipsurv 192.168.1.10 192.168.1.11
+   $ ipsurv self
+
+
+.. toctree::
+   :maxdepth: 2
+
+  overview.rst
+
+IpSurv's documents
+==================================
+
+.. toctree::
+   :maxdepth: 1
+
+   pages/command_arguments.md
+   pages/program_architecture_classes.md
+   pages/development_debug.md
+   pages/command_examples.md
+   pages/customize_examples.md
+
+Module and Class reference
+==================
+
+The following is the documentation for the module and class. `Github source <https://github.com/deer-hunt/ipsurv/tree/main/ipsurv>`_
+
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

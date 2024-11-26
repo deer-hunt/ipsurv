@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Program architecture and Classes &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development and Debugging" href="development_debug.html" />
+    <link rel="prev" title="Command arguments reference" href="command_arguments.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="development_debug.html" title="Development and Debugging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="command_arguments.html" title="Command arguments reference"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Program architecture and Classes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="program-architecture-and-classes">
+<h1>Program architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h1>
+<section id="process-flow">
+<h2>Process flow<a class="headerlink" href="#process-flow" title="Permalink to this headline">¶</a></h2>
+<p>The following is overview of process flow. You would be better off checking the python code, because the process is simple and easy.</p>
+<section id="initializing">
+<h3>[Initializing]<a class="headerlink" href="#initializing" title="Permalink to this headline">¶</a></h3>
+<p><strong>1. Process start.</strong></p>
+<p><strong>2. Creating basic class objects:</strong> <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code></p>
+<p><strong>3. Parsing command arguments and reading from STDIN.</strong></p>
+<p><strong>4. Detecting mode:</strong> <code class="docutils literal notranslate"><span class="pre">Survey-mode</span></code></p>
+<blockquote>
+<div><p>The following is description of “Survey IPs” mode.</p>
+</div></blockquote>
+<p><strong>5. Creating each class objects:</strong> <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code></p>
+</section>
+<section id="process-in-each-input-row">
+<h3>[Process in each input row]<a class="headerlink" href="#process-in-each-input-row" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The data is passed by <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object in each processes.</p>
+</div></blockquote>
+<p><strong>6. Parsing the target:</strong> <code class="docutils literal notranslate"><span class="pre">TargetParser</span></code>, <code class="docutils literal notranslate"><span class="pre">Target</span></code></p>
+<p><strong>7. Finding the group:</strong> <code class="docutils literal notranslate"><span class="pre">TargetGroup</span></code></p>
+<p><strong>8. Collecting the source data:</strong> <code class="docutils literal notranslate"><span class="pre">DataCollector</span></code>, <code class="docutils literal notranslate"><span class="pre">Requester</span></code></p>
+<p><strong>9. Outputting the result:</strong> <code class="docutils literal notranslate"><span class="pre">Serializer</span></code></p>
+</section>
+<section id="back-to-primary-flow">
+<h3>[Back to primary flow]<a class="headerlink" href="#back-to-primary-flow" title="Permalink to this headline">¶</a></h3>
+<p><strong>10. Process complete.</strong></p>
+</section>
+</section>
+<section id="survey-mode">
+<h2>Survey-mode<a class="headerlink" href="#survey-mode" title="Permalink to this headline">¶</a></h2>
+<p>“IpSurv” have two Survey-mode. Those are “Survey IPs” and “Survey Self”.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Survey-mode</p></th>
+<th class="head"><p>Filename</p></th>
+<th class="head"><p>Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Survey IPs</p></td>
+<td><p>survey_ips.py</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SurveyIps</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Survey Self</p></td>
+<td><p>survey_self.py</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SurveySelf</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configure-and-constant">
+<h2>Configure and Constant<a class="headerlink" href="#configure-and-constant" title="Permalink to this headline">¶</a></h2>
+<p>The following is description of Configure and Constant.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Filename</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ArgsBuilder</span></code></p></td>
+<td><p>./configure/args_builder.py</p></td>
+<td><p>Building args object.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Validator classes</p></td>
+<td><p>./configure/args_validators.py</p></td>
+<td><p>Arguments specifying complex conditions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Config</span></code></p></td>
+<td><p>config.py</p></td>
+<td><p>Configure class. There are various configure variables. Example: config_customize.py</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Constant</span></code></p></td>
+<td><p>config.py</p></td>
+<td><p>Constant class.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="objectfactory">
+<h2>ObjectFactory<a class="headerlink" href="#objectfactory" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code> class provide customizing classes and creating original classes. Important classes are generated in <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code>.
+If you’d like to create original factory class , extending <code class="docutils literal notranslate"><span class="pre">ObjectFactory</span></code>. And injecting to <code class="docutils literal notranslate"><span class="pre">IpSurvCmd</span></code> class.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>ObjectFactory</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./core/object_factory.py</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>object_factory_original_headers.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="valuedata">
+<h2>ValueData<a class="headerlink" href="#valuedata" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ValueData</span></code> class is the role of storing data. It’s used by various process. <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object is created by <code class="docutils literal notranslate"><span class="pre">ValueDataFactory</span></code>.
+You are able to customize <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> class by <code class="docutils literal notranslate"><span class="pre">ValueDataFactory</span></code> class.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>ValueData, ValueDataFactory</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./core/entity.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="target">
+<h2>Target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Target</span></code> class is the role of target data for surveying. It includes “IP”, “URL”, “FQDN”, “port” or any other source data.
+<code class="docutils literal notranslate"><span class="pre">Target</span></code> object is created by <code class="docutils literal notranslate"><span class="pre">TargetParser</span></code> class. And <code class="docutils literal notranslate"><span class="pre">Target</span></code> object is stored as “target” in <code class="docutils literal notranslate"><span class="pre">ValueData</span></code> object, outputting with the name “target.*” in serializing.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>Target</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./core/entity.py</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>target_parser_customize.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="targetparser">
+<h2>TargetParser<a class="headerlink" href="#targetparser" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TargetParser</span></code> class is the role of parsing input row and creating <code class="docutils literal notranslate"><span class="pre">Target</span></code> object. You are able to customize parsing process, and store original source data.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>TargetParser</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./core/target_parser.py</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>target_parser_customize.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pipeline">
+<h2>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class provide catching and customizing the data in each processing. <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class allows for modifying process behaviors or adding specifications without a lot of class extensions or changing the structure.
+It’s available to very fine data control.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>Pipeline</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./core/pipeline.py</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>pipeline_customize.py</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pipeline’s methods</strong></p>
+<p>When Pipeline’s methods are dispatched:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Methods</p></th>
+<th class="head"><p>When it dispatch</p></th>
+<th class="head"><p>Processing e.g.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">init_configure</span></code></p></td>
+<td><p>Initializing arguments values.</p></td>
+<td><p>Customizing arguments and env.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_configure</span></code></p></td>
+<td><p>Before configuring arguments.</p></td>
+<td><p>Customizing arguments before configuring.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_configure</span></code></p></td>
+<td><p>After configuring arguments.</p></td>
+<td><p>Customizing arguments after configuring.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">detect_survey_mode</span></code></p></td>
+<td><p>Detecting Survey-mode.</p></td>
+<td><p>Changing Survey-mode.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">begin_process</span></code></p></td>
+<td><p>Before beginning processes.</p></td>
+<td><p>Initializing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_target_parse</span></code></p></td>
+<td><p>Before parsing the target.</p></td>
+<td><p>Check or Modify row data before parsing.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pre_target_identify</span></code></p></td>
+<td><p>Before identifying the target.</p></td>
+<td><p>Customizing parsed data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_output_headers</span></code></p></td>
+<td><p>Before outputting headers.</p></td>
+<td><p>Customizing headers.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pre_collect</span></code></p></td>
+<td><p>Before collecting for each row.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">find_group</span></code></p></td>
+<td><p>When finding the group.</p></td>
+<td><p>Customizing grouping.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_group_identify</span></code></p></td>
+<td><p>When identifying the group.</p></td>
+<td><p>Customizing grouping.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create_group</span></code></p></td>
+<td><p>After identifying the group and creating the group.</p></td>
+<td><p>Customizing grouping.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pre_request</span></code></p></td>
+<td><p>Before collecting each data collection.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_request</span></code></p></td>
+<td><p>After collecting each data collection.</p></td>
+<td><p>Customizing response data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_collect</span></code></p></td>
+<td><p>After collecting for each row.</p></td>
+<td><p>Customizing collected data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">build</span></code></p></td>
+<td><p>Building the output data and transforming data.</p></td>
+<td><p>Customizing output data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">build_error</span></code></p></td>
+<td><p>When a system error occurs and building error data.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_result</span></code></p></td>
+<td><p>When outputting result in each process.</p></td>
+<td><p>Customizing outputting result.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">output_result_self</span></code></p></td>
+<td><p>In self-mode, when outputting the result.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">complete_process</span></code></p></td>
+<td><p>After completing processes.</p></td>
+<td><p>Final processing.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="datacollector">
+<h2>DataCollector<a class="headerlink" href="#datacollector" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DataCollector</span></code> class provide call <code class="docutils literal notranslate"><span class="pre">Requester</span></code> class and collect response data. Approximately, <code class="docutils literal notranslate"><span class="pre">DataCollector</span></code> class can be considered a wrapper class for <code class="docutils literal notranslate"><span class="pre">Request</span></code> class.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>DataCollector</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./data_collector/data_collector.py, Classes in the same hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>check_wordpress_site.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="requester">
+<h2>Requester<a class="headerlink" href="#requester" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Requester</span></code> class provide requesting outer data.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>Requester</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./requester/requester.py, Classes in the same hierarchy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>check_favicon.py, use_requester_directly.py</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="serializer">
+<h2>Serializer<a class="headerlink" href="#serializer" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Serializer</span></code> class provide displaying data and transforming data for presentation. <code class="docutils literal notranslate"><span class="pre">LineSerializer</span></code> class provide feature of line output. <code class="docutils literal notranslate"><span class="pre">JsonSerializer</span></code> class provide JSON output. Also, you are able to create original Serializer.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Class</strong></p></td>
+<td><p>Serializer, LineSerializer, JsonSerializer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path</strong></p></td>
+<td><p>./serializer/serializer.py, line_serializer.py, json_serializer.py</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Example</strong></p></td>
+<td><p>object_factory_original_headers.py</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Serializer’s methods</strong></p>
+<p>Serializer’s methods:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Methods</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set_survey_mode</span></code></p></td>
+<td><p>Set the survey mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">set_delimiter</span></code></p></td>
+<td><p>Set the delimiter (separator character).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">output_begin</span></code></p></td>
+<td><p>Output in beginning the process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create_labels</span></code></p></td>
+<td><p>Create labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_label</span></code></p></td>
+<td><p>Get a specified label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">set_status</span></code></p></td>
+<td><p>Set the status of the process.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">build</span></code></p></td>
+<td><p>Build the data structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">transform</span></code></p></td>
+<td><p>Transforms the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filter_value</span></code></p></td>
+<td><p>Filters value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">build_row</span></code></p></td>
+<td><p>Build a row.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">build_error</span></code></p></td>
+<td><p>Build error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_result</span></code></p></td>
+<td><p>Output the result.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">output</span></code></p></td>
+<td><p>Output the value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_complete</span></code></p></td>
+<td><p>Output in completing the process.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">transform_key_labels</span></code></p></td>
+<td><p>Transforms key labels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_message</span></code></p></td>
+<td><p>Outputs a message.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">output_item</span></code></p></td>
+<td><p>Output an item.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="utils">
+<h2>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">./util</span></code>, there are some util classes. Those are used in various places.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Path</p></th>
+<th class="head"><p>Classes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>./util/args_util.py</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ArgValidator</span></code>, <code class="docutils literal notranslate"><span class="pre">StdinLoader</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>./util/network_util.py</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IpUtil</span></code>, <code class="docutils literal notranslate"><span class="pre">DnsUtil</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>./util/sys_util.py</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AppException</span></code>, <code class="docutils literal notranslate"><span class="pre">System</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="internal-specifications-misc">
+<h2>Internal specifications / Misc<a class="headerlink" href="#internal-specifications-misc" title="Permalink to this headline">¶</a></h2>
+<section id="about-rdap-data">
+<h3>About “RDAP” Data<a class="headerlink" href="#about-rdap-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>RDAP data is JSON data by RDAP structure. However, the data like country code is not perfect. There is not country code rarely. In such cases, the country code is analyzed from the address.</p></li>
+<li><p>In rare cases, the RDAP server’s data may be incorrect.</p></li>
+</ul>
+</section>
+<section id="about-dnstxt-data">
+<h3>About “DNSTXT” Data<a class="headerlink" href="#about-dnstxt-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>“DNSTXT” data is collected from TXT-record of “origin.asn.cymru.com”.</p></li>
+</ul>
+</section>
+<section id="about-ipinfo-data">
+<h3>About “IPINFO” Data<a class="headerlink" href="#about-ipinfo-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>“IPINFO” data is collected from “ipinfo.io”.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Program architecture and Classes</a><ul>
+<li><a class="reference internal" href="#process-flow">Process flow</a><ul>
+<li><a class="reference internal" href="#initializing">[Initializing]</a></li>
+<li><a class="reference internal" href="#process-in-each-input-row">[Process in each input row]</a></li>
+<li><a class="reference internal" href="#back-to-primary-flow">[Back to primary flow]</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#survey-mode">Survey-mode</a></li>
+<li><a class="reference internal" href="#configure-and-constant">Configure and Constant</a></li>
+<li><a class="reference internal" href="#objectfactory">ObjectFactory</a></li>
+<li><a class="reference internal" href="#valuedata">ValueData</a></li>
+<li><a class="reference internal" href="#target">Target</a></li>
+<li><a class="reference internal" href="#targetparser">TargetParser</a></li>
+<li><a class="reference internal" href="#pipeline">Pipeline</a></li>
+<li><a class="reference internal" href="#datacollector">DataCollector</a></li>
+<li><a class="reference internal" href="#requester">Requester</a></li>
+<li><a class="reference internal" href="#serializer">Serializer</a></li>
+<li><a class="reference internal" href="#utils">Utils</a></li>
+<li><a class="reference internal" href="#internal-specifications-misc">Internal specifications / Misc</a><ul>
+<li><a class="reference internal" href="#about-rdap-data">About “RDAP” Data</a></li>
+<li><a class="reference internal" href="#about-dnstxt-data">About “DNSTXT” Data</a></li>
+<li><a class="reference internal" href="#about-ipinfo-data">About “IPINFO” Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="command_arguments.html"
+                          title="previous chapter">Command arguments reference</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="development_debug.html"
+                          title="next chapter">Development and Debugging</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="development_debug.html" title="Development and Debugging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="command_arguments.html" title="Command arguments reference"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Program architecture and Classes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

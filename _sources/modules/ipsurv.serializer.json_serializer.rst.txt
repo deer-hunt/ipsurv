@@ -1,0 +1,10 @@
+ipsurv.serializer package
+=========================
+
+ipsurv.serializer.json_serializer module
+-----------------------------------------
+
+.. automodule:: ipsurv.serializer.json_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:

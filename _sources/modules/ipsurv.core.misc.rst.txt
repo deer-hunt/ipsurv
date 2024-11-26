@@ -1,0 +1,19 @@
+ipsurv.core package
+===================
+
+ipsurv.core.target_groups module
+---------------------------------
+
+.. automodule:: ipsurv.core.target_groups
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.core.target_parser module
+---------------------------------
+
+.. automodule:: ipsurv.core.target_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

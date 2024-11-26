@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>ipsurv.core package &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsurv.core package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ipsurv-core-package">
+<h1>ipsurv.core package<a class="headerlink" href="#ipsurv-core-package" title="Permalink to this headline">¶</a></h1>
+<section id="module-ipsurv.core.pipeline">
+<span id="ipsurv-core-pipeline-module"></span><h2>ipsurv.core.pipeline module<a class="headerlink" href="#module-ipsurv.core.pipeline" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Pipeline</span></span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.begin_process">
+<span class="sig-name descname"><span class="pre">begin_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.begin_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.build_error">
+<span class="sig-name descname"><span class="pre">build_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.build_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.complete_process">
+<span class="sig-name descname"><span class="pre">complete_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.complete_process" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.create_group">
+<span class="sig-name descname"><span class="pre">create_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cidr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.create_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.detect_survey_mode">
+<span class="sig-name descname"><span class="pre">detect_survey_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.detect_survey_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.find_group">
+<span class="sig-name descname"><span class="pre">find_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.find_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.get_group_identify">
+<span class="sig-name descname"><span class="pre">get_group_identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.get_group_identify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.init_configure">
+<span class="sig-name descname"><span class="pre">init_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.init_configure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.output_result">
+<span class="sig-name descname"><span class="pre">output_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.output_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.output_result_self">
+<span class="sig-name descname"><span class="pre">output_result_self</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.output_result_self" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_collect">
+<span class="sig-name descname"><span class="pre">post_collect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_collect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_configure">
+<span class="sig-name descname"><span class="pre">post_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_configure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_request">
+<span class="sig-name descname"><span class="pre">post_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_collect">
+<span class="sig-name descname"><span class="pre">pre_collect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_collect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_configure">
+<span class="sig-name descname"><span class="pre">pre_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_configure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_output_headers">
+<span class="sig-name descname"><span class="pre">pre_output_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_output_headers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_request">
+<span class="sig-name descname"><span class="pre">pre_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_target_identify">
+<span class="sig-name descname"><span class="pre">pre_target_identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_target_identify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_target_parse">
+<span class="sig-name descname"><span class="pre">pre_target_parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_target_parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">ipsurv.core package</a><ul>
+<li><a class="reference internal" href="#module-ipsurv.core.pipeline">ipsurv.core.pipeline module</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsurv.core package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

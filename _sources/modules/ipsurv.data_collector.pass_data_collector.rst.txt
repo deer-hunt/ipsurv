@@ -1,0 +1,10 @@
+ipsurv.data_collector package
+==============================
+
+ipsurv.data_collector.pass_data_collector module
+---------------------------------------------------
+
+.. automodule:: ipsurv.data_collector.pass_data_collector
+   :members:
+   :undoc-members:
+   :show-inheritance:

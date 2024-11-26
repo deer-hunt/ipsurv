@@ -1,0 +1,10 @@
+ipsurv.core package
+===================
+
+ipsurv.core.object_factory module
+----------------------------------
+
+.. automodule:: ipsurv.core.object_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:

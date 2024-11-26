@@ -1,0 +1,11 @@
+ipsurv.core package
+===================
+
+ipsurv.core.pipeline module
+---------------------------
+
+.. automodule:: ipsurv.core.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>IpSurv Overview &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command arguments reference" href="pages/command_arguments.html" />
+    <link rel="prev" title="Welcome to IpSurv" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pages/command_arguments.html" title="Command arguments reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to IpSurv"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">IpSurv Overview</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ipsurv-overview">
+<h1>IpSurv Overview<a class="headerlink" href="#ipsurv-overview" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>ipsurv
+or
+$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>ipsurv
+</pre></div>
+</div>
+</section>
+<section id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Grouping by IP or Subnet.</p></li>
+<li><p>Skip duplicate by the group.</p></li>
+<li><p>Autodetect IP in line. Trying to resolve the name automatically.</p></li>
+<li><p>Autodetect delimiter-char.</p></li>
+<li><p>Customize output format. There are many format.</p></li>
+<li><p>Output JSON format.</p></li>
+<li><p>Show headers.</p></li>
+<li><p>Check ICMP, TCP, UDP, HTTP.</p></li>
+<li><p>Set timeout.</p></li>
+<li><p>Load env variable. And changing arguments and internal configures.</p></li>
+</ul>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p><strong>Specify IP using Argument</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10<span class="w"> </span><span class="m">192</span>.168.1.11
+</pre></div>
+</div>
+<p><strong>Specify IP using PIPE</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv
+$<span class="w"> </span>cat<span class="w"> </span>apache.log<span class="p">|</span>ipsurv
+</pre></div>
+</div>
+<p><strong>Self mode</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>self
+</pre></div>
+</div>
+<section id="example-result">
+<h2>Example result<a class="headerlink" href="#example-result" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>.dev/test/government.txt<span class="p">|</span>ipsurv<span class="w"> </span>--headers<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},{group},{country},{name},{cidr},{http},{http_h2}&quot;</span><span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span>
+
+original,status,group,country,name,cidr,http,http_h2
+www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
+www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
+www.treasury.gov,OK,23.32.0.1,US,AKAMAI,23.32.0.0/11,HTTP_OK,HTTP2
+www.gov.uk,OK,151.101.0.1,US,SKYCA-3,151.101.0.0/16,HTTP_OK,HTTP2
+www.gouvernement.fr,OK,217.70.184.1,FR,GANDIFR-NET4,217.70.184.0/24,HTTP_OK,HTTP1
+www.diplomatie.gouv.fr,OK,77.128.0.1,FR,FR-SFR-20100831,77.128.0.0/11,HTTP_OK,HTTP1
+www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HTTP2
+www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
+</pre></div>
+</div>
+<p>For details, <a class="reference external" href="pages/command_arguments.html">Command arguments reference</a> / <a class="reference external" href="pages/command_examples.html">Command examples</a></p>
+</section>
+</section>
+<section id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
+<p>In verbose mode, outputting internal data and behaviors in detail.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1">#INFO</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="c1">#DEBUG</span>
+</pre></div>
+</div>
+<p>For details, <a class="reference external" href="pages/development_debug.html">Development and Debugging</a></p>
+</section>
+<section id="customizing-ipsurv">
+<h1>Customizing IpSurv<a class="headerlink" href="#customizing-ipsurv" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">`ipsurv`</span></code> is implemented as customizable program architecture. <code class="docutils literal notranslate"><span class="pre">`ipsurv`</span></code> provide extending features and several classes. Please read <code class="docutils literal notranslate"><span class="pre">`program_architecture_classes.md`</span></code>.</p>
+<p>For details, <a class="reference external" href="pages/program_architecture_classes.html">Program architecture and Classes</a> / <a class="reference external" href="pages/development_debug.html">Development and Debugging</a> / <a class="reference external" href="pages/customize_examples.html">Customizing and Examples</a></p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">IpSurv Overview</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#example-result">Example result</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#customizing-ipsurv">Customizing IpSurv</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to IpSurv</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pages/command_arguments.html"
+                          title="next chapter">Command arguments reference</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pages/command_arguments.html" title="Command arguments reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to IpSurv"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">IpSurv Overview</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

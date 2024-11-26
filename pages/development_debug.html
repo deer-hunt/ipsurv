@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Development and Debugging &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Command examples" href="command_examples.html" />
+    <link rel="prev" title="Program architecture and Classes" href="program_architecture_classes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_examples.html" title="Command examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="program_architecture_classes.html" title="Program architecture and Classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development and Debugging</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="development-and-debugging">
+<h1>Development and Debugging<a class="headerlink" href="#development-and-debugging" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This is description of development related “IpSurv”.
+You are able to customize “IpSurv”.</p>
+</section>
+<section id="program-specification">
+<h2>Program specification<a class="headerlink" href="#program-specification" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Item</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Python version</strong></p></td>
+<td><p>3.0 or later. *</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dependencies</strong></p></td>
+<td><p>dnspython</p></td>
+</tr>
+</tbody>
+</table>
+<p>*: “IpSurv” doesn’t support Python 2.7, However it’s easy to refactor to Python 2.7. See the bottom of this document.</p>
+</section>
+<section id="program-architecture-and-classes">
+<h2>Program Architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h2>
+<p>Please read <a class="reference internal" href="program_architecture_classes.html"><span class="doc std std-doc">Program Architecture and Classes(.md)</span></a>. There are description of several important classes.</p>
+</section>
+<section id="customizing-and-examples">
+<h2>Customizing and Examples<a class="headerlink" href="#customizing-and-examples" title="Permalink to this headline">¶</a></h2>
+<p>Please read <a class="reference internal" href="customize_examples.html"><span class="doc std std-doc">Customizing and Examples(.md)</span></a>. There are some example programs.</p>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option in <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments(.md)</span></a>.</p>
+<section id="log-sample-and-description">
+<h3>Log sample and description<a class="headerlink" href="#log-sample-and-description" title="Permalink to this headline">¶</a></h3>
+<p>The following is debugging log with each comments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]          // Displaying verbose level.
+2024-10-26 23:26:03,193 - INFO - ENV(IPSURV_ARGS):          // &quot;Command arguments&quot; by Environment variable.
+{}
+2024-10-26 23:26:03,193 - INFO - ENV(IPSURV_CONF):         // &quot;Internal configures&quot; by Environment variable.
+{}
+2024-10-26 23:26:03,193 - INFO - ARGUMENTS:            // Arguments with default value.
+{ &#39;all_collect&#39;: False,
+  &#39;alt_delimiter&#39;: &#39;;&#39;,
+  &#39;autodetect&#39;: False,
+  &#39;begin&#39;: -1,
+  &#39;collect&#39;: &#39;rdap;dnstxt;dnsreverse;ipinfo&#39;,
+  &#39;delimiter&#39;: None,
+  &#39;disable_env&#39;: False,
+  &#39;enclose&#39;: None,
+  &#39;end&#39;: -1,
+  &#39;exhaustive&#39;: False,
+  &#39;format&#39;: &#39;default&#39;,
+  &#39;group&#39;: None,
+  &#39;headers&#39;: 0,
+  &#39;http&#39;: 0,
+  &#39;icmp&#39;: False,
+  &#39;json&#39;: 0,
+  &#39;log&#39;: None,
+  &#39;original&#39;: True,
+  &#39;resolve&#39;: True,
+  &#39;sequence&#39;: False,
+  &#39;skip_duplicate&#39;: 0,
+  &#39;target&#39;: [],
+  &#39;tcp&#39;: 0,
+  &#39;timeout&#39;: &#39;8.0&#39;,
+  &#39;udp&#39;: 0,
+  &#39;verbose&#39;: 3,
+  &#39;version&#39;: False}
+2024-10-26 23:26:03,194 - INFO - ARGUMENTS_JSON:          // Arguments JSON. You can use as environment variable.
+{&quot;verbose&quot;: 3, &quot;log&quot;: null, &quot;disable_env&quot;: false, &quot;target&quot;: [], &quot;resolve&quot;: true, ~~~~~~~~~~~~~~~~ &quot;icmp&quot;: false, &quot;tcp&quot;: 0, &quot;udp&quot;: 0, &quot;http&quot;: 0, &quot;version&quot;: false}
+//&quot;Fixed ~~~&quot; are values which generating by arugment value for internal process.
+2024-10-26 23:26:03,194 - INFO - Fixed delimiter:,
+2024-10-26 23:26:03,194 - INFO - Fixed format:{original},{status},{group},{country},{name},{network_start},{network_end},{hostname}
+2024-10-26 23:26:03,195 - INFO - Fixed timeout:{&#39;dns&#39;: 8.0, &#39;http&#39;: 8.0, &#39;reactivity&#39;: 8.0}
+2024-10-26 23:26:03,195 - INFO - Fixed enclose:
+2024-10-26 23:26:03,195 - INFO - Fixed collectors:[&#39;rdap&#39;, &#39;dnstxt&#39;, &#39;dnsreverse&#39;, &#39;ipinfo&#39;]
+2024-10-26 23:26:03,195 - INFO - MODE:SURVEY_IPS          // Detected Mode.
+2024-10-26 23:26:03,219 - INFO - IP:192.0.66.168          // Target IP
+2024-10-26 23:26:03,219 - INFO - FQDN:www.whitehouse.gov          // FQDN
+2024-10-26 23:26:03,220 - INFO - PORT:None          // port
+2024-10-26 23:26:03,220 - DEBUG - TARGET_RAW:www.whitehouse.gov          // Raw
+2024-10-26 23:26:03,220 - INFO - TARGET_IDENTIFIER:192.0.66.168          // Target identifier value.
+2024-10-26 23:26:03,220 - INFO - TARGET_DATA:          // Target data values.
+{ &#39;fqdn&#39;: &#39;www.whitehouse.gov&#39;,
+  &#39;identifier&#39;: &#39;192.0.66.168&#39;,
+  &#39;identifier_int&#39;: 3221242536,
+  &#39;ip&#39;: &#39;192.0.66.168&#39;,
+  &#39;port&#39;: None,
+  &#39;raw&#39;: &#39;www.whitehouse.gov&#39;,
+  &#39;status&#39;: &#39;EXIST&#39;,
+  &#39;url&#39;: None}
+2024-10-26 23:26:03,221 - INFO - REQUEST RDAP...           // Start requesting RDAP.
+2024-10-26 23:26:03,239 - INFO - RDAP_URL:https://rdap.arin.net/registry/ip/192.0.66.168
+2024-10-26 23:26:03,783 - DEBUG - RDAP_DATA:          // Response data.
+{ &#39;arin_originas0_originautnums&#39;: [2635],
+  &#39;cidr&#39;: &#39;192.0.64.0/18&#39;,
+  &#39;cidr0_cidrs&#39;: [{&#39;length&#39;: 18, &#39;v4prefix&#39;: &#39;192.0.64.0&#39;}],
+  &#39;country&#39;: &#39;US&#39;,
+  &#39;country_updated&#39;: True,
+  &#39;endAddress&#39;: &#39;192.0.127.255&#39;,
+  &#39;entities&#39;: [ { &#39;entities&#39;: [ { &#39;events&#39;: [ { &#39;eventAction&#39;: &#39;last changed&#39;,
+                                                &#39;eventDate&#39;: &#39;2024-08-22T09:08:56-04:00&#39;},
+                                              { &#39;eventAction&#39;: &#39;registration&#39;,
+                                                &#39;eventDate&#39;: &#39;2011-10-04T02:07:42-04:00&#39;}],
+                                  &#39;handle&#39;: &#39;NOC12276-ARIN&#39;,
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  &#39;remarks&#39;: [ { &#39;description&#39;: [&#39;Geofeed https://as2635.network/geofeed.csv&#39;],
+                 &#39;title&#39;: &#39;Registration Comments&#39;}],
+  &#39;startAddress&#39;: &#39;192.0.64.0&#39;,
+  &#39;status&#39;: [&#39;active&#39;],
+  &#39;type&#39;: &#39;DIRECT ALLOCATION&#39;}
+2024-10-26 23:26:03,784 - INFO - RDAP:OK          // Response status.
+2024-10-26 23:26:03,784 - INFO - RDAP_TIME(ms):558.4          // Response time.
+2024-10-26 23:26:03,784 - DEBUG - UNNECESSARY:DNSTXT          // Skip unnecessary requesting.
+2024-10-26 23:26:03,784 - INFO - REQUEST DNSREVERSE...          // Start requesting DNSREVERSE.
+2024-10-26 23:26:03,811 - DEBUG - DNSREVERSE ERROR          // Response error - Unknown host. This error is not a bug.
+Traceback (most recent call last):
+  File &quot;/usr/local/~~~/ipsurv/data_collector/data_collector.py&quot;, line 32, in request
+    (success, response) = self.request_data(target)
+  File &quot;/usr/local/~~~/ipsurv/data_collector/basic_collectors.py&quot;, line 116, in request_data
+    return self.requester.request_reverse(target.ip)
+  File &quot;/usr/local/~~~/ipsurv/requester/dns_resolver.py&quot;, line 31, in request_reverse
+    hostname = DnsUtil.reverse(ip, timeout=self.timeout)
+  File &quot;/usr/local/~~~/ipsurv/util/network_util.py&quot;, line 48, in reverse
+    cls._run(thread, timeout)
+  File &quot;/usr/local/~~~/ipsurv/util/network_util.py&quot;, line 61, in _run
+    raise thread.e
+  File &quot;/usr/local/~~~/ipsurv/util/network_util.py&quot;, line 97, in run
+    vals = socket.gethostbyaddr(self.ip)
+socket.herror: [Errno 1] Unknown host
+2024-10-26 23:26:03,811 - DEBUG - DNSREVERSE_DATA:          // Response data.
+{&#39;error&#39;: &#39;[Errno 1] Unknown host&#39;}
+2024-10-26 23:26:03,811 - INFO - DNSREVERSE:NG          // Response status.
+2024-10-26 23:26:03,811 - INFO - DNSREVERSE_TIME(ms):26.7          // Response time.
+2024-10-26 23:26:03,811 - INFO - REQUEST IPINFO...                                 // Start requesting IPINFO.
+2024-10-26 23:26:03,824 - INFO - IPINFO_URL:https://ipinfo.io/192.0.66.168/json?
+2024-10-26 23:26:04,477 - DEBUG - IPINFO_DATA:          // Response data.
+{ &#39;anycast&#39;: True,
+  &#39;city&#39;: &#39;San Francisco&#39;,
+  &#39;country&#39;: &#39;US&#39;,
+  &#39;ip&#39;: &#39;192.0.66.168&#39;,
+  &#39;loc&#39;: &#39;37.7749,-122.4194&#39;,
+  &#39;org&#39;: &#39;AS2635 Automattic, Inc&#39;,
+  &#39;postal&#39;: &#39;94102&#39;,
+  &#39;readme&#39;: &#39;https://ipinfo.io/missingauth&#39;,
+  &#39;region&#39;: &#39;California&#39;,
+  &#39;timezone&#39;: &#39;America/Los_Angeles&#39;}
+2024-10-26 23:26:04,477 - INFO - IPINFO:OK          // Response status.
+2024-10-26 23:26:04,477 - INFO - IPINFO_TIME(ms):665.4          // Response time.
+2024-10-26 23:26:04,478 - INFO - COLLECTED_DATA:          // Collected data.
+{ &#39;address&#39;: &#39;60 29th Street #343 San Francisco CA 94110 United States&#39;,
+  &#39;cidr&#39;: &#39;192.0.64.0/18&#39;,
+  &#39;city&#39;: &#39;San Francisco&#39;,
+  &#39;country&#39;: &#39;US&#39;,
+  &#39;country_updated&#39;: True,
+  &#39;description&#39;: &#39;Geofeed https://as2635.network/geofeed.csv&#39;,
+  &#39;dnsreverse_time&#39;: 26.7,
+  &#39;errors&#39;: [&#39;[Errno 1] Unknown host&#39;],
+  &#39;geo&#39;: &#39;37.7749,-122.4194&#39;,
+  &#39;group&#39;: &#39;&#39;,
+  &#39;group_found&#39;: False,
+  &#39;group_int&#39;: 0,
+  &#39;group_status&#39;: &#39;-&#39;,
+  &#39;handle&#39;: &#39;AUTOM-93&#39;,
+  &#39;hostname&#39;: &#39;&#39;,
+  &#39;identifier&#39;: &#39;192.0.66.168&#39;,
+  &#39;identifier_int&#39;: 3221242536,
+  &#39;ip&#39;: &#39;192.0.66.168&#39;,
+  &#39;ip_int&#39;: 3221242536,
+  &#39;ipinfo_time&#39;: 665.4,
+  &#39;name&#39;: &#39;AUTOMATTIC&#39;,
+  &#39;network_end&#39;: &#39;192.0.127.255&#39;,
+  &#39;network_start&#39;: &#39;192.0.64.0&#39;,
+  &#39;org&#39;: &#39;AS2635 Automattic, Inc&#39;,
+  &#39;original&#39;: &#39;www.whitehouse.gov&#39;,
+  &#39;port&#39;: None,
+  &#39;port43&#39;: &#39;whois.arin.net&#39;,
+  &#39;postal&#39;: &#39;94102&#39;,
+  &#39;rdap_time&#39;: 558.4,
+  &#39;region&#39;: &#39;California&#39;,
+  &#39;requests&#39;: [&#39;RDAP&#39;, &#39;DNSREVERSE&#39;, &#39;IPINFO&#39;],
+  &#39;sequence&#39;: 1,
+  &#39;status&#39;: &#39;NG&#39;,
+  &#39;success&#39;: False,
+  &#39;target&#39;: &#39;192.0.66.168&#39;,
+  &#39;target.fqdn&#39;: &#39;www.whitehouse.gov&#39;,
+  &#39;target.identifier&#39;: &#39;192.0.66.168&#39;,
+  &#39;target.identifier_int&#39;: 3221242536,
+  &#39;target.ip&#39;: &#39;192.0.66.168&#39;,
+  &#39;target.port&#39;: None,
+  &#39;target.raw&#39;: &#39;www.whitehouse.gov&#39;,
+  &#39;target.status&#39;: &#39;EXIST&#39;,
+  &#39;target.url&#39;: None,
+  &#39;timezone&#39;: &#39;America/Los_Angeles&#39;}
+2024-10-26 23:26:04,478 - DEBUG - REQUESTS:          // Requested collectors except skipped collectors.
+[&#39;RDAP&#39;, &#39;DNSREVERSE&#39;, &#39;IPINFO&#39;]
+</pre></div>
+</div>
+</section>
+</section>
+<section id="not-support-python-2-7">
+<h2>Not support Python 2.7 ?<a class="headerlink" href="#not-support-python-2-7" title="Permalink to this headline">¶</a></h2>
+<p>“IpSurv” doesn’t support Python 2.7. However “IpSurv” has been developed to avoid using the latest Python specifications as much as possible, So you can refactor to Python 2.7 code easily.</p>
+<p><strong>Refactoring points</strong></p>
+<ul class="simple">
+<li><p>ABC module</p></li>
+<li><p>http.client module</p></li>
+<li><p>urllib module</p></li>
+</ul>
+<blockquote>
+<div><p>And any other few modules.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Development and Debugging</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#program-specification">Program specification</a></li>
+<li><a class="reference internal" href="#program-architecture-and-classes">Program Architecture and Classes</a></li>
+<li><a class="reference internal" href="#customizing-and-examples">Customizing and Examples</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li><a class="reference internal" href="#log-sample-and-description">Log sample and description</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#not-support-python-2-7">Not support Python 2.7 ?</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="program_architecture_classes.html"
+                          title="previous chapter">Program architecture and Classes</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="command_examples.html"
+                          title="next chapter">Command examples</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_examples.html" title="Command examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="program_architecture_classes.html" title="Program architecture and Classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Development and Debugging</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Customizing and Examples &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Command examples" href="command_examples.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_examples.html" title="Command examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Customizing and Examples</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="customizing-and-examples">
+<h1>Customizing and Examples<a class="headerlink" href="#customizing-and-examples" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>“ipsurv” is implemented as customizable program architecture. It provide extending features and several classes.</p>
+</section>
+<section id="program-architecture-and-classes">
+<h2>Program Architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h2>
+<p>See <code class="docutils literal notranslate"><span class="pre">program_architecture_classes.md</span></code>.</p>
+</section>
+<section id="example-programs">
+<h2>Example programs<a class="headerlink" href="#example-programs" title="Permalink to this headline">¶</a></h2>
+<p>There are several example programs of how to customize. Please refer to the comments in each program for more details..</p>
+<p><strong>Path:</strong> <code class="docutils literal notranslate"><span class="pre">./examples/</span></code></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Program</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>add_original_option.py</p></td>
+<td><p>Adding original options to the configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>check_favicon.py</p></td>
+<td><p>Checking “/favicon.ico”.</p></td>
+</tr>
+<tr class="row-even"><td><p>check_cloud_service.py</p></td>
+<td><p>Checking the status of cloud services.</p></td>
+</tr>
+<tr class="row-odd"><td><p>check_wordpress_site.py</p></td>
+<td><p>Checking WordPress site and WordPress theme.</p></td>
+</tr>
+<tr class="row-even"><td><p>config_customize.py</p></td>
+<td><p>Customizing Config class.</p></td>
+</tr>
+<tr class="row-odd"><td><p>force_json.py</p></td>
+<td><p>Forces data to be output in JSON format.</p></td>
+</tr>
+<tr class="row-even"><td><p>group_customize.py</p></td>
+<td><p>Customizing group settings.</p></td>
+</tr>
+<tr class="row-odd"><td><p>inject_original_class.py</p></td>
+<td><p>Injecting original class object.</p></td>
+</tr>
+<tr class="row-even"><td><p>object_factory_original_headers.py</p></td>
+<td><p>Injecting original classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pipeline_customize.py</p></td>
+<td><p>Customizing by pipeline class.</p></td>
+</tr>
+<tr class="row-even"><td><p>show_original_headers.py</p></td>
+<td><p>Displaying the original headers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>simple_totalize.py</p></td>
+<td><p>Simple totalization by the given data.</p></td>
+</tr>
+<tr class="row-even"><td><p>target_parser_customize.py</p></td>
+<td><p>Customizing TargetParser.</p></td>
+</tr>
+<tr class="row-odd"><td><p>use_requester_directly.py</p></td>
+<td><p>Using requester class directly.</p></td>
+</tr>
+<tr class="row-even"><td><p>extract_regex_data.py</p></td>
+<td><p>Extracting text by regex, and generate CRC and MD5 values.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="execution-examples">
+<h2>Execution examples<a class="headerlink" href="#execution-examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>Program:</strong> object_factory_original_headers.py</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python object_factory_original_headers.py
+
+ __  .______     _______. __    __  .______     ____    ____ 
+|  | |   _  \   /       ||  |  |  | |   _  \    \   \  /   / 
+|  | |  |_)  | |   (----`|  |  |  | |  |_)  |    \   \/   /  
+|  | |   ___/   \   \    |  |  |  | |      /      \      /   
+|  | |  |   .----)   |   |  `--&#39;  | |  |\  \----.  \    /    
+|__| | _|   |_______/     \______/  | _| `._____|   \__/     
+
+
+No target data.
+
+Complete!
+</pre></div>
+</div>
+<p><strong>Program:</strong> extract_regex_data.py</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>extract_regex_data.py<span class="w"> </span><span class="s2">&quot;#123456#&quot;</span><span class="w"> </span><span class="s2">&quot;#abcdef#&quot;</span><span class="w"> </span><span class="s2">&quot;#XYZ#&quot;</span><span class="w"> </span>--headers<span class="o">=</span><span class="m">1</span>
+
+original,my_text,crc,md5
+<span class="c1">#123456#,123456,158520161,e10adc3949ba59abbe56e057f20f883e</span>
+<span class="c1">#abcdef#,abcdef,1267612143,e80b5017098950fc58aad83c8c14978e</span>
+<span class="c1">#XYZ#,XYZ,2099902701,e65075d550f9b5bf9992fa1d71a131be</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Customizing and Examples</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#program-architecture-and-classes">Program Architecture and Classes</a></li>
+<li><a class="reference internal" href="#example-programs">Example programs</a></li>
+<li><a class="reference internal" href="#execution-examples">Execution examples</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="command_examples.html"
+                          title="previous chapter">Command examples</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_examples.html" title="Command examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Customizing and Examples</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+ipsurv.core package
+===================
+
+ipsurv.core.entity module
+----------------------------------
+
+.. automodule:: ipsurv.core.entity
+
+.. autoclass:: ipsurv.core.entity.StoreBase
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: ipsurv.core.entity.Target
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: ipsurv.core.entity.TargetGroup
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: ipsurv.core.entity.ValueData
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. autoclass:: ipsurv.core.entity.ValueDataFactory
+   :members:
+   :undoc-members:
+   :show-inheritance:

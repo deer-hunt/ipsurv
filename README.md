@@ -14,6 +14,7 @@
 <a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
 <a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
+<a href="https://deer-hunt.github.io/ipsurv/" alt="IpSurv's documentation site"><img src="https://img.shields.io/badge/stable%20docs-github.io-brightgreen?style=flat&color=%2373DC8C&label=Docs"/></a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=shield"/></a>
 
 </div>
@@ -172,6 +173,8 @@ $ ipsurv wikipedia.org --format=default --json=2 --add_ip
 
 ## Documents
 
+IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
+
 | Title                       | Path                                        |
 |-------------------------------|---------------------------------------------|
 | **Command arguments reference**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md) |
@@ -179,6 +182,7 @@ $ ipsurv wikipedia.org --format=default --json=2 --add_ip
 | **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/program_architecture_classes.md) |
 | **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/customize_examples.md) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
+| **Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
 
 
 ## Path summary
@@ -203,7 +207,7 @@ $ ipsurv ***** --verbose=2  #INFO
 $ ipsurv ***** --verbose=3  #DEBUG
 ```
 
-## Customizing ipsurv
+## Customizing IpSurv
 
 ```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. 
 And you can use ipsurv's internal classes in your program. Please read ```program_architecture_classes.md```.

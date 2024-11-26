@@ -11,7 +11,7 @@ You are able to customize "IpSurv".
 | **Item**          | **Description**            |
 |-------------------|-----------------------|
 | **Python version**| 3.0 or later. * |
-| **Dependencies**   |               |
+| **Dependencies**   | dnspython              |
 
 *: "IpSurv" doesn't support Python 2.7, However it's easy to refactor to Python 2.7. See the bottom of this document.
 

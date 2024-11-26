@@ -213,17 +213,17 @@ In `./util`, there are some util classes. Those are used in various places.
 
 
 
-# Internal specifications / Misc
+## Internal specifications / Misc
 
-## About "RDAP" Data
+### About "RDAP" Data
 
 - RDAP data is JSON data by RDAP structure. However, the data like country code is not perfect. There is not country code rarely. In such cases, the country code is analyzed from the address.
 - In rare cases, the RDAP server's data may be incorrect.
 
-## About "DNSTXT" Data
+### About "DNSTXT" Data
 
 - "DNSTXT" data is collected from TXT-record of "origin.asn.cymru.com".
 
-## About "IPINFO" Data
+### About "IPINFO" Data
 
 - "IPINFO" data is collected from "ipinfo.io".

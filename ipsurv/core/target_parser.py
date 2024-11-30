@@ -16,6 +16,8 @@ class TargetParser(ABC):
     def __init__(self, args, pipeline, dns_resolver):
         self.pipeline = pipeline  # type: Pipeline
         self.autodetect = args.autodetect  # type: bool
+        self.identify_int = args.identify_int  # type: bool
+        self.ranges = args.fixed_ranges  # type: list
         self.dns_resolver = dns_resolver  # type: DnsResolveRequester
 
     def parse(self, data, original, args):
@@ -30,6 +32,9 @@ class TargetParser(ABC):
 
         if target.status != Constant.STATUS_EXIST:
             target.identifier = target.status
+
+        if target.identified:
+            self._evaluate(data, target)
 
         self._assign_data_target(data, target)
 
@@ -55,9 +60,9 @@ class TargetParser(ABC):
         # type: (ValueData, Target, object) -> None
 
         if target.raw:
-            identified = self._identify_target_ip(data, target, args)
+            target.identified = self._identify_target_ip(data, target, args)
 
-            if identified:
+            if target.identified:
                 target.status = Constant.STATUS_EXIST
         else:
             target.status = Constant.STATUS_EMPTY
@@ -70,8 +75,16 @@ class TargetParser(ABC):
         logging.info('FQDN:' + str(target.fqdn))
         logging.info('PORT:' + str(target.port))
 
+    def _identify_ip_int(self, raw):
+        def convert_ip(match):
+            ip_int = int(match.group(1))
+            return IpUtil.get_ip_from_int(ip_int)
+
+        return re.sub(r'(?<!\d)(\d{8,10})(?!\d)', convert_ip, raw)
+
     def _identify_target_ip(self, data, target, args):
         # type: (ValueData, Target, object) -> bool
+
         url = self._find_url(target.raw)
 
         identified = False
@@ -82,7 +95,10 @@ class TargetParser(ABC):
             parsed = urllib.parse.urlparse(url)
             netloc = parsed.netloc
         else:
-            netloc = target.raw
+            if not self.identify_int:
+                netloc = target.raw
+            else:
+                netloc = self._identify_ip_int(target.raw)
 
         (fqdn_ip, port) = self._split_port(netloc)
 
@@ -112,6 +128,35 @@ class TargetParser(ABC):
                 identified = True
 
         return identified
+
+    def _evaluate(self, data, target):
+        # type: (ValueData, Target) -> None
+
+        ip_address = IpUtil.get_ip_address(target.ip)
+
+        self._evaluate_ip_type(data, ip_address)
+
+        if len(self.ranges) > 0:
+            self._evaluate_in_ranges(data, ip_address)
+
+    def _evaluate_ip_type(self, data, ip_address):
+        ip_type = Constant.IP_TYPE_PRIVATE if ip_address.is_private else Constant.IP_TYPE_PUBLIC
+
+        data.set('ip_type', ip_type)
+
+    def _evaluate_in_ranges(self, data, ip_address):
+        # type: (ValueData, Target) -> None
+
+        in_range = False
+
+        for range in self.ranges:
+            network = IpUtil.get_ip_network(range)
+
+            if ip_address in network:
+                in_range = True
+                break
+
+        data.set('in_range', in_range)
 
     def _assign_data_target(self, data, target):
         # type: (ValueData, Target) -> None

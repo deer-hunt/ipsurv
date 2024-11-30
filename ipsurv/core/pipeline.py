@@ -79,10 +79,10 @@ class Pipeline(ABC):
         # type: (ValueData, Target, object, bool) -> None
         self.serializer.set_status(data, target, args, skip)
 
-    def build(self, data):
-        # type: (ValueData) -> object
+    def build(self, data, target):
+        # type: (ValueData, Target) -> object
 
-        return self.serializer.build(data)
+        return self.serializer.build(data, target)
 
     def build_error(self, error):
         return self.serializer.build_error(error)

@@ -21,6 +21,7 @@ class TestTargetParser:
         args.fixed_timeout = {'dns': 0, 'http': 0, 'reactivity': 0}
         args.fixed_delimiter = ','
         args.fixed_collectors = []
+        args.fixed_ranges = []
         args.autodetect = False
 
         return args

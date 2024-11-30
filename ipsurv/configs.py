@@ -37,6 +37,9 @@ documents:
     STATUS_RESOLVE_FAIL = 'RESOLVE_FAIL'
     STATUS_ILLEGAL_FORMAT = 'ILLEGAL_FORMAT'
 
+    IP_TYPE_PRIVATE = 1
+    IP_TYPE_PUBLIC = 2
+
 
 class Config:
     PRE_ARGUMENTS = {
@@ -47,6 +50,7 @@ class Config:
 
     APP_ARGUMENTS = {
         'resolve': {'default': True, 'type': strtobool, 'help': 'Resolve the name to IP if target value is domain or hostname automatically.'},
+        'identify_int': {'default': False, 'help': 'Identify IP\'s int value.', 'action': 'store_true'},
         'autodetect': {'default': False, 'type': strtobool, 'help': 'Autodetect an IP or hostname that is included in the line. [Experimental]'},
         'begin': {'default': -1, 'type': int, 'help': 'Beginning from sequence number.'},
         'end': {'default': -1, 'type': int, 'help': 'Ending to sequence number.'},
@@ -57,6 +61,7 @@ class Config:
 
         'group': {'default': None, 'type': None, 'help': 'Grouping rule. ex: network, 24, 255.255.255.0'},
         'skip_duplicate': {'default': 0, 'type': int, 'help': 'Skip duplicate group. *2: It also skip checking server reactivity[icmp, tcp, udp].', 'choices': [0, 1, 2]},
+        'ranges': {'default': '', 'type': str, 'help': 'Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"'},
 
         'format': {'default': 'default', 'type': None, 'help': 'Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, heavy, geo, hostname etc.', 'action': 'StrAction'},
         'no_original': {'default': False, 'help': 'Cancel outputting the original line automatically.', 'action': 'store_true'},
@@ -98,8 +103,8 @@ class Config:
     }
 
     FORMAT_PARAMS = [
-        'success', 'status', 'requests', 'errors', 'identifier', 'identifier_int', 'target.*'
-                                                                                   'sequence', 'original', 'ip', 'ip_int', 'port',
+        'success', 'status', 'requests', 'errors', 'identifier', 'identifier_int', 'target.*',
+        'sequence', 'original', 'ip', 'ip_int', 'port', 'ip_type', 'in_range',
         'group_int', 'group', 'group_found', 'group_status', 'network_start', 'network_end',
         'country', 'cidr',
         'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'timezone', 'description',

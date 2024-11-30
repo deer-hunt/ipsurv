@@ -126,6 +126,43 @@ $ cat list.txt|ipsurv --timeout=5.1
 $ cat list.txt|ipsurv --timeout="3.5;4.5;3.2"
 ```
 
+## Check whether IP is in IP/subnet ranges
+
+Set ```--ranges``` and ```{in_range}```.
+
+**Example:**
+
+```bash
+$ ipsurv 192.168.1.10 1.0.0.1 --format="{in_range}" --identify_int --ranges="1.0.0.1/24;192.168.1.8/24"
+192.168.1.10,RANGE_OK
+1.0.0.1,RANGE_OK
+```
+
+```bash
+$ ipsurv 10.0.0.1 --format="{in_range}" --identify_int --ranges="1.0.0.1/24;192.168.1.8/24"
+10.0.0.1,RANGE_NG
+```
+
+## Public IP or Private IP
+
+```bash
+$ ipsurv 192.168.1.100 --format="{ip_type}"
+192.168.1.100,PRIVATE
+```
+
+## IP address <--> IP int
+
+```bash
+$ ipsurv 192.168.1.100 --format="{ip_int}"
+192.168.1.100,3232235876
+```
+
+```bash
+ipsurv 16777217 --format="{ip}" --identify_int
+16777217,1.0.0.1
+```
+
+
 ## Check ICMP
 
 ```bash

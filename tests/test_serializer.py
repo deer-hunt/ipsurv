@@ -76,7 +76,7 @@ class TestSerializer:
         assert data.get('group_status') == '-'
 
     def test_transform(self):
-        data = ValueData({})
+        data = ValueData({'ip_type': None})
         assert self.serializer.transform(data) is None
 
     def test_filter_value(self):
@@ -204,7 +204,9 @@ class TestJsonSerializer:
         assert re.search(r'\[', captured.out)
 
     def test_transform(self):
-        assert self.serializer.transform(None) is None
+        data = ValueData({'ip_type': None})
+
+        assert self.serializer.transform(data) is None
 
     def test_filter_value(self):
         v = self.serializer.filter_value(5)

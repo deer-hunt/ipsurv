@@ -17,6 +17,7 @@ class Target(StoreBase):
         self.raw = raw
         self.identifier = None
         self.identifier_int = None
+        self.identified = False
         self.ip = None
         self.url = None
         self.fqdn = None

@@ -16,9 +16,6 @@ class JsonSerializer(Serializer):
         if self.json_list:
             print('[')
 
-    def transform(self, data):
-        pass
-
     def filter_value(self, v):
         return v
 

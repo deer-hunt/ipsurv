@@ -46,15 +46,16 @@ class SurveyIps:
 
     def _output_headers(self, args):
         headers = self.serializer.create_labels(args.fixed_format_params, args.headers)
+        target = HeaderTarget()
 
         data = self.data_factory.build(headers)
 
         data.set_header(True)
-        data.set('target', HeaderTarget())
+        data.set('target', target)
 
         self.pipeline.pre_output_headers(data)
 
-        row = self.pipeline.build(data)
+        row = self.pipeline.build(data, target)
 
         self.pipeline.output_result(row)
 
@@ -71,7 +72,7 @@ class SurveyIps:
 
             self._survey_target(data, target, args)
 
-            row = self.pipeline.build(data)
+            row = self.pipeline.build(data, target)
 
             if not target.identifier_int:
                 time.sleep(0.2)  # Buffer time

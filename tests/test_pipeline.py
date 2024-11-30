@@ -88,8 +88,8 @@ class TestPipeline:
     def test_post_collect(self, data, target):
         assert self.pipeline.post_collect(data, target, None, False) is None
 
-    def test_build(self, data):
-        assert type(self.pipeline.build(data)) is str
+    def test_build(self, data, target):
+        assert type(self.pipeline.build(data, target)) is str
 
     def test_build_error(self, capfd):
         v = self.pipeline.build_error('123')

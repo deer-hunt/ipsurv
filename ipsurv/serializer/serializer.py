@@ -64,9 +64,11 @@ class Serializer(ABC):
         data.set('status', status)
         data.set('group_status', group_status)
 
-    def build(self, data):
-        # type: (ValueData) -> object
-        self.transform(data)
+    def build(self, data, target):
+        # type: (ValueData, Target) -> object
+
+        if not data.header and target.identified:
+            self.transform(data)
 
         data.map(self.filter_value)
 
@@ -74,7 +76,8 @@ class Serializer(ABC):
 
     def transform(self, data):
         # type: (ValueData) -> None
-        pass
+
+        data.update('ip_type', lambda v: 'PRIVATE' if v == Constant.IP_TYPE_PRIVATE else 'PUBLIC')
 
     def filter_value(self, v):
         return v

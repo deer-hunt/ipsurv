@@ -7,26 +7,30 @@ from ipsurv.util.sys_util import AppException
 
 class LineSerializer(Serializer):
     def transform(self, data):
+        super().transform(data)
+
         self.transform_status(data)
 
     def transform_status(self, data):
         # type: (ValueData) -> None
 
-        if not data.header:
-            if data.get('icmp') is not None:
-                data.update('icmp', lambda v: 'ICMP_OK' if v else 'ICMP_NG')
+        if data.get('in_range') is not None:
+            data.update('in_range', lambda v: 'RANGE_OK' if v else 'RANGE_NG')
 
-            if data.get('tcp') is not None:
-                data.update('tcp', lambda v: 'TCP_OK' if v else 'TCP_NG')
+        if data.get('icmp') is not None:
+            data.update('icmp', lambda v: 'ICMP_OK' if v else 'ICMP_NG')
 
-            if data.get('udp') is not None:
-                data.update('udp', lambda v: 'UDP_OK' if v else 'UDP_NG')
+        if data.get('tcp') is not None:
+            data.update('tcp', lambda v: 'TCP_OK' if v else 'TCP_NG')
 
-            if data.get('http') is not None:
-                data.update('http', lambda v: 'HTTP_OK' if v else 'HTTP_NG')
+        if data.get('udp') is not None:
+            data.update('udp', lambda v: 'UDP_OK' if v else 'UDP_NG')
 
-            if data.get('http_h2') is not None:
-                data.update('http_h2', lambda v: 'HTTP2' if v == 1 else 'HTTP1' if v == 0 else 'UNKNOWN')
+        if data.get('http') is not None:
+            data.update('http', lambda v: 'HTTP_OK' if v else 'HTTP_NG')
+
+        if data.get('http_h2') is not None:
+            data.update('http_h2', lambda v: 'HTTP2' if v == 1 else 'HTTP1' if v == 0 else 'UNKNOWN')
 
     def filter_value(self, v):
         if v is not None:

@@ -86,7 +86,7 @@ class ArgsBuilder:
             args.fixed_format, args.fixed_format_params = self._fix_format(args, debug)
             args.fixed_timeout = self._fix_timeout(args, debug)
             args.fixed_enclose = self._fix_enclose(args)
-
+            args.fixed_ranges = self._fix_ranges(args)
             args.fixed_collectors = self._fix_collectors(args)
         except Exception as e:
             logging.log(logging.DEBUG, 'Fix arguments error.', exc_info=True)
@@ -166,6 +166,15 @@ class ArgsBuilder:
         logging.log(logging.INFO, 'Fixed enclose:' + v)
 
         return v
+
+    def _fix_ranges(self, args):
+        ranges = re.split(r'[;, ]+', args.ranges)
+
+        ranges = list(filter(lambda v: v.strip(), ranges))
+
+        logging.log(logging.INFO, 'Fixed ranges:' + str(ranges))
+
+        return ranges
 
     def _fix_collectors(self, args):
         v = args.collect.lower()

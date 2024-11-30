@@ -61,7 +61,7 @@ class Config:
 
         'group': {'default': None, 'type': None, 'help': 'Grouping rule. ex: network, 24, 255.255.255.0'},
         'skip_duplicate': {'default': 0, 'type': int, 'help': 'Skip duplicate group. *2: It also skip checking server reactivity[icmp, tcp, udp].', 'choices': [0, 1, 2]},
-        'ranges': {'default': '', 'type': str, 'help': 'Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"'},
+        'range': {'default': '', 'type': str, 'help': 'Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"'},
 
         'format': {'default': 'default', 'type': None, 'help': 'Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, heavy, geo, hostname etc.', 'action': 'StrAction'},
         'no_original': {'default': False, 'help': 'Cancel outputting the original line automatically.', 'action': 'store_true'},

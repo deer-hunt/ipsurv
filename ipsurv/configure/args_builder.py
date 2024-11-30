@@ -168,7 +168,7 @@ class ArgsBuilder:
         return v
 
     def _fix_ranges(self, args):
-        ranges = re.split(r'[;, ]+', args.ranges)
+        ranges = re.split(r'[;, ]+', args.range)
 
         ranges = list(filter(lambda v: v.strip(), ranges))
 

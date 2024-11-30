@@ -153,10 +153,10 @@ www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_
 
 ```bash
 $ cat ./example_data/government.txt|ipsurv --sequence --add_ip
-1,www.whitehouse.gov,192.0.66.168,OK,,US,AUTOMATTIC,192.0.64.0,192.0.127.255
-2,www.state.gov,3.165.39.61,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255
-3,www.treasury.gov,23.50.118.187,OK,,US,AKAMAI,23.32.0.0,23.67.255.255
-4,www.gov.uk,151.101.192.144,OK,,US,SKYCA-3,151.101.0.0,151.101.255.255
+1,www.whitehouse.gov,192.0.66.168,OK,US,AUTOMATTIC,192.0.64.0,192.0.127.255
+2,www.state.gov,3.165.39.61,OK,US,AMAZON-CF,3.165.0.0,3.165.255.255
+3,www.treasury.gov,23.50.118.187,OK,US,AKAMAI,23.32.0.0,23.67.255.255
+4,www.gov.uk,151.101.192.144,OK,US,SKYCA-3,151.101.0.0,151.101.255.255
 ```
 
 ```bash

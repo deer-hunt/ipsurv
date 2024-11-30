@@ -83,9 +83,23 @@ class FormatValidator(ArgValidator):
     def _create_by_params(self, params, args):
         delimiter = args.fixed_delimiter
 
+        params = self._filter_available_params(params, args)
+
         format = delimiter.join('{' + v + '}' for v in params)
 
         return format
+
+    def _filter_available_params(self, params, args):
+        def fn(v):
+            if not args.group and v in ['group', 'group_int', 'group_found', 'group_status']:
+                return False
+
+            if not args.range and v == 'in_range':
+                return False
+
+            return True
+
+        return list(filter(fn, params))
 
     def _parse_format(self, args, format):
         params = []

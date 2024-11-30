@@ -327,7 +327,7 @@ RESULT:
 8.8.8.8:53,SKIP,8.8.8.8,,,,,
 ```
 
-### `--ranges`
+### `--range`
 
 Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"
 
@@ -338,7 +338,7 @@ Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0
 
 ```
 INPUT:
---ranges="1.0.0.1/24;1.1.0.8/24" --format="{in_range}"
+--range="1.0.0.1/24;1.1.0.8/24" --format="{in_range}"
 
 RESULT:
 192.168.1.10,RANGE_OK

@@ -5,6 +5,7 @@ from ipsurv.core.target_parser import TargetParser
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.requester.dns_resolver import DnsResolveRequester
 from unittest.mock import MagicMock
+from ipsurv.util.network_util import IpUtil
 
 
 class TestTargetParser:
@@ -127,6 +128,31 @@ class TestTargetParser:
         v1, v2 = self.target_parser._split_port('192.168.1.100')
 
         assert v1 == '192.168.1.100' and v2 is None
+
+    def test_evaluate_ip_type(self):
+        data = ValueData({})
+
+        ip_address = IpUtil.get_ip_address('192.168.1.100')
+
+        self.target_parser._evaluate_ip_type(data, ip_address)
+
+        assert data.get('ip_type') == 1
+
+        ip_address = IpUtil.get_ip_address('8.8.8.8')
+
+        self.target_parser._evaluate_ip_type(data, ip_address)
+
+        assert data.get('ip_type') == 2
+
+    def test_evaluate_in_ranges(self):
+        data = ValueData({})
+
+        ip_address = IpUtil.get_ip_address('192.168.1.100')
+        self.target_parser.ranges = ['192.168.1.1/24']
+
+        self.target_parser._evaluate_in_ranges(data, ip_address)
+
+        assert data.get('in_range') is True
 
     def test_find_url(self):
         assert self.target_parser._find_url('http://ipsurv-domain-test-example.xyz') is not None

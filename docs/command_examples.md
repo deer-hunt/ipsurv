@@ -128,18 +128,18 @@ $ cat list.txt|ipsurv --timeout="3.5;4.5;3.2"
 
 ## Check whether IP is in IP/subnet ranges
 
-Set ```--ranges``` and ```{in_range}```.
+Set ```--range``` and ```{in_range}```.
 
 **Example:**
 
 ```bash
-$ ipsurv 192.168.1.10 1.0.0.1 --format="{in_range}" --identify_int --ranges="1.0.0.1/24;192.168.1.8/24"
+$ ipsurv 192.168.1.10 1.0.0.1 --format="{in_range}" --identify_int --range="1.0.0.1/24;192.168.1.8/24"
 192.168.1.10,RANGE_OK
 1.0.0.1,RANGE_OK
 ```
 
 ```bash
-$ ipsurv 10.0.0.1 --format="{in_range}" --identify_int --ranges="1.0.0.1/24;192.168.1.8/24"
+$ ipsurv 10.0.0.1 --format="{in_range}" --identify_int --range="1.0.0.1/24;192.168.1.8/24"
 10.0.0.1,RANGE_NG
 ```
 

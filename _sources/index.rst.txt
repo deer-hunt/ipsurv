@@ -21,8 +21,10 @@ The latest version and documentation may be found on GitHub. The Github URL is t
 
    <div style="display: flex;">
    <div style="margin-right: 10px;"><img width="145" height="145" src="./_images/ipsurv-logo.png" align="left" /></div>
-   <div>PyPI URL <a href="https://pypi.org/project/ipsurv/" target="_blank">https://pypi.org/project/ipsurv/</a></div>
-   <div>Github URL <a href="https://github.com/deer-hunt/ipsurv" target="_blank">https://github.com/deer-hunt/ipsurv</a></div>
+   <div>
+      <div>PyPI URL <a href="https://pypi.org/project/ipsurv/" target="_blank">https://pypi.org/project/ipsurv/</a></div>
+      <div>Github URL <a href="https://github.com/deer-hunt/ipsurv" target="_blank">https://github.com/deer-hunt/ipsurv</a></div>
+   </div>
    </div>
 
 Overview

@@ -198,6 +198,10 @@ $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_h2}"
 ## Apache log
 
 ```bash
+$ cat /var/log/httpd/access_log|ipsurv --add_ip --no_original
+192.168.56.100,OK,US,PRIVATE-ADDRESS-CBLK-RFC1918-IANA-RESERVED,192.168.0.0,192.168.255.255
+~~~
+
 $ cat /var/log/httpd/access_log|ipsurv --format=country --add_ip --no_original
 $ cat /var/log/httpd/access_log|ipsurv --format=geo --add_ip --no_original
 ```

@@ -85,27 +85,30 @@ class TargetParser(ABC):
     def _identify_target_ip(self, data, target, args):
         # type: (ValueData, Target, object) -> bool
 
-        url = self._find_url(target.raw)
+        netloc = self._find_ip(target.raw, True)
 
-        identified = False
+        if not netloc:
+            url = self._find_url(target.raw)
 
-        if url:
-            target.url = url
+            identified = False
 
-            parsed = urllib.parse.urlparse(url)
-            netloc = parsed.netloc
-        else:
-            if not self.identify_int:
-                netloc = target.raw
+            if url:
+                target.url = url
+
+                parsed = urllib.parse.urlparse(url)
+                netloc = parsed.netloc
             else:
-                netloc = self._identify_ip_int(target.raw)
+                if not self.identify_int:
+                    netloc = target.raw
+                else:
+                    netloc = self._identify_ip_int(target.raw)
 
         (fqdn_ip, port) = self._split_port(netloc)
 
         target.port = port
 
         if fqdn_ip:
-            ip = self._find_ip(fqdn_ip)
+            ip = self._find_ip(fqdn_ip, False)
 
             if not ip:
                 fqdn = self._find_fqdn(fqdn_ip)
@@ -200,8 +203,13 @@ class TargetParser(ABC):
 
         return m.group() if m is not None else None
 
-    def _find_ip(self, v):
-        m = re.search(r'[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}', v)
+    def _find_ip(self, v, with_port=False):
+        regex = r'[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}'
+
+        if with_port:
+            regex += r'(:\d{2,5})?'
+
+        m = re.search(regex, v)
 
         return m.group() if m is not None else None
 

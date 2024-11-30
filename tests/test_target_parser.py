@@ -91,6 +91,13 @@ class TestTargetParser:
 
         assert identified is True
 
+        target = Target('192.168.1.10 - - [10/Nov/2024:03:15:42 +0900] "GET / HTTP/1.1" 304 - "http://xyz-sample-dummy-test.org" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"')
+
+        identified = self.target_parser._identify_target_ip(data, target, args)
+
+        assert identified is True
+        assert target.ip == '192.168.1.10'
+
     def test_assign_data_target(self):
         data = ValueData({})
 

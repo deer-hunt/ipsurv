@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.3) (2024-11-30)
+
+- Fix IP detection bug.
+
 ## [1.0.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.2) (2024-11-30)
 
 - Add "add_ip" option.

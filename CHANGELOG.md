@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.2) (2024-11-30)
+
+- Add "add_ip" option.
+- In "format" option, Change "massive" to "heavy".
+- Update document.
+
 ## [1.0.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.1) (2024-11-26)
 
 - Add "add_ip" option.

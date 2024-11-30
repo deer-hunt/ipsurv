@@ -1,0 +1,29 @@
+ipsurv.configure package
+========================
+
+Submodules
+----------
+
+ipsurv.configure.args\_builder module
+-------------------------------------
+
+.. automodule:: ipsurv.configure.args_builder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.configure.args\_validators module
+----------------------------------------
+
+.. automodule:: ipsurv.configure.args_validators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ipsurv.configure
+   :members:
+   :undoc-members:
+   :show-inheritance:

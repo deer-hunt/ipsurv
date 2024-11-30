@@ -1,0 +1,37 @@
+ipsurv.serializer package
+=========================
+
+Submodules
+----------
+
+ipsurv.serializer.json\_serializer module
+-----------------------------------------
+
+.. automodule:: ipsurv.serializer.json_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.serializer.line\_serializer module
+-----------------------------------------
+
+.. automodule:: ipsurv.serializer.line_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.serializer.serializer module
+-----------------------------------
+
+.. automodule:: ipsurv.serializer.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ipsurv.serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:

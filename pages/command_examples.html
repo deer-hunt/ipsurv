@@ -12,6 +12,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Customizing and Examples" href="customize_examples.html" />
@@ -151,6 +152,38 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 <p><strong>Example:</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--timeout<span class="o">=</span><span class="m">5</span>.1
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--timeout<span class="o">=</span><span class="s2">&quot;3.5;4.5;3.2&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-whether-ip-is-in-ip-subnet-ranges">
+<h2>Check whether IP is in IP/subnet ranges<a class="headerlink" href="#check-whether-ip-is-in-ip-subnet-ranges" title="Permalink to this headline">¶</a></h2>
+<p>Set <code class="docutils literal notranslate"><span class="pre">--range</span></code> and <code class="docutils literal notranslate"><span class="pre">{in_range}</span></code>.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10<span class="w"> </span><span class="m">1</span>.0.0.1<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{in_range}&quot;</span><span class="w"> </span>--identify_int<span class="w"> </span>--range<span class="o">=</span><span class="s2">&quot;1.0.0.1/24;192.168.1.8/24&quot;</span>
+<span class="m">192</span>.168.1.10,RANGE_OK
+<span class="m">1</span>.0.0.1,RANGE_OK
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">10</span>.0.0.1<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{in_range}&quot;</span><span class="w"> </span>--identify_int<span class="w"> </span>--range<span class="o">=</span><span class="s2">&quot;1.0.0.1/24;192.168.1.8/24&quot;</span>
+<span class="m">10</span>.0.0.1,RANGE_NG
+</pre></div>
+</div>
+</div>
+<div class="section" id="public-ip-or-private-ip">
+<h2>Public IP or Private IP<a class="headerlink" href="#public-ip-or-private-ip" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip_type}&quot;</span>
+<span class="m">192</span>.168.1.100,PRIVATE
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-address-ip-int">
+<h2>IP address &lt;–&gt; IP int<a class="headerlink" href="#ip-address-ip-int" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip_int}&quot;</span>
+<span class="m">192</span>.168.1.100,3232235876
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipsurv<span class="w"> </span><span class="m">16777217</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip}&quot;</span><span class="w"> </span>--identify_int
+<span class="m">16777217</span>,1.0.0.1
 </pre></div>
 </div>
 </div>

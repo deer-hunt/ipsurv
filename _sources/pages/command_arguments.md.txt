@@ -153,6 +153,22 @@ INPUT: --resolve=0
 > Disable to resolve the name.
 ```
 
+### `--identify_int`
+
+Identifying IP's int value.
+
+- **Type:** `bool`
+- **Default:** `False`
+- **Example:**
+
+```
+INPUT: ipsurv 16777217 --format="{ip_type}" --identify_int --add_ip
+RESULT:
+16777217,1.0.0.1,PUBLIC
+```
+
+
+
 ### `--autodetect`
 
 Autodetect an IP or hostname that is included in the line. This option is experimental.
@@ -311,6 +327,24 @@ RESULT:
 8.8.8.8:53,SKIP,8.8.8.8,,,,,
 ```
 
+### `--range`
+
+Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"
+
+- **Type:** `str`
+- **Default:** ``
+
+- **Example:**
+
+```
+INPUT:
+--range="1.0.0.1/24;1.1.0.8/24" --format="{in_range}"
+
+RESULT:
+192.168.1.10,RANGE_OK
+2.2.2.2,RANGE_NG
+```
+
 
 ## Output format
 
@@ -353,7 +387,7 @@ Output format. Specify `Profile` or `Parameter`.
 
 ```
 'success', 'status', 'requests', 'errors',
-'sequence', 'original', 'ip', 'ip_int', 'port', 
+'sequence', 'original', 'ip', 'ip_int', 'port', 'ip_type',
 'target.raw', 'target.ip', 'target.url', 'target.fqdn',
 'group_int', 'group', 'group_found', 'group_status', 'network_start', 'network_end',
 'country', 'cidr',

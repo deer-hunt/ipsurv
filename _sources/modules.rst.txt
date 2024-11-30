@@ -1,0 +1,7 @@
+ipsurv
+======
+
+.. toctree::
+   :maxdepth: 4
+
+   ipsurv

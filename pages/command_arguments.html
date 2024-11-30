@@ -12,6 +12,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Program architecture and Classes" href="program_architecture_classes.html" />
@@ -236,6 +237,20 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span>I
 </pre></div>
 </div>
 </div>
+<div class="section" id="identify-int">
+<h3><code class="docutils literal notranslate"><span class="pre">--identify_int</span></code><a class="headerlink" href="#identify-int" title="Permalink to this headline">¶</a></h3>
+<p>Identifying IP’s int value.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="n">ipsurv</span> <span class="mi">16777217</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{ip_type}</span><span class="s2">&quot;</span> <span class="o">--</span><span class="n">identify_int</span> <span class="o">--</span><span class="n">add_ip</span>
+<span class="n">RESULT</span><span class="p">:</span>
+<span class="mi">16777217</span><span class="p">,</span><span class="mf">1.0.0.1</span><span class="p">,</span><span class="n">PUBLIC</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="autodetect">
 <h3><code class="docutils literal notranslate"><span class="pre">--autodetect</span></code><a class="headerlink" href="#autodetect" title="Permalink to this headline">¶</a></h3>
 <p>Autodetect an IP or hostname that is included in the line. This option is experimental.</p>
@@ -449,6 +464,23 @@ If this option is activated, continuing to collect data forcibly.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="range">
+<h3><code class="docutils literal notranslate"><span class="pre">--range</span></code><a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h3>
+<p>Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: “1.0.0.1/8;192.168.1.1/24”</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> ``</p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="nb">range</span><span class="o">=</span><span class="s2">&quot;1.0.0.1/24;1.1.0.8/24&quot;</span> <span class="o">--</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{in_range}</span><span class="s2">&quot;</span>
+
+<span class="n">RESULT</span><span class="p">:</span>
+<span class="mf">192.168.1.10</span><span class="p">,</span><span class="n">RANGE_OK</span>
+<span class="mf">2.2.2.2</span><span class="p">,</span><span class="n">RANGE_NG</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="output-format">
 <h2>Output format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h2>
@@ -535,7 +567,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="s1">&#39;errors&#39;</span><span class="p">,</span>
-<span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_int&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">,</span> 
+<span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_int&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_type&#39;</span><span class="p">,</span>
 <span class="s1">&#39;target.raw&#39;</span><span class="p">,</span> <span class="s1">&#39;target.ip&#39;</span><span class="p">,</span> <span class="s1">&#39;target.url&#39;</span><span class="p">,</span> <span class="s1">&#39;target.fqdn&#39;</span><span class="p">,</span>
 <span class="s1">&#39;group_int&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;group_found&#39;</span><span class="p">,</span> <span class="s1">&#39;group_status&#39;</span><span class="p">,</span> <span class="s1">&#39;network_start&#39;</span><span class="p">,</span> <span class="s1">&#39;network_end&#39;</span><span class="p">,</span>
 <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;cidr&#39;</span><span class="p">,</span>

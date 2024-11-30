@@ -1,0 +1,53 @@
+ipsurv.core package
+===================
+
+Submodules
+----------
+
+ipsurv.core.entity module
+-------------------------
+
+.. automodule:: ipsurv.core.entity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.core.object\_factory module
+----------------------------------
+
+.. automodule:: ipsurv.core.object_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.core.pipeline module
+---------------------------
+
+.. automodule:: ipsurv.core.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.core.target\_groups module
+---------------------------------
+
+.. automodule:: ipsurv.core.target_groups
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.core.target\_parser module
+---------------------------------
+
+.. automodule:: ipsurv.core.target_parser
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ipsurv.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

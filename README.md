@@ -142,7 +142,9 @@ $ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}"
 $ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
 ```
 
-## Example result
+## Command examples
+
+**Show headers**
 
 ```bash
 $ cat ./example_data/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
@@ -157,6 +159,8 @@ www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HT
 www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 ```
 
+**Add line-number**
+
 ```bash
 $ cat ./example_data/government.txt|ipsurv --sequence --add_ip
 1,www.whitehouse.gov,192.0.66.168,OK,US,AUTOMATTIC,192.0.64.0,192.0.127.255
@@ -164,6 +168,8 @@ $ cat ./example_data/government.txt|ipsurv --sequence --add_ip
 3,www.treasury.gov,23.50.118.187,OK,US,AKAMAI,23.32.0.0,23.67.255.255
 4,www.gov.uk,151.101.192.144,OK,US,SKYCA-3,151.101.0.0,151.101.255.255
 ```
+
+**Output by JSON**
 
 ```bash
 $ ipsurv wikipedia.org --format=default --json=2 --add_ip
@@ -178,6 +184,49 @@ $ ipsurv wikipedia.org --format=default --json=2 --add_ip
   "network_end": "103.102.166.255"
 }
 ```
+
+**Output detailed data by JSON**
+
+```bash
+$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
+{
+  "success": true,
+  "status": "OK",
+  "requests": [
+    "RDAP"
+  ],
+  "errors": [],
+  "sequence": 1,
+  "original": "wikipedia.org",
+  "target": "103.102.166.224",
+  "ip": "103.102.166.224",
+  "ip_int": 1734780640,
+  "port": null,
+  "group_int": 0,
+  "group": "",
+  "group_found": false,
+  "group_status": "-",
+  "country": "US",
+  "name": "WIKIMEDIA-AP",
+  "network_start": "103.102.166.0",
+  "network_end": "103.102.166.255",
+~~~~~~~~~~~~~
+  "org": "Wikimedia Foundation, Inc.",
+  "address": "1 Montgomery Street Suite 1600",
+  "description": "Wikimedia Foundation, Inc.",
+  "target.raw": "wikipedia.org",
+  "target.identifier": "103.102.166.224",
+  "target.identifier_int": 1734780640,
+  "target.identified": true,
+  "target.ip": "103.102.166.224",
+  "target.url": null,
+  "target.fqdn": "wikipedia.org",
+  "target.port": null,
+  "target.status": "EXIST"
+}
+```
+
+More examples is [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html)
 
 
 ## Documents

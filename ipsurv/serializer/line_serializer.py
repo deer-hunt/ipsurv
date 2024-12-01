@@ -42,7 +42,8 @@ class LineSerializer(Serializer):
             v = str(v)
 
             if self.alt_delimiter and not self.enclose:
-                v = re.sub(self.delimiter, self.alt_delimiter, v)
+                delimiter = re.escape(self.delimiter)
+                v = re.sub(delimiter, self.alt_delimiter, v)
         else:
             v = ''
 
@@ -51,7 +52,7 @@ class LineSerializer(Serializer):
     def _append_enclose(self, v):
         enclose = self.enclose
 
-        v = re.sub(enclose, enclose + enclose, v)
+        v = re.sub(re.escape(enclose), enclose + enclose, v)
 
         return enclose + v + enclose
 

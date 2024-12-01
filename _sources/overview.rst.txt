@@ -69,7 +69,7 @@ Example options
 
 
 
-Example result
+Command examples
 -------------------------------------------------------------
 
 .. code-block:: shell
@@ -86,6 +86,44 @@ Example result
    www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HTTP2
    www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 
+.. code-block:: shell
+
+	$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
+	{
+		"success": true,
+		"status": "OK",
+		"requests": [
+			"RDAP"
+		],
+		"errors": [],
+		"sequence": 1,
+		"original": "wikipedia.org",
+		"target": "103.102.166.224",
+		"ip": "103.102.166.224",
+		"ip_int": 1734780640,
+		"port": null,
+		"group_int": 0,
+		"group": "",
+		"group_found": false,
+		"group_status": "-",
+		"country": "US",
+		"name": "WIKIMEDIA-AP",
+		"network_start": "103.102.166.0",
+		"network_end": "103.102.166.255",
+	~~~~~~~~~~~~~
+		"org": "Wikimedia Foundation, Inc.",
+		"address": "1 Montgomery Street Suite 1600",
+		"description": "Wikimedia Foundation, Inc.",
+		"target.raw": "wikipedia.org",
+		"target.identifier": "103.102.166.224",
+		"target.identifier_int": 1734780640,
+		"target.identified": true,
+		"target.ip": "103.102.166.224",
+		"target.url": null,
+		"target.fqdn": "wikipedia.org",
+		"target.port": null,
+		"target.status": "EXIST"
+	}
 
 For details, `Command arguments reference <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_
 

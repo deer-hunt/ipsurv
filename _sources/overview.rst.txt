@@ -90,42 +90,42 @@ Command examples
 
 	$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 	{
-    "success": true,
-    "status": "OK",
-    "requests": [
-    	"RDAP"
-    ],
-    "errors": [],
-    "sequence": 1,
-    "original": "wikipedia.org",
-    "target": "103.102.166.224",
-    "ip": "103.102.166.224",
-    "ip_int": 1734780640,
-    "port": null,
-    "group_int": 0,
-    "group": "",
-    "group_found": false,
-    "group_status": "-",
-    "country": "US",
-    "name": "WIKIMEDIA-AP",
-    "network_start": "103.102.166.0",
-    "network_end": "103.102.166.255",
-    "ip_hex": "67.66.A6.E0",
-    "ip_reversed": "224.166.102.103",
-    "ip_type": "PUBLIC",
-    ~~~~~~~~~~~~~
-    "org": "Wikimedia Foundation, Inc.",
-    "address": "1 Montgomery Street Suite 1600",
-    "description": "Wikimedia Foundation, Inc.",
-    "target.raw": "wikipedia.org",
-    "target.identifier": "103.102.166.224",
-    "target.identifier_int": 1734780640,
-    "target.identified": true,
-    "target.ip": "103.102.166.224",
-    "target.url": null,
-    "target.fqdn": "wikipedia.org",
-    "target.port": null,
-    "target.status": "EXIST"
+	  "success": true,
+	  "status": "OK",
+	  "requests": [
+	  	"RDAP"
+	  ],
+	  "errors": [],
+	  "sequence": 1,
+	  "original": "wikipedia.org",
+	  "target": "103.102.166.224",
+	  "ip": "103.102.166.224",
+	  "ip_int": 1734780640,
+	  "port": null,
+	  "group_int": 0,
+	  "group": "",
+	  "group_found": false,
+	  "group_status": "-",
+	  "country": "US",
+	  "name": "WIKIMEDIA-AP",
+	  "network_start": "103.102.166.0",
+	  "network_end": "103.102.166.255",
+	  "ip_hex": "67.66.A6.E0",
+	  "ip_reversed": "224.166.102.103",
+	  "ip_type": "PUBLIC",
+	  ~~~~~~~~~~~~~
+	  "org": "Wikimedia Foundation, Inc.",
+	  "address": "1 Montgomery Street Suite 1600",
+	  "description": "Wikimedia Foundation, Inc.",
+	  "target.raw": "wikipedia.org",
+	  "target.identifier": "103.102.166.224",
+	  "target.identifier_int": 1734780640,
+	  "target.identified": true,
+	  "target.ip": "103.102.166.224",
+	  "target.url": null,
+	  "target.fqdn": "wikipedia.org",
+	  "target.port": null,
+	  "target.status": "EXIST"
 	}
 
 For details, `Command arguments reference <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_

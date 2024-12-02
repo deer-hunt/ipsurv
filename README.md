@@ -210,9 +210,9 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
   "name": "WIKIMEDIA-AP",
   "network_start": "103.102.166.0",
   "network_end": "103.102.166.255",
-	"ip_hex": "67.66.A6.E0",
-	"ip_reversed": "224.166.102.103",
-	"ip_type": "PUBLIC",
+  "ip_hex": "67.66.A6.E0",
+  "ip_reversed": "224.166.102.103",
+  "ip_type": "PUBLIC",
 ~~~~~~~~~~~~~
   "org": "Wikimedia Foundation, Inc.",
   "address": "1 Montgomery Street Suite 1600",

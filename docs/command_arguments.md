@@ -375,6 +375,7 @@ Output format. Specify `Profile` or `Parameter`.
 | `timezone`   | Timezone.                      |
 | `network`    | CIDR.              |
 | `geo`        | Geolocation.                  |
+| `system`        | IP for system. ip_int, ip_hex, ip_reversed                  |
 | `web`       | HTTP response.     |
 | `simple`     | Group, Country.      |
 | `default`    | Group, Country, Network, Hostname.|
@@ -632,6 +633,13 @@ RESULT:
   "group": "",
   "group_found": false,
   "group_status": "-",
+	"country": "US",
+	"name": "*********",
+	"network_start": "********",
+	"network_end": "********",
+	"ip_hex": "********",
+	"ip_reversed": "********",
+	"ip_type": "PUBLIC",
   "geo": "35.5333,139.6100",
   "ipinfo_time": 171.3,
   "hostname": "",

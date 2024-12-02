@@ -83,7 +83,6 @@ class TestTargetParser:
         identified = self.target_parser._identify_target_ip(data, target, args)
 
         assert identified is True
-        assert target.identifier_int == 3232235876
 
         target = Target('http://www.wikipedia.org/')
 

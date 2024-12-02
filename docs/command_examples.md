@@ -371,6 +371,14 @@ LocalIp: 10.0.2.5
 LocalDns: ['8.8.8.8', '8.8.4.4']
 ```
 
+## IP values for system
+
+```
+$ ipsurv reddit.com --format=system --add_ip --headers=1
+original,ip,ip_type,ip_int,ip_hex,ip_reversed
+reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
+```
+
 ## Enable verbose log
 
 ```

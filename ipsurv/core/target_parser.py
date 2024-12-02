@@ -61,15 +61,20 @@ class TargetParser(ABC):
 
         if target.raw:
             target.identified = self._identify_target_ip(data, target, args)
-
-            if target.identified:
-                target.status = Constant.STATUS_EXIST
         else:
             target.status = Constant.STATUS_EMPTY
 
-        data.set('ip', target.ip)
-        data.set('ip_int', target.identifier_int)
-        data.set('port', target.port)
+        if target.identified:
+            target.status = Constant.STATUS_EXIST
+
+            ip_address = IpUtil.get_ip_address(target.identifier)
+            target.identifier_int = int(ip_address)
+
+            data.set('ip', target.ip)
+            data.set('ip_int', target.identifier_int)
+            data.set('ip_hex', '.'.join(f'{v:02x}' for v in ip_address.packed).upper())
+            data.set('ip_reversed', '.'.join(reversed(ip_address.exploded.split('.'))))
+            data.set('port', target.port)
 
         logging.info('IP:' + str(target.ip))
         logging.info('FQDN:' + str(target.fqdn))
@@ -127,7 +132,6 @@ class TargetParser(ABC):
             target.identifier = target.ip = ip
 
             if ip:
-                target.identifier_int = IpUtil.get_ip_int(target.identifier)
                 identified = True
 
         return identified

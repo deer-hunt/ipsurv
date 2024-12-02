@@ -95,6 +95,7 @@ class Config:
         'timezone': ['timezone'],
         'network': ['cidr', 'network_start', 'network_end'],
         'geo': ['geo'],
+        'system': ['ip_type', 'ip_int', 'ip_hex', 'ip_reversed'],
         'web': ['http', 'http_status', 'http_h2', 'http_time'],
         'simple': ['status', 'group', 'country'],
         'default': ['status', 'group', 'country', 'name', 'network_start', 'network_end'],
@@ -104,7 +105,7 @@ class Config:
 
     FORMAT_PARAMS = [
         'success', 'status', 'requests', 'errors', 'identifier', 'identifier_int', 'target.*',
-        'sequence', 'original', 'ip', 'ip_int', 'port', 'ip_type', 'in_range',
+        'sequence', 'original', 'ip', 'ip_int', 'ip_hex', 'ip_reversed', 'port', 'ip_type', 'in_range',
         'group_int', 'group', 'group_found', 'group_status', 'network_start', 'network_end',
         'country', 'cidr',
         'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'timezone', 'description',

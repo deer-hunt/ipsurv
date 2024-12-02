@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.0.4](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.4) (2024-12-02)
+
+- Add "ip_hex", "ip_reversed" parameters.
+- Fix replace char bug.
+
 ## [1.0.3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.3) (2024-11-30)
 
 - Fix IP detection bug.

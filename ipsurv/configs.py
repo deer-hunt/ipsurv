@@ -44,6 +44,7 @@ documents:
 class Config:
     PRE_ARGUMENTS = {
         'verbose': {'default': 0, 'type': int, 'help': 'Verbose mode. [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]', 'choices': [0, 1, 2, 3]},
+        'debug': {'default': False, 'help': '`--debug` is equivalent to `--verbose=3`.', 'action': 'store_true'},
         'log': {'default': None, 'type': str, 'help': 'Verbose log filename.'},
         'disable_env': {'default': False, 'help': 'Disable to load env variable for args. Env name: `IPSURV_ARGS`.', 'action': 'store_true'}
     }
@@ -55,7 +56,7 @@ class Config:
         'begin': {'default': -1, 'type': int, 'help': 'Beginning from sequence number.'},
         'end': {'default': -1, 'type': int, 'help': 'Ending to sequence number.'},
 
-        'collect': {'default': 'rdap;dnstxt;dnsreverse;ipinfo', 'type': str, 'help': 'Data collectors. See reference manual in detail. ex: rdap;dnstxt;dnsreverse;ipinfo'},
+        'collect': {'default': 'rdap;dnstxt;dnsreverse;ipinfo;geoip', 'type': str, 'help': 'Data collectors. See reference manual in detail. ex: rdap;dnstxt;dnsreverse;ipinfo;geoip'},
         'all_collect': {'default': False, 'help': 'All data collectors.', 'action': 'store_true'},
         'timeout': {'default': '8.0', 'type': str, 'help': 'Timeout seconds. Specify single value - ex: 1,3.2. Or specify values of each connection types. "dns,http,reactivity" - "3;5.1;6"'},
 
@@ -81,26 +82,30 @@ class Config:
         'udp': {'default': 0, 'type': int, 'help': 'Check UDP port. Specify default port.'},
         'http': {'default': 0, 'type': int, 'help': 'Check HTTP response.', 'choices': [0, 1, 2]},
 
+        'json_all': {'default': False, 'help': '`--json_all` is equivalent to `--json=2 --exhaustive`.', 'action': 'store_true'},
+        'geoip_only': {'default': False, 'help': '`--geoip_only` is equivalent to `--collect=geoip --format=area`.', 'action': 'store_true'},
+
         'version': {'default': False, 'help': 'Show version information.', 'action': 'store_true'}
     }
 
-    ENV_CONFS = ['ipinfo_token']
+    ENV_CONFS = ['ipinfo_token', 'geoip']
 
     FORMAT_PROFILES = {
         'ip': ['ip'],
         'hostname': ['hostname'],
         'country': ['country'],
-        'org': ['org'],
-        'address': ['address'],
+        'org': ['asn', 'org'],
+        'address': ['country', 'address'],
         'timezone': ['timezone'],
         'network': ['cidr', 'network_start', 'network_end'],
-        'geo': ['geo'],
+        'geo': ['country', 'geo'],
+        'area': ['continent', 'continent_name', 'country', 'country_name', 'timezone', 'geo'],
         'system': ['ip_type', 'ip_int', 'ip_hex', 'ip_reversed'],
         'web': ['http', 'http_status', 'http_h2', 'http_time'],
         'simple': ['status', 'group', 'country'],
         'default': ['status', 'group', 'country', 'name', 'network_start', 'network_end'],
-        'detail': ['status', 'group', 'country', 'name', 'handle', 'org', 'cidr', 'geo', 'address', 'description', 'hostname'],
-        'heavy': ['status', 'group', 'country', 'timezone', 'name', 'handle', 'org', 'cidr', 'network_start', 'network_end', 'geo', 'address', 'description', 'hostname', 'errors']
+        'detail': ['status', 'group', 'country', 'name', 'handle', 'asn', 'org', 'cidr', 'geo', 'city_name', 'address', 'description', 'hostname', 'errors'],
+        'heavy': ['status', 'group', 'country', 'timezone', 'name', 'handle', 'asn', 'org', 'cidr', 'network_start', 'network_end', 'ip_type', 'geo', 'city_name', 'region_name', 'address', 'description', 'hostname', 'errors']
     }
 
     FORMAT_PARAMS = [
@@ -108,20 +113,21 @@ class Config:
         'sequence', 'original', 'ip', 'ip_int', 'ip_hex', 'ip_reversed', 'port', 'ip_type', 'in_range',
         'group_int', 'group', 'group_found', 'group_status', 'network_start', 'network_end',
         'country', 'cidr',
-        'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'timezone', 'description',
+        'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'asn', 'timezone', 'description',
         'dnstxt_time', 'rir',
         'dnsreverse_time', 'hostname',
-        'ipinfo_time', 'geo', 'postal', 'city', 'region',
+        'ipinfo_time', 'geo', 'postal', 'city_name', 'region_name',
+        'continent', 'continent_name', 'subdivision', 'subdivision_name',
         'icmp', 'icmp_time', 'tcp', 'tcp_time', 'udp', 'udp_time',
         'http', 'http_time', 'http_status', 'http_size', 'http_h2'
     ]
 
     MASTER_DATA = {
         'success': False, 'status': '', 'requests': [], 'errors': [],
-        'sequence': None, 'original': None, 'target': None, 'ip': None, 'ip_int': None, 'port': -1,
+        'sequence': None, 'original': None, 'target': None, 'ip': None, 'ip_int': None, 'ip_type': None, 'port': -1,
         'group_int': 0, 'group': '', 'group_found': False, 'group_status': '',
     }
 
-    COLLECTORS = ['rdap', 'dnstxt', 'ipinfo', 'dnsreverse']
+    COLLECTORS = ['rdap', 'dnstxt', 'ipinfo', 'dnsreverse', 'geoip']
 
     HEAD_MSG_SELF = 'Self IP status by https://ipinfo.io'

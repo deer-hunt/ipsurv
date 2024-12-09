@@ -44,6 +44,9 @@ class ArgsBuilder:
     def init_args(self, arguments):
         parser, args = ArgsHelper.init_parser(arguments)
 
+        if args.debug:
+            args.verbose = 3
+
         ArgsHelper.init_logging(args.verbose, args.log)
 
         if args.verbose > 0:
@@ -63,6 +66,8 @@ class ArgsBuilder:
 
         args = parser.parse_args()
 
+        self._assign_shorten_option(args)
+
         if System.is_logging():
             self.logging(args, env_args, env_conf)
 
@@ -77,6 +82,15 @@ class ArgsBuilder:
         self._notice(args)
 
         return args
+
+    def _assign_shorten_option(self, args):
+        if args.json_all:
+            args.json = 2
+            args.exhaustive = True
+
+        if args.geoip_only:
+            args.collect = 'geoip'
+            args.format = 'area'
 
     def _configure(self, parser, args):
         debug = True if System.get_log_level() == logging.DEBUG else False

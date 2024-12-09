@@ -35,6 +35,9 @@ class MyTargetParser(TargetParser):
 
         return True
 
+    def _prepare_target_data(self, data, target):
+        pass
+
 
 class RegexDataCollector(DataCollector):
     def __init__(self, requester, args):

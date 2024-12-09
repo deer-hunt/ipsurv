@@ -1,7 +1,7 @@
 import bisect
+import ipaddress
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.core.entity import TargetGroup
-from ipsurv.util.network_util import IpUtil
 
 
 class TargetGroups:
@@ -56,19 +56,27 @@ class TargetGroups:
             if cidr is None:
                 return None
 
-            begin_int, end_int = IpUtil.get_network_range(cidr)
+            begin_int, end_int = self._get_network_range(cidr)
         elif group_type is None:
             begin_int = end_int = target.identifier_int
         else:
-            begin_int, end_int = IpUtil.get_network_range(target.identifier + '/' + str(group_type))
+            begin_int, end_int = self._get_network_range(target.identifier + '/' + str(group_type))
 
         group = None
 
         if begin_int:
-            value = IpUtil.get_ip_from_int(begin_int)
+            value = str(ipaddress.ip_address(begin_int))
             group = TargetGroup(begin_int, end_int, value)
 
         return group
+
+    def _get_network_range(self, cidr):
+        network = ipaddress.ip_network(cidr, strict=False)
+
+        first_ip = network.network_address + 1
+        last_ip = network.broadcast_address - 1
+
+        return int(first_ip), int(last_ip)
 
     def _find_indexes(self, identifier_int):
         found = None

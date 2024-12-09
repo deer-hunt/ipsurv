@@ -28,14 +28,14 @@ class SurveySelf:
         self._output_data(success, data)
 
     def _request(self, data):
-        success, response, response_time = self.collector.request(None)
+        success, response, response_time = self.collector.request(None, [])
 
         self.collector.build_data(None, data, success, response, response_time)
 
         return success
 
     def _modify_orders(self, data):
-        orders = ['ip', 'hostname', 'organization', 'country', 'city', 'region', 'postal', 'geo', 'timezone', 'local_ip', 'local_dns']
+        orders = ['ip', 'hostname', 'organization', 'country', 'city_name', 'region_name', 'postal', 'geo', 'timezone', 'local_ip', 'local_dns']
 
         values = data.get_data()
 

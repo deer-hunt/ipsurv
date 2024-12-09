@@ -3,10 +3,10 @@ from ipsurv.core.pipeline import Pipeline
 from ipsurv.core.entity import ValueData, Target
 
 from ipsurv.core.target_parser import TargetParser
-from ipsurv.util.network_util import IpUtil
 
 from ipsurv.ip_surv_cmd import IpSurvCmd
 
+import ipaddress
 import json
 
 '''
@@ -41,7 +41,7 @@ class JSONTargetParser(TargetParser):
 
         target.ip = data['ip']
         target.identifier = target.ip
-        target.identifier_int = IpUtil.get_ip_int(target.identifier)
+        target.identifier_int = int(ipaddress.ip_address(target.identifier))
 
         target.fqdn = data['hostname']
         target.port = data['port']

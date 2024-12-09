@@ -63,7 +63,7 @@ class IpSurvCmd:
 
         survey_ips = self._build(args, data_factory, serializer)
 
-        survey_ips.initialize()
+        survey_ips.initialize(args)
 
         survey_ips.dispatch(rows, args)
 

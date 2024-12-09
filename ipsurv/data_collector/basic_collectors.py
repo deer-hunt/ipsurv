@@ -13,7 +13,7 @@ class RdapCollector(DataCollector):
     def get_name(self):
         return 'RDAP'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         DnsUtil.resolve(self.requester.get_host(), timeout=self.dns_timeout)
 
         return self.requester.request(target.ip)
@@ -62,7 +62,7 @@ class DnsTxtCollector(DataCollector):
     def get_name(self):
         return 'DNSTXT'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         return self.requester.request_dnstxt(target.ip)
 
     def get_requires(self):
@@ -92,13 +92,13 @@ class IpInfoCollector(DataCollector):
     def get_name(self):
         return 'IPINFO'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         DnsUtil.resolve(self.requester.get_host(), timeout=self.dns_timeout)
 
         return self.requester.request(target.ip)
 
     def get_requires(self):
-        return ['ip', 'hostname', 'country', 'region', 'region', 'postal', 'geo', 'org', 'timezone']
+        return ['ip', 'hostname', 'country', 'region_name', 'city_name', 'postal', 'geo', 'asn', 'org', 'timezone']
 
     def build_data(self, target, data, success, response, response_time):
         data.set('ipinfo_time', response_time)
@@ -106,10 +106,11 @@ class IpInfoCollector(DataCollector):
         self.fill(data, response, 'ip')
         self.fill(data, response, 'hostname')
         self.put(data, response, 'country')
-        self.put(data, response, 'city')
-        self.put(data, response, 'region')
+        self.put(data, response, 'city', 'city_name')
+        self.put(data, response, 'region', 'region_name')
         self.put(data, response, 'postal')
         self.put(data, response, 'loc', 'geo')
+        self.put(data, response, 'asn')
         self.put(data, response, 'org')
         self.put(data, response, 'timezone')
 
@@ -120,7 +121,7 @@ class DnsReverseCollector(DataCollector):
     def get_name(self):
         return 'DNSREVERSE'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         return self.requester.request_reverse(target.ip)
 
     def get_requires(self):

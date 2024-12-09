@@ -21,7 +21,9 @@ There are several example programs of how to customize. Please refer to the comm
 | check_cloud_service.py        | Checking the status of cloud services.            |
 | check_wordpress_site.py       | Checking WordPress site and WordPress theme. |
 | config_customize.py | Customizing Config class.         |
+| extract_regex_data.py              | Extracting text by regex, and generate CRC and MD5 values.   |
 | force_json.py                 | Forces data to be output in JSON format.        |
+| geoip_requester_directly.py        | Using GeoIpRequester class directly.            |
 | group_customize.py            | Customizing group settings.         |
 | inject_original_class.py            | Injecting original class object.         |
 | object_factory_original_headers.py      | Injecting original classes.   |
@@ -30,7 +32,6 @@ There are several example programs of how to customize. Please refer to the comm
 | simple_totalize.py            | Simple totalization by the given data.     |
 | target_parser_customize.py            | Customizing TargetParser.     |
 | use_requester_directly.py            | Using requester class directly.     |
-| extract_regex_data.py              | Extracting text by regex, and generate CRC and MD5 values.   |
 
 
 ## Execution examples

@@ -97,7 +97,7 @@ class TestRdapDataCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'RDAP'
         assert success is True
@@ -117,7 +117,7 @@ class TestRdapDataCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is True
         assert response['country'] == 'US'
@@ -147,7 +147,7 @@ class TestDnsTxtCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'DNSTXT'
         assert success is True
@@ -166,7 +166,7 @@ class TestDnsTxtCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is True
         assert response['country'] == 'US'
@@ -195,7 +195,7 @@ class TestIpInfoCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert success is True
         assert response_time > 0
@@ -214,7 +214,7 @@ class TestIpInfoCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert collector.get_name() == 'IPINFO'
         assert success is True
@@ -245,7 +245,7 @@ class TestDnsReverseCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'DNSREVERSE'
         assert success is True
@@ -263,7 +263,7 @@ class TestDnsReverseCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is True
         assert response['hostname'] == 'dns.google'
@@ -292,7 +292,7 @@ class TestSelfCollector:
 
         target = Target()
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'SELF_INFO'
         assert collector.get_requires() == []
@@ -311,7 +311,7 @@ class TestSelfCollector:
 
         target = Target()
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is True
 
@@ -363,20 +363,20 @@ class TestPassDataCollector:
         assert success is False
         assert requester.get_host() is None
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert success is False
-        assert collector.initialize() is None
+        assert collector.initialize({}) is None
         assert collector.get_name() == 'PASS'
         assert collector.get_requires() == []
         assert collector.build_data(target, data, False, {}, 8) is None
         assert success is False
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is False
 
-        success, response = collector.request_data(target)
+        success, response = collector.request_data(target, [])
 
         assert success is False
 
@@ -390,7 +390,7 @@ class TestPassDataCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'PASS'
         assert success is True
@@ -414,7 +414,7 @@ class TestICMPCollector:
         target.identifier = '8.8.8.8'
         target.ip = '8.8.8.8'
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'ICMP'
         assert success is True
@@ -448,7 +448,7 @@ class TestTCPCollector:
         target.ip = '1.1.1.1'
         target.port = 80
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'TCP'
         assert success is True
@@ -482,7 +482,7 @@ class TestUDPCollector:
         target.ip = '8.8.8.8'
         target.port = 53
 
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'UDP'
         assert success is True
@@ -515,7 +515,7 @@ class TestHttpCollector:
         target.url = 'https://www.wikipedia.org/'
 
         collector.http = 2
-        success, response, response_time = collector.request(target)
+        success, response, response_time = collector.request(target, [])
 
         assert collector.get_name() == 'HTTP'
         assert success is True
@@ -523,7 +523,7 @@ class TestHttpCollector:
         assert ('http_status' in collector.get_requires())
 
         with caplog.at_level(logging.INFO):
-            collector.request(target)
+            collector.request(target, [])
 
         assert re.search(r'HTTP_TIME', caplog.text)
 

@@ -67,7 +67,7 @@ class TestIpSurvCmd:
     def test_self(self, capsys, monkeypatch, ip_surv_cmd):
         monkeypatch.setattr(sys, 'argv', ['ipsurv.py', 'self'])
         monkeypatch.setattr(os, '_exit', lambda v: 0)
-        monkeypatch.setattr(SelfCollector, 'request_data', lambda target: True, {'ip': None})
+        monkeypatch.setattr(SelfCollector, 'request_data', lambda target, requires: True, {'ip': None})
 
         with patch('ipsurv.util.args_util.StdinLoader.read_stdin', return_value=[]):
             ip_surv_cmd.run()

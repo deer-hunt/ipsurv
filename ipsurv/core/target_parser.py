@@ -8,8 +8,8 @@ from ipsurv.core.entity import Target
 from ipsurv.core.entity import ValueData
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.requester.dns_resolver import DnsResolveRequester
-from ipsurv.util.network_util import IpUtil
 from ipsurv.util.sys_util import System
+import ipaddress
 
 
 class TargetParser(ABC):
@@ -32,9 +32,6 @@ class TargetParser(ABC):
 
         if target.status != Constant.STATUS_EXIST:
             target.identifier = target.status
-
-        if target.identified:
-            self._evaluate(data, target)
 
         self._assign_data_target(data, target)
 
@@ -67,35 +64,40 @@ class TargetParser(ABC):
         if target.identified:
             target.status = Constant.STATUS_EXIST
 
-            ip_address = IpUtil.get_ip_address(target.identifier)
-            target.identifier_int = int(ip_address)
-
-            data.set('ip', target.ip)
-            data.set('ip_int', target.identifier_int)
-            data.set('ip_hex', '.'.join(f'{v:02x}' for v in ip_address.packed).upper())
-            data.set('ip_reversed', '.'.join(reversed(ip_address.exploded.split('.'))))
-            data.set('port', target.port)
+            self._prepare_target_data(data, target)
 
         logging.info('IP:' + str(target.ip))
         logging.info('FQDN:' + str(target.fqdn))
         logging.info('PORT:' + str(target.port))
 
+    def _prepare_target_data(self, data, target):
+        ip_address = ipaddress.ip_address(target.identifier)
+        target.identifier_int = int(ip_address)
+
+        data.set('ip', target.ip)
+        data.set('ip_int', target.identifier_int)
+        data.set('ip_hex', '.'.join(f'{v:02x}' for v in ip_address.packed).upper())
+        data.set('ip_reversed', '.'.join(reversed(ip_address.exploded.split('.'))))
+        data.set('port', target.port)
+
+        self._evaluate(data, target)
+
     def _identify_ip_int(self, raw):
         def convert_ip(match):
             ip_int = int(match.group(1))
-            return IpUtil.get_ip_from_int(ip_int)
+            return str(ipaddress.ip_address(ip_int))
 
         return re.sub(r'(?<!\d)(\d{8,10})(?!\d)', convert_ip, raw)
 
     def _identify_target_ip(self, data, target, args):
         # type: (ValueData, Target, object) -> bool
 
+        identified = False
+
         netloc = self._find_ip(target.raw, True)
 
         if not netloc:
             url = self._find_url(target.raw)
-
-            identified = False
 
             if url:
                 target.url = url
@@ -139,7 +141,7 @@ class TargetParser(ABC):
     def _evaluate(self, data, target):
         # type: (ValueData, Target) -> None
 
-        ip_address = IpUtil.get_ip_address(target.ip)
+        ip_address = ipaddress.ip_address(target.ip)
 
         self._evaluate_ip_type(data, ip_address)
 
@@ -157,7 +159,7 @@ class TargetParser(ABC):
         in_range = False
 
         for range in self.ranges:
-            network = IpUtil.get_ip_network(range)
+            network = ipaddress.ip_network(range, strict=False)
 
             if ip_address in network:
                 in_range = True

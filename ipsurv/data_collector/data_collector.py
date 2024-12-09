@@ -10,15 +10,15 @@ class DataCollector(ABC):
     def __init__(self, requester, args):
         self.requester = requester
 
-    def initialize(self):
+    def initialize(self, args):
         pass
 
     @abstractmethod
     def get_name(self):  # pragma: no cover
         return ''
 
-    def request(self, target):
-        # type: (Target) -> tuple
+    def request(self, target, requires):
+        # type: (Target, list) -> tuple
 
         name = self.get_name()
 
@@ -30,7 +30,7 @@ class DataCollector(ABC):
         response = {}
 
         try:
-            (success, response) = self.request_data(target)
+            (success, response) = self.request_data(target, requires)
         except Exception as e:
             error_name = name + ' ERROR'
             error = str(e)
@@ -52,8 +52,8 @@ class DataCollector(ABC):
         return success, response, response_time
 
     @abstractmethod
-    def request_data(self, target):  # pragma: no cover
-        # type: (Target) -> tuple
+    def request_data(self, target, requires):  # pragma: no cover
+        # type: (Target, list) -> tuple
 
         return None, None
 

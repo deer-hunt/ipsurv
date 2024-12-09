@@ -7,7 +7,7 @@ class ICMPCollector(DataCollector):
     def get_name(self):
         return 'ICMP'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         logging.log(logging.INFO, 'ICMP ping(' + target.ip + ')...')
 
         success = self.requester.request_icmp(target.ip, count=1)
@@ -33,7 +33,7 @@ class TCPCollector(DataCollector):
     def get_name(self):
         return 'TCP'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         port = target.port if target.port is not None else self.default_port
 
         logging.log(logging.INFO, 'TCP connecting(' + target.ip + ':' + str(port) + ')...')
@@ -61,7 +61,7 @@ class UDPCollector(DataCollector):
     def get_name(self):
         return 'UDP'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         port = target.port if target.port is not None else self.default_port
 
         logging.log(logging.INFO, 'UDP sending(' + target.ip + ':' + str(port) + ')...')
@@ -89,7 +89,7 @@ class HttpCollector(DataCollector):
     def get_name(self):
         return 'HTTP'
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         url = target.url if target.url else target.fqdn if target.fqdn else target.ip
 
         logging.log(logging.INFO, 'HTTP requesting(' + url + ')...')

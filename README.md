@@ -3,7 +3,7 @@
 <div>
 <img width="165" height="165" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
-```ipsurv``` is a command-line program for surveying IP addresses, host information, and more. Also ```ipsurv``` is extensible program by Python.
+```IpSurv``` is a command-line program for surveying IP addresses, host information, and more. Also ```IpSurv``` is extensible program by Python.
 
 <div>
 
@@ -104,25 +104,27 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 - Check ICMP, TCP, UDP, HTTP.
 - Set timeout.
 - Load env variable. And changing arguments and internal configures.
+- Use GeoIP2 via IpSurv optionally.
 
 ## Command options
 
-```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
+```IpSurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
 
 **Options**
 
 ```
-[-h] [--verbose {0,1,2,3}] [--log LOG] [--disable_env]
-[--resolve RESOLVE] [--autodetect AUTODETECT]
-[--begin BEGIN] [--end END] [--collect COLLECT]
-[--all_collect] [--timeout TIMEOUT]
-[--group GROUP] [--skip_duplicate {0,1,2}] [--range RANGE] [--format FORMAT]
-[--no_original] [--sequence] [--add_ip] [--ident]
-[--enclose ENCLOSE] [--delimiter DELIMITER] [--alt_delimiter ALT_DELIMITER]
-[--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
-[--exhaustive] [--icmp ICMP] [--tcp TCP] [--udp UDP]
-[--http {0,1,2}] [--version]
-[target [target ...]]
+[-h] [--verbose {0,1,2,3}] [--debug] [--log LOG]
+ [--disable_env] [--resolve RESOLVE] [--identify_int]
+ [--autodetect AUTODETECT] [--begin BEGIN] [--end END]
+ [--collect COLLECT] [--all_collect] [--timeout TIMEOUT]
+ [--group GROUP] [--skip_duplicate {0,1,2}] [--range RANGE]
+ [--format FORMAT] [--no_original] [--sequence] [--add_ip]
+ [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
+ [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
+ [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
+ [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
+ [--geoip_only] [--version]
+ [target [target ...]]
 ```
 
 **Example options**
@@ -188,6 +190,7 @@ $ ipsurv wikipedia.org --format=default --json=2 --add_ip
 **Output detailed data by JSON**
 
 ```bash
+$ ipsurv wikipedia.org --json_all    # `--json_all` is equivalent to `--json=2 --exhaustive`
 $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 {
   "success": true,
@@ -229,8 +232,35 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 }
 ```
 
-More examples is [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html)
+More examples is [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
 
+
+## Using GeoIP2 optionally
+
+```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
+
+When using the GeoIP2 module, network communication does not occur, which enables faster processing.
+
+Please refer to the [Using GeoIp2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
+
+**Examples**
+
+```
+$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+```
+
+```
+$ ipsurv www.wikipedia.org --format="{country},{geo}" --collect=geoip --headers=1
+original,country,geo
+www.wikipedia.org,US,37.751;-97.822
+
+$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{geo}" --collect="geoip" --headers=1
+original,continent,continent_name,country,geo
+8.8.8.8,NA,North America,US,37.751;-97.822
+```
+
+> `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env.
 
 ## Documents
 
@@ -243,7 +273,9 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 | **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/program_architecture_classes.md) |
 | **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/customize_examples.md) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
+| **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/using_geoip2.md)  |
 | **Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
+
 
 
 ## Path summary
@@ -258,7 +290,6 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 | `tests`              | Test files                     |
 
 
-
 ## Debugging
 
 In verbose mode, outputting internal data and behaviors in detail.
@@ -266,11 +297,14 @@ In verbose mode, outputting internal data and behaviors in detail.
 ```bash
 $ ipsurv ***** --verbose=2  #INFO
 $ ipsurv ***** --verbose=3  #DEBUG
+
+$ ipsurv ***** --debug  #DEBUG  This option is equivalent to "--verbose=3" 
 ```
+
 
 ## Customizing IpSurv
 
-```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. 
+```IpSurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. 
 And you can use ipsurv's internal classes in your program. Please read ```program_architecture_classes.md```.
 
 **Classes for major customization**
@@ -285,3 +319,4 @@ And you can use ipsurv's internal classes in your program. Please read ```progra
 ## Dependencies
 
 - [dnspython](https://github.com/rthalley/dnspython)
+- [geoip2](https://github.com/maxmind/GeoIP2-python) [Optional]

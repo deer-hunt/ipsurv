@@ -1,7 +1,7 @@
 import pytest
 
 from ipsurv.util.sys_util import System
-from ipsurv.util.network_util import IpUtil, DnsUtil
+from ipsurv.util.network_util import DnsUtil
 import socket
 import re
 
@@ -22,27 +22,6 @@ class TestSystem:
 
         captured = capfd.readouterr()
         assert re.search("ABC", captured.out.strip())
-
-
-class TestIpUtil:
-    @pytest.fixture(autouse=True)
-    def setup(self):
-        pass
-
-    def test_get_ip_int(self):
-        ip_int = IpUtil.get_ip_int('192.1.1.100')
-
-        assert ip_int == 3221291364
-
-    def test_get_ip_from_int(self):
-        ip = IpUtil.get_ip_from_int(3221291265)
-
-        assert ip == '192.1.1.1'
-
-    def test_get_network_range(self):
-        begin_ip, end_ip = IpUtil.get_network_range('192.1.1.100/24')
-
-        assert (begin_ip == 3221291265 and end_ip == 3221291518)
 
 
 class TestDnsUtil:

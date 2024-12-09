@@ -379,6 +379,38 @@ original,ip,ip_type,ip_int,ip_hex,ip_reversed
 reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 ```
 
+## Using GeoIP2
+
+```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
+
+Please refer to the [Using GeoIp2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
+
+
+```
+$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+```
+
+```
+$ ipsurv 192.168.1.100 --format="{country},{geo}" --collect="geoip" --headers=1
+
+$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{geo}" --collect="geoip" --headers=1
+original,continent,continent_name,country,geo
+8.8.8.8,NA,North America,US,37.751;-97.822
+```
+
+```
+$ ipsurv 8.8.8.8 --collect=geoip --format=area
+$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{country_name},{timezone},{geo}" --collect="geoip"
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+```
+
+```
+$ ipsurv reddit.com --geoip_only --headers=1
+original,continent,continent_name,country,country_name,timezone,geo
+reddit.com,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
+```
+
 ## Enable verbose log
 
 ```

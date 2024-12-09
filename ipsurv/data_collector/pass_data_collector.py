@@ -12,8 +12,8 @@ class PassDataCollector(DataCollector):
     def get_name(self):
         return self._name.upper()
 
-    def request_data(self, target):
-        # type : Target
+    def request_data(self, target, requires):
+        # type: (Target, list) -> tuple
         return self.requester.request(target)
 
     def get_requires(self):

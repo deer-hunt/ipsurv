@@ -12,7 +12,7 @@ Specification:
 - Customizing DataCollector class.
 
 Command:
-# cat examples.txt|python3 check_wordpress_site.py
+# cat wp_sites.txt|python3 check_wordpress_site.py
 
 Result e.g.:
 1,https://wordpress.org/,200,WP_SITE,wporg-parent-2021

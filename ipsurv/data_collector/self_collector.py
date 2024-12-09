@@ -18,7 +18,7 @@ class SelfCollector(DataCollector):
     def get_requires(self):
         return []
 
-    def request_data(self, target):
+    def request_data(self, target, requires):
         DnsUtil.resolve(self.requester.get_host(), timeout=self.dns_timeout)
 
         success, response = self.requester.request(None)
@@ -37,8 +37,8 @@ class SelfCollector(DataCollector):
         self.put(data, response, 'ip')
         self.put(data, response, 'hostname')
         self.put(data, response, 'country')
-        self.put(data, response, 'city')
-        self.put(data, response, 'region')
+        self.put(data, response, 'city', 'city_name')
+        self.put(data, response, 'region', 'region_name')
         self.put(data, response, 'postal')
         self.put(data, response, 'loc', 'geo')
         self.put(data, response, 'org', 'organization')

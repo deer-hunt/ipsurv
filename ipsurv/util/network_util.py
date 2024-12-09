@@ -1,39 +1,5 @@
-import ipaddress
 import threading
 import socket
-
-
-class IpUtil:
-    @classmethod
-    def get_ip_address(cls, ip):
-        return ipaddress.ip_address(ip)
-
-    @classmethod
-    def get_ip_int(cls, ip):
-        ip = ipaddress.ip_address(ip)
-        ip_int = int(ip)
-
-        return ip_int
-
-    @classmethod
-    def get_ip_from_int(cls, ip_int):
-        ip = ipaddress.ip_address(ip_int)
-
-        return str(ip)
-
-    @classmethod
-    def get_ip_network(cls, cidr):
-        return ipaddress.ip_network(cidr, strict=False)
-
-    # ex: 192.168.1.0/24
-    @classmethod
-    def get_network_range(cls, cidr):
-        network = ipaddress.ip_network(cidr, strict=False)
-
-        first_ip = network.network_address + 1
-        last_ip = network.broadcast_address - 1
-
-        return int(first_ip), int(last_ip)
 
 
 class DnsUtil:

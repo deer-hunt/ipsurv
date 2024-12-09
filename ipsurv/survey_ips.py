@@ -23,12 +23,12 @@ class SurveyIps:
         self.pipeline = pipeline  # type: Pipeline
         self.serializer = serializer  # type: Serializer
 
-    def initialize(self):
+    def initialize(self, args):
         for collector in self.collectors:
-            collector.initialize()
+            collector.initialize(args)
 
         for reactivity in self.reactivities:
-            reactivity.initialize()
+            reactivity.initialize(args)
 
     def dispatch(self, rows, args):
         if args.headers:
@@ -96,7 +96,7 @@ class SurveyIps:
             requires = []
 
             if not group or not args.skip_duplicate:
-                requires = self._survey_by_collectors(self.collectors, target, args, data, True)
+                requires += self._survey_by_collectors(self.collectors, target, args, data, True)
             else:
                 logging.info('SKIP:IP->' + target.identifier + ',GROUP->' + str(group.value))
 
@@ -121,20 +121,22 @@ class SurveyIps:
         requires = []
 
         for collector in collectors:
-            collectors = self._survey_by_collector(collector, target, args, data, is_source)
+            reqs = self._survey_by_collector(collector, target, args, data, is_source)
 
-            requires += collectors
+            requires += reqs
 
         return requires
 
     def _survey_by_collector(self, collector, target, args, data, is_source):
         name = collector.get_name()
-        requires = collector.get_requires()
+        reqs = collector.get_requires()
 
         self.pipeline.pre_request(data, name, collector)
 
-        if self._require_request(data, requires) or len(requires) == 0 or args.all_collect:
-            success, response, response_time = collector.request(target)
+        requires = self._require_request(data, reqs)
+
+        if len(requires) > 0 or len(reqs) == 0 or args.all_collect:
+            success, response, response_time = collector.request(target, requires)
 
             self.pipeline.post_request(data, name, collector, success, response)
 
@@ -147,16 +149,18 @@ class SurveyIps:
         else:
             logging.log(logging.DEBUG, 'UNNECESSARY:' + name)
 
-        return requires
+        return reqs
 
     def _require_request(self, data, keys):
+        requires = []
+
         for param in data.get_data().keys():
             v = data.get(param)
 
             if ((v is None or v is False) and param in keys):
-                return True
+                requires.append(param)
 
-        return False
+        return requires
 
     def _finish(self, data, args, requires):
         success = not self._require_request(data, args.fixed_format_params)

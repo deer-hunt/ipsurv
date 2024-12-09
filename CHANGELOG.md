@@ -1,4 +1,12 @@
-# Change Log
+# Changelog
+
+## [1.1.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.0) (2024-12-09)
+
+- Support GeoIP2 optionally.
+- Change format parameters. city -> city_name, region -> region_name
+- Add shorten option ```--debug```,```--json_all```,```--geoip_only```.
+- Fix several bugs.
+- Add example programs.
 
 ## [1.0.4](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.4) (2024-12-02)
 
@@ -23,4 +31,4 @@
 
 ## [1.0.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.0.0) (2024-11-23)
 
-- Initial public release
+- Initial public release.

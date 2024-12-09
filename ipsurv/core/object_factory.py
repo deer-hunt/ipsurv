@@ -7,11 +7,13 @@ from ipsurv.core.pipeline import Pipeline
 from ipsurv.core.target_parser import TargetParser
 from ipsurv.data_collector.basic_collectors import RdapCollector, DnsTxtCollector, IpInfoCollector, DnsReverseCollector
 from ipsurv.data_collector.reactivity_collectors import ICMPCollector, TCPCollector, UDPCollector, HttpCollector
+from ipsurv.data_collector.geoip_collector import GeoIpCollector
 from ipsurv.data_collector.self_collector import SelfCollector
 from ipsurv.requester.dns_resolver import DnsResolveRequester
 from ipsurv.requester.http import HttpRequester
 from ipsurv.requester.ip_info import IpInfoRequester
 from ipsurv.requester.rdap import CountryDetector, RdapRequester
+from ipsurv.requester.geoip import GeoIpRequester
 from ipsurv.requester.server_reactivity import ServerReactivity
 from ipsurv.serializer.json_serializer import JsonSerializer
 from ipsurv.serializer.line_serializer import LineSerializer
@@ -53,6 +55,9 @@ class ObjectFactory(ABC):
         if 'dnsreverse' in _collectors:
             collectors['dnsreverse'] = self.create_dns_reverse_collector(dns_resolver, args)
 
+        if 'geoip' in _collectors:
+            collectors['geoip'] = self.create_geoip_collector(args)
+
         return collectors
 
     def create_rdap_collector(self, args):
@@ -65,6 +70,9 @@ class ObjectFactory(ABC):
 
     def create_ipinfo_collector(self, args):
         return IpInfoCollector(IpInfoRequester(timeout=args.fixed_timeout['http'], token=args.conf.get('ipinfo_token')), args)
+
+    def create_geoip_collector(self, args):
+        return GeoIpCollector(GeoIpRequester(), args)
 
     def create_self_collector(self, args, dns_resolver, server_reactivity):
         return SelfCollector(IpInfoRequester(timeout=args.fixed_timeout['http']), dns_resolver, server_reactivity, args)

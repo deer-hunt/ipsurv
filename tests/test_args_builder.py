@@ -39,6 +39,7 @@ class TestArgsBuilder:
     def test_init_args(self, args, args_builder, capfd):
         arguments = {
             'verbose': {'default': 3, 'type': int, 'help': ''},
+            'debug': {'default': False, 'help': '`--debug` is equivalent to `--verbose=3`.', 'action': 'store_true'},
             'log': {'default': 'abc.log', 'type': str, 'help': ''},
         }
 

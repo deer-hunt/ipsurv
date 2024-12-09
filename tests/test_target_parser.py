@@ -1,3 +1,4 @@
+import ipaddress
 import pytest
 
 from ipsurv.core.entity import Target, ValueData
@@ -5,7 +6,6 @@ from ipsurv.core.target_parser import TargetParser
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.requester.dns_resolver import DnsResolveRequester
 from unittest.mock import MagicMock
-from ipsurv.util.network_util import IpUtil
 
 
 class TestTargetParser:
@@ -138,13 +138,13 @@ class TestTargetParser:
     def test_evaluate_ip_type(self):
         data = ValueData({})
 
-        ip_address = IpUtil.get_ip_address('192.168.1.100')
+        ip_address = ipaddress.ip_address('192.168.1.100')
 
         self.target_parser._evaluate_ip_type(data, ip_address)
 
         assert data.get('ip_type') == 1
 
-        ip_address = IpUtil.get_ip_address('8.8.8.8')
+        ip_address = ipaddress.ip_address('8.8.8.8')
 
         self.target_parser._evaluate_ip_type(data, ip_address)
 
@@ -153,7 +153,7 @@ class TestTargetParser:
     def test_evaluate_in_ranges(self):
         data = ValueData({})
 
-        ip_address = IpUtil.get_ip_address('192.168.1.100')
+        ip_address = ipaddress.ip_address('192.168.1.100')
         self.target_parser.ranges = ['192.168.1.1/24']
 
         self.target_parser._evaluate_in_ranges(data, ip_address)

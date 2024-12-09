@@ -1,5 +1,6 @@
 import json
 import logging
+import re
 
 from ipsurv.requester.requester import Requester
 
@@ -27,11 +28,22 @@ class IpInfoRequester(Requester):
 
         if res.status == 200:
             response = json.loads(body)
+
+            response = self._fill_data(response)
+
             success = True
         else:
             raise self._http_exception(res, body)
 
         return success, response
+
+    def _fill_data(self, response):
+        if response.get('org') is not None:
+            match = re.search(r'^(AS\d+)\s(.+)$', response.get('org'))
+            response['asn'] = match.group(1)
+            response['org'] = match.group(2)
+
+        return response
 
     def request_ip(self, ip):
         if not ip:

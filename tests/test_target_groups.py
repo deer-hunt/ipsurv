@@ -65,6 +65,12 @@ class TestTargetGroups:
 
         assert group is not None
 
+    def test_get_network_range(self, args):
+        targetGroups = TargetGroups(args, Pipeline())
+        begin_ip, end_ip = targetGroups._get_network_range('192.1.1.100/24')
+
+        assert (begin_ip == 3221291265 and end_ip == 3221291518)
+
     def test_create_group_by_identifier(self, args):
         targetGroups = TargetGroups(args, Pipeline())
 

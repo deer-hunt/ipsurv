@@ -91,7 +91,7 @@ $ export IPSURV_CONF
 ```
 $ vi ~/.bashrc
 
-And append "IPSURV_CONF" setting.
+Append "IPSURV_CONF" setting.
 --
 IPSURV_CONF='{"geoip": {"path": "/home/user/GeoIP/", "files": {"country": "geoip2-country.mmdb", "city": "geoip2-city.mmdb"}}}'
 export IPSURV_CONF
@@ -147,7 +147,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 
 ### Parameters
 
-Parameters in ```--format```  that can be specified by the GeoIP2 function are as follows.
+Parameters in ```--format```  that can be specified by the GeoIP2 features are as follows.
 
 | Parameter          | Description                               |
 |--------------------|-------------------------------------------|
@@ -194,8 +194,7 @@ $ ipsurv reddit.com --geoip_only --headers=1 --debug
 **Error example1** 
 
 The following example shows a failure to load GeoIP2 data file due to a "path" specification error, ```/home/dummy/GeoIP/```.
-
-> Check each "CHECK" points.
+Check each "CHECK" points.
 
 ```
 2024-12-09 07:47:42,608 - INFO - ENV(IPSURV_ARGS):

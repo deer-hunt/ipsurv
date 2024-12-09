@@ -53,7 +53,7 @@ class GeoIpRequester(Requester):
                     break
 
             if not path:
-                raise Exception('GeoIp data dir detection is failed.')
+                raise Exception('GeoIP data dir detection is failed.')
 
         path = path.strip().rstrip('/') + '/'
 
@@ -91,7 +91,7 @@ class GeoIpRequester(Requester):
             path = self.data_path + self.data_files[gtype]
 
         if not path:
-            raise Exception("GeoIp data file none.({})".format(gtype))
+            raise Exception("GeoIP data file none.({})".format(gtype))
 
         return self._get_geoip_reader(path)
 

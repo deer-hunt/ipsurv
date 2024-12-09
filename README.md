@@ -240,7 +240,7 @@ More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_exampl
 ```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
 When using the GeoIP2 module, network communication does not occur, which enables faster processing.
 
-Please refer to the [Using GeoIp2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
+Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
 
 **Examples**
 

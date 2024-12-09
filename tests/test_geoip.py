@@ -92,13 +92,13 @@ class TestGeoIpRequester:
         requester = GeoIpRequester()
         requester.initialize('/tmp/')
 
-        with pytest.raises(Exception, match='GeoIp data file none'):
+        with pytest.raises(Exception, match='GeoIP data file none'):
             requester.request_country('8.8.8.8')
 
-        with pytest.raises(Exception, match='GeoIp data file none'):
+        with pytest.raises(Exception, match='GeoIP data file none'):
             requester.request_city('8.8.8.8')
 
-        with pytest.raises(Exception, match='GeoIp data file none'):
+        with pytest.raises(Exception, match='GeoIP data file none'):
             requester.request_asn('8.8.8.8')
 
     def test_request(self):

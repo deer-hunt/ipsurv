@@ -383,7 +383,7 @@ reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 
 ```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
 
-Please refer to the [Using GeoIp2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
+Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
 
 
 ```

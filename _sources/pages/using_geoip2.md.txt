@@ -103,7 +103,7 @@ $ source ~/.bashrc
 
 ## Run IpSurv command
 
-After installation and setup, you can use GeoIp2 features via IpSurv. Here are some usage examples.
+After installation and setup, you can use GeoIP2 features via IpSurv. Here are some usage examples.
 
 **--geoip_only option**
 
@@ -166,7 +166,7 @@ Parameters in ```--format```  that can be specified by the `GeoIP2 features are 
 
 ## About "collect" mode
 
-When using GeoIp2, ```--collect=geoip``` or ```--geoip_only``` is recommended.  Default value of ```collect option``` is ```rdap;dnstxt;ipinfo;dnsreverse;geoip```, therefore, GeoIP2 data collection is ran last.
+When using GeoIP2, ```--collect=geoip``` or ```--geoip_only``` is recommended.  Default value of ```collect option``` is ```rdap;dnstxt;ipinfo;dnsreverse;geoip```, therefore, GeoIP2 data collection is ran last.
 
 **Recommend option**
 
@@ -228,10 +228,10 @@ Traceback (most recent call last):
   File "/path/to/ipsurv/requester/geoip.py", line 140, in request_city
     self.reader_city = self._create_reader(self.TYPE_CITY)
   File "/path/to/ipsurv/requester/geoip.py", line 94, in _create_reader
-    raise Exception("GeoIp data file none.({})".format(gtype))        # [CHECK-6] --------------------------------- Error reason1
-Exception: GeoIp data file none.(city)                                   # [CHECK-7] --------------------------------- Error reason2
+    raise Exception("GeoIP data file none.({})".format(gtype))        # [CHECK-6] --------------------------------- Error reason1
+Exception: GeoIP data file none.(city)                                   # [CHECK-7] --------------------------------- Error reason2
 2024-12-09 07:47:42,623 - DEBUG - GEOIP_DATA:
-{'error': 'GeoIp data file none.(city)'}
+{'error': 'GeoIP data file none.(city)'}
 ```
 
 - **Error example2**

@@ -159,7 +159,7 @@ $ source ~/.bashrc
 </div>
 <div class="section" id="run-ipsurv-command">
 <h2>Run IpSurv command<a class="headerlink" href="#run-ipsurv-command" title="Permalink to this headline">¶</a></h2>
-<p>After installation and setup, you can use GeoIp2 features via IpSurv. Here are some usage examples.</p>
+<p>After installation and setup, you can use GeoIP2 features via IpSurv. Here are some usage examples.</p>
 <p><strong>–geoip_only option</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span> <span class="pre">--format=area</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
@@ -242,7 +242,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 </div>
 <div class="section" id="about-collect-mode">
 <h2>About “collect” mode<a class="headerlink" href="#about-collect-mode" title="Permalink to this headline">¶</a></h2>
-<p>When using GeoIp2, <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is recommended.  Default value of <code class="docutils literal notranslate"><span class="pre">collect</span> <span class="pre">option</span></code> is <code class="docutils literal notranslate"><span class="pre">rdap;dnstxt;ipinfo;dnsreverse;geoip</span></code>, therefore, GeoIP2 data collection is ran last.</p>
+<p>When using GeoIP2, <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is recommended.  Default value of <code class="docutils literal notranslate"><span class="pre">collect</span> <span class="pre">option</span></code> is <code class="docutils literal notranslate"><span class="pre">rdap;dnstxt;ipinfo;dnsreverse;geoip</span></code>, therefore, GeoIP2 data collection is ran last.</p>
 <p><strong>Recommend option</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code></p>
 <p><strong>Prefer GeoIP2</strong></p>
@@ -291,10 +291,10 @@ Check each “CHECK” points.</p>
   <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/requester/geoip.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">140</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request_city</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">reader_city</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_reader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">TYPE_CITY</span><span class="p">)</span>
   <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/requester/geoip.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">94</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_create_reader</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;GeoIp data file none.(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gtype</span><span class="p">))</span>        <span class="c1"># [CHECK-6] --------------------------------- Error reason1</span>
-<span class="ne">Exception</span><span class="p">:</span> <span class="n">GeoIp</span> <span class="n">data</span> <span class="n">file</span> <span class="n">none</span><span class="o">.</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>                                   <span class="c1"># [CHECK-7] --------------------------------- Error reason2</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;GeoIP data file none.(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gtype</span><span class="p">))</span>        <span class="c1"># [CHECK-6] --------------------------------- Error reason1</span>
+<span class="ne">Exception</span><span class="p">:</span> <span class="n">GeoIP</span> <span class="n">data</span> <span class="n">file</span> <span class="n">none</span><span class="o">.</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>                                   <span class="c1"># [CHECK-7] --------------------------------- Error reason2</span>
 <span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">623</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">GEOIP_DATA</span><span class="p">:</span>
-<span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;GeoIp data file none.(city)&#39;</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;GeoIP data file none.(city)&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">

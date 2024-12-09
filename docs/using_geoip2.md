@@ -44,7 +44,7 @@ And Store ```mmdb file``` to specified path.
 
 ```IpSurv``` detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it's unnecessary to settings.
 
-### Auto-detection path
+### a. Auto-detection path
 
 **Data dirs**
 
@@ -59,7 +59,7 @@ And Store ```mmdb file``` to specified path.
 - GeoLite2-City.mmdb, GeoIP2-City.mmdb
 - GeoLite2-ASN.mmdb, GeoIP2-ASN.mmdb
 
-### Specify path manually
+### b. Specify path manually
 
 If you'd like to specify paths manually, specifying IpSurv's environment variables - ```IPSURV_CONF```. 
 
@@ -107,7 +107,7 @@ After installation and setup, you can use GeoIp2 features via IpSurv. Here are s
 
 **--geoip_only option**
 
-'`--geoip_only` is equivalent to `--collect=geoip --format=area`.
+`--geoip_only` is equivalent to `--collect=geoip --format=area`.
 
 ```
 $ ipsurv 8.8.8.8 --geoip_only
@@ -201,8 +201,8 @@ The following example shows a failure to load GeoIP2 data file due to a "path" s
 2024-12-09 07:47:42,608 - INFO - ENV(IPSURV_ARGS):
 {}
 2024-12-09 07:47:42,608 - INFO - ENV(IPSURV_CONF):        # [CHECK-1] ---------------------------------- Load IPSURV_CONF.
-{ 'geoip': { 'files': {'country': 'geoip2-country.mmdb'},
-             'path': '/home/dummy/GeoIP/'}}                            # Error
+{ 'geoip': { 'files': {'country': 'country.mmdb'},
+             'path': '/home/dummy/GeoIP/'}}                    # Error
 2024-12-09 07:47:42,608 - INFO - ARGUMENTS:
 ~~~~~~~~~~~~~~~~~~~~~
 2024-12-09 07:47:42,608 - INFO - ARGUMENTS_JSON:
@@ -215,8 +215,8 @@ The following example shows a failure to load GeoIP2 data file due to a "path" s
 2024-12-09 07:47:42,609 - INFO - Fixed collectors:['geoip']
 2024-12-09 07:47:42,609 - INFO - MODE:SURVEY_IPS
 2024-12-09 07:47:42,616 - INFO - GEOIP:ENABLED                  # [CHECK-2] ---------------------------------- GEOIP is enabled.
-2024-12-09 07:47:42,616 - INFO - GEOIP_DATA_PATH:/home/user/GeoIP/ # [CHECK3] ---------------------- Data path.
-2024-12-09 07:47:42,616 - INFO - GEOIP_DATA_FILES:{'country': 'geoip2-country.mmdb', 'city': None, 'asn': None} # [CHECK4] ----------- Data files.
+2024-12-09 07:47:42,616 - INFO - GEOIP_DATA_PATH:/home/dummy/GeoIP/ # [CHECK3] ---------------------- Data path.
+2024-12-09 07:47:42,616 - INFO - GEOIP_DATA_FILES:{'country': 'country.mmdb', 'city': None, 'asn': None} # [CHECK4] ------ Data files.
 ~~~~~~~~~~~~~~~~~~~~~~
 2024-12-09 07:47:42,623 - DEBUG - GEOIP ERROR                  # [CHECK-5] --------------------------------- Error occur
 Traceback (most recent call last):
@@ -230,7 +230,7 @@ Traceback (most recent call last):
     self.reader_city = self._create_reader(self.TYPE_CITY)
   File "/path/to/ipsurv/requester/geoip.py", line 94, in _create_reader
     raise Exception("GeoIp data file none.({})".format(gtype))        # [CHECK-6] --------------------------------- Error reason1
-Exception: GeoIp data file none.(city)                                        # [CHECK-7] --------------------------------- Error reason2
+Exception: GeoIp data file none.(city)                                   # [CHECK-7] --------------------------------- Error reason2
 2024-12-09 07:47:42,623 - DEBUG - GEOIP_DATA:
 {'error': 'GeoIp data file none.(city)'}
 ```

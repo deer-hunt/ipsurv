@@ -44,7 +44,7 @@ And Store ```mmdb file``` to specified path.
 
 ```IpSurv``` detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it's unnecessary to settings.
 
-### a. Auto-detection path
+### a. Auto-detect path
 
 **Data dirs**
 

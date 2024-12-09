@@ -142,6 +142,7 @@ Please refer to the `Using GeoIp2 <https://deer-hunt.github.io/ipsurv/pages/usin
 **Examples**
 
 .. code-block:: shell
+
 	$ ipsurv 8.8.8.8 --geoip_only
 	8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
 

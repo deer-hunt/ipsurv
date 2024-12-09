@@ -38,6 +38,10 @@ Overview
    $ ipsurv 192.168.1.10 192.168.1.11
    $ ipsurv wikipedia.org
 
+   # Use GeoIP2: Dependency "geoip2" module.
+   $ ipsurv wikipedia.org --geoip_only
+
+   # Survey self IP
    $ ipsurv self
 
 

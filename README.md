@@ -234,7 +234,6 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 
 More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
 
-
 ## Using GeoIP2 optionally
 
 ```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
@@ -299,7 +298,6 @@ $ ipsurv ***** --verbose=3  #DEBUG
 
 $ ipsurv ***** --debug  #DEBUG  This option is equivalent to "--verbose=3" 
 ```
-
 
 ## Customizing IpSurv
 

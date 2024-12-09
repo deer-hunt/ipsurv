@@ -100,6 +100,24 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="debug">
+<h3><code class="docutils literal notranslate"><span class="pre">--debug</span></code><a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="n">debug</span>
+
+<span class="n">RESULT</span><span class="p">:</span>
+<span class="n">Enable</span> <span class="n">verbose</span> <span class="n">mode</span><span class="o">.</span> <span class="n">Current</span><span class="p">:</span><span class="mi">3</span> <span class="p">[</span><span class="n">Level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">TRACE_ERROR</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="n">INFO</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="n">DEBUG</span><span class="p">]</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">53</span><span class="p">,</span><span class="mi">591</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">ENV</span><span class="p">(</span><span class="n">IPSURV_ARGS</span><span class="p">):</span>
+<span class="o">~~~~~</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="log">
 <h3><code class="docutils literal notranslate"><span class="pre">--log</span></code><a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h3>
 <p>Verbose log filename. If you specify filename, verbose log is written to a file. Use with <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option.</p>
@@ -218,6 +236,7 @@ RESULT:
 </tbody>
 </table>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">IPSURV_CONF</span><span class="o">=</span><span class="s1">&#39;{&quot;ipinfo_token&quot;: &quot;???????&quot;}&#39;</span>
+$<span class="w"> </span><span class="nv">IPSURV_CONF</span><span class="o">=</span><span class="s1">&#39;{&quot;geoip&quot;: {&quot;path&quot;: &quot;/home/user/GeoIP/&quot;, &quot;files&quot;: {&quot;country&quot;: &quot;geoip2-country.mmdb&quot;}}}&#39;</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span>IPSURV_CONF
 </pre></div>
 </div>
@@ -295,7 +314,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span>I
 <p>Data collectors. Those are collected by specific order.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
-<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'rdap;dnstxt;dnsreverse;ipinfo'</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">'rdap;dnstxt;ipinfo;dnsreverse;geoip'</span></code></p></li>
 <li><p><strong>Values:</strong></p></li>
 </ul>
 <table class="colwidths-auto docutils align-default">
@@ -307,27 +326,36 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span>I
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rdap</span></code></p></td>
-<td><p>Request by RDAP server.</p></td>
+<td><p>Collecting by RDAP server.</p></td>
 <td><p>country,cidr,network_start,network_end,country_updated,<br>name,port43,handle,org,address,description</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dnstxt</span></code></p></td>
-<td><p>Request by DNS TXT record.</p></td>
+<td><p>Collecting by DNS TXT record.</p></td>
 <td><p>country,cidr,network_start,network_end,rir</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dnsreverse</span></code></p></td>
-<td><p>Request by reverse DNS lookup.</p></td>
-<td><p>country,hostname,city,region,postal,geo,org,timezone</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ipinfo</span></code></p></td>
+<td><p>Collecting by reverse ipinfo.net.</p></td>
+<td><p>country,hostname,city_name,region_name,postal,geo,org,timezone</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ipinfo</span></code></p></td>
-<td><p>Request by ipinfo.net.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dnsreverse</span></code></p></td>
+<td><p>Collecting by DNS lookup.</p></td>
 <td><p>hostname</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">geoip</span></code></p></td>
+<td><p>Collecting by geoip.</p></td>
+<td><p>continent, continent_name, country, country_name, timezone, geo, asn, org, (city, city_name)</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
 <li><p><strong>Example:</strong></p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;rdap;dnstxt&quot;</span><span class="p">,</span> <span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;ipinfo&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> 
+<span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;rdap;dnstxt&quot;</span>  <span class="c1"># rdap -&gt; dnstxt</span>
+<span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;ipinfo&quot;</span>
+<span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;geoip&quot;</span>
+<span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;geoip;ipinfo&quot;</span> <span class="c1"># geoip -&gt; ipinfo</span>
+<span class="o">--</span><span class="n">collect</span><span class="o">=</span><span class="s2">&quot;ipinfo;geoip&quot;</span> <span class="c1"># ipinfo -&gt; geoip</span>
 </pre></div>
 </div>
 </div>
@@ -543,24 +571,27 @@ If this option is activated, continuing to collect data forcibly.</p>
 <td><p>CIDR.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
-<td><p>Geolocation.</p></td>
+<td><p>Geolocation with Country code.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area</span></code></p></td>
+<td><p>Country name, Geo, Timezone, etc..</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></td>
 <td><p>IP for system. ip_int, ip_hex, ip_reversed</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">web</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">web</span></code></p></td>
 <td><p>HTTP response.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
 <td><p>Group, Country.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
 <td><p>Group, Country, Network, Hostname.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">detail</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">detail</span></code></p></td>
 <td><p>Default + Organization, CIDR, Address, Description.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">heavy</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heavy</span></code></p></td>
 <td><p>Heavy parameters.</p></td>
 </tr>
 </tbody>
@@ -577,7 +608,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 <span class="s1">&#39;rdap_time&#39;</span><span class="p">,</span> <span class="s1">&#39;port43&#39;</span><span class="p">,</span> <span class="s1">&#39;country_updated&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;handle&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="s1">&#39;org&#39;</span><span class="p">,</span> <span class="s1">&#39;timezone&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span>
 <span class="s1">&#39;dnstxt_time&#39;</span><span class="p">,</span> <span class="s1">&#39;rir&#39;</span><span class="p">,</span>
 <span class="s1">&#39;dnsreverse_time&#39;</span><span class="p">,</span> <span class="s1">&#39;hostname&#39;</span><span class="p">,</span>
-<span class="s1">&#39;ipinfo_time&#39;</span><span class="p">,</span> <span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="s1">&#39;postal&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span>
+<span class="s1">&#39;ipinfo_time&#39;</span><span class="p">,</span> <span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="s1">&#39;postal&#39;</span><span class="p">,</span> <span class="s1">&#39;city_name&#39;</span><span class="p">,</span> <span class="s1">&#39;region_name&#39;</span><span class="p">,</span>
 <span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp_time&#39;</span><span class="p">,</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;tcp_time&#39;</span><span class="p">,</span> <span class="s1">&#39;udp&#39;</span><span class="p">,</span> <span class="s1">&#39;udp_time&#39;</span><span class="p">,</span>
 <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;http_time&#39;</span><span class="p">,</span> <span class="s1">&#39;http_status&#39;</span><span class="p">,</span> <span class="s1">&#39;http_size&#39;</span><span class="p">,</span> <span class="s1">&#39;http_h2&#39;</span>
 </pre></div>
@@ -844,12 +875,76 @@ If this option is activated, continuing to collect data forcibly.</p>
   <span class="s2">&quot;ipinfo_time&quot;</span><span class="p">:</span> <span class="mf">171.3</span><span class="p">,</span>
   <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
   <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Marunouchi&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;city_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Marunouchi&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;region_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
   <span class="s2">&quot;postal&quot;</span><span class="p">:</span> <span class="s2">&quot;******&quot;</span><span class="p">,</span>
   <span class="s2">&quot;org&quot;</span><span class="p">:</span> <span class="s2">&quot;******** Inc.&quot;</span><span class="p">,</span>
   <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;Asia/Tokyo&quot;</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="json-all">
+<h3><code class="docutils literal notranslate"><span class="pre">--json_all</span></code><a class="headerlink" href="#json-all" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--json_all</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--json=2</span> <span class="pre">--exhaustive</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> bool</p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">json_all</span>
+
+<span class="n">RESULT</span><span class="p">:</span>
+<span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;IPINFO&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;errors&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s2">&quot;sequence&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;original&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;target_raw&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;160.*.*.*&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;160.*.*.*&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ip_int&quot;</span><span class="p">:</span> <span class="o">******</span><span class="p">,</span>
+  <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+  <span class="s2">&quot;group_int&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;group_found&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s2">&quot;group_status&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;*********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;network_start&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;network_end&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ip_hex&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ip_reversed&quot;</span><span class="p">:</span> <span class="s2">&quot;********&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ip_type&quot;</span><span class="p">:</span> <span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;geo&quot;</span><span class="p">:</span> <span class="s2">&quot;35.5333,139.6100&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ipinfo_time&quot;</span><span class="p">:</span> <span class="mf">171.3</span><span class="p">,</span>
+  <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;city_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Marunouchi&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;region_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;postal&quot;</span><span class="p">:</span> <span class="s2">&quot;******&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;org&quot;</span><span class="p">:</span> <span class="s2">&quot;******** Inc.&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;timezone&quot;</span><span class="p">:</span> <span class="s2">&quot;Asia/Tokyo&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geoip">
+<h3><code class="docutils literal notranslate"><span class="pre">--geoip</span></code><a class="headerlink" href="#geoip" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span> <span class="pre">--format=area</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> bool</p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INPUT:
+$ ipsurv google.com --geoip
+
+RESULT:
+google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
 </pre></div>
 </div>
 </div>
@@ -1017,6 +1112,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
@@ -1026,6 +1122,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 <li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
 
   <div>

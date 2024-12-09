@@ -208,9 +208,8 @@ In `./util`, there are some util classes. Those are used in various places.
 | Path                      | Classes                     |
 |----------------------|--------------------------------------------------|
 | ./util/args_util.py      | `ArgValidator`, `StdinLoader` |
-| ./util/network_util.py    | `IpUtil`, `DnsUtil`        |
+| ./util/network_util.py    | `DnsUtil`        |
 | ./util/sys_util.py       | `AppException`, `System`    |
-
 
 
 ## Internal specifications / Misc

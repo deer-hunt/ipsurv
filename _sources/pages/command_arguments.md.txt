@@ -41,6 +41,26 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 ~~~~~
 ```
 
+### `--debug`
+
+`--debug` is equivalent to `--verbose=3`.
+
+- **Type:** `bool`
+- **Default:** `False`
+
+- **Example:**
+
+```
+INPUT:
+--debug
+
+RESULT:
+Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
+2024-12-08 15:57:53,591 - INFO - ENV(IPSURV_ARGS):
+~~~~~
+```
+
+
 ### `--log`
 
 Verbose log filename. If you specify filename, verbose log is written to a file. Use with `--verbose` option.
@@ -135,6 +155,7 @@ RESULT:
 
 ```bash
 $ IPSURV_CONF='{"ipinfo_token": "???????"}'
+$ IPSURV_CONF='{"geoip": {"path": "/home/user/GeoIP/", "files": {"country": "geoip2-country.mmdb"}}}'
 $ export IPSURV_CONF
 ```
 
@@ -214,20 +235,26 @@ INPUT: --end=25
 Data collectors. Those are collected by specific order.
 
 - **Type:** `str`
-- **Default:** `'rdap;dnstxt;dnsreverse;ipinfo'`
+- **Default:** `'rdap;dnstxt;ipinfo;dnsreverse;geoip'`
 - **Values:**
 
 | Type        | Description                                         | Format parameters  |
 |-------------|-----------------------------------------------------|----------|
-| `rdap`        | Request by RDAP server. | country,cidr,network_start,network_end,country_updated,<br>name,port43,handle,org,address,description    |
-| `dnstxt`      | Request by DNS TXT record. | country,cidr,network_start,network_end,rir    |
-| `dnsreverse`   | Request by reverse DNS lookup. | country,hostname,city,region,postal,geo,org,timezone    |
-| `ipinfo`      | Request by ipinfo.net. | hostname    |
+| `rdap`        | Collecting by RDAP server. | country,cidr,network_start,network_end,country_updated,<br>name,port43,handle,org,address,description    |
+| `dnstxt`      | Collecting by DNS TXT record. | country,cidr,network_start,network_end,rir    |
+| `ipinfo`   | Collecting by reverse ipinfo.net. | country,hostname,city_name,region_name,postal,geo,org,timezone    |
+| `dnsreverse`      | Collecting by DNS lookup. | hostname    |
+| `geoip`      | Collecting by geoip. | continent, continent_name, country, country_name, timezone, geo, asn, org, (city, city_name)    |
 
 - **Example:**
 
 ```
-INPUT: --collect="rdap;dnstxt", --collect="ipinfo"
+INPUT: 
+--collect="rdap;dnstxt"  # rdap -> dnstxt
+--collect="ipinfo"
+--collect="geoip"
+--collect="geoip;ipinfo" # geoip -> ipinfo
+--collect="ipinfo;geoip" # ipinfo -> geoip
 ```
 
 ### `--all_collect`
@@ -374,7 +401,8 @@ Output format. Specify `Profile` or `Parameter`.
 | `address`    | Address.    |
 | `timezone`   | Timezone.                      |
 | `network`    | CIDR.              |
-| `geo`        | Geolocation.                  |
+| `geo`        | Geolocation with Country code.                  |
+| `area`        | Country name, Geo, Timezone, etc..                  |
 | `system`        | IP for system. ip_int, ip_hex, ip_reversed                  |
 | `web`       | HTTP response.     |
 | `simple`     | Group, Country.      |
@@ -395,7 +423,7 @@ Output format. Specify `Profile` or `Parameter`.
 'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'timezone', 'description',
 'dnstxt_time', 'rir',
 'dnsreverse_time', 'hostname',
-'ipinfo_time', 'geo', 'postal', 'city', 'region',
+'ipinfo_time', 'geo', 'postal', 'city_name', 'region_name',
 'icmp', 'icmp_time', 'tcp', 'tcp_time', 'udp', 'udp_time',
 'http', 'http_time', 'http_status', 'http_size', 'http_h2'
 ```
@@ -643,14 +671,78 @@ RESULT:
   "ipinfo_time": 171.3,
   "hostname": "",
   "country": "JP",
-  "city": "Marunouchi",
-  "region": "Tokyo",
+  "city_name": "Marunouchi",
+  "region_name": "Tokyo",
   "postal": "******",
   "org": "******** Inc.",
   "timezone": "Asia/Tokyo"
 }
 ```
 
+### `--json_all`
+
+`--json_all` is equivalent to `--json=2 --exhaustive`.
+
+- **Type:** bool
+- **Default:** `False`
+- **Example:**
+
+```
+INPUT: --json_all
+
+RESULT:
+{
+  "success": true,
+  "status": "OK",
+  "requests": [
+    "IPINFO"
+  ],
+  "errors": [],
+  "sequence": 1,
+  "original": "********",
+  "target_raw": "********",
+  "target": "160.*.*.*",
+  "ip": "160.*.*.*",
+  "ip_int": ******,
+  "port": null,
+  "group_int": 0,
+  "group": "",
+  "group_found": false,
+  "group_status": "-",
+  "name": "*********",
+  "network_start": "********",
+  "network_end": "********",
+  "ip_hex": "********",
+  "ip_reversed": "********",
+  "ip_type": "PUBLIC",
+  "geo": "35.5333,139.6100",
+  "ipinfo_time": 171.3,
+  "hostname": "",
+  "country": "JP",
+  "city_name": "Marunouchi",
+  "region_name": "Tokyo",
+  "postal": "******",
+  "org": "******** Inc.",
+  "timezone": "Asia/Tokyo"
+}
+```
+
+
+### `--geoip`
+
+`--geoip_only` is equivalent to `--collect=geoip --format=area`.
+
+- **Type:** bool
+- **Default:** `False`
+- **Example:**
+
+```
+INPUT:
+$ ipsurv google.com --geoip
+
+RESULT:
+google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
+```
 
 ##  Server reactivity
 

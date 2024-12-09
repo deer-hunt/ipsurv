@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Using GeoIP2 &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Customizing and Examples" href="customize_examples.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="customize_examples.html" title="Customizing and Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">About Using GeoIP2</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="about-using-geoip2">
+<h1>About Using GeoIP2<a class="headerlink" href="#about-using-geoip2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IpSurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally. If <code class="docutils literal notranslate"><span class="pre">GeoIP2</span></code> module is installed and there are <code class="docutils literal notranslate"><span class="pre">mmdb</span></code> files, You can use GeoIP2 features via <code class="docutils literal notranslate"><span class="pre">IpSurv</span></code>.</p>
+<p>When using the GeoIP2 module, network communication does not occur, So fast processing can be realized.</p>
+<p><code class="docutils literal notranslate"><span class="pre">GeoIP2</span></code> is a MaxMind inc’s product. There are free version and paid version in <code class="docutils literal notranslate"><span class="pre">GeoIP2</span></code>.
+Free version is <a class="reference external" href="https://github.com/P3TERX/GeoLite.mmdb">GeoLite2</a>. Paid version is <a class="reference external" href="https://www.maxmind.com/en/geoip-databases">GeoIP Databases</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dev.maxmind.com/geoip/">Development document</a></p></li>
+<li><p><a class="reference external" href="https://www.maxmind.com/en/home">MaxMind website</a></p></li>
+</ul>
+</div>
+<div class="section" id="geoip2-installation">
+<h2>GeoIP2 Installation<a class="headerlink" href="#geoip2-installation" title="Permalink to this headline">¶</a></h2>
+<p>It’s required installing geoip2 python module to use by <code class="docutils literal notranslate"><span class="pre">IpSurv</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install geoip2
+</pre></div>
+</div>
+<p>For more details, please read <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">here</a>.</p>
+</div>
+<div class="section" id="setup-geoip2-data">
+<h2>Setup GeoIP2 data<a class="headerlink" href="#setup-geoip2-data" title="Permalink to this headline">¶</a></h2>
+<p>After installing GeoIP2 module, Setup GeoIP2 data files - <code class="docutils literal notranslate"><span class="pre">mmdb</span> <span class="pre">file</span></code>.</p>
+<p>GeoLite2’s data files are <a class="reference external" href="https://github.com/P3TERX/GeoLite.mmdb">here</a>. For the paid version, check the MaxMind web page.
+And Store <code class="docutils literal notranslate"><span class="pre">mmdb</span> <span class="pre">file</span></code> to specified path.</p>
+<p><strong>Example dirs</strong></p>
+<ul class="simple">
+<li><p>/usr/local/share/GeoIP/</p></li>
+</ul>
+<p><strong>Example file paths</strong></p>
+<ul class="simple">
+<li><p>/usr/local/share/GeoIP/GeoLite2-City.mmdb</p></li>
+<li><p>/usr/local/share/GeoIP/GeoLite2-Country.mmdb</p></li>
+<li><p>/usr/local/share/GeoIP/GeoLite2-ASN.mmdb</p></li>
+</ul>
+</div>
+<div class="section" id="ipsurv-s-settings">
+<h2>IpSurv’s settings<a class="headerlink" href="#ipsurv-s-settings" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IpSurv</span></code> detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it’s unnecessary to settings.</p>
+<div class="section" id="a-auto-detection-path">
+<h3>a. Auto-detection path<a class="headerlink" href="#a-auto-detection-path" title="Permalink to this headline">¶</a></h3>
+<p><strong>Data dirs</strong></p>
+<ul class="simple">
+<li><p>/usr/local/share/GeoIP/</p></li>
+<li><p>/var/lib/GeoIP/</p></li>
+<li><p>/opt/geoip/</p></li>
+<li><p>~/geoip/</p></li>
+</ul>
+<p><strong>Data files</strong></p>
+<ul class="simple">
+<li><p>GeoLite2-Country.mmdb, GeoIP2-Country.mmdb</p></li>
+<li><p>GeoLite2-City.mmdb, GeoIP2-City.mmdb</p></li>
+<li><p>GeoLite2-ASN.mmdb, GeoIP2-ASN.mmdb</p></li>
+</ul>
+</div>
+<div class="section" id="b-specify-path-manually">
+<h3>b. Specify path manually<a class="headerlink" href="#b-specify-path-manually" title="Permalink to this headline">¶</a></h3>
+<p>If you’d like to specify paths manually, specifying IpSurv’s environment variables - <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code>.</p>
+<div class="section" id="ipsurv-conf-s-geoip-parameters">
+<h4>IPSURV_CONF’s geoip parameters<a class="headerlink" href="#ipsurv-conf-s-geoip-parameters" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Root parameter name is <code class="docutils literal notranslate"><span class="pre">geoip</span></code>.</p></li>
+<li><p>The structure of the <code class="docutils literal notranslate"><span class="pre">geoip</span></code> parameter is as follows.</p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Param name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>e.g.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p>GeoIP’s data directory path.</p></td>
+<td><p>/home/user/GeoIP/</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">files</span></code></p></td>
+<td><p>GeoIP’s data file names.</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>├ <code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
+<td><p>Country data file.</p></td>
+<td><p>geoip2-country.mmdb</p></td>
+</tr>
+<tr class="row-odd"><td><p>├ <code class="docutils literal notranslate"><span class="pre">city</span></code></p></td>
+<td><p>City data file.</p></td>
+<td><p>geoip2-city.mmdb</p></td>
+</tr>
+<tr class="row-even"><td><p>├ <code class="docutils literal notranslate"><span class="pre">asn</span></code></p></td>
+<td><p>ASN data file.</p></td>
+<td><p>geoip2-asn.mmdb</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<p><strong>Example1: Output environment variable</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ IPSURV_CONF=&#39;{&quot;geoip&quot;: {&quot;path&quot;: &quot;/home/user/GeoIP/&quot;, &quot;files&quot;: {&quot;country&quot;: &quot;geoip2-country.mmdb&quot;}}}&#39;
+$ export IPSURV_CONF
+</pre></div>
+</div>
+<p><strong>Example2: Add environment variable to “.bashrc”</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vi ~/.bashrc
+
+Append &quot;IPSURV_CONF&quot; setting.
+--
+IPSURV_CONF=&#39;{&quot;geoip&quot;: {&quot;path&quot;: &quot;/home/user/GeoIP/&quot;, &quot;files&quot;: {&quot;country&quot;: &quot;geoip2-country.mmdb&quot;, &quot;city&quot;: &quot;geoip2-city.mmdb&quot;}}}&#39;
+export IPSURV_CONF
+--
+
+$ source ~/.bashrc
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-ipsurv-command">
+<h2>Run IpSurv command<a class="headerlink" href="#run-ipsurv-command" title="Permalink to this headline">¶</a></h2>
+<p>After installation and setup, you can use GeoIp2 features via IpSurv. Here are some usage examples.</p>
+<p><strong>–geoip_only option</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span> <span class="pre">--format=area</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+</pre></div>
+</div>
+<p><strong>–collect=geoip option</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
+original,continent,continent_name,country,geo
+8.8.8.8,NA,North America,US,37.751;-97.822
+</pre></div>
+</div>
+<p><strong>Specify domain</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv www.wikipedia.org --format=&quot;{country},{geo}&quot; --collect=geoip --headers=1
+original,country,geo
+www.wikipedia.org,US,37.751;-97.822
+</pre></div>
+</div>
+<p><strong>Bulk Surveying</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat ./example_data/government.txt|ipsurv --geoip_only --headers=1
+original,continent,continent_name,country,country_name,timezone,geo
+www.whitehouse.gov,NA,North America,US,United States,America/Los_Angeles,37.7809;-122.4245
+www.state.gov,NA,North America,US,United States,America/Chicago,37.751;-97.822
+www.treasury.gov,AS,Asia,JP,Japan,Asia/Tokyo,35.6893;139.6899
+www.gov.uk,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
+www.gov.uk,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
+www.gouvernement.fr,EU,Europe,FR,France,Europe/Paris,48.8582;2.3387
+www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
+</pre></div>
+</div>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>Parameters in <code class="docutils literal notranslate"><span class="pre">--format</span></code>  that can be specified by the `GeoIP2 features are as follows.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">continent</span></code></p></td>
+<td><p>Continent code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">continent_name</span></code></p></td>
+<td><p>Continent name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
+<td><p>Country code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">country_name</span></code></p></td>
+<td><p>Country name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subdivision</span></code></p></td>
+<td><p>Subdivision code. Not support GeoLite2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subdivision_name</span></code></p></td>
+<td><p>Subdivision name. Not support GeoLite2.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">city</span></code></p></td>
+<td><p>City code. Not support GeoLite2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">city_name</span></code></p></td>
+<td><p>City name. Not support GeoLite2.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
+<td><p>Timezone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
+<td><p>Geographical coordinates (latitude and longitude)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asn</span></code></p></td>
+<td><p>ASN.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">org</span></code></p></td>
+<td><p>Organization.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="about-collect-mode">
+<h2>About “collect” mode<a class="headerlink" href="#about-collect-mode" title="Permalink to this headline">¶</a></h2>
+<p>When using GeoIp2, <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is recommended.  Default value of <code class="docutils literal notranslate"><span class="pre">collect</span> <span class="pre">option</span></code> is <code class="docutils literal notranslate"><span class="pre">rdap;dnstxt;ipinfo;dnsreverse;geoip</span></code>, therefore, GeoIP2 data collection is ran last.</p>
+<p><strong>Recommend option</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code></p>
+<p><strong>Prefer GeoIP2</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">--colect=&quot;geoip;ipinfo&quot;</span></code></p>
+<p><strong>Supplemented by GeoIP2</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">--colect=&quot;rdap;ipinfo;geoip&quot;</span></code></p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If you are unable to use GeoIP2 features despite having installed it correctly, please refer to the following.</p>
+<p><strong>Output debug information by <code class="docutils literal notranslate"><span class="pre">--debug</span></code></strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv reddit.com --geoip_only --headers=1 --debug
+</pre></div>
+</div>
+<p><strong>Error example1</strong></p>
+<p>The following example shows a failure to load GeoIP2 data file due to a “path” specification error, <code class="docutils literal notranslate"><span class="pre">/home/dummy/GeoIP/</span></code>.
+Check each “CHECK” points.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">608</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">ENV</span><span class="p">(</span><span class="n">IPSURV_ARGS</span><span class="p">):</span>
+<span class="p">{}</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">608</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">ENV</span><span class="p">(</span><span class="n">IPSURV_CONF</span><span class="p">):</span>        <span class="c1"># [CHECK-1] ---------------------------------- Load IPSURV_CONF.</span>
+<span class="p">{</span> <span class="s1">&#39;geoip&#39;</span><span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;country.mmdb&#39;</span><span class="p">},</span>
+             <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;/home/dummy/GeoIP/&#39;</span><span class="p">}}</span>                    <span class="c1"># Error</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">608</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">ARGUMENTS</span><span class="p">:</span>
+<span class="o">~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">608</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">ARGUMENTS_JSON</span><span class="p">:</span>
+<span class="o">~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">608</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="n">delimiter</span><span class="p">:,</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="nb">format</span><span class="p">:{</span><span class="n">original</span><span class="p">},{</span><span class="n">continent</span><span class="p">},{</span><span class="n">continent_name</span><span class="p">},{</span><span class="n">country</span><span class="p">},{</span><span class="n">country_name</span><span class="p">},{</span><span class="n">timezone</span><span class="p">},{</span><span class="n">geo</span><span class="p">}</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="n">timeout</span><span class="p">:{</span><span class="s1">&#39;dns&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span> <span class="s1">&#39;reactivity&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">}</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="n">enclose</span><span class="p">:</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="n">ranges</span><span class="p">:[]</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fixed</span> <span class="n">collectors</span><span class="p">:[</span><span class="s1">&#39;geoip&#39;</span><span class="p">]</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">609</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">MODE</span><span class="p">:</span><span class="n">SURVEY_IPS</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">616</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">GEOIP</span><span class="p">:</span><span class="n">ENABLED</span>                  <span class="c1"># [CHECK-2] ---------------------------------- GEOIP is enabled.</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">616</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">GEOIP_DATA_PATH</span><span class="p">:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">dummy</span><span class="o">/</span><span class="n">GeoIP</span><span class="o">/</span> <span class="c1"># [CHECK3] ---------------------- Data path.</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">616</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">GEOIP_DATA_FILES</span><span class="p">:{</span><span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="s1">&#39;country.mmdb&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;asn&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span> <span class="c1"># [CHECK4] ------ Data files.</span>
+<span class="o">~~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">623</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">GEOIP</span> <span class="n">ERROR</span>                  <span class="c1"># [CHECK-5] --------------------------------- Error occur</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/data_collector/data_collector.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">33</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request</span>
+    <span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_data</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">requires</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/data_collector/geoip_collector.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">54</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request_data</span>
+    <span class="k">raise</span> <span class="n">error_city</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/data_collector/geoip_collector.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">69</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_request_city</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">requester</span><span class="o">.</span><span class="n">request_city</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/requester/geoip.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">140</span><span class="p">,</span> <span class="ow">in</span> <span class="n">request_city</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">reader_city</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_reader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">TYPE_CITY</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/requester/geoip.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">94</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_create_reader</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;GeoIp data file none.(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gtype</span><span class="p">))</span>        <span class="c1"># [CHECK-6] --------------------------------- Error reason1</span>
+<span class="ne">Exception</span><span class="p">:</span> <span class="n">GeoIp</span> <span class="n">data</span> <span class="n">file</span> <span class="n">none</span><span class="o">.</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>                                   <span class="c1"># [CHECK-7] --------------------------------- Error reason2</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">623</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">GEOIP_DATA</span><span class="p">:</span>
+<span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;GeoIp data file none.(city)&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Error example2</strong></p></li>
+</ul>
+<p>The following example shows a failure to load <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Enable</span> <span class="n">verbose</span> <span class="n">mode</span><span class="o">.</span> <span class="n">Current</span><span class="p">:</span><span class="mi">3</span> <span class="p">[</span><span class="n">Level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">TRACE_ERROR</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="n">INFO</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="n">DEBUG</span><span class="p">]</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">22</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">064</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Env</span> <span class="n">parse</span> <span class="n">error</span><span class="o">.</span><span class="p">(</span><span class="n">IPSURV_CONF</span><span class="p">)</span>                        <span class="c1"># Error</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/path/to/ipsurv/util/args_util.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">109</span><span class="p">,</span> <span class="ow">in</span> <span class="n">load_env</span>
+    <span class="n">tv</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/json/__init__.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">348</span><span class="p">,</span> <span class="ow">in</span> <span class="n">loads</span>
+    <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/json/decoder.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">337</span><span class="p">,</span> <span class="ow">in</span> <span class="n">decode</span>
+    <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/json/decoder.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">353</span><span class="p">,</span> <span class="ow">in</span> <span class="n">raw_decode</span>
+    <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_once</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+<span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span> <span class="n">Expecting</span> <span class="s1">&#39;,&#39;</span> <span class="n">delimiter</span><span class="p">:</span> <span class="n">line</span> <span class="mi">1</span> <span class="n">column</span> <span class="mi">85</span> <span class="p">(</span><span class="n">char</span> <span class="mi">84</span><span class="p">)</span>
+<span class="mi">2024</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">09</span> <span class="mi">22</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">065</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Fail</span> <span class="n">to</span> <span class="n">load</span> <span class="n">env</span><span class="o">.</span><span class="p">(</span><span class="n">IPSURV_CONF</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The JSON format of <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code> may be error. JSON format checks using tools like <a class="reference external" href="https://prantlf.github.io/jsonlint/">jsonlint</a> and others are recommended.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About Using GeoIP2</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="customize_examples.html"
+                          title="previous chapter">Customizing and Examples</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Links</h3>
+	<ul>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="customize_examples.html" title="Customizing and Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">About Using GeoIP2</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

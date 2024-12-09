@@ -36,6 +36,8 @@ Overview
 
    $ cat ips.txt|ipsurv 192.168.1.10
    $ ipsurv 192.168.1.10 192.168.1.11
+   $ ipsurv wikipedia.org
+
    $ ipsurv self
 
 
@@ -55,6 +57,7 @@ IpSurv's documents
    pages/development_debug.md
    pages/command_examples.md
    pages/customize_examples.md
+   pages/using_geoip2.md
 
 Modules and Classes reference
 ==================================

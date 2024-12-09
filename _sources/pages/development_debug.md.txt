@@ -28,7 +28,7 @@ Please read [Customizing and Examples(.md)](customize_examples.md). There are so
 
 ## Debugging
 
-You can see detailed debug information by specifying `--verbose=3`. In detail, please read `--verbose` option in [Command Arguments(.md)](command_arguments.md).
+You can see detailed debug information by specifying `--verbose=3` or `--debug`. In detail, please read `--verbose` option in [Command Arguments(.md)](command_arguments.md).
 
 
 ### Log sample and description
@@ -139,21 +139,21 @@ socket.herror: [Errno 1] Unknown host
 2024-10-26 23:26:03,824 - INFO - IPINFO_URL:https://ipinfo.io/192.0.66.168/json?
 2024-10-26 23:26:04,477 - DEBUG - IPINFO_DATA:          // Response data.
 { 'anycast': True,
-  'city': 'San Francisco',
+  'city_name': 'San Francisco',
   'country': 'US',
   'ip': '192.0.66.168',
   'loc': '37.7749,-122.4194',
   'org': 'AS2635 Automattic, Inc',
   'postal': '94102',
   'readme': 'https://ipinfo.io/missingauth',
-  'region': 'California',
+  'region_name': 'California',
   'timezone': 'America/Los_Angeles'}
 2024-10-26 23:26:04,477 - INFO - IPINFO:OK          // Response status.
 2024-10-26 23:26:04,477 - INFO - IPINFO_TIME(ms):665.4          // Response time.
 2024-10-26 23:26:04,478 - INFO - COLLECTED_DATA:          // Collected data.
 { 'address': '60 29th Street #343 San Francisco CA 94110 United States',
   'cidr': '192.0.64.0/18',
-  'city': 'San Francisco',
+  'city_name': 'San Francisco',
   'country': 'US',
   'country_updated': True,
   'description': 'Geofeed https://as2635.network/geofeed.csv',
@@ -180,7 +180,7 @@ socket.herror: [Errno 1] Unknown host
   'port43': 'whois.arin.net',
   'postal': '94102',
   'rdap_time': 558.4,
-  'region': 'California',
+  'region_name': 'California',
   'requests': ['RDAP', 'DNSREVERSE', 'IPINFO'],
   'sequence': 1,
   'status': 'NG',

@@ -67,6 +67,7 @@ $<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </s
 <li><p>Check ICMP, TCP, UDP, HTTP.</p></li>
 <li><p>Set timeout.</p></li>
 <li><p>Load env variable. And changing arguments and internal configures.</p></li>
+<li><p>Use GeoIP2 via IpSurv optionally.</p></li>
 </ul>
 </div>
 <div class="section" id="usage">
@@ -117,55 +118,24 @@ www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HT
 www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 </pre></div>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span>default<span class="w"> </span>--json<span class="o">=</span><span class="m">2</span><span class="w"> </span>--exhaustive
-<span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;success&quot;</span>:<span class="w"> </span>true,
-<span class="w">  </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;OK&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;requests&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">        </span><span class="s2">&quot;RDAP&quot;</span>
-<span class="w">  </span><span class="o">]</span>,
-<span class="w">  </span><span class="s2">&quot;errors&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
-<span class="w">  </span><span class="s2">&quot;sequence&quot;</span>:<span class="w"> </span><span class="m">1</span>,
-<span class="w">  </span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
-<span class="w">  </span><span class="s2">&quot;port&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;group_int&quot;</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">  </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;group_found&quot;</span>:<span class="w"> </span>false,
-<span class="w">  </span><span class="s2">&quot;group_status&quot;</span>:<span class="w"> </span><span class="s2">&quot;-&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;WIKIMEDIA-AP&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.255&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip_hex&quot;</span>:<span class="w"> </span><span class="s2">&quot;67.66.A6.E0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip_reversed&quot;</span>:<span class="w"> </span><span class="s2">&quot;224.166.102.103&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span>,
-<span class="w">  </span>~~~~~~~~~~~~~
-<span class="w">  </span><span class="s2">&quot;org&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;address&quot;</span>:<span class="w"> </span><span class="s2">&quot;1 Montgomery Street Suite 1600&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.raw&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.identifier&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.identifier_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
-<span class="w">  </span><span class="s2">&quot;target.identified&quot;</span>:<span class="w"> </span>true,
-<span class="w">  </span><span class="s2">&quot;target.ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.url&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;target.fqdn&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.port&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;target.status&quot;</span>:<span class="w"> </span><span class="s2">&quot;EXIST&quot;</span>
-<span class="o">}</span>
-</pre></div>
-</div>
 <p>For details, <a class="reference external" href="pages/command_arguments.html">Command arguments reference</a> / <a class="reference external" href="pages/command_examples.html">Command examples</a></p>
 </div>
+</div>
+<div class="section" id="using-geoip2-optionally">
+<h1>Using GeoIP2 optionally<a class="headerlink" href="#using-geoip2-optionally" title="Permalink to this headline">¶</a></h1>
+<p><cite>IpSurv</cite> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally. If <cite>GeoIP2</cite> module is installed and there are <cite>mmdb</cite> files, You can use GeoIP2 features via <cite>IpSurv</cite>.
+When using the GeoIP2 module, network communication does not occur, which enables faster processing.</p>
+<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html">Using GeoIp2</a> documentation in detail.</p>
+<p><strong>Examples</strong></p>
+<p><cite>IpSuv</cite> support customizing GeoIP2 data path by <cite>IPSURV_CONF</cite> env.</p>
 </div>
 <div class="section" id="debugging">
 <h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
 <p>In verbose mode, outputting internal data and behaviors in detail.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1">#INFO</span>
 $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="c1">#DEBUG</span>
+
+$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--debug<span class="w">  </span><span class="c1">#DEBUG  This option is equivalent to &quot;--verbose=3&quot;</span>
 </pre></div>
 </div>
 <p>For details, <a class="reference external" href="pages/development_debug.html">Development and Debugging</a></p>
@@ -193,6 +163,7 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">
 <li class="toctree-l2"><a class="reference internal" href="#command-examples">Command examples</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
@@ -202,6 +173,7 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>--verbose<span class="o">
 <li class="toctree-l1"><a class="reference internal" href="pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/command_examples.html">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
 
   <div>

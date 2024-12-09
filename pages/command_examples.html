@@ -381,6 +381,32 @@ reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 </pre></div>
 </div>
 </div>
+<div class="section" id="using-geoip2">
+<h2>Using GeoIP2<a class="headerlink" href="#using-geoip2" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IpSurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally.</p>
+<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html">Using GeoIp2</a> documentation in detail.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.100 --format=&quot;{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
+
+$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
+original,continent,continent_name,country,geo
+8.8.8.8,NA,North America,US,37.751;-97.822
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --collect=geoip --format=area
+$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{country_name},{timezone},{geo}&quot; --collect=&quot;geoip&quot;
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv reddit.com --geoip_only --headers=1
+original,continent,continent_name,country,country_name,timezone,geo
+reddit.com,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
+</pre></div>
+</div>
+</div>
 <div class="section" id="enable-verbose-log">
 <h2>Enable verbose log<a class="headerlink" href="#enable-verbose-log" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.100 --verbose=1 # TRACE ERROR
@@ -438,6 +464,7 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
@@ -447,6 +474,7 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 <li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
 
   <div>

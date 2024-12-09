@@ -79,7 +79,7 @@ You are able to customize “IpSurv”.</p>
 </div>
 <div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
-<p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option in <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments(.md)</span></a>.</p>
+<p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code> or <code class="docutils literal notranslate"><span class="pre">--debug</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option in <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments(.md)</span></a>.</p>
 <div class="section" id="log-sample-and-description">
 <h3>Log sample and description<a class="headerlink" href="#log-sample-and-description" title="Permalink to this headline">¶</a></h3>
 <p>The following is debugging log with each comments.</p>
@@ -186,21 +186,21 @@ socket.herror: [Errno 1] Unknown host
 2024-10-26 23:26:03,824 - INFO - IPINFO_URL:https://ipinfo.io/192.0.66.168/json?
 2024-10-26 23:26:04,477 - DEBUG - IPINFO_DATA:          // Response data.
 { &#39;anycast&#39;: True,
-  &#39;city&#39;: &#39;San Francisco&#39;,
+  &#39;city_name&#39;: &#39;San Francisco&#39;,
   &#39;country&#39;: &#39;US&#39;,
   &#39;ip&#39;: &#39;192.0.66.168&#39;,
   &#39;loc&#39;: &#39;37.7749,-122.4194&#39;,
   &#39;org&#39;: &#39;AS2635 Automattic, Inc&#39;,
   &#39;postal&#39;: &#39;94102&#39;,
   &#39;readme&#39;: &#39;https://ipinfo.io/missingauth&#39;,
-  &#39;region&#39;: &#39;California&#39;,
+  &#39;region_name&#39;: &#39;California&#39;,
   &#39;timezone&#39;: &#39;America/Los_Angeles&#39;}
 2024-10-26 23:26:04,477 - INFO - IPINFO:OK          // Response status.
 2024-10-26 23:26:04,477 - INFO - IPINFO_TIME(ms):665.4          // Response time.
 2024-10-26 23:26:04,478 - INFO - COLLECTED_DATA:          // Collected data.
 { &#39;address&#39;: &#39;60 29th Street #343 San Francisco CA 94110 United States&#39;,
   &#39;cidr&#39;: &#39;192.0.64.0/18&#39;,
-  &#39;city&#39;: &#39;San Francisco&#39;,
+  &#39;city_name&#39;: &#39;San Francisco&#39;,
   &#39;country&#39;: &#39;US&#39;,
   &#39;country_updated&#39;: True,
   &#39;description&#39;: &#39;Geofeed https://as2635.network/geofeed.csv&#39;,
@@ -227,7 +227,7 @@ socket.herror: [Errno 1] Unknown host
   &#39;port43&#39;: &#39;whois.arin.net&#39;,
   &#39;postal&#39;: &#39;94102&#39;,
   &#39;rdap_time&#39;: 558.4,
-  &#39;region&#39;: &#39;California&#39;,
+  &#39;region_name&#39;: &#39;California&#39;,
   &#39;requests&#39;: [&#39;RDAP&#39;, &#39;DNSREVERSE&#39;, &#39;IPINFO&#39;],
   &#39;sequence&#39;: 1,
   &#39;status&#39;: &#39;NG&#39;,
@@ -276,6 +276,7 @@ socket.herror: [Errno 1] Unknown host
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
@@ -285,6 +286,7 @@ socket.herror: [Errno 1] Unknown host
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
 
   <div>

@@ -23,6 +23,7 @@ Features
 - Check ICMP, TCP, UDP, HTTP.
 - Set timeout.
 - Load env variable. And changing arguments and internal configures.
+- Use GeoIP2 via IpSurv optionally.
 
 Usage
 ==================================
@@ -87,7 +88,7 @@ Command examples
    www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 
 .. code-block:: shell
-
+	$ ipsurv wikipedia.org --json_all     # `--json_all` is equivalent to `--json=2 --exhaustive`
 	$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 	{
 	  "success": true,
@@ -130,6 +131,32 @@ Command examples
 
 For details, `Command arguments reference <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_
 
+Using GeoIP2 optionally
+==================================
+
+`IpSurv` support `GeoIP2 <https://github.com/maxmind/GeoIP2-python>`_ optionally. If `GeoIP2` module is installed and there are `mmdb` files, You can use GeoIP2 features via `IpSurv`.
+When using the GeoIP2 module, network communication does not occur, which enables faster processing.
+
+Please refer to the `Using GeoIp2 <https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html>`_ documentation in detail.
+
+**Examples**
+
+.. code-block:: shell
+	$ ipsurv 8.8.8.8 --geoip_only
+	8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+
+	$ ipsurv www.wikipedia.org --format="{country},{geo}" --collect=geoip --headers=1
+	original,country,geo
+	www.wikipedia.org,US,37.751;-97.822
+
+	$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{geo}" --collect="geoip" --headers=1
+	original,continent,continent_name,country,geo
+	8.8.8.8,NA,North America,US,37.751;-97.822
+
+
+`IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env.
+
+
 Debugging
 ==================================
 
@@ -139,6 +166,8 @@ In verbose mode, outputting internal data and behaviors in detail.
 
 	$ ipsurv --verbose=2 #INFO
 	$ ipsurv --verbose=3 #DEBUG
+
+	$ ipsurv ***** --debug  #DEBUG  This option is equivalent to "--verbose=3"
 
 
 For details, `Development and Debugging <pages/development_debug.html>`_

@@ -232,13 +232,12 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 }
 ```
 
-More examples is [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
+More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
 
 
 ## Using GeoIP2 optionally
 
 ```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
-
 When using the GeoIP2 module, network communication does not occur, which enables faster processing.
 
 Please refer to the [Using GeoIp2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.

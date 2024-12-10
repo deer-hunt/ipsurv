@@ -545,53 +545,53 @@ If this option is activated, continuing to collect data forcibly.</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Profile</p></th>
-<th class="head"><p>Simple description</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ip</span></code></p></td>
+<tr class="row-even"><td><p><strong>ip</strong></p></td>
 <td><p>IP address.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code></p></td>
+<tr class="row-odd"><td><p><strong>hostname</strong></p></td>
 <td><p>Hostname.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
+<tr class="row-even"><td><p><strong>country</strong></p></td>
 <td><p>Country code.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">org</span></code></p></td>
+<tr class="row-odd"><td><p><strong>org</strong></p></td>
 <td><p>Organization.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">address</span></code></p></td>
+<tr class="row-even"><td><p><strong>address</strong></p></td>
 <td><p>Address.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
+<tr class="row-odd"><td><p><strong>timezone</strong></p></td>
 <td><p>Timezone.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">network</span></code></p></td>
+<tr class="row-even"><td><p><strong>network</strong></p></td>
 <td><p>CIDR.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
+<tr class="row-odd"><td><p><strong>geo</strong></p></td>
 <td><p>Geolocation with Country code.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area</span></code></p></td>
+<tr class="row-even"><td><p><strong>area</strong></p></td>
 <td><p>Country name, Geo, Timezone, etc..</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">system</span></code></p></td>
+<tr class="row-odd"><td><p><strong>system</strong></p></td>
 <td><p>IP for system. ip_int, ip_hex, ip_reversed</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">web</span></code></p></td>
+<tr class="row-even"><td><p><strong>web</strong></p></td>
 <td><p>HTTP response.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">simple</span></code></p></td>
+<tr class="row-odd"><td><p><strong>simple</strong></p></td>
 <td><p>Group, Country.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
+<tr class="row-even"><td><p><strong>default</strong></p></td>
 <td><p>Group, Country, Network, Hostname.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">detail</span></code></p></td>
+<tr class="row-odd"><td><p><strong>detail</strong></p></td>
 <td><p>Default + Organization, CIDR, Address, Description.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heavy</span></code></p></td>
+<tr class="row-even"><td><p><strong>heavy</strong></p></td>
 <td><p>Heavy parameters.</p></td>
 </tr>
 </tbody>
@@ -600,19 +600,251 @@ If this option is activated, continuing to collect data forcibly.</p>
 <div><p>You can see concrete profile’s parameters by using <code class="docutils literal notranslate"><span class="pre">--headers=1</span></code> option.</p>
 </div></blockquote>
 <p><strong>Parameters</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;success&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="s1">&#39;errors&#39;</span><span class="p">,</span>
-<span class="s1">&#39;sequence&#39;</span><span class="p">,</span> <span class="s1">&#39;original&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_int&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">,</span> <span class="s1">&#39;ip_type&#39;</span><span class="p">,</span>
-<span class="s1">&#39;target.raw&#39;</span><span class="p">,</span> <span class="s1">&#39;target.ip&#39;</span><span class="p">,</span> <span class="s1">&#39;target.url&#39;</span><span class="p">,</span> <span class="s1">&#39;target.fqdn&#39;</span><span class="p">,</span>
-<span class="s1">&#39;group_int&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;group_found&#39;</span><span class="p">,</span> <span class="s1">&#39;group_status&#39;</span><span class="p">,</span> <span class="s1">&#39;network_start&#39;</span><span class="p">,</span> <span class="s1">&#39;network_end&#39;</span><span class="p">,</span>
-<span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;cidr&#39;</span><span class="p">,</span>
-<span class="s1">&#39;rdap_time&#39;</span><span class="p">,</span> <span class="s1">&#39;port43&#39;</span><span class="p">,</span> <span class="s1">&#39;country_updated&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;handle&#39;</span><span class="p">,</span> <span class="s1">&#39;address&#39;</span><span class="p">,</span> <span class="s1">&#39;org&#39;</span><span class="p">,</span> <span class="s1">&#39;timezone&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dnstxt_time&#39;</span><span class="p">,</span> <span class="s1">&#39;rir&#39;</span><span class="p">,</span>
-<span class="s1">&#39;dnsreverse_time&#39;</span><span class="p">,</span> <span class="s1">&#39;hostname&#39;</span><span class="p">,</span>
-<span class="s1">&#39;ipinfo_time&#39;</span><span class="p">,</span> <span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="s1">&#39;postal&#39;</span><span class="p">,</span> <span class="s1">&#39;city_name&#39;</span><span class="p">,</span> <span class="s1">&#39;region_name&#39;</span><span class="p">,</span>
-<span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp_time&#39;</span><span class="p">,</span> <span class="s1">&#39;tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;tcp_time&#39;</span><span class="p">,</span> <span class="s1">&#39;udp&#39;</span><span class="p">,</span> <span class="s1">&#39;udp_time&#39;</span><span class="p">,</span>
-<span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;http_time&#39;</span><span class="p">,</span> <span class="s1">&#39;http_status&#39;</span><span class="p">,</span> <span class="s1">&#39;http_size&#39;</span><span class="p">,</span> <span class="s1">&#39;http_h2&#39;</span>
-</pre></div>
-</div>
+<blockquote>
+<div><p>In the case of JSON output, “OK” and “NG” will be output as “true” and “false”.</p>
+</div></blockquote>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>e.g.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>success</strong></p></td>
+<td><p>Success or Failure.</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>status</strong></p></td>
+<td><p>Status.</p></td>
+<td><p>ILLEGAL_FORMAT , RESOLVE_FAIL</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>requests</strong></p></td>
+<td><p>Requested collects. If multiple collections by <code class="docutils literal notranslate"><span class="pre">--collect</span></code> is specified, data that does not need to be collected will not be requested.</p></td>
+<td><p>[“RDAP”, “DNSREVERSE”, “IPINFO”]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>errors</strong></p></td>
+<td><p>Error messages.</p></td>
+<td><p>[“[Errno 1] Unknown host”]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>sequence</strong></p></td>
+<td><p>Line number.</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>original</strong></p></td>
+<td><p>Original input data.</p></td>
+<td><p>8.8.8.8</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>target.*</strong></p></td>
+<td><p>Internal variables.</p></td>
+<td><p>8.8.8.8</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ip</strong></p></td>
+<td><p>IP address.</p></td>
+<td><p>192.168.1.100</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ip_int</strong></p></td>
+<td><p>IP int value.</p></td>
+<td><p>3232235777</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ip_hex</strong></p></td>
+<td><p>IP HEX value.</p></td>
+<td><p>8E.FA.C4.6E</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ip_reversed</strong></p></td>
+<td><p>Reverse IP address notation.</p></td>
+<td><p>100.1.168.192</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>port</strong></p></td>
+<td><p>Port. If the port was identified.</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ip_type</strong></p></td>
+<td><p>Type of IP.</p></td>
+<td><p>PUBLIC, PRIVATE</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>in_range</strong></p></td>
+<td><p>Whether IP is within in cidr range. Refer to <code class="docutils literal notranslate"><span class="pre">--range</span></code> option.</p></td>
+<td><p>RANGE_OK, RANGE_NG</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>group</strong></p></td>
+<td><p>Group value. If <code class="docutils literal notranslate"><span class="pre">--group</span></code> is specified.</p></td>
+<td><p>8.8.8.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>group_int</strong></p></td>
+<td><p>Group int value</p></td>
+<td><p>3232235777</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>group_found</strong></p></td>
+<td><p>Grouped or Not</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>group_status</strong></p></td>
+<td><p>Group status. Ex: First grouping.</p></td>
+<td><p>FOUND, NEW</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>network_start</strong></p></td>
+<td><p>Start IP of the network. If <code class="docutils literal notranslate"><span class="pre">--group</span></code> is specified.</p></td>
+<td><p>192.168.1.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>network_end</strong></p></td>
+<td><p>End IP of the network. If <code class="docutils literal notranslate"><span class="pre">--group</span></code> is specified.</p></td>
+<td><p>192.168.1.255</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cidr</strong></p></td>
+<td><p>CIDR notation.</p></td>
+<td><p>192.168.1.0/24</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hostname</strong></p></td>
+<td><p>Reverse hostname.</p></td>
+<td><p>nrt4512s35-in-f14.1e200.net</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>icmp</strong></p></td>
+<td><p>ICMP status.</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>icmp_time</strong></p></td>
+<td><p>ICMP request ms time.</p></td>
+<td><p>100.9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>tcp</strong></p></td>
+<td><p>TCP status.</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>tcp_time</strong></p></td>
+<td><p>TCP request ms time.</p></td>
+<td><p>50.9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>udp</strong></p></td>
+<td><p>UDP status.</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>udp_time</strong></p></td>
+<td><p>UDP request ms time.</p></td>
+<td><p>100.8</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>http</strong></p></td>
+<td><p>HTTP status.</p></td>
+<td><p>OK, NG</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>http_time</strong></p></td>
+<td><p>HTTP request ms time.</p></td>
+<td><p>200.9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>http_status</strong></p></td>
+<td><p>HTTP response status.</p></td>
+<td><p>200, 404</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>http_size</strong></p></td>
+<td><p>Size of HTTP response.</p></td>
+<td><p>10243</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>http_h2</strong></p></td>
+<td><p>HTTP/2 support status.</p></td>
+<td><p>HTTP2</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>rdap_time</strong></p></td>
+<td><p>RDAP request ms time.</p></td>
+<td><p>10.9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dnstxt_time</strong></p></td>
+<td><p>DNS TXT record ms time.</p></td>
+<td><p>15.9</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dnsreverse_time</strong></p></td>
+<td><p>DNS reverse lookup ms time.</p></td>
+<td><p>30.9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ipinfo_time</strong></p></td>
+<td><p>IP information retrieval ms time.</p></td>
+<td><p>20.9</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>geo</strong></p></td>
+<td><p>Geographical coordinates. (latitude and longitude)</p></td>
+<td><p>37.7642;-122.3993</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>timezone</strong></p></td>
+<td><p>Timezone.</p></td>
+<td><p>America/Los_Angeles</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>asn</strong></p></td>
+<td><p>ASN.</p></td>
+<td><p>AS115169</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>org</strong></p></td>
+<td><p>Organization name.</p></td>
+<td><p>Example Organization Inc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>name</strong></p></td>
+<td><p>Identifying name in RDAP.</p></td>
+<td><p>SKYCA-4</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>handle</strong></p></td>
+<td><p>Handle value.</p></td>
+<td><p>SKYCA-4</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>region_name</strong></p></td>
+<td><p>Region name.</p></td>
+<td><p>California</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>country</strong></p></td>
+<td><p>Country code.</p></td>
+<td><p>US</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>country_name</strong></p></td>
+<td><p>Country name.</p></td>
+<td><p>United States</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>country_updated</strong></p></td>
+<td><p>Whether the country was updated by parsing the address.</p></td>
+<td><p>true, false</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>city</strong></p></td>
+<td><p>City code.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>city_name</strong></p></td>
+<td><p>City name.</p></td>
+<td><p>San Francisco</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>postal</strong></p></td>
+<td><p>Postal code.</p></td>
+<td><p>194107</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>address</strong></p></td>
+<td><p>Address.</p></td>
+<td><p>PO Box 25782669 San Francisco CA 194107 United States</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
+<td><p>Description in RDAP.</p></td>
+<td><p>“Example description”</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rir</strong></p></td>
+<td><p>Regional Internet Registry.</p></td>
+<td><p>ARIN</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>port43</strong></p></td>
+<td><p>Whois server by RDAP data.</p></td>
+<td><p>whois.arin.net</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>continent</strong></p></td>
+<td><p>Continent code.</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>continent_name</strong></p></td>
+<td><p>Continent name.</p></td>
+<td><p>North America</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>subdivision</strong></p></td>
+<td><p>Subdivision code.</p></td>
+<td><p>CA</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>subdivision_name</strong></p></td>
+<td><p>Subdivision name.</p></td>
+<td><p>California</p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
 <li><p><strong>Example:</strong></p></li>
 </ul>

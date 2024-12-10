@@ -136,6 +136,8 @@ class SurveyIps:
         requires = self._require_request(data, reqs)
 
         if len(requires) > 0 or len(reqs) == 0 or args.all_collect:
+            requires = requires if not args.all_collect else None
+
             success, response, response_time = collector.request(target, requires)
 
             self.pipeline.post_request(data, name, collector, success, response)

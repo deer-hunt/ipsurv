@@ -43,12 +43,12 @@ class GeoIpCollector(DataCollector):
         response = {'types': []}
 
         only_city_cols = set(self.CITY_COLS) - set(self.COUNTRY_COLS)
-        require_only_city = True if only_city_cols & set(requires) else False
+        require_only_city = True if requires is not None and only_city_cols & set(requires) else False
 
-        if set(self.CITY_COLS) & set(requires):
+        if requires is None or set(self.CITY_COLS) & set(requires):
             error_city = self._request_city(ip, response)
 
-        if set(self.COUNTRY_COLS) & set(requires) and not response.get('country'):
+        if requires is None or set(self.COUNTRY_COLS) & set(requires) and not response.get('country'):
             error_country = self._request_country(ip, response)
 
         if require_only_city and error_city:
@@ -56,7 +56,7 @@ class GeoIpCollector(DataCollector):
         elif error_country:
             raise error_country
 
-        if set(self.ASN_COLS) & set(requires):
+        if requires is None or set(self.ASN_COLS) & set(requires):
             self._request_asn(ip, response)
 
         return True, response

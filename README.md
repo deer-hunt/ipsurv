@@ -114,17 +114,17 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 ```
 [-h] [--verbose {0,1,2,3}] [--debug] [--log LOG]
- [--disable_env] [--resolve RESOLVE] [--identify_int]
- [--autodetect AUTODETECT] [--begin BEGIN] [--end END]
- [--collect COLLECT] [--all_collect] [--timeout TIMEOUT]
- [--group GROUP] [--skip_duplicate {0,1,2}] [--range RANGE]
- [--format FORMAT] [--no_original] [--sequence] [--add_ip]
- [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
- [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
- [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
- [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
- [--geoip_only] [--version]
- [target [target ...]]
+[--disable_env] [--resolve RESOLVE] [--identify_int]
+[--autodetect AUTODETECT] [--begin BEGIN] [--end END]
+[--collect COLLECT] [--all_collect] [--timeout TIMEOUT]
+[--group GROUP] [--skip_duplicate {0,1,2}] [--range RANGE]
+[--format FORMAT] [--no_original] [--sequence] [--add_ip]
+[--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
+[--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
+[--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
+[--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
+[--geoip_only] [--version]
+[target [target ...]]
 ```
 
 **Example options**
@@ -233,6 +233,21 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 ```
 
 More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
+
+
+## Output Format
+
+You can customize output format by ```--format``` option as follows.
+
+```
+ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"
+ipsurv github.io --format=heavy
+ipsurv cloudflare.com --format="{ip},<address>,<system>"
+ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"
+```
+
+In ```--format``` option, You can specify parameter: ```{}``` and profile: ```<>```. For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
+
 
 ## Using GeoIP2 optionally
 

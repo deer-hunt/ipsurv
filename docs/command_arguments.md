@@ -392,41 +392,92 @@ Output format. Specify `Profile` or `Parameter`.
 
 **Profiles**
 
-| Profile        | Simple description                |
+| Profile        | Description                |
 |------------|----------------------------------------------------------------|
-|`ip`         | IP address.                |
-| `hostname`   | Hostname.                |
-| `country`   | Country code.           |
-| `org`     | Organization.            |
-| `address`    | Address.    |
-| `timezone`   | Timezone.                      |
-| `network`    | CIDR.              |
-| `geo`        | Geolocation with Country code.                  |
-| `area`        | Country name, Geo, Timezone, etc..                  |
-| `system`        | IP for system. ip_int, ip_hex, ip_reversed                  |
-| `web`       | HTTP response.     |
-| `simple`     | Group, Country.      |
-| `default`    | Group, Country, Network, Hostname.|
-| `detail`     | Default + Organization, CIDR, Address, Description.       |
-| `heavy`    | Heavy parameters. |
+| **ip**         | IP address.                |
+| **hostname**   | Hostname.                |
+| **country**   | Country code.           |
+| **org**     | Organization.            |
+| **address**    | Address.    |
+| **timezone**   | Timezone.                      |
+| **network**    | CIDR.              |
+| **geo**        | Geolocation with Country code.                  |
+| **area**        | Country name, Geo, Timezone, etc..                  |
+| **system**        | IP for system. ip_int, ip_hex, ip_reversed                  |
+| **web**       | HTTP response.     |
+| **simple**     | Group, Country.      |
+| **default**    | Group, Country, Network, Hostname.|
+| **detail**     | Default + Organization, CIDR, Address, Description.       |
+| **heavy**    | Heavy parameters. |
 
 > You can see concrete profile's parameters by using `--headers=1` option.
 
 **Parameters**
 
-```
-'success', 'status', 'requests', 'errors',
-'sequence', 'original', 'ip', 'ip_int', 'port', 'ip_type',
-'target.raw', 'target.ip', 'target.url', 'target.fqdn',
-'group_int', 'group', 'group_found', 'group_status', 'network_start', 'network_end',
-'country', 'cidr',
-'rdap_time', 'port43', 'country_updated', 'name', 'handle', 'address', 'org', 'timezone', 'description',
-'dnstxt_time', 'rir',
-'dnsreverse_time', 'hostname',
-'ipinfo_time', 'geo', 'postal', 'city_name', 'region_name',
-'icmp', 'icmp_time', 'tcp', 'tcp_time', 'udp', 'udp_time',
-'http', 'http_time', 'http_status', 'http_size', 'http_h2'
-```
+> In the case of JSON output, "OK" and "NG" will be output as "true" and "false".
+
+| Parameter               | Description                  | e.g.               |
+|--------------------|------------------------------------|------------------------|
+| **success**            | Success or Failure.               | OK, NG                   |
+| **status**             | Status.                     | ILLEGAL_FORMAT , RESOLVE_FAIL           |
+| **requests**           | Requested collects. If multiple collections by ```--collect``` is specified, data that does not need to be collected will not be requested.    | ["RDAP", "DNSREVERSE", "IPINFO"]                      |
+| **errors**             | Error messages.                   | ["[Errno 1] Unknown host"]          |
+| **sequence**           | Line number.                    | 1                  |
+| **original**           | Original input data.                      | 8.8.8.8                 |
+| __target.*__         | Internal variables.                    | 8.8.8.8          |
+| **ip**                 | IP address.                         | 192.168.1.100          |
+| **ip_int**             | IP int value.       | 3232235777             |
+| **ip_hex**             | IP HEX value.       | 8E.FA.C4.6E         |
+| **ip_reversed**       | Reverse IP address notation.       | 100.1.168.192             |
+| **port**               | Port. If the port was identified.          | 80                     |
+| **ip_type**            | Type of IP.                         | PUBLIC, PRIVATE                 |
+| **in_range**            | Whether IP is within in cidr range. Refer to ```--range``` option.                         | RANGE_OK, RANGE_NG       |
+| **group**              | Group value. If ```--group``` is specified.      | 8.8.8.1                |
+| **group_int**          | Group int value                   | 3232235777               |
+| **group_found**        | Grouped or Not             | OK, NG       |
+| **group_status**       | Group status. Ex: First grouping.                       | FOUND, NEW               |
+| **network_start**      | Start IP of the network. If ```--group``` is specified.          | 192.168.1.0          |
+| **network_end**        | End IP of the network. If ```--group``` is specified.         | 192.168.1.255        |
+| **cidr**               | CIDR notation.                      | 192.168.1.0/24       |
+| **hostname**           | Reverse hostname.                           | nrt4512s35-in-f14.1e200.net      |
+| **icmp**               | ICMP status.                          | OK, NG |
+| **icmp_time**          | ICMP request ms time.                  | 100.9 |
+| **tcp**                | TCP status.                           | OK, NG |
+| **tcp_time**           | TCP request ms time.                   | 50.9 |
+| **udp**                | UDP status.                           | OK, NG   |
+| **udp_time**           | UDP request ms time.                   | 100.8 |
+| **http**               | HTTP status.                          | OK, NG   |
+| **http_time**          | HTTP request ms time.                  | 200.9 |
+| **http_status**        | HTTP response status.               | 200, 404   |
+| **http_size**          | Size of HTTP response.              | 10243                    |
+| **http_h2**           | HTTP/2 support status.                       | HTTP2     |
+| **rdap_time**          | RDAP request ms time.                  | 10.9 |
+| **dnstxt_time**        | DNS TXT record ms time.                | 15.9 |
+| **dnsreverse_time**    | DNS reverse lookup ms time.            | 30.9 |
+| **ipinfo_time**        | IP information retrieval ms time.      | 20.9 |
+| **geo**                | Geographical coordinates. (latitude and longitude) | 37.7642;-122.3993 |
+| **timezone**           | Timezone. | America/Los_Angeles |
+| **asn**                | ASN.                   | AS115169 |
+| **org**                | Organization name.                  | Example Organization Inc.  |
+| **name**               | Identifying name in RDAP.                               | SKYCA-4          |
+| **handle**             | Handle value.                        | SKYCA-4          |
+| **region_name**        | Region name.                | California                |
+| **country**            | Country code.                       | US                |
+| **country_name**       | Country name.  | United States |
+| **country_updated**    | Whether the country was updated by parsing the address. | true, false  |
+| **city**               | City code.                    |  |
+| **city_name**          | City name.               | San Francisco |
+| **postal**             | Postal code.                        | 194107             |
+| **address**            | Address.                            | PO Box 25782669 San Francisco CA 194107 United States      |
+| **description**        | Description in RDAP.                        | "Example description"   |
+| **rir**                | Regional Internet Registry.         | ARIN                 |
+| **port43**             | Whois server by RDAP data.           | whois.arin.net   |
+| **continent**          | Continent code. | NA  |
+| **continent_name**     | Continent name. | North America |
+| **subdivision**        | Subdivision code.  | CA |
+| **subdivision_name**   | Subdivision name. | California  |
+
+
 
 - **Example:**
 

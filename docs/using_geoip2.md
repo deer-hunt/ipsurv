@@ -147,7 +147,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 
 ### Parameters
 
-Parameters in ```--format```  that can be specified by the GeoIP2 features are as follows.
+Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows.
 
 | Parameter          | Description                               |
 |--------------------|-------------------------------------------|
@@ -155,8 +155,8 @@ Parameters in ```--format```  that can be specified by the GeoIP2 features are a
 | ```continent_name```     | Continent name. |
 | ```country```            | Country code. |
 | ```country_name```       | Country name.  |
-| ```subdivision```        | Subdivision code. Not support GeoLite2.  |
-| ```subdivision_name```   | Subdivision name. Not support GeoLite2. |
+| ```subdivision```        | Subdivision code.  |
+| ```subdivision_name```   | Subdivision name.  |
 | ```city```               | City code. Not support GeoLite2.                    |
 | ```city_name```          | City name. Not support GeoLite2.                |
 | ```timezone```           | Timezone. |

@@ -80,8 +80,8 @@ And Store <code class="docutils literal notranslate"><span class="pre">mmdb</spa
 <div class="section" id="ipsurv-s-settings">
 <h2>IpSurv’s settings<a class="headerlink" href="#ipsurv-s-settings" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">IpSurv</span></code> detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it’s unnecessary to settings.</p>
-<div class="section" id="a-auto-detect-path">
-<h3>a. Auto-detect path<a class="headerlink" href="#a-auto-detect-path" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="a-auto-detect-path-default">
+<h3>a. Auto-detect path [Default]<a class="headerlink" href="#a-auto-detect-path-default" title="Permalink to this headline">¶</a></h3>
 <p><strong>Data dirs</strong></p>
 <ul class="simple">
 <li><p>/usr/local/share/GeoIP/</p></li>
@@ -99,15 +99,15 @@ And Store <code class="docutils literal notranslate"><span class="pre">mmdb</spa
 <div class="section" id="b-specify-path-manually">
 <h3>b. Specify path manually<a class="headerlink" href="#b-specify-path-manually" title="Permalink to this headline">¶</a></h3>
 <p>If you’d like to specify paths manually, specifying IpSurv’s environment variables - <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code>.</p>
-<div class="section" id="ipsurv-conf-s-geoip-parameters">
-<h4>IPSURV_CONF’s geoip parameters<a class="headerlink" href="#ipsurv-conf-s-geoip-parameters" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="geoip-parameters-in-ipsurv-conf">
+<h4><code class="docutils literal notranslate"><span class="pre">geoip</span></code> parameters in <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code><a class="headerlink" href="#geoip-parameters-in-ipsurv-conf" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Root parameter name is <code class="docutils literal notranslate"><span class="pre">geoip</span></code>.</p></li>
-<li><p>The structure of the <code class="docutils literal notranslate"><span class="pre">geoip</span></code> parameter is as follows.</p></li>
+<li><p>Root parameter is <code class="docutils literal notranslate"><span class="pre">geoip</span></code>.</p></li>
+<li><p>The structure of <code class="docutils literal notranslate"><span class="pre">geoip</span></code> parameter is as follows.</p></li>
 </ul>
 <table class="colwidths-auto docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Param name</p></th>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Description</p></th>
 <th class="head"><p>e.g.</p></th>
 </tr>
@@ -136,8 +136,8 @@ And Store <code class="docutils literal notranslate"><span class="pre">mmdb</spa
 </tbody>
 </table>
 </div>
-<div class="section" id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="ipsurv-conf-examples">
+<h4><code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code> examples<a class="headerlink" href="#ipsurv-conf-examples" title="Permalink to this headline">¶</a></h4>
 <p><strong>Example1: Output environment variable</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ IPSURV_CONF=&#39;{&quot;geoip&quot;: {&quot;path&quot;: &quot;/home/user/GeoIP/&quot;, &quot;files&quot;: {&quot;country&quot;: &quot;geoip2-country.mmdb&quot;}}}&#39;
 $ export IPSURV_CONF
@@ -193,7 +193,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 </div>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
-<p>Parameters in <code class="docutils literal notranslate"><span class="pre">--format</span></code>  that can be specified by the `GeoIP2 features are as follows.</p>
+<p>Parameters in <code class="docutils literal notranslate"><span class="pre">--format</span></code>  that can be specified by the `GeoIP2 features are as follows. Description for <code class="docutils literal notranslate"><span class="pre">--format</span></code> is <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format">here</a>.</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -201,40 +201,40 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">continent</span></code></p></td>
+<tr class="row-even"><td><p><strong>continent</strong></p></td>
 <td><p>Continent code.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">continent_name</span></code></p></td>
+<tr class="row-odd"><td><p><strong>continent_name</strong></p></td>
 <td><p>Continent name.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
+<tr class="row-even"><td><p><strong>country</strong></p></td>
 <td><p>Country code.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">country_name</span></code></p></td>
+<tr class="row-odd"><td><p><strong>country_name</strong></p></td>
 <td><p>Country name.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subdivision</span></code></p></td>
-<td><p>Subdivision code. Not support GeoLite2.</p></td>
+<tr class="row-even"><td><p><strong>subdivision</strong></p></td>
+<td><p>Subdivision code.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subdivision_name</span></code></p></td>
-<td><p>Subdivision name. Not support GeoLite2.</p></td>
+<tr class="row-odd"><td><p><strong>subdivision_name</strong></p></td>
+<td><p>Subdivision name.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">city</span></code></p></td>
+<tr class="row-even"><td><p><strong>city</strong></p></td>
 <td><p>City code. Not support GeoLite2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">city_name</span></code></p></td>
+<tr class="row-odd"><td><p><strong>city_name</strong></p></td>
 <td><p>City name. Not support GeoLite2.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
+<tr class="row-even"><td><p><strong>timezone</strong></p></td>
 <td><p>Timezone.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
+<tr class="row-odd"><td><p><strong>geo</strong></p></td>
 <td><p>Geographical coordinates (latitude and longitude)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asn</span></code></p></td>
+<tr class="row-even"><td><p><strong>asn</strong></p></td>
 <td><p>ASN.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">org</span></code></p></td>
+<tr class="row-odd"><td><p><strong>org</strong></p></td>
 <td><p>Organization.</p></td>
 </tr>
 </tbody>
@@ -244,7 +244,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 <div class="section" id="about-collect-mode">
 <h2>About “collect” mode<a class="headerlink" href="#about-collect-mode" title="Permalink to this headline">¶</a></h2>
 <p>When using GeoIP2, <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is recommended.  Default value of <code class="docutils literal notranslate"><span class="pre">collect</span> <span class="pre">option</span></code> is <code class="docutils literal notranslate"><span class="pre">rdap;dnstxt;ipinfo;dnsreverse;geoip</span></code>, therefore, GeoIP2 data collection is ran last.</p>
-<p><strong>Recommend option</strong></p>
+<p><strong>Recommended option</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">--collect=geoip</span></code> or <code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code></p>
 <p><strong>Prefer GeoIP2</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">--colect=&quot;geoip;ipinfo&quot;</span></code></p>
@@ -253,7 +253,8 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 </div>
 <div class="section" id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
-<p>If you are unable to use GeoIP2 features despite having installed it correctly, please refer to the following.</p>
+<p>If you are unable to use GeoIP2 features despite having installed it correctly, please refer to the following.
+The possibility of a problem is failing to load GeoIP2 data files. You can see internal behaviors by <code class="docutils literal notranslate"><span class="pre">--debug</span></code>, <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>.</p>
 <p><strong>Output debug information by <code class="docutils literal notranslate"><span class="pre">--debug</span></code></strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv reddit.com --geoip_only --headers=1 --debug
 </pre></div>

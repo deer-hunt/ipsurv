@@ -75,17 +75,19 @@ IpSurv have many Command options. For details on Command options, please refer `
 Output Format
 ==================================
 
-You can customize output format by `--format` option as follows.
+You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
+For more information, please read `--format description <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format>`_.
 
 .. code-block:: shell
 
-   ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"
-   ipsurv github.io --format=heavy
-   ipsurv cloudflare.com --format="{ip},<address>,<system>"
-   ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"
+   $ ipsurv github.io --format=heavy            # Profile
+   $ ipsurv github.io --format=simple           # Profile
 
+   $ ipsurv 8.8.8.8 --format="{status},{ip},{country},{address}"   # Paramaters
+   $ ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"         # Paramaters, TAB char
 
-In `--format` option, You can specify parameter: `{}` and profile: `<>`. For more information, please read `--format description <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format>`_.
+   $ ipsurv cloudflare.com --format="{ip},<address>,<system>"      # Paramaters + Profile
+   $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile + Paramaters
 
 
 IpSurv's documents

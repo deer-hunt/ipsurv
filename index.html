@@ -105,20 +105,24 @@ $<span class="w"> </span>ipsurv<span class="w"> </span>self
 </div>
 <div class="section" id="output-format">
 <h1>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h1>
-<p>You can customize output format by <cite>–format</cite> option as follows.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ipsurv<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status}\t{ip}\t{hostname}&quot;</span>
-ipsurv<span class="w"> </span>github.io<span class="w"> </span>--format<span class="o">=</span>heavy
-ipsurv<span class="w"> </span>cloudflare.com<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},&lt;address&gt;,&lt;system&gt;&quot;</span>
-ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;&lt;address&gt;,{hostname},{ip_type}&quot;</span>
+<p>You can customize “Output Format” by <code class="docutils literal notranslate"><span class="pre">`--format`</span></code> option as follows. There are <code class="docutils literal notranslate"><span class="pre">`parameter</span> <span class="pre">-</span> <span class="pre">{}`</span></code> and <code class="docutils literal notranslate"><span class="pre">`profile</span> <span class="pre">-</span> <span class="pre">&lt;&gt;`</span></code> in <code class="docutils literal notranslate"><span class="pre">`--format`</span></code>.
+For more information, please read <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format">–format description</a>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>github.io<span class="w"> </span>--format<span class="o">=</span>heavy<span class="w">            </span><span class="c1"># Profile</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>github.io<span class="w"> </span>--format<span class="o">=</span>simple<span class="w">           </span><span class="c1"># Profile</span>
+
+$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},{ip},{country},{address}&quot;</span><span class="w">   </span><span class="c1"># Paramaters</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">8</span>.8.8.8<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status}\t{ip}\t{hostname}&quot;</span><span class="w">         </span><span class="c1"># Paramaters, TAB char</span>
+
+$<span class="w"> </span>ipsurv<span class="w"> </span>cloudflare.com<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},&lt;address&gt;,&lt;system&gt;&quot;</span><span class="w">      </span><span class="c1"># Paramaters + Profile</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;&lt;address&gt;,{hostname},{ip_type}&quot;</span><span class="w">     </span><span class="c1"># Profile + Paramaters</span>
 </pre></div>
 </div>
-<p>In <cite>–format</cite> option, You can specify parameter: <cite>{}</cite> and profile: <cite>&lt;&gt;</cite>. For more information, please read <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format">–format description</a>.</p>
 </div>
 <div class="section" id="ipsurv-s-documents">
 <h1>IpSurv’s documents<a class="headerlink" href="#ipsurv-s-documents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/command_examples.html">Command examples</a></li>
@@ -155,7 +159,7 @@ ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span
 <li class="toctree-l1"><a class="reference internal" href="overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/command_examples.html">Command examples</a></li>

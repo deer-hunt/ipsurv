@@ -1,6 +1,6 @@
 # Command examples
 
-This is several command examples. You can understand some usage and features. In detail usage, Please read [Command Arguments reference](command_arguments.md).
+This is introduction of IpSurv's several command examples. You can understand some usage and features. In detail usage, Please read [Command Arguments reference](command_arguments.md).
 
 ## Basic usage
 
@@ -8,7 +8,7 @@ This is several command examples. You can understand some usage and features. In
 
 ```
 $ipsurv --help
-usage: ipsurv [-h] [--verbose {0,1,2,3}] [--log LOG] [--disable_env]
+usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log LOG] [--disable_env]
               [--resolve RESOLVE] [--identify_int] [--autodetect AUTODETECT]
               [--begin BEGIN] [--end END] [--collect COLLECT] [--all_collect]
               [--timeout TIMEOUT] [--group GROUP] [--skip_duplicate {0,1,2}]
@@ -16,6 +16,9 @@ usage: ipsurv [-h] [--verbose {0,1,2,3}] [--log LOG] [--disable_env]
               [--add_ip] [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
               [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
               [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
+              [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
+              [--geoip_only] [--version]
+              [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
   -h, --help            show this help message and exit
@@ -297,7 +300,7 @@ $ ipsurv 192.168.1.100 --format="{ip_int}"
 ```
 
 ```bash
-ipsurv 16777217 --format="{ip}" --identify_int
+$ ipsurv 16777217 --format="{ip}" --identify_int
 16777217,1.0.0.1
 ```
 

@@ -129,7 +129,7 @@ Command examples
 	  "target.status": "EXIST"
 	}
 
-For details, `Command arguments reference <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_
+For details, `Command arguments <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_
 
 Using GeoIP2 optionally
 ==================================
@@ -155,7 +155,7 @@ Please refer to the `Using GeoIP2 <https://deer-hunt.github.io/ipsurv/pages/usin
 	8.8.8.8,NA,North America,US,37.751;-97.822
 
 
-`IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env.
+> `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env. Please read `here <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#environment-variable-ipsurv-conf>`_ about `IPSURV_CONF`.
 
 
 Debugging
@@ -165,10 +165,10 @@ In verbose mode, outputting internal data and behaviors in detail.
 
 .. code-block:: shell
 
-	$ ipsurv --verbose=2 #INFO
-	$ ipsurv --verbose=3 #DEBUG
+	$ ipsurv ***** --verbose=2     #INFO
+	$ ipsurv ***** --verbose=3     #DEBUG
 
-	$ ipsurv ***** --debug  #DEBUG  This option is equivalent to "--verbose=3"
+	$ ipsurv ***** --debug      #DEBUG  This option is equivalent to "--verbose=3"
 
 
 For details, `Development and Debugging <pages/development_debug.html>`_
@@ -177,6 +177,6 @@ For details, `Development and Debugging <pages/development_debug.html>`_
 Customizing IpSurv
 ==================================
 
-```ipsurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. Please read ```program_architecture_classes.md```.
+```IpSurv``` is implemented as customizable program architecture. ```IpSurv``` provide extending features and several classes. Please read ```program_architecture_classes.md```.
 
 For details, `Program architecture and Classes <pages/program_architecture_classes.html>`_ / `Development and Debugging <pages/development_debug.html>`_ / `Customizing and Examples <pages/customize_examples.html>`_

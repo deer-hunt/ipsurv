@@ -46,13 +46,13 @@
             
   <div class="tex2jax_ignore mathjax_ignore section" id="command-examples">
 <h1>Command examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h1>
-<p>This is several command examples. You can understand some usage and features. In detail usage, Please read <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments reference</span></a>.</p>
+<p>This is introduction of IpSurv’s several command examples. You can understand some usage and features. In detail usage, Please read <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments reference</span></a>.</p>
 <div class="section" id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="show-help">
 <h3>Show help<a class="headerlink" href="#show-help" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ipsurv --help
-usage: ipsurv [-h] [--verbose {0,1,2,3}] [--log LOG] [--disable_env]
+usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log LOG] [--disable_env]
               [--resolve RESOLVE] [--identify_int] [--autodetect AUTODETECT]
               [--begin BEGIN] [--end END] [--collect COLLECT] [--all_collect]
               [--timeout TIMEOUT] [--group GROUP] [--skip_duplicate {0,1,2}]
@@ -60,6 +60,9 @@ usage: ipsurv [-h] [--verbose {0,1,2,3}] [--log LOG] [--disable_env]
               [--add_ip] [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
               [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
               [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
+              [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
+              [--geoip_only] [--version]
+              [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
   -h, --help            show this help message and exit
@@ -305,7 +308,7 @@ cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"
 <span class="m">192</span>.168.1.100,3232235876
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipsurv<span class="w"> </span><span class="m">16777217</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip}&quot;</span><span class="w"> </span>--identify_int
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">16777217</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip}&quot;</span><span class="w"> </span>--identify_int
 <span class="m">16777217</span>,1.0.0.1
 </pre></div>
 </div>

@@ -1,4 +1,6 @@
-# Command arguments reference
+# Command arguments
+
+This document is description of IpSurv's command arguments.
 
 ## Index
 
@@ -40,6 +42,7 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 2024-10-23 18:44:19,022 - INFO - Fixed format:{original},{geo}
 ~~~~~
 ```
+
 
 ### `--debug`
 
@@ -102,13 +105,12 @@ Show version information.
 - **Default:** `False`
 
 
-
 ### `--help`
 
 Show help.
 
 
-## Command arguments by Environment variable
+## Environment variable - `IPSURV_ARGS`
 
 "IpSurv" support specifying "Command arguments" by Environment variable (`IPSURV_ARGS`). You are able to change default value by Environment variable.
 Also you are able to disable to load Environment variable by `--disable_env` option.
@@ -137,7 +139,7 @@ RESULT:
 }
 ```
 
-## "Internal configures" by Environment variable
+## Environment variable - `IPSURV_CONF`
 
 "IpSurv" support specifying "Internal configures" by Environment variable (`IPSURV_CONF`). 
 
@@ -152,6 +154,7 @@ RESULT:
 | Name       | Description  |
 |---------------|--------------|
 | `ipinfo_token`  |   ipinfo.io's token.        |
+| `geoip`  |   Description is [here](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html#ipsurv-conf-s-geoip-parameters).       |
 
 ```bash
 $ IPSURV_CONF='{"ipinfo_token": "???????"}'
@@ -189,7 +192,6 @@ RESULT:
 ```
 
 
-
 ### `--autodetect`
 
 Autodetect an IP or hostname that is included in the line. This option is experimental.
@@ -212,19 +214,20 @@ Beginning line number.
 - **Example:**
 
 ```
-INPUT: --begin=20
+$ cat list.txt|ipsurv --begin=20
 ```
 
 ### `--end`
 
-Ending line number
+Ending line number.
 
 - **Type:** `int`
 - **Default:** `-1`
 - **Example:**
 
 ```
-INPUT: --end=25
+$ cat list.txt|ipsurv --end=20
+$ cat list.txt|ipsurv --begin=10 --end=30
 ```
 
 
@@ -250,11 +253,11 @@ Data collectors. Those are collected by specific order.
 
 ```
 INPUT: 
---collect="rdap;dnstxt"  # rdap -> dnstxt
+--collect="rdap;dnstxt"  # Order: rdap -> dnstxt
 --collect="ipinfo"
 --collect="geoip"
---collect="geoip;ipinfo" # geoip -> ipinfo
---collect="ipinfo;geoip" # ipinfo -> geoip
+--collect="geoip;ipinfo" # Order: geoip -> ipinfo
+--collect="ipinfo;geoip" # Order: ipinfo -> geoip
 ```
 
 ### `--all_collect`
@@ -368,7 +371,7 @@ INPUT:
 --range="1.0.0.1/24;1.1.0.8/24" --format="{in_range}"
 
 RESULT:
-192.168.1.10,RANGE_OK
+1.1.0.10,RANGE_OK
 2.2.2.2,RANGE_NG
 ```
 
@@ -392,6 +395,8 @@ Output format. Specify `Profile` or `Parameter`.
 
 **Profiles**
 
+> You can see concrete profile's parameters by using `--headers=1` option.
+
 | Profile        | Description                |
 |------------|----------------------------------------------------------------|
 | **ip**         | IP address.                |
@@ -409,8 +414,6 @@ Output format. Specify `Profile` or `Parameter`.
 | **default**    | Group, Country, Network, Hostname.|
 | **detail**     | Default + Organization, CIDR, Address, Description.       |
 | **heavy**    | Heavy parameters. |
-
-> You can see concrete profile's parameters by using `--headers=1` option.
 
 **Parameters**
 

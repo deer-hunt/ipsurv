@@ -1,8 +1,8 @@
-# [IpSurv] Customizing and Examples
+# Customizing and Examples
 
 ## Overview
 
-"ipsurv" is implemented as customizable program architecture. It provide extending features and several classes.
+```IpSurv``` is implemented as customizable program architecture. It provide extending features and several classes.
 
 ## Program Architecture and Classes
 

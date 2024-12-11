@@ -1,4 +1,4 @@
-# [IpSurv] About Using GeoIP2
+# About Using GeoIP2
 
 ## Overview
 
@@ -44,7 +44,7 @@ And Store ```mmdb file``` to specified path.
 
 ```IpSurv``` detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it's unnecessary to settings.
 
-### a. Auto-detect path
+### a. Auto-detect path [Default]
 
 **Data dirs**
 
@@ -63,21 +63,22 @@ And Store ```mmdb file``` to specified path.
 
 If you'd like to specify paths manually, specifying IpSurv's environment variables - ```IPSURV_CONF```. 
 
-#### IPSURV_CONF's geoip parameters
+#### `geoip` parameters in `IPSURV_CONF`
 
-- Root parameter name is ```geoip```.
+- Root parameter is ```geoip```.
 
--  The structure of the ```geoip``` parameter is as follows.
+-  The structure of ```geoip``` parameter is as follows.
 
-| Param name    | Description                          | e.g.                 |
+| Parameter    | Description                          | e.g.                 |
 |--------|--------------------------------|----------------|
 | ```path```   | GeoIP's data directory path.             | /home/user/GeoIP/ |
-| ```files```  |  GeoIP's data file names.                    | --
+| ```files```  |  GeoIP's data file names.                    | -- |
 |  ├ ```country``` | Country data file.         | geoip2-country.mmdb   |
 |  ├ ```city``` | City data file.         | geoip2-city.mmdb   |
 |  ├ ```asn``` | ASN data file.         | geoip2-asn.mmdb   |
 
-#### Examples
+
+#### `IPSURV_CONF` examples
 
 **Example1: Output environment variable**
 
@@ -147,28 +148,28 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 
 ### Parameters
 
-Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows.
+Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows. Description for ```--format``` is [here](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
 
 | Parameter          | Description                               |
 |--------------------|-------------------------------------------|
-| ```continent```          | Continent code. |
-| ```continent_name```     | Continent name. |
-| ```country```            | Country code. |
-| ```country_name```       | Country name.  |
-| ```subdivision```        | Subdivision code.  |
-| ```subdivision_name```   | Subdivision name.  |
-| ```city```               | City code. Not support GeoLite2.                    |
-| ```city_name```          | City name. Not support GeoLite2.                |
-| ```timezone```           | Timezone. |
-| ```geo```                | Geographical coordinates (latitude and longitude) |
-| ```asn```                | ASN.                   |
-| ```org```                | Organization. |
+| **continent**          | Continent code. |
+| **continent_name**     | Continent name. |
+| **country**            | Country code. |
+| **country_name**       | Country name.  |
+| **subdivision**        | Subdivision code.  |
+| **subdivision_name**   | Subdivision name.  |
+| **city**               | City code. Not support GeoLite2.                    |
+| **city_name**          | City name. Not support GeoLite2.                |
+| **timezone**           | Timezone. |
+| **geo**                | Geographical coordinates (latitude and longitude) |
+| **asn**                | ASN.                   |
+| **org**                | Organization. |
 
 ## About "collect" mode
 
 When using GeoIP2, ```--collect=geoip``` or ```--geoip_only``` is recommended.  Default value of ```collect option``` is ```rdap;dnstxt;ipinfo;dnsreverse;geoip```, therefore, GeoIP2 data collection is ran last.
 
-**Recommend option**
+**Recommended option**
 
 ```--collect=geoip``` or ```--geoip_only```
 
@@ -184,6 +185,7 @@ When using GeoIP2, ```--collect=geoip``` or ```--geoip_only``` is recommended.  
 ## Troubleshooting
 
 If you are unable to use GeoIP2 features despite having installed it correctly, please refer to the following.
+The possibility of a problem is failing to load GeoIP2 data files. You can see internal behaviors by ```--debug```, ```--verbose=3```.
 
 **Output debug information by ```--debug```**
 

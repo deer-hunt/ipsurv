@@ -1,4 +1,4 @@
-# [IpSurv] Program architecture and Classes
+# Program architecture and Classes
 
 ## Process flow
 

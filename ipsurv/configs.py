@@ -16,8 +16,10 @@ class Constant:
   ipsurv self
 
 documents:
-  https://github.com/deer-hunt/ipsurv/
-  There are several documents, including "Command arguments reference", "Command examples", and more.
+  Documentation site: https://deer-hunt.github.io/ipsurv/
+  
+  PyPI: https://pypi.org/project/ipsurv/
+  Github: https://github.com/deer-hunt/ipsurv/
 '''
 
     ENV_ARGS_VAR = 'IPSURV_ARGS'

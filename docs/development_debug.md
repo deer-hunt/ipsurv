@@ -1,10 +1,8 @@
-# [IpSurv] Development and Debugging
+# Development and Debugging
 
 ## Overview
 
-This is description of development related "IpSurv".
-You are able to customize "IpSurv".
-
+This description is description of development and debugging related ```IpSurv```.
 
 ## Program specification
 

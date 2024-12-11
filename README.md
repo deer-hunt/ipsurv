@@ -42,6 +42,11 @@ $ pip3 install ipsurv
 
 > If you'd like to use in Python 2.7, you can refactor to Python 2.7 code easily. See "development_debug.md".
 
+## Documentation site
+
+IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
+
+
 ## Usage
 
 **Specify Target using Argument**
@@ -68,7 +73,7 @@ $ cat apache.log|ipsurv --add_ip
 
 ## Survey-mode
 
-```ipsurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
+```IpSurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
 
 | Survey-mode              | Description              |
 |-------------------|------------------------|
@@ -237,16 +242,19 @@ More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_exampl
 
 ## Output Format
 
-You can customize output format by ```--format``` option as follows.
+You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
 
 ```
-ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"
-ipsurv github.io --format=heavy
-ipsurv cloudflare.com --format="{ip},<address>,<system>"
-ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"
-```
+$ ipsurv github.io --format=heavy            # Profile
+$ ipsurv github.io --format=simple           # Profile
 
-In ```--format``` option, You can specify parameter: ```{}``` and profile: ```<>```. For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
+$ ipsurv 8.8.8.8 --format="{status},{ip},{country},{address}"   # Paramaters
+$ ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"         # Paramaters, TAB char
+
+$ ipsurv cloudflare.com --format="{ip},<address>,<system>"      # Paramaters + Profile
+$ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile + Paramaters
+```
 
 
 ## Using GeoIP2 optionally
@@ -273,22 +281,22 @@ original,continent,continent_name,country,geo
 8.8.8.8,NA,North America,US,37.751;-97.822
 ```
 
-> `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env.
+> `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env. Please read [here](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#environment-variable-ipsurv-conf) about `IPSURV_CONF`.
+
 
 ## Documents
 
-IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
+The following documents exist in ```IpSurv```. You can read documents in [Documentation site](https://deer-hunt.github.io/ipsurv/).
 
 | Title                       | Path                                        |
 |-------------------------------|---------------------------------------------|
-| **Command arguments reference**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md) |
+| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md) |
 | **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_examples.md)   |
 | **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/program_architecture_classes.md) |
 | **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/customize_examples.md) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
 | **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/using_geoip2.md)  |
-| **Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
-
+| **IpSurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
 
 
 ## Path summary
@@ -308,16 +316,16 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 In verbose mode, outputting internal data and behaviors in detail.
 
 ```bash
-$ ipsurv ***** --verbose=2  #INFO
-$ ipsurv ***** --verbose=3  #DEBUG
+$ ipsurv ***** --verbose=2    #INFO
+$ ipsurv ***** --verbose=3    #DEBUG
 
-$ ipsurv ***** --debug  #DEBUG  This option is equivalent to "--verbose=3" 
+$ ipsurv ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
 ```
 
 ## Customizing IpSurv
 
-```IpSurv``` is implemented as customizable program architecture. ```ipsurv``` provide extending features and several classes. 
-And you can use ipsurv's internal classes in your program. Please read ```program_architecture_classes.md```.
+```IpSurv``` is implemented as customizable program architecture. ```IpSurv``` provide extending features and several classes. 
+And you can use IpSurv's internal classes in your program. Please read ```program_architecture_classes.md```.
 
 **Classes for major customization**
 
@@ -332,3 +340,4 @@ And you can use ipsurv's internal classes in your program. Please read ```progra
 
 - [dnspython](https://github.com/rthalley/dnspython)
 - [geoip2](https://github.com/maxmind/GeoIP2-python) [Optional]
+

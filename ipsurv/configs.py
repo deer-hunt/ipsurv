@@ -17,7 +17,7 @@ class Constant:
 
 documents:
   Documentation site: https://deer-hunt.github.io/ipsurv/
-  
+
   PyPI: https://pypi.org/project/ipsurv/
   Github: https://github.com/deer-hunt/ipsurv/
 '''

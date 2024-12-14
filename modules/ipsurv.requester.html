@@ -38,12 +38,15 @@
             
   <div class="section" id="ipsurv-requester-package">
 <h1>ipsurv.requester package<a class="headerlink" href="#ipsurv-requester-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
 <div class="section" id="module-ipsurv.requester.requester">
 <span id="ipsurv-requester-requester-module"></span><h2>ipsurv.requester.requester module<a class="headerlink" href="#module-ipsurv.requester.requester" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.requester.requester.Requester">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Requester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.requester.Requester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.requester.Requester.get_host">
 <span class="sig-name descname"><span class="pre">get_host</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.requester.Requester.get_host" title="Permalink to this definition">¶</a></dt>
@@ -52,12 +55,22 @@
 </dd></dl>
 
 </div>
-<div class="section" id="ipsurv-requester-dns-resolver-module">
-<h2>ipsurv.requester.dns_resolver module<a class="headerlink" href="#ipsurv-requester-dns-resolver-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ipsurv.requester.dns_resolver">
+<span id="ipsurv-requester-dns-resolver-module"></span><h2>ipsurv.requester.dns_resolver module<a class="headerlink" href="#module-ipsurv.requester.dns_resolver" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.requester.dns_resolver.DnsResolveRequester">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DnsResolveRequester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resolver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.dns_resolver.DnsResolveRequester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resolver</strong> (<em>dns.resolver</em>) – </p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.dns_resolver.DnsResolveRequester.get_resolver">
 <span class="sig-name descname"><span class="pre">get_resolver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.dns_resolver.DnsResolveRequester.get_resolver" title="Permalink to this definition">¶</a></dt>
@@ -86,12 +99,19 @@
 </dd></dl>
 
 </div>
-<div class="section" id="ipsurv-requester-http-module">
-<h2>ipsurv.requester.http module<a class="headerlink" href="#ipsurv-requester-http-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ipsurv.requester.http">
+<span id="ipsurv-requester-http-module"></span><h2>ipsurv.requester.http module<a class="headerlink" href="#module-ipsurv.requester.http" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.requester.http.HttpRequester">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HttpRequester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.http.HttpRequester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.http.HttpRequester.request">
 <span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.http.HttpRequester.request" title="Permalink to this definition">¶</a></dt>
@@ -115,12 +135,22 @@
 </dd></dl>
 
 </div>
-<div class="section" id="ipsurv-requester-ip-info-module">
-<h2>ipsurv.requester.ip_info module<a class="headerlink" href="#ipsurv-requester-ip-info-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ipsurv.requester.ip_info">
+<span id="ipsurv-requester-ip-info-module"></span><h2>ipsurv.requester.ip_info module<a class="headerlink" href="#module-ipsurv.requester.ip_info" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.requester.ip_info.IpInfoRequester">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IpInfoRequester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.ip_info.IpInfoRequester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> (<em>float</em>) – </p></li>
+<li><p><strong>token</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.ip_info.IpInfoRequester.request">
 <span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.ip_info.IpInfoRequester.request" title="Permalink to this definition">¶</a></dt>
@@ -139,12 +169,23 @@
 </dd></dl>
 
 </div>
-<div class="section" id="ipsurv-requester-rdap-module">
-<h2>ipsurv.requester.rdap module<a class="headerlink" href="#ipsurv-requester-rdap-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ipsurv.requester.rdap">
+<span id="ipsurv-requester-rdap-module"></span><h2>ipsurv.requester.rdap module<a class="headerlink" href="#module-ipsurv.requester.rdap" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.requester.rdap.RdapRequester">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RdapRequester</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">country_detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.rdap.RdapRequester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>country_detector</strong> (<a class="reference internal" href="#ipsurv.requester.rdap.CountryDetector" title="ipsurv.requester.rdap.CountryDetector"><em>CountryDetector</em></a>) – </p></li>
+<li><p><strong>fill</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.rdap.RdapRequester.detect_server_from_ip">
 <span class="sig-name descname"><span class="pre">detect_server_from_ip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.rdap.RdapRequester.detect_server_from_ip" title="Permalink to this definition">¶</a></dt>
@@ -167,6 +208,23 @@
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsurv.requester.rdap.CountryDetector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CountryDetector</span></span><a class="headerlink" href="#ipsurv.requester.rdap.CountryDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Detecting country code by address.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.rdap.CountryDetector.detect_by_address">
+<span class="sig-name descname"><span class="pre">detect_by_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.rdap.CountryDetector.detect_by_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.rdap.CountryDetector.detect_by_country">
+<span class="sig-name descname"><span class="pre">detect_by_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.rdap.CountryDetector.detect_by_country" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-ipsurv.requester.server_reactivity">
 <span id="ipsurv-requester-server-reactivity-module"></span><h2>ipsurv.requester.server_reactivity module<a class="headerlink" href="#module-ipsurv.requester.server_reactivity" title="Permalink to this headline">¶</a></h2>
@@ -174,6 +232,13 @@
 <dt class="sig sig-object py" id="ipsurv.requester.server_reactivity.ServerReactivity">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ServerReactivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.server_reactivity.ServerReactivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em>) – </p>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.requester.server_reactivity.ServerReactivity.request_icmp">
 <span class="sig-name descname"><span class="pre">request_icmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.server_reactivity.ServerReactivity.request_icmp" title="Permalink to this definition">¶</a></dt>
@@ -197,6 +262,72 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-ipsurv.requester.geoip">
+<span id="ipsurv-requester-geoip-module"></span><h2>ipsurv.requester.geoip module<a class="headerlink" href="#module-ipsurv.requester.geoip" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GeoIpRequester</span></span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsurv.requester.requester.Requester" title="ipsurv.requester.requester.Requester"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.requester.requester.Requester</span></code></a></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html">https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.TYPE_ASN">
+<span class="sig-name descname"><span class="pre">TYPE_ASN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'asn'</span></em><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.TYPE_ASN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.TYPE_CITY">
+<span class="sig-name descname"><span class="pre">TYPE_CITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'city'</span></em><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.TYPE_CITY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.TYPE_COUNTRY">
+<span class="sig-name descname"><span class="pre">TYPE_COUNTRY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'country'</span></em><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.TYPE_COUNTRY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.detect_file">
+<span class="sig-name descname"><span class="pre">detect_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.detect_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.detect_files">
+<span class="sig-name descname"><span class="pre">detect_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.detect_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.get_data_path">
+<span class="sig-name descname"><span class="pre">get_data_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.get_data_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.request">
+<span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.request_asn">
+<span class="sig-name descname"><span class="pre">request_asn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.request_asn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.request_city">
+<span class="sig-name descname"><span class="pre">request_city</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.request_city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.requester.geoip.GeoIpRequester.request_country">
+<span class="sig-name descname"><span class="pre">request_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.requester.geoip.GeoIpRequester.request_country" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -208,16 +339,14 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
@@ -235,8 +364,11 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script><div class="custom-sidebar">
-	<h3>Links</h3>
+	<h3>Others</h3>
 	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
 		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
 	</ul>
 </div>

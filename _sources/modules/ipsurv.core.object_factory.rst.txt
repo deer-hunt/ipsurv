@@ -1,6 +1,8 @@
 ipsurv.core package
 ===================
 
+.. include:: top.rst
+
 ipsurv.core.object_factory module
 ----------------------------------
 

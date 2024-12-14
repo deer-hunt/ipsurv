@@ -1,0 +1,14 @@
+ipsurv.configs module
+==============
+
+.. include:: top.rst
+
+ipsurv.configs module
+---------------------
+
+.. automodule:: ipsurv.configs
+
+.. autoclass:: ipsurv.configs.Config
+   :members: ENV_CONFS, FORMAT_PROFILES, FORMAT_PARAMS, COLLECTORS
+   :undoc-members:
+   :show-inheritance:

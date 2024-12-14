@@ -1,6 +1,8 @@
 ipsurv.data_collector package
 ==============================
 
+.. include:: top.rst
+
 ipsurv.data_collector.pass_data_collector module
 ---------------------------------------------------
 

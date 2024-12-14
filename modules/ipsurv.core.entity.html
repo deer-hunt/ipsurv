@@ -38,6 +38,7 @@
             
   <div class="section" id="ipsurv-core-package">
 <h1>ipsurv.core package<a class="headerlink" href="#ipsurv-core-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
 <div class="section" id="module-ipsurv.core.entity">
 <span id="ipsurv-core-entity-module"></span><h2>ipsurv.core.entity module<a class="headerlink" href="#module-ipsurv.core.entity" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
@@ -60,6 +61,8 @@
 <dt class="sig sig-object py" id="ipsurv.core.entity.Target">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.Target" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ipsurv.core.entity.StoreBase" title="ipsurv.core.entity.StoreBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.core.entity.StoreBase</span></code></a></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#target">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#target</a></p>
 </dd></dl>
 
 <dl class="py class">
@@ -82,6 +85,8 @@
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ValueData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.ValueData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#valuedata">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#valuedata</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData.delete">
 <span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.ValueData.delete" title="Permalink to this definition">¶</a></dt>
@@ -100,7 +105,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData.get_data">
 <span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.ValueData.get_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData.get_values">
@@ -120,7 +130,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData.set_data">
 <span class="sig-name descname"><span class="pre">set_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.ValueData.set_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueData.set_header">
@@ -141,7 +156,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueDataFactory.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.entity.ValueDataFactory.build" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.entity.ValueDataFactory.create">
@@ -162,16 +182,14 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
@@ -189,8 +207,11 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script><div class="custom-sidebar">
-	<h3>Links</h3>
+	<h3>Others</h3>
 	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
 		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
 	</ul>
 </div>

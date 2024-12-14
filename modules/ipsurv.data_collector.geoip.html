@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ipsurv.data_collector package &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsurv.data_collector package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ipsurv-data-collector-package">
+<h1>ipsurv.data_collector package<a class="headerlink" href="#ipsurv-data-collector-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
+<div class="section" id="module-ipsurv.data_collector.geoip_collector">
+<span id="ipsurv-data-collector-geoip-collector-module"></span><h2>ipsurv.data_collector.geoip_collector module<a class="headerlink" href="#module-ipsurv.data_collector.geoip_collector" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsurv.data_collector.geoip_collector.GeoIpCollector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GeoIpCollector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.geoip_collector.GeoIpCollector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.data_collector.data_collector.DataCollector</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>requester</strong> (<a class="reference internal" href="ipsurv.requester.html#ipsurv.requester.geoip.GeoIpRequester" title="ipsurv.requester.geoip.GeoIpRequester"><em>ipsurv.requester.geoip.GeoIpRequester</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html">https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.data_collector.geoip_collector.GeoIpCollector.build_data">
+<span class="sig-name descname"><span class="pre">build_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.geoip_collector.GeoIpCollector.build_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>response</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>response_time</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.data_collector.geoip_collector.GeoIpCollector.get_name">
+<span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.geoip_collector.GeoIpCollector.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.data_collector.geoip_collector.GeoIpCollector.get_requires">
+<span class="sig-name descname"><span class="pre">get_requires</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.geoip_collector.GeoIpCollector.get_requires" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.data_collector.geoip_collector.GeoIpCollector.request_data">
+<span class="sig-name descname"><span class="pre">request_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.geoip_collector.GeoIpCollector.request_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>requires</strong> (<em>list</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Others</h3>
+	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsurv.data_collector package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

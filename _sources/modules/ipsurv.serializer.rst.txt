@@ -1,10 +1,35 @@
 ipsurv.serializer package
 =========================
 
+.. include:: top.rst
+
 ipsurv.serializer.serializer module
 -----------------------------------
 
 .. automodule:: ipsurv.serializer.serializer
+
+.. autoclass:: ipsurv.serializer.serializer.Serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+ipsurv.serializer.json\_serializer module
+-----------------------------------------
+
+.. automodule:: ipsurv.serializer.json_serializer
+
+.. autoclass:: ipsurv.serializer.json_serializer.JsonSerializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsurv.serializer.line\_serializer module
+-----------------------------------------
+
+.. automodule:: ipsurv.serializer.line_serializer
+
+.. autoclass:: ipsurv.serializer.line_serializer.LineSerializer
    :members:
    :undoc-members:
    :show-inheritance:

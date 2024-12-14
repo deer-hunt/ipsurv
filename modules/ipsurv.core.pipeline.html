@@ -38,21 +38,41 @@
             
   <div class="section" id="ipsurv-core-package">
 <h1>ipsurv.core package<a class="headerlink" href="#ipsurv-core-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
 <div class="section" id="module-ipsurv.core.pipeline">
 <span id="ipsurv-core-pipeline-module"></span><h2>ipsurv.core.pipeline module<a class="headerlink" href="#module-ipsurv.core.pipeline" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Pipeline</span></span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#pipeline">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#pipeline</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.begin_process">
 <span class="sig-name descname"><span class="pre">begin_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.begin_process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>int</em>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+<li><p><strong>rows</strong> (<em>list</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.build" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.build_error">
@@ -62,37 +82,102 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.complete_process">
 <span class="sig-name descname"><span class="pre">complete_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.complete_process" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>int</em>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+<li><p><strong>rows</strong> (<em>list</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.create_group">
 <span class="sig-name descname"><span class="pre">create_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cidr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.create_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>group_type</strong> (<em>int</em>) – </p></li>
+<li><p><strong>cidr</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.TargetGroup" title="ipsurv.core.entity.TargetGroup">TargetGroup</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.detect_survey_mode">
 <span class="sig-name descname"><span class="pre">detect_survey_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.detect_survey_mode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.find_group">
 <span class="sig-name descname"><span class="pre">find_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.find_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.TargetGroup" title="ipsurv.core.entity.TargetGroup">TargetGroup</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.get_group_identify">
 <span class="sig-name descname"><span class="pre">get_group_identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.get_group_identify" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.init_configure">
 <span class="sig-name descname"><span class="pre">init_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.init_configure" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arguments</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>env_args</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.initialize">
 <span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serializer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.initialize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<a class="reference internal" href="ipsurv.config.html#ipsurv.configs.Config" title="ipsurv.configs.Config"><em>Config</em></a>) – </p></li>
+<li><p><strong>serializer</strong> (<a class="reference internal" href="ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer" title="ipsurv.serializer.serializer.Serializer"><em>Serializer</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.output_result">
@@ -102,52 +187,135 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.output_result_self">
 <span class="sig-name descname"><span class="pre">output_result_self</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.output_result_self" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_collect">
 <span class="sig-name descname"><span class="pre">post_collect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_collect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+<li><p><strong>skip</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_configure">
 <span class="sig-name descname"><span class="pre">post_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_configure" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+<li><p><strong>env_args</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>env_conf</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.post_request">
 <span class="sig-name descname"><span class="pre">post_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.post_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>collector</strong> (<a class="reference internal" href="ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><em>DataCollector</em></a>) – </p></li>
+<li><p><strong>success</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>response</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_collect">
 <span class="sig-name descname"><span class="pre">pre_collect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_collect" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_configure">
 <span class="sig-name descname"><span class="pre">pre_configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env_conf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_configure" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+<li><p><strong>env_args</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>env_conf</strong> (<em>dict</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_output_headers">
 <span class="sig-name descname"><span class="pre">pre_output_headers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_output_headers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_request">
 <span class="sig-name descname"><span class="pre">pre_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>collector</strong> (<a class="reference internal" href="ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><em>DataCollector</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_target_identify">
 <span class="sig-name descname"><span class="pre">pre_target_identify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_target_identify" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.pipeline.Pipeline.pre_target_parse">
 <span class="sig-name descname"><span class="pre">pre_target_parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.pipeline.Pipeline.pre_target_parse" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>original</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -163,16 +331,14 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
@@ -190,8 +356,11 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script><div class="custom-sidebar">
-	<h3>Links</h3>
+	<h3>Others</h3>
 	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
 		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
 	</ul>
 </div>

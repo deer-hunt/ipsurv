@@ -12,7 +12,7 @@ See `program_architecture_classes.md`.
 
 There are several example programs of how to customize. Please refer to the comments in each program for more details..
 
-**Path:** ``./examples/``
+**Path:** [``./examples/``](https://github.com/deer-hunt/ipsurv/tree/main/examples)
 
 | Program                  | Description                                      |
 |-------------------------------|--------------------------------------------------|

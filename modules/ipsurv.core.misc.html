@@ -38,6 +38,7 @@
             
   <div class="section" id="ipsurv-core-package">
 <h1>ipsurv.core package<a class="headerlink" href="#ipsurv-core-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
 <div class="section" id="module-ipsurv.core.target_groups">
 <span id="ipsurv-core-target-groups-module"></span><h2>ipsurv.core.target_groups module<a class="headerlink" href="#module-ipsurv.core.target_groups" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
@@ -47,12 +48,36 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.target_groups.TargetGroups.find_group">
 <span class="sig-name descname"><span class="pre">find_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_groups.TargetGroups.find_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<em>ipsurv.entity.Target</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.TargetGroup" title="ipsurv.core.entity.TargetGroup">TargetGroup</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.target_groups.TargetGroups.put_group">
 <span class="sig-name descname"><span class="pre">put_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cidr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_groups.TargetGroups.put_group" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<em>ipsurv.entity.Target</em>) – </p></li>
+<li><p><strong>group_type</strong> (<em>int</em>) – </p></li>
+<li><p><strong>cidr</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.TargetGroup" title="ipsurv.core.entity.TargetGroup">TargetGroup</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -63,10 +88,81 @@
 <dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TargetParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dns_resolver</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Description:
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#targetparser">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#targetparser</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser._assign_data_target">
+<span class="sig-name descname"><span class="pre">_assign_data_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser._assign_data_target" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser._identify_target">
+<span class="sig-name descname"><span class="pre">_identify_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser._identify_target" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser._parse_target">
+<span class="sig-name descname"><span class="pre">_parse_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser._parse_target" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>original</strong> (<em>str</em>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target">Target</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser._prepare_target_data">
+<span class="sig-name descname"><span class="pre">_prepare_target_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser._prepare_target_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.target_parser.TargetParser.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.target_parser.TargetParser.parse" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>original</strong> (<em>str</em>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target">Target</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -82,16 +178,14 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
@@ -109,8 +203,11 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script><div class="custom-sidebar">
-	<h3>Links</h3>
+	<h3>Others</h3>
 	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
 		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
 	</ul>
 </div>

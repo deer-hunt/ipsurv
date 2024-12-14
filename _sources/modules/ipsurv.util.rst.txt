@@ -1,18 +1,20 @@
 ipsurv.util package
 ===================
 
-ipsurv.util.network_util module
+.. include:: top.rst
+
+ipsurv.util.network\_util module
 --------------------------------
 
 .. automodule:: ipsurv.util.network_util
-
-.. autoclass:: ipsurv.util.network_util.DnsUtil
    :members:
    :undoc-members:
    :show-inheritance:
 
-.. autoclass:: ipsurv.util.network_util.IpUtil
+ipsurv.util.sys\_util module
+----------------------------
+
+.. automodule:: ipsurv.util.sys_util
    :members:
    :undoc-members:
    :show-inheritance:
-

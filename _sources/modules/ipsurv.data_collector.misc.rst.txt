@@ -1,0 +1,13 @@
+ipsurv.data_collector package
+==============================
+
+.. include:: top.rst
+
+ipsurv.data_collector.self_collector module
+---------------------------------------------
+
+.. autoclass:: ipsurv.data_collector.self_collector.SelfCollector
+   :members: build_data, request_data
+   :undoc-members:
+   :show-inheritance:
+

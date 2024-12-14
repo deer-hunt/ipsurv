@@ -38,16 +38,36 @@
             
   <div class="section" id="ipsurv-data-collector-package">
 <h1>ipsurv.data_collector package<a class="headerlink" href="#ipsurv-data-collector-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
 <div class="section" id="module-ipsurv.data_collector.pass_data_collector">
 <span id="ipsurv-data-collector-pass-data-collector-module"></span><h2>ipsurv.data_collector.pass_data_collector module<a class="headerlink" href="#module-ipsurv.data_collector.pass_data_collector" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="ipsurv.data_collector.pass_data_collector.PassDataCollector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PassDataCollector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.pass_data_collector.PassDataCollector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="ipsurv.data_collector.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.data_collector.data_collector.DataCollector</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.data_collector.data_collector.DataCollector</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>requester</strong> (<a class="reference internal" href="#ipsurv.data_collector.pass_data_collector.PassRequester" title="ipsurv.data_collector.pass_data_collector.PassRequester"><em>PassRequester</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.data_collector.pass_data_collector.PassDataCollector.build_data">
 <span class="sig-name descname"><span class="pre">build_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.pass_data_collector.PassDataCollector.build_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
+<li><p><strong>response</strong> (<em>dict</em>) – </p></li>
+<li><p><strong>response_time</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.data_collector.pass_data_collector.PassDataCollector.get_name">
@@ -62,7 +82,15 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.data_collector.pass_data_collector.PassDataCollector.request_data">
 <span class="sig-name descname"><span class="pre">request_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.pass_data_collector.PassDataCollector.request_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
+<li><p><strong>requires</strong> (<em>list</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -73,7 +101,12 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.data_collector.pass_data_collector.PassRequester.request">
 <span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.pass_data_collector.PassRequester.request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -89,16 +122,14 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
@@ -116,8 +147,11 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script><div class="custom-sidebar">
-	<h3>Links</h3>
+	<h3>Others</h3>
 	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
 		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
 	</ul>
 </div>

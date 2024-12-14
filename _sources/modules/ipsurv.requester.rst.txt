@@ -1,6 +1,8 @@
 ipsurv.requester package
 ========================
 
+.. include:: top.rst
+
 ipsurv.requester.requester module
 ---------------------------------
 
@@ -14,6 +16,8 @@ ipsurv.requester.requester module
 ipsurv.requester.dns_resolver module
 -------------------------------------
 
+.. automodule:: ipsurv.requester.dns_resolver
+
 .. autoclass:: ipsurv.requester.dns_resolver.DnsResolveRequester
    :members:
    :undoc-members:
@@ -21,6 +25,8 @@ ipsurv.requester.dns_resolver module
 
 ipsurv.requester.http module
 ----------------------------
+
+.. automodule:: ipsurv.requester.http
 
 .. autoclass:: ipsurv.requester.http.HttpRequester
    :members:
@@ -30,6 +36,8 @@ ipsurv.requester.http module
 ipsurv.requester.ip_info module
 --------------------------------
 
+.. automodule:: ipsurv.requester.ip_info
+
 .. autoclass:: ipsurv.requester.ip_info.IpInfoRequester
    :members:
    :undoc-members:
@@ -38,16 +46,34 @@ ipsurv.requester.ip_info module
 ipsurv.requester.rdap module
 ----------------------------
 
+.. automodule:: ipsurv.requester.rdap
+
 .. autoclass:: ipsurv.requester.rdap.RdapRequester
    :members: detect_server_from_ip, request, request_http, request_ip
    :undoc-members:
    :show-inheritance:
 
+.. autoclass:: ipsurv.requester.rdap.CountryDetector
+      :members: detect_by_address, detect_by_country
+      :undoc-members:
 
 ipsurv.requester.server_reactivity module
 ------------------------------------------
 
 .. automodule:: ipsurv.requester.server_reactivity
+
+.. autoclass:: ipsurv.requester.server_reactivity.ServerReactivity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+ipsurv.requester.geoip module
+------------------------------------------
+
+.. automodule:: ipsurv.requester.geoip
+
+.. autoclass:: ipsurv.requester.geoip.GeoIpRequester
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,6 +1,8 @@
 ipsurv.core package
 ===================
 
+.. include:: top.rst
+
 ipsurv.core.target_groups module
 ---------------------------------
 
@@ -14,6 +16,7 @@ ipsurv.core.target_parser module
 
 .. automodule:: ipsurv.core.target_parser
    :members:
+   :private-members: _parse_target, _identify_target, _prepare_target_data, _assign_data_target
    :undoc-members:
    :show-inheritance:
 

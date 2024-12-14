@@ -1,8 +1,8 @@
-IpSurv Overview
+Overview
 ==================================
 
 Installation
-==================================
+-------------------------------------------------------------
 
 .. code-block:: shell
 
@@ -11,7 +11,7 @@ Installation
    $ pip3 install ipsurv
 
 Features
-==================================
+-------------------------------------------------------------
 
 - Grouping by IP or Subnet.
 - Skip duplicate by the group.
@@ -129,7 +129,7 @@ Command examples
 	  "target.status": "EXIST"
 	}
 
-For details, `Command arguments <pages/command_arguments.html>`_ / `Command examples <pages/command_examples.html>`_
+For details, `Command examples <pages/command_examples.html>`_ / `Command arguments <pages/command_arguments.html>`_.
 
 Using GeoIP2 optionally
 ==================================

@@ -1,0 +1,14 @@
+ipsurv.data\_collector package
+==============================
+
+.. include:: top.rst
+
+ipsurv.data\_collector.geoip\_collector module
+----------------------------------------------
+
+.. automodule:: ipsurv.data_collector.geoip_collector
+
+.. autoclass:: ipsurv.data_collector.geoip_collector.GeoIpCollector
+   :members: build_data, get_name, get_requires, request_data
+   :undoc-members:
+   :show-inheritance:

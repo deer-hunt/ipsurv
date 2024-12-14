@@ -13,7 +13,19 @@ import ipaddress
 
 
 class TargetParser(ABC):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#targetparser
+    """
     def __init__(self, args, pipeline, dns_resolver):
+        """
+        :param args:
+        :type args: argparse.Namespace
+        :param pipeline:
+        :type pipeline: Pipeline
+        :param dns_resolver:
+        :type dns_resolver: DnsResolveRequester
+        """
         self.pipeline = pipeline  # type: Pipeline
         self.autodetect = args.autodetect  # type: bool
         self.identify_int = args.identify_int  # type: bool
@@ -22,7 +34,15 @@ class TargetParser(ABC):
 
     def parse(self, data, original, args):
         # type: (ValueData, str, object) -> Target
-
+        """
+        :param data:
+        :type data: ValueData
+        :param original:
+        :type original: str
+        :param args:
+        :type args: argparse.Namespace
+        :rtype: Target
+        """
         target = self._parse_target(data, original, args)
 
         identify = self.pipeline.pre_target_identify(data, target)
@@ -45,6 +65,15 @@ class TargetParser(ABC):
 
     def _parse_target(self, data, original, args):
         # type: (ValueData, str, object) -> Target
+        """
+        :param data:
+        :type data: ValueData
+        :param original:
+        :type original: str
+        :param args:
+        :type args: argparse.Namespace
+        :rtype: Target
+        """
 
         if self.autodetect:
             raw = self._detect_target_raw(original, args)
@@ -55,6 +84,14 @@ class TargetParser(ABC):
 
     def _identify_target(self, data, target, args):
         # type: (ValueData, Target, object) -> None
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: Target
+        :param args:
+        :type args: argparse.Namespace
+        """
 
         if target.raw:
             target.identified = self._identify_target_ip(data, target, args)
@@ -71,6 +108,12 @@ class TargetParser(ABC):
         logging.info('PORT:' + str(target.port))
 
     def _prepare_target_data(self, data, target):
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: Target
+        """
         ip_address = ipaddress.ip_address(target.identifier)
         target.identifier_int = int(ip_address)
 
@@ -169,6 +212,13 @@ class TargetParser(ABC):
 
     def _assign_data_target(self, data, target):
         # type: (ValueData, Target) -> None
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: Target
+        """
+
         data.set('identifier', target.identifier)
         data.set('identifier_int', target.identifier_int)
 

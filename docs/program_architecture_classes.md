@@ -1,5 +1,13 @@
 # Program architecture and Classes
 
+## Modules and Classes and Methods docs.
+
+The following are the documentation for Modules, Classes, and Methods.
+
+- [Module Index](https://deer-hunt.github.io/ipsurv/py-modindex.html)
+- [Classes and Methods docs](https://deer-hunt.github.io/ipsurv/genindex.html)
+
+
 ## Process flow
 
 The following is overview of process flow. You would be better off checking the python code, because the process is simple and easy.
@@ -54,7 +62,7 @@ The following is description of Configure and Constant.
 |------------------|-------------------|-------------------|
 | `ArgsBuilder`    | ./configure/args_builder.py    | Building args object.         |
 | Validator classes | ./configure/args_validators.py | Arguments specifying complex conditions.      |
-| `Config`         | config.py         | Configure class. There are various configure variables. Example: config_customize.py     |
+| [`Config`](https://deer-hunt.github.io/ipsurv/modules/ipsurv.config.html)         | config.py         | Configure class. There are various configure variables. Example: config_customize.py     |
 | `Constant`       | config.py         | Constant class.     |
 
 
@@ -65,7 +73,7 @@ If you'd like to create original factory class , extending `ObjectFactory`. And 
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | ObjectFactory   |
+| **Class**     | [ObjectFactory](https://deer-hunt.github.io/ipsurv/modules/ipsurv.core.object_factory.html)   |
 | **Path**     | ./core/object_factory.py   |
 | **Example**  | object_factory_original_headers.py   |
 
@@ -77,7 +85,7 @@ You are able to customize `ValueData` class by `ValueDataFactory` class.
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | ValueData, ValueDataFactory   |
+| **Class**     | [ValueData](https://deer-hunt.github.io/ipsurv/modules/ipsurv.core.entity.html), ValueDataFactory   |
 | **Path**     | ./core/entity.py        |
 
 
@@ -88,7 +96,7 @@ You are able to customize `ValueData` class by `ValueDataFactory` class.
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | Target   |
+| **Class**     | [Target](https://deer-hunt.github.io/ipsurv/modules/ipsurv.core.entity.html)   |
 | **Path**     | ./core/entity.py        |
 | **Example**    | target_parser_customize.py                  |
 
@@ -99,7 +107,7 @@ You are able to customize `ValueData` class by `ValueDataFactory` class.
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | TargetParser   |
+| **Class**     | [TargetParser](http://deer-hunt.github.io/ipsurv/modules/ipsurv.core.misc.html)   |
 | **Path**     | ./core/target_parser.py        |
 | **Example**    | target_parser_customize.py                  |
 
@@ -112,7 +120,7 @@ It's available to very fine data control.
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | Pipeline   |
+| **Class**     | [Pipeline](http://deer-hunt.github.io/ipsurv/modules/ipsurv.core.pipeline.html)   |
 | **Path**     | ./core/pipeline.py      |
 | **Example**    | pipeline_customize.py                  |
 
@@ -150,7 +158,7 @@ When Pipeline's methods are dispatched:
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | DataCollector   |
+| **Class**     | [DataCollector](http://deer-hunt.github.io/ipsurv/modules/ipsurv.data_collector.basic.html)   |
 | **Path**     | ./data_collector/data_collector.py, Classes in the same hierarchy.      |
 | **Example**    | check_wordpress_site.py                  |
 
@@ -161,7 +169,7 @@ When Pipeline's methods are dispatched:
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | Requester   |
+| **Class**     | [Requester](http://deer-hunt.github.io/ipsurv/modules/ipsurv.requester.html)    |
 | **Path**     | ./requester/requester.py, Classes in the same hierarchy.      |
 | **Example**    | check_favicon.py, use_requester_directly.py                  |
 
@@ -172,7 +180,7 @@ When Pipeline's methods are dispatched:
 
 | Attribute    | Value             |
 |----------------------|--------------------------------------------------|
-| **Class**     | Serializer, LineSerializer, JsonSerializer   |
+| **Class**     | [Serializer](http://deer-hunt.github.io/ipsurv/modules/ipsurv.serializer.html), LineSerializer, JsonSerializer   |
 | **Path**     | ./serializer/serializer.py, line_serializer.py, json_serializer.py |
 | **Example**    | object_factory_original_headers.py                  |
 

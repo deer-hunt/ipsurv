@@ -5,6 +5,13 @@ from ipsurv.util.network_util import DnsUtil
 
 
 class RdapCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.rdap.RdapRequester
+    :param args:
+    :type args: argparse.Namespace
+    """
+
     def __init__(self, requester, args):
         super().__init__(requester, args)
 
@@ -59,6 +66,13 @@ class RdapCollector(DataCollector):
 
 
 class DnsTxtCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.dns_resolver.DnsResolveRequester
+    :param args:
+    :type args: argparse.Namespace
+    """
+
     def get_name(self):
         return 'DNSTXT'
 
@@ -84,6 +98,13 @@ class DnsTxtCollector(DataCollector):
 
 
 class IpInfoCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.ip_info.IpInfoRequester
+    :param args:
+    :type args: argparse.Namespace
+    """
+
     def __init__(self, requester, args):
         super().__init__(requester, args)
 
@@ -118,6 +139,13 @@ class IpInfoCollector(DataCollector):
 
 
 class DnsReverseCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.dns_resolver.DnsResolveRequester
+    :param args:
+    :type args: argparse.Namespace
+    """
+
     def get_name(self):
         return 'DNSREVERSE'
 

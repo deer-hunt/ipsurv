@@ -7,6 +7,10 @@ from ipsurv.requester.requester import Requester
 
 
 class CountryDetector:
+    """
+    Detecting country code by address.
+    """
+
     COUNTRIES = {
         'afghanistan': 'AF', 'albania': 'AL', 'algeria': 'DZ', 'angola': 'AO', 'argentina': 'AR', 'armenia': 'AM', 'australia': 'AU', 'austria': 'AT',
         'azerbaijan': 'AZ', 'bahrain': 'BH', 'bangladesh': 'BD', 'belarus': 'BY', 'belgium': 'BE', 'benin': 'BJ', 'bhutan': 'BT', 'bolivia': 'BO',
@@ -99,6 +103,18 @@ class CountryDetector:
 
 
 class RdapRequester(Requester):
+    """
+    :param country_detector:
+    :type country_detector: CountryDetector
+    :param fill:
+    :type fill: bool
+    :param timeout:
+    :type timeout: float
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    """
+
     ID_ICANN = 0
     ID_ARIN = 1
     ID_APNIC = 2

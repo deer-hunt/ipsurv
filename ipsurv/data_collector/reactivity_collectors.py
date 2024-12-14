@@ -4,6 +4,12 @@ from ipsurv.data_collector.data_collector import DataCollector
 
 
 class ICMPCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.server_reactivity.ServerReactivity
+    :param args:
+    :type args: argparse.Namespace
+    """
     def get_name(self):
         return 'ICMP'
 
@@ -25,6 +31,12 @@ class ICMPCollector(DataCollector):
 
 
 class TCPCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.server_reactivity.ServerReactivity
+    :param args:
+    :type args: argparse.Namespace
+    """
     def __init__(self, requester, args):
         super().__init__(requester, args)
 
@@ -53,6 +65,12 @@ class TCPCollector(DataCollector):
 
 
 class UDPCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.server_reactivity.ServerReactivity
+    :param args:
+    :type args: argparse.Namespace
+    """
     def __init__(self, requester, args):
         super().__init__(requester, args)
 
@@ -81,6 +99,12 @@ class UDPCollector(DataCollector):
 
 
 class HttpCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.server_reactivity.ServerReactivity
+    :param args:
+    :type args: argparse.Namespace
+    """
     def __init__(self, requester, args):
         super().__init__(requester, args)
 

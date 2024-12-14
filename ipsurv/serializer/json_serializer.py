@@ -4,6 +4,11 @@ from ipsurv.serializer.serializer import Serializer
 
 
 class JsonSerializer(Serializer):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#serializer
+    """
+
     def __init__(self, args):
         super().__init__(args)
 
@@ -37,7 +42,7 @@ class JsonSerializer(Serializer):
 
     def output_complete(self, mode, args, rows):
         if self.json_list:
-            print(']')
+            print(']', flush=True)
 
     def output(self, v):
         if self.json == 2:
@@ -47,7 +52,7 @@ class JsonSerializer(Serializer):
 
         append = ',' if self.json_list else ''
 
-        print(r + append)
+        print(r + append, flush=True)
 
     def transform_key_labels(self, data, mode):
         pass

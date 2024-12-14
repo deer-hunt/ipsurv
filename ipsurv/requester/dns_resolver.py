@@ -6,6 +6,16 @@ from ipsurv.util.network_util import DnsUtil
 
 
 class DnsResolveRequester(Requester):
+    """
+    :param resolver:
+    :type resolver: dns.resolver
+    :param timeout:
+    :type timeout: float
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    """
+
     def __init__(self, resolver=None, timeout=4.0):
         super().__init__(timeout)
 

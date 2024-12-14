@@ -1,12 +1,21 @@
 import logging
 import time
 from abc import ABC, abstractmethod
-
 from ipsurv.core.entity import Target, ValueData
 from ipsurv.util.sys_util import System
 
 
 class DataCollector(ABC):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.requester.Requester
+    :param args:
+    :type args: argparse.Namespace
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#datacollector
+    """
+
     def __init__(self, requester, args):
         self.requester = requester
 
@@ -19,6 +28,12 @@ class DataCollector(ABC):
 
     def request(self, target, requires):
         # type: (Target, list) -> tuple
+        """
+        :param target:
+        :type target: Target
+        :param requires:
+        :type requires: list
+        """
 
         name = self.get_name()
 
@@ -54,6 +69,12 @@ class DataCollector(ABC):
     @abstractmethod
     def request_data(self, target, requires):  # pragma: no cover
         # type: (Target, list) -> tuple
+        """
+       :param target:
+       :type target: Target
+       :param requires:
+       :type requires: list
+       """
 
         return None, None
 
@@ -67,6 +88,16 @@ class DataCollector(ABC):
     @abstractmethod
     def build_data(self, target, data, success, response, response_time):  # pragma: no cover
         # type: (Target, ValueData, bool, dict, float) -> None
+        """
+       :param target:
+       :type target: Target
+       :param data:
+       :type data: ValueData
+       :param response:
+       :type response: dict
+       :param response_time:
+       :type response_time: float
+       """
 
         pass
 
@@ -84,6 +115,17 @@ class DataCollector(ABC):
         data.set(key2, v)
 
     def fill(self, data, response, key, key2=None):
+        """
+       :param data:
+       :type data: ValueData
+       :param response:
+       :type response: dict
+       :param key:
+       :type key: str
+       :param key2:
+       :type key2: str
+       """
+
         key2 = key if key2 is None else key2
 
         if not data.get(key2):

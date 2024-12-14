@@ -4,6 +4,16 @@ import logging
 
 
 class GeoIpCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.geoip.GeoIpRequester
+    :param args:
+    :type args: argparse.Namespace
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html
+    """
+
     COUNTRY_COLS = ['continent', 'continent_name', 'country', 'country_name']
     CITY_COLS = ['continent', 'continent_name', 'country', 'country_name', 'subdivision', 'subdivision_name', 'city', 'city_name', 'timezone', 'geo']
     ASN_COLS = ['asn', 'org']

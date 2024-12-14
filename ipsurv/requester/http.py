@@ -10,6 +10,14 @@ from ipsurv.requester.requester import Requester
 
 
 class HttpRequester(Requester):
+    """
+    :param timeout:
+    :type timeout: float
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    """
+
     def __init__(self, timeout=None):
         super().__init__(timeout)
 

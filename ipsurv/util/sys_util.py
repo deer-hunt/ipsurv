@@ -35,11 +35,11 @@ class System:
 
     @classmethod
     def line(cls, msg):
-        print(msg)
+        print(msg, flush=True)
 
     @classmethod
     def warn(cls, msg):
-        print('\033[33m' + msg + '\033[0m')
+        print('\033[33m' + msg + '\033[0m', flush=True)
 
     @classmethod
     def exit(cls, msg, error=0):

@@ -14,6 +14,13 @@ class TargetGroups:
         self.ignore = True if args.group is None and not args.skip_duplicate else False
 
     def find_group(self, data, target):
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: ipsurv.entity.Target
+        :rtype: TargetGroup
+        """
         if self.ignore:
             return None
 
@@ -32,6 +39,17 @@ class TargetGroups:
         return group
 
     def put_group(self, data, target, group_type, cidr):
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: ipsurv.entity.Target
+        :param group_type:
+        :type group_type: int
+        :param cidr:
+        :type cidr: str
+        :rtype: TargetGroup
+        """
         if self.ignore:
             return None
 

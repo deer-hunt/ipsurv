@@ -13,6 +13,10 @@ class StoreBase(ABC):
 
 
 class Target(StoreBase):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#target
+    """
     def __init__(self, raw=None):
         self.raw = raw
         self.identifier = None
@@ -53,7 +57,15 @@ class TargetGroup:
 
 
 class ValueData(ABC):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#valuedata
+    """
     def __init__(self, data):
+        """
+        :param data:
+        :type data: dict
+        """
         self.data = data
         self.header = False
 
@@ -76,9 +88,16 @@ class ValueData(ABC):
         self.data = {k: fn(v) for k, v in self.data.items()}
 
     def get_data(self):
+        """
+        :rtype: dict
+        """
         return self.data
 
     def set_data(self, data):
+        """
+        :param data:
+        :type data: dict
+        """
         self.data = data
 
     def get_values(self):
@@ -118,4 +137,8 @@ class ValueDataFactory(ABC):
         return self.build(data)
 
     def build(self, data):
+        """
+        :param data:
+        :type data: dict
+        """
         return ValueData(data)

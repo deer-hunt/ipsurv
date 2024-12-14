@@ -4,6 +4,15 @@ from ipsurv.core.entity import Target
 
 
 class PassDataCollector(DataCollector):
+    """
+    :param name:
+    :type name: str
+    :param requester:
+    :type requester: PassRequester
+    :param args:
+    :type args: argparse.Namespace
+    """
+
     def __init__(self, name, requester, args):
         super().__init__(requester, args)
 
@@ -31,4 +40,9 @@ class PassDataCollector(DataCollector):
 class PassRequester(Requester):
     def request(self, target):
         # type : Target
+        """
+        :param target:
+        :type target: Target
+        """
+
         return False, {}

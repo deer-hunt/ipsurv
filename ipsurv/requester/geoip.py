@@ -5,6 +5,11 @@ import os
 
 
 class GeoIpRequester(Requester):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html
+    """
+
     TYPE_COUNTRY = 'country'
     TYPE_CITY = 'city'
     TYPE_ASN = 'asn'

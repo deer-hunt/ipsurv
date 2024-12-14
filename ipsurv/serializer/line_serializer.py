@@ -6,6 +6,11 @@ from ipsurv.util.sys_util import AppException
 
 
 class LineSerializer(Serializer):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#serializer
+    """
+
     def transform(self, data):
         super().transform(data)
 
@@ -13,6 +18,10 @@ class LineSerializer(Serializer):
 
     def transform_status(self, data):
         # type: (ValueData) -> None
+        """
+        :param data:
+        :type data: ValueData
+        """
 
         if data.get('in_range') is not None:
             data.update('in_range', lambda v: 'RANGE_OK' if v else 'RANGE_NG')
@@ -75,7 +84,7 @@ class LineSerializer(Serializer):
         return line
 
     def output(self, v):
-        print(v)
+        print(v, flush=True)
 
     def transform_key_labels(self, data, mode):
         # type: (ValueData, int) -> None

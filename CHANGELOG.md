@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.1) (2024-12-14)
+
+- Fixed some bugs.
+
 ## [1.1.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.0) (2024-12-09)
 
 - Support GeoIP2 optionally.

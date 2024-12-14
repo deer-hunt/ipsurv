@@ -7,6 +7,14 @@ from ipsurv.requester.requester import Requester
 
 
 class ServerReactivity(Requester):
+    """
+    :param timeout:
+    :type timeout: float
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    """
+
     def __init__(self, timeout=4.0):
         super().__init__(timeout)
 

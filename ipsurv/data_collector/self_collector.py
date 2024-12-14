@@ -5,6 +5,16 @@ from ipsurv.util.network_util import DnsUtil
 
 
 class SelfCollector(DataCollector):
+    """
+    :param requester:
+    :type requester: ipsurv.requester.ip_info.IpInfoRequester
+    :param dns_resolver:
+    :type dns_resolver: ipsurv.requester.dns_resolver.DnsResolveRequester
+    :param server_reactivity:
+    :type server_reactivity: ipsurv.requester.server_reactivity.ServerReactivity
+    :param args:
+    :type args: argparse.Namespace
+    """
     def __init__(self, requester, dns_resolver, server_reactivity, args):
         super().__init__(requester, args)
 

@@ -6,6 +6,16 @@ from ipsurv.requester.requester import Requester
 
 
 class IpInfoRequester(Requester):
+    """
+    :param timeout:
+    :type timeout: float
+    :param token:
+    :type token: str
+
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    """
+
     def __init__(self, timeout=None, token=None):
         super().__init__(timeout)
 

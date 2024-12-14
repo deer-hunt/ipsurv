@@ -4,10 +4,13 @@ from ipsurv.configs import Constant
 from ipsurv.core.entity import Target
 from ipsurv.core.entity import ValueData
 
-import re
-
 
 class Serializer(ABC):
+    """
+    Description:
+    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#serializer
+    """
+
     def __init__(self, args):
         self.format = args.fixed_format
         self.delimiter = args.fixed_delimiter
@@ -17,15 +20,40 @@ class Serializer(ABC):
         self.survey_mode = None
 
     def set_survey_mode(self, survey_mode):
+        """
+        :param survey_mode:
+        :type survey_mode: int
+        """
+
         self.survey_mode = survey_mode
 
     def set_delimiter(self, delimiter):
+        """
+        :param delimiter:
+        :type delimiter: str
+        """
+
         self.delimiter = delimiter
 
     def output_begin(self, mode, args, rows):
+        """
+        :param data:
+        :type data: ValueData
+        :param original:
+        :type original: str
+        """
+
         pass
 
     def create_labels(self, columns, mode):
+        """
+        :param columns:
+        :type columns: dict
+        :param mode:
+        :type mode: int
+        :rtype: dict
+        """
+
         labels = {}
 
         for v in columns:
@@ -43,7 +71,17 @@ class Serializer(ABC):
         return v.upper()
 
     def set_status(self, data, target, args, skip):
-        # type: (ValueData, Target, object, bool) -> None
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: Target
+        :param args:
+        :type args: argparse.Namespace
+        :param skip:
+        :type skip: bool
+        """
+
         if target.status == Constant.STATUS_EXIST:
             if not skip:
                 if len(data.get('requests')) > 0:
@@ -65,7 +103,13 @@ class Serializer(ABC):
         data.set('group_status', group_status)
 
     def build(self, data, target):
-        # type: (ValueData, Target) -> object
+        """
+        :param data:
+        :type data: ValueData
+        :param target:
+        :type target: Target
+        :rtype: object
+        """
 
         if not data.header and target.identified:
             self.transform(data)
@@ -75,7 +119,10 @@ class Serializer(ABC):
         return self.build_row(data)
 
     def transform(self, data):
-        # type: (ValueData) -> None
+        """
+        :param data:
+        :type data: ValueData
+        """
 
         data.update('ip_type', lambda v: 'PRIVATE' if v == Constant.IP_TYPE_PRIVATE else 'PUBLIC')
 
@@ -84,7 +131,12 @@ class Serializer(ABC):
 
     @abstractmethod
     def build_row(self, data):  # pragma: no cover
-        # type: (ValueData) -> object
+        """
+        :param data:
+        :type data: ValueData
+        :rtype: object
+        """
+
         return None
 
     @abstractmethod
@@ -95,17 +147,37 @@ class Serializer(ABC):
         self.output(v)
 
     def output(self, v):
-        print(v)
+        print(v, flush=True)
 
     def output_complete(self, mode, args, rows):
+        """
+        :param mode:
+        :type mode: int
+        :param args:
+        :type args: argparse.Namespace
+        :param rows:
+        :type rows: list
+        """
+
         pass
 
     def transform_key_labels(self, data, mode):
+        """
+        :param data:
+        :type data: ValueData
+        :param mode:
+        :type mode: int
+        """
+
         pass
 
     def output_message(self, msg):
         pass
 
     def output_item(self, data):
-        # type: (ValueData) -> None
+        """
+        :param data:
+        :type data: ValueData
+        """
+
         pass

@@ -5,6 +5,7 @@ from ipsurv.core.entity import Target, TargetGroup, ValueData
 from ipsurv.data_collector.data_collector import DataCollector
 from ipsurv.serializer.serializer import Serializer
 
+
 class Pipeline(ABC):
     """
     Description:

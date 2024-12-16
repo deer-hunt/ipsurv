@@ -65,11 +65,17 @@ class ArgsHelper:
         else:
             level = logging.CRITICAL
 
-        logging.basicConfig(
-            filename=log,
-            level=level,
-            format='%(asctime)s - %(levelname)s - %(message)s'
-        )
+        opts = {
+            'level': level,
+            'format': '%(asctime)s - %(levelname)s - %(message)s'
+        }
+
+        if log is None:
+            opts['stream'] = sys.stdout
+        else:
+            opts['filename'] = log
+
+        logging.basicConfig(**opts)
 
     @staticmethod
     def add_arguments(parser, arguments, overrides):
@@ -79,6 +85,9 @@ class ArgsHelper:
 
             if options.get('action') == 'StrAction':
                 options['action'] = StrAction
+
+            if 'type' in options and 'choices' not in options and 'metavar' not in options:
+                options['metavar'] = ''
 
             parser.add_argument('--{}'.format(arg), **options)
 

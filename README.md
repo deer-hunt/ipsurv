@@ -40,6 +40,8 @@ $ pip3 install ipsurv
 - ```python``` and ```pip``` command
 - Python 3.0 or later version.
 
+> If you use in Python 3.0 - 3.2, running ```pip install ipaddress```.
+
 > If you'd like to use in Python 2.7, you can refactor to Python 2.7 code easily. See "development_debug.md".
 
 ## Documentation site
@@ -118,16 +120,17 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 **Options**
 
 ```
-[-h] [--verbose {0,1,2,3}] [--debug] [--log LOG]
-[--disable_env] [--resolve RESOLVE] [--identify_int]
-[--autodetect AUTODETECT] [--begin BEGIN] [--end END]
-[--collect COLLECT] [--all_collect] [--timeout TIMEOUT]
-[--group GROUP] [--skip_duplicate {0,1,2}] [--range RANGE]
-[--format FORMAT] [--no_original] [--sequence] [--add_ip]
-[--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
-[--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
-[--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
-[--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
+[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+[--disable_env] [--resolve {0,1}] [--identify_int]
+[--autodetect] [--begin {number}] [--end {number}]
+[--collect {string}] [--all_collect] [--timeout {string}]
+[--group {string}] [--skip_duplicate {0,1,2}]
+[--range {string}] [--format {string}] [--no_original]
+[--sequence] [--add_ip] [--ident] [--enclose {string}]
+[--delimiter {string}] [--alt_delimiter {string}]
+[--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
+[--exhaustive] [--icmp {0,1}] [--tcp {number}]
+[--udp {number}] [--http {0,1,2}] [--json_all]
 [--geoip_only] [--version]
 [target [target ...]]
 ```
@@ -235,6 +238,16 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
   "target.port": null,
   "target.status": "EXIST"
 }
+```
+
+**Check HTTP response**
+
+```
+$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}" --http=2
+https://www.reddit.com,151.101.193.140,HTTP_OK,200,721210,text/html,snooserv,HTTP2
+
+$ ipsurv https://www.youtube.com/feed/you --format=web --http=2
+https://www.youtube.com/feed/you,142.251.42.174,HTTP_OK,200,559230,text/html,ESF,HTTP2
 ```
 
 More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).

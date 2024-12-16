@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.1) (2024-12-16)
+
+- Modify --help message.
+- Modify --verbose/--debug behavior.
+- Add 'http_server', 'http_mime' to http collector.
+- Add Python 3.13 test.
+
 ## [1.1.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.1) (2024-12-14)
 
 - Fixed some bugs.

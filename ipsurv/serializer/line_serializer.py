@@ -39,7 +39,7 @@ class LineSerializer(Serializer):
             data.update('http', lambda v: 'HTTP_OK' if v else 'HTTP_NG')
 
         if data.get('http_h2') is not None:
-            data.update('http_h2', lambda v: 'HTTP2' if v == 1 else 'HTTP1' if v == 0 else 'UNKNOWN')
+            data.update('http_h2', lambda v: 'HTTP2' if v == 1 else 'HTTP1' if v == 0 else 'N/A')
 
     def filter_value(self, v):
         if v is not None:

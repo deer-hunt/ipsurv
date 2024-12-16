@@ -8,17 +8,19 @@ This is introduction of IpSurv's several command examples. You can understand so
 
 ```
 $ipsurv --help
-usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log LOG] [--disable_env]
-              [--resolve RESOLVE] [--identify_int] [--autodetect AUTODETECT]
-              [--begin BEGIN] [--end END] [--collect COLLECT] [--all_collect]
-              [--timeout TIMEOUT] [--group GROUP] [--skip_duplicate {0,1,2}]
-              [--range RANGE] [--format FORMAT] [--no_original] [--sequence]
-              [--add_ip] [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
-              [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
-              [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
-              [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
-              [--geoip_only] [--version]
-              [target [target ...]]
+usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+		 [--disable_env] [--resolve {0,1}] [--identify_int]
+		 [--autodetect] [--begin {number}] [--end {number}]
+		 [--collect {string}] [--all_collect] [--timeout {string}]
+		 [--group {string}] [--skip_duplicate {0,1,2}]
+		 [--range {string}] [--format {string}] [--no_original]
+		 [--sequence] [--add_ip] [--ident] [--enclose {string}]
+		 [--delimiter {string}] [--alt_delimiter {string}]
+		 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
+		 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
+		 [--udp {number}] [--http {0,1,2}] [--json_all]
+		 [--geoip_only] [--version]
+		 [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
   -h, --help            show this help message and exit
@@ -333,7 +335,9 @@ $ cat list.txt|ipsurv --udp=1 --format="{ip},{udp},{udp_time}"
 ```bash
 $ cat list.txt|ipsurv --http=1
 $ cat list.txt|ipsurv --http=2 --format=country --add_ip
-$ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_h2}"
+$ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_h2}"
+$ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}"
+$ cat list.txt|ipsurv --http=2 --format="web"
 ```
 
 

@@ -134,6 +134,8 @@ class HttpCollector(DataCollector):
 
         self.put(data, response, 'http_status')
         self.put(data, response, 'http_size')
+        self.put(data, response, 'http_server')
+        self.put(data, response, 'http_mime')
 
         if response.get('http_h2') is not None:
             self.put(data, response, 'http_h2')

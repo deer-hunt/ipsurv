@@ -409,7 +409,7 @@ Output format. Specify `Profile` or `Parameter`.
 | **geo**        | Geolocation with Country code.                  |
 | **area**        | Country name, Geo, Timezone, etc..                  |
 | **system**        | IP for system. ip_int, ip_hex, ip_reversed                  |
-| **web**       | HTTP response.     |
+| **web**       | HTTP or HTTPS response.     |
 | **simple**     | Group, Country.      |
 | **default**    | Group, Country, Network, Hostname.|
 | **detail**     | Default + Organization, CIDR, Address, Description.       |
@@ -453,6 +453,8 @@ Output format. Specify `Profile` or `Parameter`.
 | **http_time**          | HTTP request ms time.                  | 200.9 |
 | **http_status**        | HTTP response status.               | 200, 404   |
 | **http_size**          | Size of HTTP response.              | 10243                    |
+| **http_mime**          | Mime in content type of HTTP headers.         | text/html                    |
+| **http_server**          | Server of HTTP headers.              | Apache                    |
 | **http_h2**           | HTTP/2 support status.                       | HTTP2     |
 | **rdap_time**          | RDAP request ms time.                  | 10.9 |
 | **dnstxt_time**        | DNS TXT record ms time.                | 15.9 |
@@ -886,6 +888,8 @@ Check HTTP response.
 | http         | T/F. If HTTP status code is 200, the value is True. |
 | http_status  | Response HTTP status code.                            |
 | http_size    | Response byte size.                                  |
+| http_mime   | Mime in content type of HTTP headers.         |
+| http_server  | Server of HTTP headers.              |
 | http_h2      | HTTP/2 enabled or not.                               |
 | http_time    | Millisecond time to response.                        |
 

@@ -5,6 +5,7 @@ import ssl
 import urllib.parse
 import urllib.request
 import urllib.error
+from collections import OrderedDict
 
 from ipsurv.requester.requester import Requester
 
@@ -31,23 +32,42 @@ class HttpRequester(Requester):
     def set_headers(self, headers):
         self.headers = headers
 
-    def request(self, url, encoding='utf-8'):
+    def request(self, url, default_encoding='utf-8'):
         res, body = self.request_http(url)
 
         success = False
-        response = {}
+        response = OrderedDict()
 
         if res.status != 0:
-            response = {
-                'http_status': res.status,
-                'http_size': len(body),
-                'body': body.decode(encoding)
-            }
+            response['http_status'] = res.status
+            response['http_size'] = len(body)
+            response['http_server'] = res.getheader('Server')
+
+            mime, encoding = self._parse_content_type(res, default_encoding)
+            response['http_mime'] = mime
+            response['headers'] = res.getheaders()
+            response['body'] = body.decode(encoding)
+            response['headers'] = res.getheaders()
+
             success = True
         else:
             raise self._http_exception(res, body)
 
         return success, response
+
+    def _parse_content_type(self, res, default_encoding):
+        content_type = res.getheader('Content-Type')
+
+        params = content_type.split('charset=')
+
+        if len(params) == 1:
+            encoding = default_encoding
+        else:
+            encoding = params[1]
+
+        mime = params[0].strip('; ')
+
+        return mime, encoding
 
     def request_http(self, url):
         url = self._create_url(url)

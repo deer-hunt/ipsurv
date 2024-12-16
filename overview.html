@@ -119,6 +119,12 @@ www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HT
 www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
 </pre></div>
 </div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>https://www.reddit.com<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}&quot;</span><span class="w"> </span>--http<span class="o">=</span><span class="m">2</span>
+https://www.reddit.com,151.101.193.140,HTTP_OK,200,721210,text/html,snooserv,HTTP2
+$<span class="w"> </span>ipsurv<span class="w"> </span>https://www.youtube.com/feed/you<span class="w"> </span>--format<span class="o">=</span>web<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span>
+https://www.youtube.com/feed/you,142.251.42.174,HTTP_OK,200,559230,text/html,ESF,HTTP2
+</pre></div>
+</div>
 <p>For details, <a class="reference external" href="pages/command_examples.html">Command examples</a> / <a class="reference external" href="pages/command_arguments.html">Command arguments</a>.</p>
 </div>
 </div>

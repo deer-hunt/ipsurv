@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Program architecture and Classes" href="program_architecture_classes.html" />
-    <link rel="prev" title="IpSurv Overview" href="../overview.html" /> 
+    <link rel="prev" title="Overview" href="../overview.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -32,7 +32,7 @@
           <a href="program_architecture_classes.html" title="Program architecture and Classes"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../overview.html" title="IpSurv Overview"
+          <a href="../overview.html" title="Overview"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 
@@ -589,7 +589,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 <td><p>IP for system. ip_int, ip_hex, ip_reversed</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>web</strong></p></td>
-<td><p>HTTP response.</p></td>
+<td><p>HTTP or HTTPS response.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>simple</strong></p></td>
 <td><p>Group, Country.</p></td>
@@ -744,6 +744,14 @@ If this option is activated, continuing to collect data forcibly.</p>
 <tr class="row-odd"><td><p><strong>http_size</strong></p></td>
 <td><p>Size of HTTP response.</p></td>
 <td><p>10243</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>http_mime</strong></p></td>
+<td><p>Mime in content type of HTTP headers.</p></td>
+<td><p>text/html</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>http_server</strong></p></td>
+<td><p>Server of HTTP headers.</p></td>
+<td><p>Apache</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>http_h2</strong></p></td>
 <td><p>HTTP/2 support status.</p></td>
@@ -1319,6 +1327,12 @@ google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
 <tr class="row-even"><td><p>http_size</p></td>
 <td><p>Response byte size.</p></td>
 </tr>
+<tr class="row-odd"><td><p>http_mime</p></td>
+<td><p>Mime in content type of HTTP headers.</p></td>
+</tr>
+<tr class="row-even"><td><p>http_server</p></td>
+<td><p>Server of HTTP headers.</p></td>
+</tr>
 <tr class="row-odd"><td><p>http_h2</p></td>
 <td><p>HTTP/2 enabled or not.</p></td>
 </tr>
@@ -1346,9 +1360,7 @@ google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
@@ -1366,7 +1378,7 @@ google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="../overview.html"
-                          title="previous chapter">IpSurv Overview</a></p>
+                          title="previous chapter">Overview</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -1408,7 +1420,7 @@ google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
           <a href="program_architecture_classes.html" title="Program architecture and Classes"
              >next</a> |</li>
         <li class="right" >
-          <a href="../overview.html" title="IpSurv Overview"
+          <a href="../overview.html" title="Overview"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 

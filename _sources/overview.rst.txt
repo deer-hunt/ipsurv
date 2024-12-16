@@ -129,6 +129,14 @@ Command examples
 	  "target.status": "EXIST"
 	}
 
+.. code-block:: shell
+
+   $ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}" --http=2
+   https://www.reddit.com,151.101.193.140,HTTP_OK,200,721210,text/html,snooserv,HTTP2
+   $ ipsurv https://www.youtube.com/feed/you --format=web --http=2
+   https://www.youtube.com/feed/you,142.251.42.174,HTTP_OK,200,559230,text/html,ESF,HTTP2
+
+
 For details, `Command examples <pages/command_examples.html>`_ / `Command arguments <pages/command_arguments.html>`_.
 
 Using GeoIP2 optionally

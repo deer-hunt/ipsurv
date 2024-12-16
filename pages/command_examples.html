@@ -52,17 +52,19 @@
 <div class="section" id="show-help">
 <h3>Show help<a class="headerlink" href="#show-help" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ipsurv --help
-usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log LOG] [--disable_env]
-              [--resolve RESOLVE] [--identify_int] [--autodetect AUTODETECT]
-              [--begin BEGIN] [--end END] [--collect COLLECT] [--all_collect]
-              [--timeout TIMEOUT] [--group GROUP] [--skip_duplicate {0,1,2}]
-              [--range RANGE] [--format FORMAT] [--no_original] [--sequence]
-              [--add_ip] [--ident] [--enclose ENCLOSE] [--delimiter DELIMITER]
-              [--alt_delimiter ALT_DELIMITER] [--headers {0,1,2,3}]
-              [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp ICMP]
-              [--tcp TCP] [--udp UDP] [--http {0,1,2}] [--json_all]
-              [--geoip_only] [--version]
-              [target [target ...]]
+usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+		 [--disable_env] [--resolve {0,1}] [--identify_int]
+		 [--autodetect] [--begin {number}] [--end {number}]
+		 [--collect {string}] [--all_collect] [--timeout {string}]
+		 [--group {string}] [--skip_duplicate {0,1,2}]
+		 [--range {string}] [--format {string}] [--no_original]
+		 [--sequence] [--add_ip] [--ident] [--enclose {string}]
+		 [--delimiter {string}] [--alt_delimiter {string}]
+		 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
+		 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
+		 [--udp {number}] [--http {0,1,2}] [--json_all]
+		 [--geoip_only] [--version]
+		 [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
   -h, --help            show this help message and exit
@@ -340,7 +342,9 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 <h2>Check HTTP response<a class="headerlink" href="#check-http-response" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">1</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_h2}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_status},{http_h2}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;web&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -464,9 +468,7 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>

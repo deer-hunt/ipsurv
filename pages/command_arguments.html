@@ -1178,8 +1178,8 @@ If this option is activated, continuing to collect data forcibly.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="geoip">
-<h3><code class="docutils literal notranslate"><span class="pre">--geoip</span></code><a class="headerlink" href="#geoip" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="geoip-only">
+<h3><code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code><a class="headerlink" href="#geoip-only" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">--geoip_only</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--collect=geoip</span> <span class="pre">--format=area</span></code>.</p>
 <ul class="simple">
 <li><p><strong>Type:</strong> bool</p></li>
@@ -1191,6 +1191,22 @@ $ ipsurv google.com --geoip
 
 RESULT:
 google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
+</pre></div>
+</div>
+</div>
+<div class="section" id="host-only">
+<h3><code class="docutils literal notranslate"><span class="pre">--host_only</span></code><a class="headerlink" href="#host-only" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--host_only</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--collect=dnsreverse</span> <span class="pre">--format=hostname</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> bool</p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>INPUT:
+$ ipsurv 192.168.1.120 --host_only
+
+RESULT:
+192.168.1.100,MYPC-00176
 </pre></div>
 </div>
 </div>

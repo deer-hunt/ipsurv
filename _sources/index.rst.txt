@@ -38,6 +38,8 @@ Overview
    $ ipsurv 192.168.1.10 192.168.1.11
    $ ipsurv wikipedia.org
 
+   $ ipsurv 192.168.1.10 --host_only
+
    # Use GeoIP2: Dependency "geoip2" module.
    $ ipsurv wikipedia.org --geoip_only
 
@@ -69,7 +71,7 @@ IpSurv have many Command options. For details on Command options, please refer `
    [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
    [--exhaustive] [--icmp {0,1}] [--tcp {number}]
    [--udp {number}] [--http {0,1,2}] [--json_all]
-   [--geoip_only] [--version]
+   [--geoip_only] [--host_only] [--version]
    [target [target ...]]
 
 

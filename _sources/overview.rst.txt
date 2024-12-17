@@ -162,6 +162,10 @@ Please refer to the `Using GeoIP2 <https://deer-hunt.github.io/ipsurv/pages/usin
 	original,continent,continent_name,country,geo
 	8.8.8.8,NA,North America,US,37.751;-97.822
 
+	$ ipsurv 192.168.1.120 --host_only
+	$ ipsurv 192.168.1.120 --format="hostname"
+	192.168.1.100,MYPC-016
+
 
 > `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env. Please read `here <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#environment-variable-ipsurv-conf>`_ about `IPSURV_CONF`.
 

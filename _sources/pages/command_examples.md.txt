@@ -19,7 +19,7 @@ usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 		 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
 		 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
 		 [--udp {number}] [--http {0,1,2}] [--json_all]
-		 [--geoip_only] [--version]
+		 [--geoip_only] [--host_only] [--version]
 		 [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
@@ -340,7 +340,6 @@ $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_size},{
 $ cat list.txt|ipsurv --http=2 --format="web"
 ```
 
-
 ## Apache log
 
 ```bash
@@ -350,6 +349,15 @@ $ cat /var/log/httpd/access_log|ipsurv --add_ip --no_original
 
 $ cat /var/log/httpd/access_log|ipsurv --format=country --add_ip --no_original
 $ cat /var/log/httpd/access_log|ipsurv --format=geo --add_ip --no_original
+```
+
+
+## Check Host name or PC name
+   
+```
+$ ipsurv 192.168.1.120 --host_only
+$ ipsurv 192.168.1.120 --format="hostname"
+192.168.1.100,MYPC-00176
 ```
 
 ## Survey Self

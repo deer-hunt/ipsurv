@@ -63,7 +63,7 @@ usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 		 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
 		 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
 		 [--udp {number}] [--http {0,1,2}] [--json_all]
-		 [--geoip_only] [--version]
+		 [--geoip_only] [--host_only] [--version]
 		 [target [target ...]]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 optional arguments:
@@ -356,6 +356,14 @@ $<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</s
 
 $<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
 $<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>geo<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-host-name-or-pc-name">
+<h2>Check Host name or PC name<a class="headerlink" href="#check-host-name-or-pc-name" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.120 --host_only
+$ ipsurv 192.168.1.120 --format=&quot;hostname&quot;
+192.168.1.100,MYPC-00176
 </pre></div>
 </div>
 </div>

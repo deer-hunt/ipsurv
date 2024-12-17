@@ -784,7 +784,7 @@ RESULT:
 ```
 
 
-### `--geoip`
+### `--geoip_only`
 
 `--geoip_only` is equivalent to `--collect=geoip --format=area`.
 
@@ -798,6 +798,22 @@ $ ipsurv google.com --geoip
 
 RESULT:
 google.com,NA,North America,US,United States,America/New_York,40.7306;-73.4313
+```
+
+### `--host_only`
+
+`--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.
+
+- **Type:** bool
+- **Default:** `False`
+- **Example:**
+
+```
+INPUT:
+$ ipsurv 192.168.1.120 --host_only
+
+RESULT:
+192.168.1.100,MYPC-00176
 ```
 
 ##  Server reactivity

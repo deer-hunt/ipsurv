@@ -131,7 +131,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
 [--udp {number}] [--http {0,1,2}] [--json_all]
-[--geoip_only] [--version]
+[--geoip_only] [--host_only] [--version]
 [target [target ...]]
 ```
 
@@ -249,6 +249,16 @@ https://www.reddit.com,151.101.193.140,HTTP_OK,200,721210,text/html,snooserv,HTT
 $ ipsurv https://www.youtube.com/feed/you --format=web --http=2
 https://www.youtube.com/feed/you,142.251.42.174,HTTP_OK,200,559230,text/html,ESF,HTTP2
 ```
+
+**Check Host name or PC name**
+
+```
+$ ipsurv 192.168.1.120 --host_only
+$ ipsurv 192.168.1.120 --format="hostname"
+192.168.1.100,MYPC-016
+```
+
+> You can also find the Windows PC name in private network.
 
 More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
 

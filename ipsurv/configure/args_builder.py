@@ -58,7 +58,9 @@ class ArgsBuilder:
         return parser, args
 
     def build_args(self, parent_parser, arguments, env_args, env_conf):
-        parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, parents=[parent_parser], description=Constant.APP_DESCRIPTION, epilog=Constant.APP_BOTTOM_DESC)
+        desc = self._create_bottom_desc()
+
+        parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, parents=[parent_parser], description=Constant.APP_DESCRIPTION, epilog=desc)
 
         self.pipeline.init_configure(arguments, env_args)
 
@@ -83,6 +85,16 @@ class ArgsBuilder:
 
         return args
 
+    def _create_bottom_desc(self):
+        desc = ''
+
+        desc += "profiles in format:\n"
+        desc += '  ' + ', '.join(self.config.FORMAT_PROFILES.keys()) + "\n\n"
+
+        desc += Constant.APP_BOTTOM_DESC + "\n"
+
+        return desc
+
     def _assign_shorten_option(self, args):
         if args.json_all:
             args.json = 2
@@ -91,6 +103,10 @@ class ArgsBuilder:
         if args.geoip_only:
             args.collect = 'geoip'
             args.format = 'area'
+
+        if args.host_only:
+            args.collect = 'dnsreverse'
+            args.format = 'hostname'
 
     def _configure(self, parser, args):
         debug = True if System.get_log_level() == logging.DEBUG else False

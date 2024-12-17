@@ -11,6 +11,11 @@ class TestSystem:
     def setup(self):
         pass
 
+    def test_get_python_ver(self):
+        ver = System.get_python_ver()
+
+        assert ver > 2.0
+
     def test_line(self, capfd):
         System.line('ABC')
 

@@ -9,6 +9,7 @@ class Constant:
   ipsurv 192.168.1.100
   ipsurv 192.168.1.100 192.168.1.101
   ipsurv google.com wikipedia.org
+  ipsurv google.com --format=web --http=1
   cat list.txt|ipsurv
   cat list.txt|ipsurv --format="hostname"
   cat list.txt|ipsurv --json=2
@@ -86,6 +87,7 @@ class Config:
 
         'json_all': {'default': False, 'help': '`--json_all` is equivalent to `--json=2 --exhaustive`.', 'action': 'store_true'},
         'geoip_only': {'default': False, 'help': '`--geoip_only` is equivalent to `--collect=geoip --format=area`.', 'action': 'store_true'},
+        'host_only': {'default': False, 'help': '`--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.', 'action': 'store_true'},
 
         'version': {'default': False, 'help': 'Show version information.', 'action': 'store_true'}
     }
@@ -130,6 +132,6 @@ class Config:
         'group_int': 0, 'group': '', 'group_found': False, 'group_status': '',
     }
 
-    COLLECTORS = ['rdap', 'dnstxt', 'ipinfo', 'dnsreverse', 'geoip']
+    COLLECTORS = ['rdap', 'dnstxt', 'dnsreverse', 'ipinfo', 'geoip']
 
     HEAD_MSG_SELF = 'Self IP status by https://ipinfo.io'

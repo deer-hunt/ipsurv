@@ -1,4 +1,3 @@
-import logging
 import re
 import socket
 import ssl
@@ -25,7 +24,7 @@ class HttpRequester(Requester):
         self.host = None
 
         self.headers = {
-            'User-Agent': 'Requester',
+            'User-Agent': 'IpSurv requester',
             'Accept-Language': 'en-US,en;q=0.5'
         }
 
@@ -46,7 +45,7 @@ class HttpRequester(Requester):
             mime, encoding = self._parse_content_type(res, default_encoding)
             response['http_mime'] = mime
             response['headers'] = res.getheaders()
-            response['body'] = body.decode(encoding)
+            response['body'] = self._get_body(body, encoding)
             response['headers'] = res.getheaders()
 
             success = True
@@ -69,10 +68,16 @@ class HttpRequester(Requester):
 
         return mime, encoding
 
+    def _get_body(self, body, encoding):
+        try:
+            body.decode(encoding)
+        except Exception:
+            pass
+
+        return body
+
     def request_http(self, url):
         url = self._create_url(url)
-
-        logging.info('URL:' + url)
 
         req = urllib.request.Request(url)
 

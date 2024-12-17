@@ -1,6 +1,7 @@
 import pprint
 import logging
 import os
+import sys
 
 
 class AppException(Exception):
@@ -8,6 +9,24 @@ class AppException(Exception):
 
 
 class System:
+    @classmethod
+    def get_python_ver(cls):
+        major = sys.version_info.major
+        minor = sys.version_info.minor
+
+        return float(major) + minor / 10
+
+    @classmethod
+    def load_module(cls, name):
+        module = None
+
+        try:
+            module = __import__(name)
+        except ImportError:
+            pass
+
+        return module
+
     @classmethod
     def is_logging(cls, min_level=logging.INFO):
         level = cls.get_log_level()

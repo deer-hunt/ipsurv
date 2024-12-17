@@ -1,6 +1,11 @@
 # Changelog
 
-## [1.1.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.1) (2024-12-16)
+## [1.1.3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.3) (2024-12-17)
+
+- Add shorten option ```--host_only```.
+- Fixed some bugs.
+
+## [1.1.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.2) (2024-12-16)
 
 - Modify --help message.
 - Modify --verbose/--debug behavior.

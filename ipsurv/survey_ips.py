@@ -129,7 +129,8 @@ class SurveyIps:
 
     def _survey_by_collector(self, collector, target, args, data, is_source):
         name = collector.get_name()
-        reqs = collector.get_requires()
+
+        reqs = list(set(collector.get_requires()) & set(args.fixed_format_params))
 
         self.pipeline.pre_request(data, name, collector)
 

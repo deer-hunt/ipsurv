@@ -40,7 +40,7 @@ $ pip3 install ipsurv
 - ```python``` and ```pip``` command
 - Python 3.0 or later version.
 
-> If you use in Python 3.0 - 3.2, running ```pip install ipaddress```.
+> If you use in Python 3.0 - 3.2, please run ```pip install ipaddress```.
 
 > If you'd like to use in Python 2.7, you can refactor to Python 2.7 code easily. See "development_debug.md".
 

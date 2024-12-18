@@ -21,10 +21,10 @@ The latest version and documentation may be found on GitHub. The Github URL is t
 
    <div style="display:flex;line-height:1.5rem;">
    <div style="margin-right: 10px;"><img width="145" height="145" src="./_images/ipsurv-logo.png" align="left" /></div>
-   <div>
+   <div style="width: 80%;">
       <div>PyPI URL <a href="https://pypi.org/project/ipsurv/" target="_blank">https://pypi.org/project/ipsurv/</a></div>
       <div>Github URL <a href="https://github.com/deer-hunt/ipsurv" target="_blank">https://github.com/deer-hunt/ipsurv</a></div>
-      <div style="width: 80%;">
+      <div>
          <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
          <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml/badge.svg"></a>
          <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>

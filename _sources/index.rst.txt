@@ -81,7 +81,7 @@ Output Format
 ==================================
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
+For more information, please read `--format description <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format>`_, `Profiles <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles>`_, `Parameters <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters>`_.
 
 .. code-block:: shell
 

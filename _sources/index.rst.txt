@@ -38,6 +38,8 @@ Overview
    $ ipsurv 192.168.1.10 192.168.1.11
    $ ipsurv wikipedia.org
 
+   $ ipsurv https://anaconda.org/ --format=web --http=1
+
    $ ipsurv 192.168.1.10 --host_only
 
    # Use GeoIP2: Dependency "geoip2" module.
@@ -79,7 +81,7 @@ Output Format
 ==================================
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read `--format description <https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format>`_.
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
 
 .. code-block:: shell
 

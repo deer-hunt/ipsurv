@@ -547,7 +547,8 @@ If this option is activated, continuing to collect data forcibly.</p>
 <li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">default</span></code></p></li>
 <li><p><strong>Values:</strong></p></li>
 </ul>
-<p><strong>Profiles</strong></p>
+<div class="section" id="profiles">
+<h4>Profiles<a class="headerlink" href="#profiles" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><p>You can see concrete profile’s parameters by using <code class="docutils literal notranslate"><span class="pre">--headers=1</span></code> option.</p>
 </div></blockquote>
@@ -555,57 +556,75 @@ If this option is activated, continuing to collect data forcibly.</p>
 <thead>
 <tr class="row-odd"><th class="head"><p>Profile</p></th>
 <th class="head"><p>Description</p></th>
+<th class="head"><p>Parameters</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>ip</strong></p></td>
 <td><p>IP address.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ip</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>hostname</strong></p></td>
 <td><p>Hostname.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>country</strong></p></td>
 <td><p>Country code.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>org</strong></p></td>
 <td><p>Organization.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">asn</span></code>, <code class="docutils literal notranslate"><span class="pre">org</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>address</strong></p></td>
 <td><p>Address.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>timezone</strong></p></td>
 <td><p>Timezone.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">timezone</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>network</strong></p></td>
 <td><p>CIDR.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cidr</span></code>, <code class="docutils literal notranslate"><span class="pre">network_start</span></code>, <code class="docutils literal notranslate"><span class="pre">network_end</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>geo</strong></p></td>
-<td><p>Geolocation with Country code.</p></td>
+<td><p>Geolocation with Country.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>area</strong></p></td>
-<td><p>Country name, Geo, Timezone, etc..</p></td>
+<td><p>Area parameters.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">continent</span></code>, <code class="docutils literal notranslate"><span class="pre">continent_name</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">country_name</span></code>, <code class="docutils literal notranslate"><span class="pre">timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">geo</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>system</strong></p></td>
-<td><p>IP for system. ip_int, ip_hex, ip_reversed</p></td>
+<td><p>IP for system info.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ip_type</span></code>, <code class="docutils literal notranslate"><span class="pre">ip_int</span></code>, <code class="docutils literal notranslate"><span class="pre">ip_hex</span></code>, <code class="docutils literal notranslate"><span class="pre">ip_reversed</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>web</strong></p></td>
 <td><p>HTTP or HTTPS response.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">http_status</span></code>, <code class="docutils literal notranslate"><span class="pre">http_size</span></code>, <code class="docutils literal notranslate"><span class="pre">http_server</span></code>, <code class="docutils literal notranslate"><span class="pre">http_mime</span></code>, <code class="docutils literal notranslate"><span class="pre">http_h2</span></code>, <code class="docutils literal notranslate"><span class="pre">http_time</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>simple</strong></p></td>
-<td><p>Group, Country.</p></td>
+<td><p>Simple parameters.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>default</strong></p></td>
-<td><p>Group, Country, Network, Hostname.</p></td>
+<td><p>Default parameters.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">network_start</span></code>, <code class="docutils literal notranslate"><span class="pre">network_end</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>detail</strong></p></td>
-<td><p>Default + Organization, CIDR, Address, Description.</p></td>
+<td><p>Detail parameters.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">handle</span></code>, <code class="docutils literal notranslate"><span class="pre">asn</span></code>, <code class="docutils literal notranslate"><span class="pre">org</span></code>, <code class="docutils literal notranslate"><span class="pre">cidr</span></code>, <code class="docutils literal notranslate"><span class="pre">geo</span></code>, <code class="docutils literal notranslate"><span class="pre">city_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">hostname</span></code>, <code class="docutils literal notranslate"><span class="pre">errors</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>heavy</strong></p></td>
 <td><p>Heavy parameters.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">group</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">handle</span></code>, <code class="docutils literal notranslate"><span class="pre">asn</span></code>, <code class="docutils literal notranslate"><span class="pre">org</span></code>, <code class="docutils literal notranslate"><span class="pre">cidr</span></code>, <code class="docutils literal notranslate"><span class="pre">network_start</span></code>, <code class="docutils literal notranslate"><span class="pre">network_end</span></code>, <code class="docutils literal notranslate"><span class="pre">ip_type</span></code>, <code class="docutils literal notranslate"><span class="pre">geo</span></code>, <code class="docutils literal notranslate"><span class="pre">city_name</span></code>, <code class="docutils literal notranslate"><span class="pre">region_name</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">hostname</span></code>, <code class="docutils literal notranslate"><span class="pre">errors</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Parameters</strong></p>
+</div>
+<div class="section" id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><p>In the case of JSON output, “OK” and “NG” will be output as “true” and “false”.</p>
 </div></blockquote>
@@ -870,6 +889,7 @@ If this option is activated, continuing to collect data forcibly.</p>
 <span class="mi">2</span><span class="p">,</span><span class="n">www</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">gov</span><span class="p">,</span><span class="mf">35.6895</span><span class="p">;</span><span class="mf">139.6917</span>
 <span class="mi">3</span><span class="p">,</span><span class="n">www</span><span class="o">.</span><span class="n">treasury</span><span class="o">.</span><span class="n">gov</span><span class="p">,</span><span class="mf">35.6895</span><span class="p">;</span><span class="mf">139.6917</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="sequence">

@@ -10,11 +10,13 @@
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>
+<a href="https://anaconda.org/conda-forge/ipsurv"> <img src="https://anaconda.org/conda-forge/ipsurv/badges/platforms.svg" /> </a>
 <a href="https://codecov.io/gh/deer-hunt/ipsurv"><img alt="Coverage" src="https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main"></a>
 <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/ipsurv">
 <a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Newest PyPI version" src="https://img.shields.io/pypi/v/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
+<a href="https://anaconda.org/conda-forge/ipsurv"> <img src="https://anaconda.org/conda-forge/ipsurv/badges/version.svg" /></a>
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
 <a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 <a href="https://deer-hunt.github.io/ipsurv/" alt="IpSurv's documentation site"><img src="https://img.shields.io/badge/stable%20docs-github.io-brightgreen?style=flat&color=%2373DC8C&label=Docs"/></a>
@@ -29,10 +31,18 @@
 
 ## Installation
 
+**PyPI**
+
 ```bash
 $ pip install ipsurv
 or
 $ pip3 install ipsurv
+```
+
+**Conda**
+
+```
+$ conda install conda-forge::ipsurv
 ```
 
 ## Requirements
@@ -243,11 +253,15 @@ $ ipsurv wikipedia.org --format=default --json=2 --exhaustive
 **Check HTTP response**
 
 ```
-$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}" --http=2
-https://www.reddit.com,151.101.193.140,HTTP_OK,200,721210,text/html,snooserv,HTTP2
+$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=1
+https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
 
-$ ipsurv https://www.youtube.com/feed/you --format=web --http=2
-https://www.youtube.com/feed/you,142.251.42.174,HTTP_OK,200,559230,text/html,ESF,HTTP2
+$ ipsurv https://anaconda.org/ --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=2
+https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
+
+$ ipsurv https://www.youtube.com/feed/you --format=web --http=2 --headers=1
+original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
+https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,HTTP2,284.0,HTTP_OK
 ```
 
 **Check Host name or PC name**
@@ -266,7 +280,7 @@ More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_exampl
 ## Output Format
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
 
 ```
 $ ipsurv github.io --format=heavy            # Profile

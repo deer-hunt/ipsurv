@@ -21,14 +21,48 @@ usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 		 [--udp {number}] [--http {0,1,2}] [--json_all]
 		 [--geoip_only] [--host_only] [--version]
 		 [target [target ...]]
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 optional arguments:
   -h, --help            show this help message and exit
   --verbose {0,1,2,3}   Verbose mode. [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
-  --log LOG             Verbose log filename.
+  --debug               `--debug` is equivalent to `--verbose=3`.
+  --log {string}        Verbose log filename.
   --disable_env         Disable to load env variable for args. Env name: `IPSURV_ARGS`.
-  --resolve RESOLVE     Resolve the name to IP if target value is domain or hostname automatically.
+  --resolve {0,1}       Resolve the name to IP if target value is domain or hostname automatically.
   --identify_int        Identify IP's int value.
+  --autodetect          Autodetect an IP or hostname that is included in the line. [Experimental]
+  --begin {number}      Beginning from sequence number.
+  --end {number}        Ending to sequence number.
+  --collect {string}    Data collectors. See reference manual in detail. ex: rdap;dnstxt;dnsreverse;ipinfo;geoip
+  --all_collect         All data collectors.
+  --timeout {string}    Timeout seconds. Specify single value - ex: 1,3.2. Or specify values of each connection types. "dns,http,reactivity" - "3;5.1;6"
+  --group {string}      Grouping rule. ex: network, 24, 255.255.255.0
+  --skip_duplicate {0,1,2}
+                        Skip duplicate group. *2: It also skip checking server reactivity[icmp, tcp, udp].
+  --range {string}      Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"
+  --format {string}     Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, heavy, geo, hostname etc.
+  --no_original         Cancel outputting the original line automatically.
+  --sequence            Append sequence number.
+  --add_ip              Append "ip" to the output format. For example, use when the target is a hostname, etc.
+  --ident               Append identifier. Default identifier is ip.
+  --enclose {string}    Character of enclose in result line. If you specify "json" option, this option is disabled. ex: '"', "'"
+  --delimiter {string}  Delimiter-char in result line.
+  --alt_delimiter {string}
+                        Alternative delimiter character. If you specify "enclose" or "json" option, this option is disabled.
+  --headers {0,1,2,3}   Show headers. 1: LowerCase, 2: PascalCase, 3: UpperCase
+  --json {0,1,2}        Output JSON data. *2: Output formatted JSON.
+  --json_list           Output JSON list. It makes it easier to parse JSON.
+  --exhaustive          Output exhaustive internal values in JSON. Use with "json" option.
+  --icmp {0,1}          Check ICMP.
+  --tcp {number}        Check TCP port. Specify default port.
+  --udp {number}        Check UDP port. Specify default port.
+  --http {0,1,2}        Check HTTP response.
+  --json_all            `--json_all` is equivalent to `--json=2 --exhaustive`.
+  --geoip_only          `--geoip_only` is equivalent to `--collect=geoip --format=area`.
+  --host_only           `--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.
+  --version             Show version information.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
@@ -339,6 +373,23 @@ $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_h2}"
 $ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}"
 $ cat list.txt|ipsurv --http=2 --format="web"
 ```
+
+```
+$ ipsurv https://www.youtube.com/feed/you --format=web --http=1 --headers=1
+original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
+https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,N/A,184.0,HTTP_OK
+```
+
+```
+$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=1
+https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
+```
+
+```
+$ ipsurv https://anaconda.org/ --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=2
+https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
+```
+
 
 ## Apache log
 

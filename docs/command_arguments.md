@@ -393,29 +393,41 @@ Output format. Specify `Profile` or `Parameter`.
 - **Default:** `default`
 - **Values:**
 
-**Profiles**
+- **Example:**
+
+```
+INPUT: 
+--format=simple
+--format=heavy
+--format="{success},{country},{http}"
+--format="{sequence},{ip},{country},<network>"
+--format="<area><system>"
+```
+
+#### Profiles
 
 > You can see concrete profile's parameters by using `--headers=1` option.
 
-| Profile        | Description                |
-|------------|----------------------------------------------------------------|
-| **ip**         | IP address.                |
-| **hostname**   | Hostname.                |
-| **country**   | Country code.           |
-| **org**     | Organization.            |
-| **address**    | Address.    |
-| **timezone**   | Timezone.                      |
-| **network**    | CIDR.              |
-| **geo**        | Geolocation with Country code.                  |
-| **area**        | Country name, Geo, Timezone, etc..                  |
-| **system**        | IP for system. ip_int, ip_hex, ip_reversed                  |
-| **web**       | HTTP or HTTPS response.     |
-| **simple**     | Group, Country.      |
-| **default**    | Group, Country, Network, Hostname.|
-| **detail**     | Default + Organization, CIDR, Address, Description.       |
-| **heavy**    | Heavy parameters. |
+| Profile        | Description                | Parameters                               |
+|------------|------------------------------|------------------------------------|
+| **ip**         | IP address.            | `ip`                                          |
+| **hostname**   | Hostname.             | `hostname`                               |
+| **country**   | Country code.           | `country`                                |
+| **org**     | Organization.            | `asn`, `org`                                |
+| **address**    | Address.    | `country`, `address`                                |
+| **timezone**   | Timezone.              | `timezone`                                |
+| **network**    | CIDR.              | `cidr`, `network_start`, `network_end`              |
+| **geo**        | Geolocation with Country.   | `country`, `geo`                                |
+| **area**        | Area parameters.        | `continent`, `continent_name`, `country`, `country_name`, `timezone`, `geo`   |
+| **system**        | IP for system info.  | `ip_type`, `ip_int`, `ip_hex`, `ip_reversed`   |
+| **web**       | HTTP or HTTPS response.   | `http`, `http_status`, `http_size`, `http_server`, `http_mime`, `http_h2`, `http_time`  |
+| **simple**     | Simple parameters.    | `status`, `group`, `country`  |
+| **default**    | Default parameters. | `status`, `group`, `country`, `name`, `network_start`, `network_end`  |
+| **detail**     | Detail parameters.       | `status`, `group`, `country`, `name`, `handle`, `asn`, `org`, `cidr`, `geo`, `city_name`, `address`, `description`, `hostname`, `errors`    |
+| **heavy**    | Heavy parameters. | `status`, `group`, `country`, `timezone`, `name`, `handle`, `asn`, `org`, `cidr`, `network_start`, `network_end`, `ip_type`, `geo`, `city_name`, `region_name`, `address`, `description`, `hostname`, `errors`   |
 
-**Parameters**
+
+#### Parameters
 
 > In the case of JSON output, "OK" and "NG" will be output as "true" and "false".
 
@@ -482,19 +494,6 @@ Output format. Specify `Profile` or `Parameter`.
 | **subdivision**        | Subdivision code.  | CA |
 | **subdivision_name**   | Subdivision name. | California  |
 
-
-
-- **Example:**
-
-```
-INPUT: 
---format="simple", --format="{success},{country},{http}", --format="{sequence},{ip},{country},<network>"
-
-RESULT:
-1,www.whitehouse.gov,37.7749;-122.4194
-2,www.state.gov,35.6895;139.6917
-3,www.treasury.gov,35.6895;139.6917
-```
 
 ### `--sequence`
 

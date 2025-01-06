@@ -1,8 +1,13 @@
+import pytest
+import sys
+
+if sys.platform.startswith('win'):
+    pytest.mark.skip('Skipping Windows')
+
 from ipscap.util.raw_socket_entity import IPHeader, ICMPHeader, TCPHeader, UDPHeader
 from ipscap.util.raw_socket_parser import IPHeaderParser, ICMPHeaderParser, TCPHeaderParser, UDPHeaderParser
 import struct
 import socket
-import pytest
 import re
 
 

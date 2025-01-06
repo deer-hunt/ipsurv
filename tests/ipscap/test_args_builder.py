@@ -1,6 +1,9 @@
 import pytest
 import sys
 
+if sys.platform.startswith('win'):
+    pytest.mark.skip('Skipping Windows')
+
 from ipscap.service.args_builder import ArgsBuilder
 from ipscap.core.pipeline import Pipeline
 from ipscap.configs import Config

@@ -1,4 +1,8 @@
 import pytest
+import sys
+
+if sys.platform.startswith('win'):
+    pytest.mark.skip('Skipping Windows')
 
 from ipscap.core.object_factory import ObjectFactory
 

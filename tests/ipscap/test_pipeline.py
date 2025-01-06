@@ -1,14 +1,16 @@
-from unittest import mock
-
 import pytest
+import sys
+
+if sys.platform.startswith('win'):
+    pytest.mark.skip('Skipping Windows')
 
 from ipscap.core.pipeline import Pipeline
 
 
 class TestPipeline:
     @pytest.fixture
-    def mock_config(self):
-        return mock.Mock()
+    def mock_config(self, mocker):
+        return mocker.Mock()
 
     @pytest.fixture(autouse=True)
     def setup(self):

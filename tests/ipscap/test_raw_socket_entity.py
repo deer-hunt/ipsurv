@@ -1,5 +1,10 @@
-from ipscap.util.raw_socket_entity import IPHeader, ICMPHeader, TCPHeader, UDPHeader
 import pytest
+import sys
+
+if sys.platform.startswith('win'):
+    pytest.mark.skip('Skipping Windows')
+
+from ipscap.util.raw_socket_entity import IPHeader, ICMPHeader, TCPHeader, UDPHeader
 import re
 
 

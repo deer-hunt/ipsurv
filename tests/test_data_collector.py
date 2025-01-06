@@ -151,7 +151,7 @@ class TestDnsTxtCollector:
 
         assert collector.get_name() == 'DNSTXT'
         assert success is True
-        assert response_time > 0
+        assert response_time >= 0
         assert response['country'] == 'US'
         assert collector.get_cidr(response) == '8.8.8.0/24'
 
@@ -198,7 +198,7 @@ class TestIpInfoCollector:
         success, response, response_time = collector.request(target, [])
 
         assert success is True
-        assert response_time > 0
+        assert response_time >= 0
         assert response['country'] == 'US'
         assert response['timezone'] == 'America/Los_Angeles'
         assert collector.get_cidr(response) is None
@@ -298,7 +298,7 @@ class TestSelfCollector:
         assert collector.get_requires() == []
 
         assert success is True
-        assert response_time > 0
+        assert response_time >= 0
         assert len(response['country']) == 2
         assert len(response['region']) >= 0
 

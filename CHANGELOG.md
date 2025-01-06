@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0-beta.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.3) (2025-01-06)
+
+- Add `ipscap` command. `ipscap` captures transfer data. It support "TCP", "UDP", "ICMP" and many filtering options, dumping file.
+- Change some internal structures. e.g.: changing namespace.
+- Add macOS CI test. 
+
 ## [1.1.3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.3) (2024-12-17)
 
 - Add shorten option ```--host_only```.

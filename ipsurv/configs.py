@@ -5,7 +5,7 @@ class Constant:
     APP_NAME = 'ipsurv'
 
     APP_DESCRIPTION = '"IpSurv" is a command-line program for surveying IP addresses, host information, and more. Also "IpSurv" is extensible program by Python.'
-    APP_BOTTOM_DESC = '''command example:
+    APP_BOTTOM_DESC = '''command examples:
   ipsurv 192.168.1.100
   ipsurv 192.168.1.100 192.168.1.101
   ipsurv google.com wikipedia.org
@@ -21,6 +21,9 @@ documents:
 
   PyPI: https://pypi.org/project/ipsurv/
   Github: https://github.com/deer-hunt/ipsurv/
+
+bundled tool:
+  `ipscap`: Packet capture tool which support "ICMP, TCP, UDP" protocol. e.g. `ipscap --help`
 '''
 
     ENV_ARGS_VAR = 'IPSURV_ARGS'

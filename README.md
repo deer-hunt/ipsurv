@@ -3,20 +3,21 @@
 <div>
 <img width="165" height="165" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
-```IpSurv``` is a command-line program for surveying IP addresses, host information, and more. Also ```IpSurv``` is extensible program by Python.
+```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is packet capture tool which support "ICMP, TCP, UDP" protocol. Each tools and internal program are extensible using Python.
 
 <div>
 
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml/badge.svg"></a>
+<a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-macos.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-macos.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/lint.yml"><img alt="GitHub Actions build status (Lint)" src="https://github.com/deer-hunt/ipsurv/workflows/Lint/badge.svg"></a>
 <a href="https://anaconda.org/conda-forge/ipsurv"> <img src="https://anaconda.org/conda-forge/ipsurv/badges/platforms.svg" /> </a>
 <a href="https://codecov.io/gh/deer-hunt/ipsurv"><img alt="Coverage" src="https://codecov.io/github/deer-hunt/ipsurv/coverage.svg?branch=main"></a>
 <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/ipsurv">
 <a href="https://github.com/deer-hunt/ipsurv/blob/main/LICENSE.md"><img alt="License - MIT" src="https://img.shields.io/pypi/l/ipsurv.svg"></a>
 <a href="https://pypi.org/project/ipsurv/"><img alt="Newest PyPI version" src="https://img.shields.io/pypi/v/ipsurv.svg"></a>
-<a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
 <a href="https://anaconda.org/conda-forge/ipsurv"> <img src="https://anaconda.org/conda-forge/ipsurv/badges/version.svg" /></a>
+<a href="https://pypi.org/project/ipsurv/"><img alt="Number of PyPI downloads" src="https://img.shields.io/pypi/dm/ipsurv.svg"></a>
 <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/deer-hunt/ipsurv">
 <a href="https://pypi.org/project/ipsurv"><img alt="Supported Versions" src="https://img.shields.io/pypi/pyversions/ipsurv.svg"></a>
 <a href="https://deer-hunt.github.io/ipsurv/" alt="IpSurv's documentation site"><img src="https://img.shields.io/badge/stable%20docs-github.io-brightgreen?style=flat&color=%2373DC8C&label=Docs"/></a>
@@ -30,6 +31,8 @@
 <img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv.gif" alt="ipsurv visual image" width="100%" />
 
 ## Installation
+
+> `ipscap` is also installed bundled.
 
 **PyPI**
 
@@ -59,7 +62,21 @@ $ conda install conda-forge::ipsurv
 IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
 
 
-## Usage
+## Overview
+
+- `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows to retrieve country codes for IP addresses, perform ping tests, and check ports.
+- `ipscap` is packet capture tool like `tcpdump` which support "ICMP, TCP, UDP" protocol. `ipscap` have various filtering options, displaying IP header and TCP header, dumping files functions.
+*`ipscap` must be execute as root user. And `ipscap` does not support Windows.
+
+It’s best to refer to the help to verify the functions.
+
+```
+$ ipsurv --help
+
+# ipscap --help
+```
+
+## Usage of `ipsurv`
 
 **Specify Target using Argument**
 
@@ -83,7 +100,42 @@ $ cat apache.log|ipsurv --add_ip
 8.8.8.8:53,8.8.8.0,US,ICMP_OK,TCP_OK,UDP_OK
 ```
 
-## Survey-mode
+## Usage of `ipscap`
+
+
+```bash
+ipscap --exclude_ssh
+ipscap --force
+  
+ipscap --filter_port="80;53" --find="GET"
+ipscap --filter_port="80" --find="3\d1"
+ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
+ipscap --find="HTTP" --tracking
+```
+
+**Output example**
+
+```
+Time:           2025-01-05 01:16:36.7095 / 1736180196.7095, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 691574840, Acknowledgement: 3520002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 39550
+Destination:    IP: 216.58.220.110            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 40 0e 40 00 40 06 39 c0 0a 00 02 0f d8 3a dc 6e 
+TCP-H data:     9a 7e 00 50 29 38 98 38 00 35 b6 02 50 18 72 10 c1 1c 00 00 
+
+GET / HTTP/1.1
+User-Agent: curl/7.29.0
+Host: google.com
+Accept: */*
+```
+
+## `ipsurv` command
+
+### Survey-mode
 
 ```IpSurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
 
@@ -109,7 +161,7 @@ LocalIp: 10.0.2.5
 LocalDns: ['8.8.8.8', '8.8.4.4']
 ```
 
-## Features of "Survey IPs mode"
+### Features of "Survey IPs mode"
 
 - Grouping by IP or Subnet.
 - Skip duplicate by the group.
@@ -123,7 +175,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 - Load env variable. And changing arguments and internal configures.
 - Use GeoIP2 via IpSurv optionally.
 
-## Command options
+### Command options
 
 ```IpSurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
 
@@ -162,7 +214,7 @@ $ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}"
 $ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
 ```
 
-## Command examples
+### Command examples
 
 **Show headers**
 
@@ -277,7 +329,7 @@ $ ipsurv 192.168.1.120 --format="hostname"
 More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
 
 
-## Output Format
+### Output Format
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
 For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
@@ -291,6 +343,46 @@ $ ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"         # Paramaters, TAB
 
 $ ipsurv cloudflare.com --format="{ip},<address>,<system>"      # Paramaters + Profile
 $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile + Paramaters
+```
+
+
+## `ipscap` command
+
+### Command options
+
+**Options**
+
+```
+[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+[--find {string}] [--find_case_sensitive]
+[--find_hex {string}] [--filter_port {int}]
+[--filter_protocol [ICMP, TCP, UDP]] [--filter_ip {string}]
+[--filter_condition {string}] [--tracking]
+[--stat_mode {0,1,2}] [--stat_group {0,1,2}]
+[--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+[--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
+[--web_port] [--general_port] [--force] [--version]
+```
+
+**Example options**
+
+```bash
+# ipscap --filter_port="80;53" --find="GET"
+# ipscap --filter_port="80" --find="3\d1"
+# ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
+# ipscap --find="HTTP" --tracking
+# ipscap --filter_condition="port!=22"
+# ipscap --filter_condition="port=80,443,53,-1" --filter_protocol=TCP,UDP,ICMP
+# ipscap --filter_condition="src_port>=80;src_port<=500;flags=SYN,PSH"
+# ipscap --filter_condition="ttl>=120"
+# ipscap --output=HEADER
+# ipscap --output=BYTE --filter_port="80,443"
+# ipscap --output=LINE --filter_port="80,443"
+# ipscap --stat_mode=2 --filter_protocol=TCP,UDP --output=NONE
+# ipscap --filter_port=80,443 --stat_group=1
+# ipscap --filter_port=80 --dumpfile=1
+# ipscap --exclude_ssh
+# ipscap --force
 ```
 
 

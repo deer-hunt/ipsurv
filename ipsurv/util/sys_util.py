@@ -61,8 +61,8 @@ class System:
         print('\033[33m' + msg + '\033[0m', flush=True)
 
     @classmethod
-    def exit(cls, msg, error=0):
-        if error == 0:
+    def exit(cls, msg, error=False):
+        if error is False:
             cls.line(msg)
         else:
             cls.warn(msg)

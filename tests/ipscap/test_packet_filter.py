@@ -51,8 +51,8 @@ class TestPacketFilter:
     def args(self, mocker):
         args = mocker.Mock()
         args.fixed_protocols = [IPHeader.PROTOCOL_TCP]
-        args.fixed_filter_ips = ['192.168.1.1', '192.168.1.2']
-        args.fixed_filter_ports = [80, 12345]
+        args.fixed_ips = ['192.168.1.1', '192.168.1.2']
+        args.fixed_ports = [80, 12345]
         args.tracking = True
         args.find = None
         args.find_case_sensitive = False

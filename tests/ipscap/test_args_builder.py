@@ -38,21 +38,21 @@ if not sys.platform.startswith('win'):
 
         def test_assign_shorten_option(self, args_builder, args):
             args.exclude_ssh = True
-            args.filter_condition = ''
+            args.condition = ''
 
             args_builder._assign_shorten_option(args)
 
-            assert 'port!=' in args.filter_condition
+            assert 'port!=' in args.condition
 
-        def test_fix_filter_ips(self, args_builder, args):
-            args.filter_ip = '192.168.1.1,192.168.1.2'
-            fixed_ips = args_builder._fix_filter_ips(args)
+        def test_fix_ips(self, args_builder, args):
+            args.ip = '192.168.1.1,192.168.1.2'
+            fixed_ips = args_builder._fix_ips(args)
 
             assert fixed_ips == ['192.168.1.1', '192.168.1.2']
 
-        def test_fix_filter_ports(self, args_builder, args):
-            args.filter_port = '80, 443, 8080'
-            fixed_ports = args_builder._fix_filter_ports(args)
+        def test_fix_ports(self, args_builder, args):
+            args.port = '80, 443, 8080'
+            fixed_ports = args_builder._fix_ports(args)
 
             assert fixed_ports == [80, 443, 8080]
 

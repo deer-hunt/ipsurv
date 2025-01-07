@@ -2,6 +2,7 @@ import fcntl
 import ipaddress
 import socket
 import struct
+from ipsurv.util.sys_util import AppException
 
 
 class EthSocket:
@@ -11,7 +12,10 @@ class EthSocket:
         self.sock = None
 
     def create_socket(self):
-        self.sock = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(3))
+        try:
+            self.sock = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(3))
+        except PermissionError:
+            raise AppException('Permission error. Please run as "root" user.')
 
     def get_eth_ips(self):
         ips = []

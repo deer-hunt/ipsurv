@@ -57,20 +57,20 @@ class PacketFilter:
         return True
 
     def verify_protocol(self, ip_header, args):
-        if IPHeader.PROTOCOL_TCP in args.fixed_filter_protocols and ip_header.protocol == IPHeader.PROTOCOL_TCP:
+        if IPHeader.PROTOCOL_TCP in args.fixed_protocols and ip_header.protocol == IPHeader.PROTOCOL_TCP:
             return True
 
-        if IPHeader.PROTOCOL_UDP in args.fixed_filter_protocols and ip_header.protocol == IPHeader.PROTOCOL_UDP:
+        if IPHeader.PROTOCOL_UDP in args.fixed_protocols and ip_header.protocol == IPHeader.PROTOCOL_UDP:
             return True
 
-        if IPHeader.PROTOCOL_ICMP in args.fixed_filter_protocols and ip_header.protocol == IPHeader.PROTOCOL_ICMP:
+        if IPHeader.PROTOCOL_ICMP in args.fixed_protocols and ip_header.protocol == IPHeader.PROTOCOL_ICMP:
             return True
 
         return False
 
     def verify_ip(self, ip_header, args):
-        if args.fixed_filter_ips is not None:
-            for ip in args.fixed_filter_ips:
+        if args.fixed_ips is not None:
+            for ip in args.fixed_ips:
                 if ip_header.src_ip == ip or ip_header.dest_ip == ip:
                     return True
 
@@ -79,8 +79,8 @@ class PacketFilter:
         return True
 
     def verify_port(self, protocol_header, args):
-        if args.fixed_filter_ports is not None:
-            for port in args.fixed_filter_ports:
+        if args.fixed_ports is not None:
+            for port in args.fixed_ports:
                 if protocol_header.src_port == port or protocol_header.dest_port == port:
                     return True
 

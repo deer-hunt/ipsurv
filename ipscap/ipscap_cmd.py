@@ -1,11 +1,13 @@
+import sys
+
 import logging
 import signal
-import sys
 import threading
 from datetime import datetime
 from functools import partial
 
 from ipscap.configs import Config, Constant
+from ipscap.core.object_factory import ObjectFactory
 from ipscap.core.pipeline import Pipeline
 from ipscap.service.dumpfile import DumpFile
 from ipscap.service.eth_socket import EthSocket
@@ -20,7 +22,7 @@ from ipsurv.util.sys_util import System
 
 class IpsCapCmd:
     def __init__(self, factory):
-        self.factory = factory
+        self.factory = factory  # type: ObjectFactory
         self.pipeline = self.factory.create_pipeline()  # type: Pipeline
         self.config = self.factory.get_config()  # type: Config
 
@@ -30,13 +32,18 @@ class IpsCapCmd:
         self.view_helper = None  # type: ViewHelper
 
     def run(self):
-        args, parser = self._parse_args()
+        try:
+            args, parser = self._parse_args()
 
-        self._initialize(args)
+            self._initialize(args)
 
-        self._verify_args(args, parser)
+            self._verify_args(args, parser)
 
-        self.dispatch(args)
+            self.dispatch(args)
+        except Exception as e:
+            self.view_helper.output_error(e)
+
+            logging.log(logging.ERROR, str(e), exc_info=True)
 
     def _verify_args(self, args, parser):
         if args.version:
@@ -52,7 +59,7 @@ class IpsCapCmd:
 
         ev_parser = EvaluationParser()
         ev_parser.initialize(self.config.CONDITION_RULES)
-        parsed_cond = ev_parser.parse(args.filter_condition)
+        parsed_cond = ev_parser.parse(args.condition)
 
         System.output_data('PARSED_CONDITION', parsed_cond)
 
@@ -88,28 +95,18 @@ class IpsCapCmd:
         return args_builder.parse()
 
     def dispatch(self, args):
-        try:
-            self.view_helper.show_head(args)
+        self.view_helper.show_head(args)
 
-            self.capture_thread.start()
+        self.capture_thread.start()
 
-            self.capture_thread.join(args.timeout)
+        self.capture_thread.join(args.timeout)
 
-            self._complete(args)
-        except Exception as e:
-            self.view_helper.output_error()
-
-            logging.log(logging.ERROR, str(e), exc_info=True)
+        self._complete(args)
 
     def signal_stop(self, sig, frame, args):
-        try:
-            self.view_helper.show_stopped()
+        self.view_helper.show_stopped()
 
-            self._complete(args)
-        except Exception as e:
-            self.view_helper.output_error()
-
-            logging.log(logging.ERROR, str(e), exc_info=True)
+        self._complete(args)
 
         sys.exit()
 
@@ -130,7 +127,7 @@ class CaptureThread(threading.Thread):
 
         self.daemon = True
 
-        self.factory = factory
+        self.factory = factory  # type: ObjectFactory
         self.pipeline = pipeline  # type: Pipeline
         self.packet_filter = packet_filter  # type: PacketFilter
         self.transfer_store = transfer_store  # type: TransferStore
@@ -187,7 +184,7 @@ class CaptureThread(threading.Thread):
                 if is_capture:
                     self._process_captured_transfer(ip_header, protocol_header, passage_num)
         except Exception as e:
-            self.view_helper.output_error()
+            self.view_helper.output_error(e)
 
             logging.log(logging.ERROR, str(e), exc_info=True)
 

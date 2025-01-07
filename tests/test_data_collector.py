@@ -405,8 +405,7 @@ class TestICMPCollector:
     def test_request(self, args, monkeypatch):
         requester = ServerReactivity()
 
-        if os.name != 'posix':
-            monkeypatch.setattr(ServerReactivity, 'request_icmp', lambda *args, **kwargs: True)
+        monkeypatch.setattr(ServerReactivity, 'request_icmp', lambda *args, **kwargs: True)
 
         collector = ICMPCollector(requester, args)
 

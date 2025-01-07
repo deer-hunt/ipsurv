@@ -56,17 +56,17 @@ if not sys.platform.startswith('win'):
 
             assert fixed_ports == [80, 443, 8080]
 
-        def test_fix_filter_protocols(self, args_builder, args):
-            args.filter_protocol = 'TCP, UDP'
+        def test_fix_protocols(self, args_builder, args):
+            args.protocol = 'TCP, UDP'
 
-            fixed_protocols = args_builder.fix_filter_protocols(args)
+            fixed_protocols = args_builder.fix_protocols(args)
 
             assert 6 in fixed_protocols
             assert 17 in fixed_protocols
 
             with pytest.raises(Exception, match='Unknown protocol'):
-                args.filter_protocol = 'UNKNOWN'
-                args_builder.fix_filter_protocols(args)
+                args.protocol = 'UNKNOWN'
+                args_builder.fix_protocols(args)
 
         def test_fix_output(self, args_builder, args):
             args.output = 'TEXT'

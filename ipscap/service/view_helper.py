@@ -4,6 +4,7 @@ from ipscap.configs import Constant
 from ipscap.util.raw_socket_entity import IPHeader
 from ipsurv import __version__
 from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import AppException
 
 
 class ViewHelper:
@@ -15,9 +16,7 @@ class ViewHelper:
         if args.timeout is None:
             System.line('Press `Ctrl + C` to stop.\n')
         else:
-            System.line(
-                "`--timeout` option is enabled. The capture will stop {} seconds automatically.".format(
-                    args.timeout) + "\n")
+            System.line("`--timeout` option is enabled. The capture will stop {} seconds automatically.".format(args.timeout) + "\n")
 
         if args.fixed_output == Constant.OUTPUT_NONE:
             System.line('Output is disabled by `--output` option.\n')
@@ -127,13 +126,16 @@ class ViewHelper:
 
             System.output_data('NOT_SUPPORT_PACKET', hex_data, level=logging.DEBUG)
 
-    def output_error(self):
+    def output_error(self, e):
         msg = ''
 
         if not System.is_logging(logging.DEBUG):
-            msg = ' Set `--debug` or `--verbose=3` option to output error detail.'
+            msg = '\nSet `--debug` or `--verbose=3` option to output error detail.'
 
-        System.warn('An error has occurred.' + msg)
+        if not isinstance(e, AppException):
+            System.warn('An error has occurred.' + msg)
+        else:
+            System.warn(str(e) + msg)
 
     def get_border(self, length=120):
         return "\n" + '*' * length + "\n"

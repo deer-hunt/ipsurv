@@ -1,11 +1,6 @@
 # IpSurv
 
 <div>
-<img width="165" height="165" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
-
-```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is packet capture tool which support "ICMP, TCP, UDP" protocol. Each tools and internal program are extensible using Python.
-
-<div>
 
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests.yml/badge.svg"></a>
 <a href="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml"><img alt="CI - Test" src="https://github.com/deer-hunt/ipsurv/actions/workflows/unit-tests-windows.yml/badge.svg"></a>
@@ -24,6 +19,12 @@
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeer-hunt%2Fipsurv.svg?type=shield"/></a>
 
 </div>
+
+<div>
+<img width="125" height="125" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
+
+```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is packet capture tool which support "ICMP, TCP, UDP" protocol. Each tools and internal program are extensible using Python.
+
 </div>
 
 <p>&nbsp;</p>
@@ -57,16 +58,13 @@ $ conda install conda-forge::ipsurv
 
 > If you'd like to use in Python 2.7, you can refactor to Python 2.7 code easily. See "development_debug.md".
 
-## Documentation site
 
-IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
+## Commands
 
-
-## Overview
-
-- `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows to retrieve country codes for IP addresses, perform ping tests, and check ports.
-- `ipscap` is packet capture tool like `tcpdump` which support "ICMP, TCP, UDP" protocol. `ipscap` have various filtering options, displaying IP header and TCP header, dumping files functions.
-*`ipscap` must be execute as root user. And `ipscap` does not support Windows.
+| Command     | Description                                                                                             |
+|----------|---------------------------------------------------------------------------------------------------------|
+| `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
+| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and includes dumping files functions. <br><br>* `ipscap` must be executed as "root" user. It does not support Windows.*   |
 
 It’s best to refer to the help to verify the functions.
 
@@ -76,9 +74,15 @@ $ ipsurv --help
 # ipscap --help
 ```
 
+
+## Documentation site
+
+IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
+
+
 ## Usage of `ipsurv`
 
-**Specify Target using Argument**
+**Specify the target using Argument**
 
 ```bash
 $ ipsurv 192.168.1.10
@@ -87,14 +91,14 @@ $ ipsurv test-example-sample-ipsurv.com --add_ip
 $ ipsurv x.x.x.x --format=geo
 ```
 
-**Specify Target using PIPE**
+**Specify the target using PIPE**
 
 ```bash
 $ cat ips.txt|ipsurv
 $ cat apache.log|ipsurv --add_ip
 ```
 
-**Example result**
+**Output example**
 
 ```bash
 8.8.8.8:53,8.8.8.0,US,ICMP_OK,TCP_OK,UDP_OK
@@ -107,31 +111,59 @@ $ cat apache.log|ipsurv --add_ip
 ipscap --exclude_ssh
 ipscap --force
   
-ipscap --filter_port="80;53" --find="GET"
-ipscap --filter_port="80" --find="3\d1"
+ipscap --port="80;53" --find="GET"
+ipscap --port="80" --find="3\d1"
 ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
 ipscap --find="HTTP" --tracking
 ```
 
-**Output example**
+**Output example: Capture 80 port**
 
 ```
-Time:           2025-01-05 01:16:36.7095 / 1736180196.7095, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
-TCP header:     TCP header length: 20, Sequence: 691574840, Acknowledgement: 3520002, Window: 29200, Flags: ['PSH', 'ACK']
+Time:           2025-01-02 14:48:07.9597 / 1704200887.9597, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1187996480, Acknowledgement: 2944002, Window: 29200, Flags: ['ACK']
 TCP options:    -
-Source:         IP: 10.0.2.15                 Port: 39550
-Destination:    IP: 216.58.220.110            Port: 80
+Source:         IP: 10.0.2.15                 Port: 60684
+Destination:    IP: 151.101.1.140             Port: 80
 Direction:      SEND [ >>> ]
-Data length:    74 byte
-IP-H data:      45 00 00 72 40 0e 40 00 40 06 39 c0 0a 00 02 0f d8 3a dc 6e 
-TCP-H data:     9a 7e 00 50 29 38 98 38 00 35 b6 02 50 18 72 10 c1 1c 00 00 
+Data length:    0 byte
+IP-H data:      45 00 00 28 43 54 40 00 40 06 52 7c 0a 00 02 0f 97 65 01 8c 
+TCP-H data:     ed 0c 00 50 46 cf 63 40 00 2c ec 02 50 10 72 10 a5 1a 00 00 
+
+Time:           2025-01-02 14:48:07.9599 / 1704200887.9599, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 118, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1187996480, Acknowledgement: 2944002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60684
+Destination:    IP: 151.101.1.140             Port: 80
+Direction:      SEND [ >>> ]
+Data length:    78 byte
+IP-H data:      45 00 00 76 43 55 40 00 40 06 52 2d 0a 00 02 0f 97 65 01 8c 
+TCP-H data:     ed 0c 00 50 46 cf 63 40 00 2c ec 02 50 18 72 10 a5 68 00 00 
 
 GET / HTTP/1.1
 User-Agent: curl/7.29.0
-Host: google.com
+Host: www.reddit.com
 Accept: */*
 ```
+
+**Output example: Output line format**
+
+```
+2025-01-02 14:55:55.7247, 1,  4, 20, 64, 60,      TCP, 40, 1165755664, 0, 29200,          ['SYN'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          mss:1460;sack;nop;wscale:7
+2025-01-02 14:55:55.7275, 1,  4, 20, 64, 44,      TCP, 24, 3072001, 1165755665, 65535,    ['SYN', 'ACK'],       2,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       mss:1460
+2025-01-02 14:55:55.7277, 2,  4, 20, 64, 40,      TCP, 20, 1165755665, 3072002, 29200,    ['ACK'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
+2025-01-02 14:55:55.7278, 3,  4, 20, 64, 118,     TCP, 20, 1165755665, 3072002, 29200,    ['PSH', 'ACK'],       78,     10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
+2025-01-02 14:55:55.7278, 2,  4, 20, 64, 40,      TCP, 20, 3072002, 1165755743, 65535,    ['ACK'],              6,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       -
+2025-01-02 14:55:55.7322, 3,  4, 20, 64, 982,     TCP, 20, 3072002, 1165755743, 65535,    ['PSH', 'ACK'],       942,    151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       -
+2025-01-02 14:55:55.7324, 4,  4, 20, 64, 40,      TCP, 20, 1165755743, 3072944, 30144,    ['ACK'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
+2025-01-02 14:55:55.7325, 5,  4, 20, 64, 40,      TCP, 20, 1165755743, 3072944, 30144,    ['FIN', 'ACK'],       0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
+2025-01-02 14:55:55.7326, 4,  4, 20, 64, 40,      TCP, 20, 3072944, 1165755743, 65535,    ['FIN', 'ACK'],       6,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       -
+2025-01-02 14:55:55.7327, 6,  4, 20, 64, 40,      TCP, 20, 1165755744, 3072945, 30144,    ['ACK'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
+2025-01-02 14:55:55.7327, 5,  4, 20, 64, 40,      TCP, 20, 3072944, 1165755744, 65535,    ['FIN', 'ACK'],       6,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       -
+```
+
 
 ## `ipsurv` command
 
@@ -348,6 +380,17 @@ $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile +
 
 ## `ipscap` command
 
+### Features of `ipscap`
+
+- Capture TCP, UDP, ICMP packets
+- Show IP header values and protocol's header values.
+- Output the binary data of headers in HEX format.
+- Filter by strings or various criteria.
+- Allows tracking matched transfers.
+- Various output mode.
+- Dump to files.
+
+
 ### Command options
 
 **Options**
@@ -355,9 +398,9 @@ $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile +
 ```
 [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 [--find {string}] [--find_case_sensitive]
-[--find_hex {string}] [--filter_port {int}]
-[--filter_protocol [ICMP, TCP, UDP]] [--filter_ip {string}]
-[--filter_condition {string}] [--tracking]
+[--find_hex {string}] [--port {int}]
+[--protocol [ICMP, TCP, UDP]] [--ip {string}]
+[--condition {string}] [--tracking]
 [--stat_mode {0,1,2}] [--stat_group {0,1,2}]
 [--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
 [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
@@ -367,20 +410,20 @@ $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile +
 **Example options**
 
 ```bash
-# ipscap --filter_port="80;53" --find="GET"
-# ipscap --filter_port="80" --find="3\d1"
+# ipscap --port="80;53" --find="GET"
+# ipscap --port="80" --find="3\d1"
 # ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
 # ipscap --find="HTTP" --tracking
-# ipscap --filter_condition="port!=22"
-# ipscap --filter_condition="port=80,443,53,-1" --filter_protocol=TCP,UDP,ICMP
-# ipscap --filter_condition="src_port>=80;src_port<=500;flags=SYN,PSH"
-# ipscap --filter_condition="ttl>=120"
+# ipscap --condition="port!=22"
+# ipscap --condition="port=80,443,53,-1" --protocol=TCP,UDP,ICMP
+# ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
+# ipscap --condition="ttl>=120"
 # ipscap --output=HEADER
-# ipscap --output=BYTE --filter_port="80,443"
-# ipscap --output=LINE --filter_port="80,443"
-# ipscap --stat_mode=2 --filter_protocol=TCP,UDP --output=NONE
-# ipscap --filter_port=80,443 --stat_group=1
-# ipscap --filter_port=80 --dumpfile=1
+# ipscap --output=BYTE --port="80,443"
+# ipscap --output=LINE --port="80,443"
+# ipscap --stat_mode=2 --protocol=TCP,UDP --output=NONE
+# ipscap --port=80,443 --stat_group=1
+# ipscap --port=80 --dumpfile=1
 # ipscap --exclude_ssh
 # ipscap --force
 ```

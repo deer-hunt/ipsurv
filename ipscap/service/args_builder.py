@@ -66,22 +66,22 @@ class ArgsBuilder:
 
     def _assign_shorten_option(self, args):
         if args.web_port:
-            args.filter_port = '80,443,53'
+            args.port = '80,443,53'
 
         if args.general_port:
-            args.filter_port = '21,22,23,25,53,80,110,143,220,443,465,990,993,995,1433,3306'
+            args.port = '21,22,23,25,53,80,110,143,220,443,465,990,993,995,1433,3306'
 
         if args.exclude_ssh:
-            if not args.filter_condition:
-                args.filter_condition = ''
+            if not args.condition:
+                args.condition = ''
 
-            args.filter_condition = 'port!=22;' + args.filter_condition
+            args.condition = 'port!=22;' + args.condition
 
     def _configure(self, parser, args):
         try:
-            args.fixed_filter_protocols = self.fix_filter_protocols(args)
-            args.fixed_filter_ips = self._fix_filter_ips(args)
-            args.fixed_filter_ports = self._fix_filter_ports(args)
+            args.fixed_protocols = self.fix_protocols(args)
+            args.fixed_ips = self._fix_ips(args)
+            args.fixed_ports = self._fix_ports(args)
             args.fixed_output = self._fix_output(args)
             args.has_filters = self._has_filters(args)
         except Exception as e:
@@ -92,33 +92,33 @@ class ArgsBuilder:
     def _prepare_arguments(self, parser, arguments):
         ArgsHelper.add_arguments(parser, arguments, {})
 
-    def _fix_filter_ips(self, args):
-        ips = re.split(r'[;, ]+', args.filter_ip)
+    def _fix_ips(self, args):
+        ips = re.split(r'[;, ]+', args.ip)
 
         ips = list(filter(lambda v: v.strip(), ips))
 
         ips = ips if len(ips) > 0 else None
 
-        logging.log(logging.INFO, 'Fixed filter_ips:' + str(ips))
+        logging.log(logging.INFO, 'Fixed ips:' + str(ips))
 
         return ips
 
-    def _fix_filter_ports(self, args):
-        ports = re.split(r'[;, ]+', args.filter_port)
+    def _fix_ports(self, args):
+        ports = re.split(r'[;, ]+', args.port)
 
         ports = list(filter(lambda v: v.strip(), ports))
         ports = list(map(lambda v: int(v), ports))
 
         ports = ports if len(ports) > 0 else None
 
-        logging.log(logging.INFO, 'Fixed filter_ports:' + str(ports))
+        logging.log(logging.INFO, 'Fixed ports:' + str(ports))
 
         return ports
 
-    def fix_filter_protocols(self, args):
+    def fix_protocols(self, args):
         protocols = []
 
-        tprotocols = re.split(r'[;, ]+', args.filter_protocol)
+        tprotocols = re.split(r'[;, ]+', args.protocol)
 
         for protocol in tprotocols:
             protocol_code = protocol.upper()
@@ -132,9 +132,9 @@ class ArgsBuilder:
             if protocol > 0:
                 protocols.append(protocol)
             else:
-                raise Exception('Unknown protocol (--filter_protocol)')
+                raise Exception('Unknown protocol (--protocol)')
 
-        logging.log(logging.INFO, 'Fixed filter_protocols:' + str(protocols))
+        logging.log(logging.INFO, 'Fixed protocols:' + str(protocols))
 
         return protocols
 
@@ -172,16 +172,16 @@ class ArgsBuilder:
         if args.find or args.find_hex:
             return True
 
-        if IPHeader.PROTOCOL_TCP not in args.fixed_filter_protocols:
+        if IPHeader.PROTOCOL_TCP not in args.fixed_protocols:
             return True
 
-        if args.fixed_filter_ips:
+        if args.fixed_ips:
             return True
 
-        if args.fixed_filter_ports:
+        if args.fixed_ports:
             return True
 
-        if args.filter_condition:
+        if args.condition:
             return True
 
         return False

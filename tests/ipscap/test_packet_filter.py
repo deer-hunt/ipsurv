@@ -50,7 +50,7 @@ class TestPacketFilter:
     @pytest.fixture
     def args(self, mocker):
         args = mocker.Mock()
-        args.fixed_filter_protocols = [IPHeader.PROTOCOL_TCP]
+        args.fixed_protocols = [IPHeader.PROTOCOL_TCP]
         args.fixed_filter_ips = ['192.168.1.1', '192.168.1.2']
         args.fixed_filter_ports = [80, 12345]
         args.tracking = True

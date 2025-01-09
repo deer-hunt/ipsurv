@@ -12,28 +12,39 @@ class PacketFilter:
         is_capture = self.filter_packet(ip_header, protocol_header, args)
 
         if args.tracking:
-            port = protocol_header.dest_port if protocol_header.dest_port < protocol_header.src_port else protocol_header.src_port
+            (ip1, ip2, port) = self._get_tacking_key(ip_header, protocol_header)
 
             if is_capture:
                 tracking = (ip_header.src_ip, ip_header.dest_ip, port)
 
                 if tracking not in self.trackings:
-                    self.trackings.append(tracking)
+                    self._add_transfer(ip1, ip2, port)
             else:
-                if len(self.trackings) > 0:
-                    if self._is_tracking_transfer(ip_header, port):
-                        is_capture = True
+                if self._is_tracking_transfer(ip1, ip2, port):
+                    is_capture = True
 
         return is_capture
 
-    def _is_tracking_transfer(self, ip_header, port):
+    def _get_tacking_key(self, ip_header, protocol_header):
+        port = protocol_header.dest_port if protocol_header.dest_port < protocol_header.src_port else protocol_header.src_port
+
+        if ip_header.src_ip > ip_header.dest_ip:
+            return (ip_header.dest_ip, ip_header.src_ip, port)
+
+        return (ip_header.src_ip, ip_header.dest_ip, port)
+
+    def _add_transfer(self, ip1, ip2, port):
+        tracking = (ip1, ip2, port)
+
+        self.trackings.append(tracking)
+
+    def _is_tracking_transfer(self, ip1, ip2, port):
         is_tracking = False
 
         for tracking in self.trackings:
-            if tracking[0] == ip_header.src_ip and tracking[1] == ip_header.dest_ip:
-                if tracking[2] == port:
-                    is_tracking = True
-                    break
+            if tracking[0] == ip1 and tracking[1] == ip2 and tracking[2] == port:
+                is_tracking = True
+                break
 
         return is_tracking
 

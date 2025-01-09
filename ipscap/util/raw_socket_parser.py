@@ -44,29 +44,29 @@ class IPHeaderParser:
         ip_header.dest_ip = socket.inet_ntoa(iph[9])
         ip_header.dest_ip_int = int.from_bytes(iph[9], byteorder='big')
 
-        ip_header.direction = self.detect_local_ip(ip_header)
+        ip_header.direction = self.detect_direction(ip_header)
 
         ip_header.direction_code = IPHeader.get_direction_code(ip_header.direction)
 
         return ip_header
 
-    def detect_local_ip(self, ip_header):
+    def detect_direction(self, ip_header):
         direction = 0
 
         if ip_header.src_ip_int in self.eth_ips:
-            direction = 1
+            direction = IPHeader.DIRECTION_SEND
         elif ip_header.dest_ip_int in self.eth_ips:
-            direction = 2
+            direction = IPHeader.DIRECTION_RECEIVE
         else:
             tip = ipaddress.ip_address(ip_header.src_ip)
 
             if tip.is_private:
-                direction = 1
+                direction = IPHeader.DIRECTION_SEND
 
             tip = ipaddress.ip_address(ip_header.dest_ip)
 
             if tip.is_private:
-                direction = 2
+                direction = IPHeader.DIRECTION_RECEIVE
 
         return direction
 

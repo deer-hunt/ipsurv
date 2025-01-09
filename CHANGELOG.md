@@ -1,11 +1,15 @@
 # Changelog
 
-## [1.2.0b2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.3) (2025-01-06)
+## [1.2.0b3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0b3) (2025-01-09)
+
+- [ipscap] Fixed some bugs.
+
+## [1.2.0b2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0b2) (2025-01-07)
 
 - [ipscap] Change some option names.
 - [ipscap] Fixed several bugs.
 
-## [1.2.0b1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.1.3) (2025-01-06)
+## [1.2.0b1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0b1) (2025-01-06)
 
 - Add `ipscap` command. `ipscap` captures transfer data. It support "TCP", "UDP", "ICMP" and many filtering options, dumping file.
 - Change some internal structures. e.g.: changing namespace.

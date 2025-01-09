@@ -41,13 +41,13 @@ if not sys.platform.startswith('win'):
             sample_ip_header.src_ip_int = socket.inet_aton('192.168.1.1')
             sample_ip_header.dest_ip_int = socket.inet_aton('8.8.8.8')
 
-            direction = ip_header_parser.detect_local_ip(sample_ip_header)
+            direction = ip_header_parser.detect_direction(sample_ip_header)
             assert direction == 1
 
             sample_ip_header.src_ip_int = socket.inet_aton('8.8.8.8')
             sample_ip_header.dest_ip_int = socket.inet_aton('192.168.1.2')
 
-            direction = ip_header_parser.detect_local_ip(sample_ip_header)
+            direction = ip_header_parser.detect_direction(sample_ip_header)
             assert direction == 2
 
         def test_get_header_parser_icmp(self, ip_header_parser):

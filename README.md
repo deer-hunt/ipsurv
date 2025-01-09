@@ -21,9 +21,9 @@
 </div>
 
 <div>
-<img width="125" height="125" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
+<img width="100" height="100" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
-```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is packet capture tool which support "ICMP, TCP, UDP" protocol. Each tools and internal program are extensible using Python.
+```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is a packet capture tool that supports the ICMP, TCP, and UDP protocols. Each tools and internal program are extensible using Python.
 
 </div>
 
@@ -32,8 +32,6 @@
 <img src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv.gif" alt="ipsurv visual image" width="100%" />
 
 ## Installation
-
-> `ipscap` is also installed bundled.
 
 **PyPI**
 
@@ -48,6 +46,9 @@ $ pip3 install ipsurv
 ```
 $ conda install conda-forge::ipsurv
 ```
+
+> `ipscap` is also installed with it.
+
 
 ## Requirements
 
@@ -64,7 +65,7 @@ $ conda install conda-forge::ipsurv
 | Command     | Description                                                                                             |
 |----------|---------------------------------------------------------------------------------------------------------|
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
-| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and includes dumping files functions. <br><br>* `ipscap` must be executed as "root" user. It does not support Windows.*   |
+| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. It does not support Windows.*   |
 
 It’s best to refer to the help to verify the functions.
 
@@ -207,9 +208,11 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 - Load env variable. And changing arguments and internal configures.
 - Use GeoIP2 via IpSurv optionally.
 
+> IPv6 is not supported.
+
 ### Command options
 
-```IpSurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md).
+```IpSurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_arguments.md).
 
 **Options**
 
@@ -390,6 +393,8 @@ $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile +
 - Various output mode.
 - Dump to files.
 
+> IPv6 is not supported.
+
 
 ### Command options
 
@@ -462,12 +467,12 @@ The following documents exist in ```IpSurv```. You can read documents in [Docume
 
 | Title                       | Path                                        |
 |-------------------------------|---------------------------------------------|
-| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_arguments.md) |
-| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/command_examples.md)   |
-| **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/program_architecture_classes.md) |
-| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/customize_examples.md) |
+| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_arguments.md) |
+| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_examples.md)   |
+| **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/program_architecture_classes.md) |
+| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/customize_examples.md) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
-| **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/using_geoip2.md)  |
+| **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/using_geoip2.md)  |
 | **IpSurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
 
 
@@ -479,6 +484,7 @@ The following documents exist in ```IpSurv```. You can read documents in [Docume
 | `docs`               | Documentation files                                 |
 | `example_data`       | Sample data files for testing                       |
 | `examples`           | Example programs                 |
+| `ipscap`             | ipscap package/Sources                            |
 | `ipsurv`             | Main package/Sources                            |
 | `tests`              | Test files                     |
 

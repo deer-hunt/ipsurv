@@ -65,7 +65,7 @@ class TestPacketFilter:
 
     def test_is_tracking_transfer(self, packet_filter, ip_header):
         packet_filter.trackings.append((ip_header.src_ip, ip_header.dest_ip, 80))
-        assert packet_filter._is_tracking_transfer(ip_header, 80) is True
+        assert packet_filter._is_tracking_transfer(ip_header.src_ip, ip_header.dest_ip, 80) is True
 
     def test_filter_packet(self, packet_filter, ip_header, protocol_header, args):
         assert packet_filter.filter_packet(ip_header, protocol_header, args) is True

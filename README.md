@@ -23,7 +23,7 @@
 <div>
 <img width="100" height="100" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
-```IpSurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is a packet capture tool that supports the ICMP, TCP, and UDP protocols. Each tools and internal program are extensible using Python.
+```ipsurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is a packet capture tool that supports the ICMP, TCP, and UDP protocols. Each tools and internal program are extensible using Python.
 
 </div>
 
@@ -65,9 +65,10 @@ $ conda install conda-forge::ipsurv
 | Command     | Description                                                                                             |
 |----------|---------------------------------------------------------------------------------------------------------|
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
-| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. It does not support Windows.*   |
+| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It does not support Windows.   |
+| `ipscli` | Coming soon.   |
 
-It’s best to refer to the help to verify the functions.
+It’s best to refer to the help to recognize the functions.
 
 ```
 $ ipsurv --help
@@ -81,7 +82,28 @@ $ ipsurv --help
 IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://deer-hunt.github.io/ipsurv/).
 
 
-## Usage of `ipsurv`
+## "ipsurv" command
+
+`ipsurv` command reference is [here](./docs/ipsurv-cmd/README.md).
+
+### Features
+
+- Grouping by IP or Subnet.
+- Skip duplicate by the group.
+- Autodetect IP in line. Trying to resolve the name automatically.
+- Autodetect delimiter-char.
+- Customize output format. There are many format.
+- Output JSON format.
+- Show headers.
+- Check ICMP, TCP, UDP, HTTP.
+- Set timeout.
+- Load env variable. And changing arguments and internal configures.
+- Use GeoIP2 via IpSurv optionally.
+
+> IPv6 is not supported.
+
+
+### Usage
 
 **Specify the target using Argument**
 
@@ -99,28 +121,139 @@ $ cat ips.txt|ipsurv
 $ cat apache.log|ipsurv --add_ip
 ```
 
-**Output example**
-
 ```bash
-8.8.8.8:53,8.8.8.0,US,ICMP_OK,TCP_OK,UDP_OK
+$ cat ./example_data/government.txt|ipsurv --sequence --add_ip
+1,www.whitehouse.gov,192.0.66.168,OK,US,AUTOMATTIC,192.0.64.0,192.0.127.255
+2,www.state.gov,3.165.39.61,OK,US,AMAZON-CF,3.165.0.0,3.165.255.255
+3,www.treasury.gov,23.50.118.187,OK,US,AKAMAI,23.32.0.0,23.67.255.255
+4,www.gov.uk,151.101.192.144,OK,US,SKYCA-3,151.101.0.0,151.101.255.255
 ```
 
-## Usage of `ipscap`
+**Output by JSON**
 
+```
+$ ipsurv wikipedia.org --format=default --json=2 --add_ip
+{
+  "original": "wikipedia.org",
+  "ip": "103.102.166.224",
+  "status": "OK",
+  "group": "",
+  "country": "US",
+  "name": "WIKIMEDIA-AP",
+  "network_start": "103.102.166.0",
+  "network_end": "103.102.166.255"
+}
+```
+
+**Format profile/parameters**
+
+You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
+
+```
+$ ipsurv github.io --format=heavy            # Profile
+$ ipsurv github.io --format=simple           # Profile
+
+$ ipsurv 8.8.8.8 --format="{status},{ip},{country},{address}"   # Parameters
+```
+
+**Check HTTP response**
+
+```
+$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=1
+https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
+```
+
+**GeoIP**
+
+```
+$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+```
+
+
+### Command options
+
+```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/ipsurv-cmd/command_arguments.md).
+
+```
+[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+[--disable_env] [--resolve {0,1}] [--identify_int]
+[--autodetect] [--begin {number}] [--end {number}]
+[--collect {string}] [--all_collect] [--timeout {string}]
+[--group {string}] [--skip_duplicate {0,1,2}]
+[--range {string}] [--format {string}] [--no_original]
+[--sequence] [--add_ip] [--ident] [--enclose {string}]
+[--delimiter {string}] [--alt_delimiter {string}]
+[--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
+[--exhaustive] [--icmp {0,1}] [--tcp {number}]
+[--udp {number}] [--http {0,1,2}] [--json_all]
+[--geoip_only] [--host_only] [--version]
+[target [target ...]]
+```
+
+
+## "ipscap" command
+
+`ipscap` command reference is [here](./docs/ipscap-cmd/README.md).
+
+### Features
+
+- Capture TCP, UDP, ICMP packets
+- Show IP header values and protocol's header values.
+- Output the binary data of headers in HEX format.
+- Filter by strings or various criteria.
+- Allows tracking matched transfers.
+- Various output mode.
+- Dump to files.
+
+> IPv6 is not supported.
+
+
+### Usage
 
 ```bash
-ipscap --exclude_ssh
-ipscap --force
+# ipscap --exclude_ssh
+# ipscap --force
   
-ipscap --port="80;53" --find="GET"
-ipscap --port="80" --find="3\d1"
-ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
-ipscap --find="HTTP" --tracking
+# ipscap --port="80;53" --find="GET"
+# ipscap --condition="port=80,443,53,-1" --protocol=TCP,UDP,ICMP
+# ipscap --find="HTTP" --tracking
+
+# ipscap --port=80,443 --stat_group=1
 ```
 
-**Output example: Capture 80 port**
+**Filterings**
 
 ```
+# ipscap --find="HTTP/1.1 \d01"
+# ipscap --find="http" --find_mode=MATCH
+# ipscap --find="00 99 f0 e0 78 4e 23 70 a1" --find_mode=HEX
+# ipscap --find="Accept-Ranges: bytes\r\n\r\n\x00\x00\x01\x00\x01\x00" --find_mode=BINARY
+# ipscap --find="HTTP" --tracking
+# ipscap --condition="port!=22"
+# ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
+# ipscap --condition="ttl>=120"
+```
+
+**Dump files**
+
+```bash
+# ipscap --port=80 --dumpfile=1
+```
+
+```bash
+
+# ipscap --output=HEADER # HEADER only
+# ipscap --output=BINARY --port="80" # BINARY
+# ipscap --output=LINE --port="80" #LINE
+# ipscap --output=HEX --port="80" # HEX
+```
+
+**Capture 80 port**
+
+```bash
+# ipscap --port=80
 Time:           2025-01-02 14:48:07.9597 / 1704200887.9597, Passage number: 2
 IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1187996480, Acknowledgement: 2944002, Window: 29200, Flags: ['ACK']
@@ -149,9 +282,10 @@ Host: www.reddit.com
 Accept: */*
 ```
 
-**Output example: Output line format**
+**Output line format**
 
-```
+```bash
+# ipscap --port=80 --output=LINE
 2025-01-02 14:55:55.7247, 1,  4, 20, 64, 60,      TCP, 40, 1165755664, 0, 29200,          ['SYN'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          mss:1460;sack;nop;wscale:7
 2025-01-02 14:55:55.7275, 1,  4, 20, 64, 44,      TCP, 24, 3072001, 1165755665, 65535,    ['SYN', 'ACK'],       2,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       mss:1460
 2025-01-02 14:55:55.7277, 2,  4, 20, 64, 40,      TCP, 20, 1165755665, 3072002, 29200,    ['ACK'],              0,      10.0.2.15:57910,         151.101.129.140:80,      SEND,          -
@@ -165,316 +299,41 @@ Accept: */*
 2025-01-02 14:55:55.7327, 5,  4, 20, 64, 40,      TCP, 20, 3072944, 1165755744, 65535,    ['FIN', 'ACK'],       6,      151.101.129.140:80,      10.0.2.15:57910,         RECEIVE,       -
 ```
 
-
-## `ipsurv` command
-
-### Survey-mode
-
-```IpSurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
-
-| Survey-mode              | Description              |
-|-------------------|------------------------|
-| **Survey IPs**     | Primary mode. Surveying IP or Host or URL.     |
-| **Survey Self**    | Surveying self IP.     |
-
-**Survey Self e.g.**
+**Output HEX**
 
 ```bash
-$ ipsurv self
-Ip: 144.160.*.*
-Hostname: 
-Organization: AS797 AT&T Services, Inc.
-Country: US
-City: San Jose
-Region: California
-Postal: 95103
-Geo: 37.3394,-121.8950
-Timezone: America/Los_Angeles
-LocalIp: 10.0.2.5
-LocalDns: ['8.8.8.8', '8.8.4.4']
+# ipscap --port=80 --output=HEX
+Time:           2025-01-02 22:29:48 / 1735787388.957, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 978, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 67904002, Acknowledgement: 172468636, Window: 65535, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 151.101.129.140           Port: 80
+Destination:    IP: 10.0.2.15                 Port: 52386
+Direction:      RECEIVE [ <<< ]
+Data length:    938 byte
+IP-H data:      45 00 03 d2 3e a6 00 00 40 06 13 80 97 65 81 8c 0a 00 02 0f 
+TCP-H data:     00 50 cc a2 04 0c 22 02 0a 47 a9 9c 50 18 ff ff 06 2f 00 00 
+
+48 54 54 50 2f 31 2e 31 20 33 30 31 20 52 65 64 69 72 65 63 74 0d 0a 44 61 74 65 3a 20 53 61 74 2c 20 31 31 20 4a 61 6e 20 32 30 32 35 20 31 32 3a 34 35 3a 34 36 20 47 4d 54 0d 0a 
+43 6f 6e 6e 65 63 74 69 6f 6e 3a 20 6b 65 65 70 2d 61 6c 69 76 65 0d 0a 43 61 63 68 65 2d 43 6f 6e 74 72 6f 6c 3a 20 6e 6f 2d 73 74 6f 72 65 0d 0a 4c 6f 63 61 74 69 6f 6e 3a 20 68 74
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4c 61 6e 67 75 61 67 65 3a 20 65 6e 0d 0a 41 63 63 65 70 74 2d 43 48 3a 20 53 65 63 2d 43 48 2d 55 41 2d 46 75 6c 6c 2d 56 65 72 73 69 6f 6e 2d 4c 69 73 74 2c 20 53 65 63 2d 43
+72 63 68 3d 2a 0d 0a 50 65 72 6d 69 73 73 69 6f 6e 73 2d 50 6f 6c 69 63 79 3a 20 75 6e 6c 6f 61 64 3d 28 29 0d 0a 43 6f 6e 74 65 6e 74 2d 4c 65 6e 67 74 68 3a 20 31 0d 0a 0d 0a 20 
 ```
-
-### Features of "Survey IPs mode"
-
-- Grouping by IP or Subnet.
-- Skip duplicate by the group.
-- Autodetect IP in line. Trying to resolve the name automatically.
-- Autodetect delimiter-char.
-- Customize output format. There are many format.
-- Output JSON format.
-- Show headers.
-- Check ICMP, TCP, UDP, HTTP.
-- Set timeout.
-- Load env variable. And changing arguments and internal configures.
-- Use GeoIP2 via IpSurv optionally.
-
-> IPv6 is not supported.
-
-### Command options
-
-```IpSurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_arguments.md).
-
-**Options**
-
-```
-[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-[--disable_env] [--resolve {0,1}] [--identify_int]
-[--autodetect] [--begin {number}] [--end {number}]
-[--collect {string}] [--all_collect] [--timeout {string}]
-[--group {string}] [--skip_duplicate {0,1,2}]
-[--range {string}] [--format {string}] [--no_original]
-[--sequence] [--add_ip] [--ident] [--enclose {string}]
-[--delimiter {string}] [--alt_delimiter {string}]
-[--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
-[--exhaustive] [--icmp {0,1}] [--tcp {number}]
-[--udp {number}] [--http {0,1,2}] [--json_all]
-[--geoip_only] [--host_only] [--version]
-[target [target ...]]
-```
-
-**Example options**
-
-```bash
-$ cat ips.txt|ipsurv --group=24
-$ cat ips.txt|ipsurv --group=network
-$ cat ips.txt|ipsurv --format=country
-$ cat ips.txt|ipsurv --format=hostname
-$ cat ips.txt|ipsurv --format="{country},{name}"
-$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43}"
-$ cat /var/log/httpd/access_log|ipsurv --ident --no_original
-
-$ cat ips.txt|ipsurv --group=255.255.255.0
-$ cat ips.txt|ipsurv --delimiter="\t"
-$ cat ips.txt|ipsurv --format="{group}\t{ip_int}\t{country}\t{handle}\t{port43}" 
-$ cat ips.txt|ipsurv --format="{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}" --group=network --icmp=1 --tcp=1 --timeout=2
-```
-
-### Command examples
-
-**Show headers**
-
-```bash
-$ cat ./example_data/government.txt|ipsurv --headers=1 --format="{status},{group},{country},{name},{cidr},{http},{http_h2}" --group=network --http=2
-original,status,group,country,name,cidr,http,http_h2
-www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
-www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
-www.treasury.gov,OK,23.32.0.1,US,AKAMAI,23.32.0.0/11,HTTP_OK,HTTP2
-www.gov.uk,OK,151.101.0.1,US,SKYCA-3,151.101.0.0/16,HTTP_OK,HTTP2
-www.gouvernement.fr,OK,217.70.184.1,FR,GANDIFR-NET4,217.70.184.0/24,HTTP_OK,HTTP1
-www.diplomatie.gouv.fr,OK,77.128.0.1,FR,FR-SFR-20100831,77.128.0.0/11,HTTP_OK,HTTP1
-www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HTTP2
-www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
-```
-
-**Add line-number**
-
-```bash
-$ cat ./example_data/government.txt|ipsurv --sequence --add_ip
-1,www.whitehouse.gov,192.0.66.168,OK,US,AUTOMATTIC,192.0.64.0,192.0.127.255
-2,www.state.gov,3.165.39.61,OK,US,AMAZON-CF,3.165.0.0,3.165.255.255
-3,www.treasury.gov,23.50.118.187,OK,US,AKAMAI,23.32.0.0,23.67.255.255
-4,www.gov.uk,151.101.192.144,OK,US,SKYCA-3,151.101.0.0,151.101.255.255
-```
-
-**Output by JSON**
-
-```bash
-$ ipsurv wikipedia.org --format=default --json=2 --add_ip
-{
-  "original": "wikipedia.org",
-  "ip": "103.102.166.224",
-  "status": "OK",
-  "group": "",
-  "country": "US",
-  "name": "WIKIMEDIA-AP",
-  "network_start": "103.102.166.0",
-  "network_end": "103.102.166.255"
-}
-```
-
-**Output detailed data by JSON**
-
-```bash
-$ ipsurv wikipedia.org --json_all    # `--json_all` is equivalent to `--json=2 --exhaustive`
-$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
-{
-  "success": true,
-  "status": "OK",
-  "requests": [
-    "RDAP"
-  ],
-  "errors": [],
-  "sequence": 1,
-  "original": "wikipedia.org",
-  "target": "103.102.166.224",
-  "ip": "103.102.166.224",
-  "ip_int": 1734780640,
-  "port": null,
-  "group_int": 0,
-  "group": "",
-  "group_found": false,
-  "group_status": "-",
-  "country": "US",
-  "name": "WIKIMEDIA-AP",
-  "network_start": "103.102.166.0",
-  "network_end": "103.102.166.255",
-  "ip_hex": "67.66.A6.E0",
-  "ip_reversed": "224.166.102.103",
-  "ip_type": "PUBLIC",
-~~~~~~~~~~~~~
-  "org": "Wikimedia Foundation, Inc.",
-  "address": "1 Montgomery Street Suite 1600",
-  "description": "Wikimedia Foundation, Inc.",
-  "target.raw": "wikipedia.org",
-  "target.identifier": "103.102.166.224",
-  "target.identifier_int": 1734780640,
-  "target.identified": true,
-  "target.ip": "103.102.166.224",
-  "target.url": null,
-  "target.fqdn": "wikipedia.org",
-  "target.port": null,
-  "target.status": "EXIST"
-}
-```
-
-**Check HTTP response**
-
-```
-$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=1
-https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
-
-$ ipsurv https://anaconda.org/ --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=2
-https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
-
-$ ipsurv https://www.youtube.com/feed/you --format=web --http=2 --headers=1
-original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
-https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,HTTP2,284.0,HTTP_OK
-```
-
-**Check Host name or PC name**
-
-```
-$ ipsurv 192.168.1.120 --host_only
-$ ipsurv 192.168.1.120 --format="hostname"
-192.168.1.100,MYPC-016
-```
-
-> You can also find the Windows PC name in private network.
-
-More examples are [here](https://deer-hunt.github.io/ipsurv/pages/command_examples.html).
-
-
-### Output Format
-
-You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
-
-```
-$ ipsurv github.io --format=heavy            # Profile
-$ ipsurv github.io --format=simple           # Profile
-
-$ ipsurv 8.8.8.8 --format="{status},{ip},{country},{address}"   # Paramaters
-$ ipsurv 8.8.8.8 --format="{status}\t{ip}\t{hostname}"         # Paramaters, TAB char
-
-$ ipsurv cloudflare.com --format="{ip},<address>,<system>"      # Paramaters + Profile
-$ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile + Paramaters
-```
-
-
-## `ipscap` command
-
-### Features of `ipscap`
-
-- Capture TCP, UDP, ICMP packets
-- Show IP header values and protocol's header values.
-- Output the binary data of headers in HEX format.
-- Filter by strings or various criteria.
-- Allows tracking matched transfers.
-- Various output mode.
-- Dump to files.
-
-> IPv6 is not supported.
 
 
 ### Command options
 
-**Options**
-
 ```
 [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-[--find {string}] [--find_case_sensitive]
-[--find_hex {string}] [--port {int}]
-[--protocol [ICMP, TCP, UDP]] [--ip {string}]
-[--condition {string}] [--tracking]
+[--find {string}] [--find_mode [REGEX, MATCH, BINARY, HEX]]
+[--port {int}] [--protocol [ICMP, TCP, UDP]]
+[--ip {string}] [--condition {string}] [--tracking]
 [--stat_mode {0,1,2}] [--stat_group {0,1,2}]
 [--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
 [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
 [--web_port] [--general_port] [--force] [--version]
 ```
-
-**Example options**
-
-```bash
-# ipscap --port="80;53" --find="GET"
-# ipscap --port="80" --find="3\d1"
-# ipscap --find_hex="00 99 f0 e0 78 4e 23 70 a1"
-# ipscap --find="HTTP" --tracking
-# ipscap --condition="port!=22"
-# ipscap --condition="port=80,443,53,-1" --protocol=TCP,UDP,ICMP
-# ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
-# ipscap --condition="ttl>=120"
-# ipscap --output=HEADER
-# ipscap --output=BYTE --port="80,443"
-# ipscap --output=LINE --port="80,443"
-# ipscap --stat_mode=2 --protocol=TCP,UDP --output=NONE
-# ipscap --port=80,443 --stat_group=1
-# ipscap --port=80 --dumpfile=1
-# ipscap --exclude_ssh
-# ipscap --force
-```
-
-
-## Using GeoIP2 optionally
-
-```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
-When using the GeoIP2 module, network communication does not occur, which enables faster processing.
-
-Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
-
-**Examples**
-
-```
-$ ipsurv 8.8.8.8 --geoip_only
-8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
-```
-
-```
-$ ipsurv www.wikipedia.org --format="{country},{geo}" --collect=geoip --headers=1
-original,country,geo
-www.wikipedia.org,US,37.751;-97.822
-
-$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{geo}" --collect="geoip" --headers=1
-original,continent,continent_name,country,geo
-8.8.8.8,NA,North America,US,37.751;-97.822
-```
-
-> `IpSuv` support customizing GeoIP2 data path by `IPSURV_CONF` env. Please read [here](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#environment-variable-ipsurv-conf) about `IPSURV_CONF`.
-
-
-## Documents
-
-The following documents exist in ```IpSurv```. You can read documents in [Documentation site](https://deer-hunt.github.io/ipsurv/).
-
-| Title                       | Path                                        |
-|-------------------------------|---------------------------------------------|
-| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_arguments.md) |
-| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/command_examples.md)   |
-| **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/program_architecture_classes.md) |
-| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/customize_examples.md) |
-| **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
-| **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/using_geoip2.md)  |
-| **IpSurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
-
 
 ## Path summary
 
@@ -500,21 +359,16 @@ $ ipsurv ***** --verbose=3    #DEBUG
 $ ipsurv ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
 ```
 
-## Customizing IpSurv
+```bash
+# ipscap ***** --verbose=2    #INFO
+# ipscap ***** --verbose=3    #DEBUG
 
-```IpSurv``` is implemented as customizable program architecture. ```IpSurv``` provide extending features and several classes. 
-And you can use IpSurv's internal classes in your program. Please read ```program_architecture_classes.md```.
-
-**Classes for major customization**
-
-| Classes    | Description            |
-|----------------------|----------------------------------------------|
-| **Pipeline**   | Pipeline class provide catching and customizing the data in each processing. ```./examples/pipeline_customize.py```         |
-| **ObjectFactory**   | ObjectFactory class provide customizing classes and creating original classes. ```./examples/object_factory.py```      |
-| **Serializer, LineSerializer, JsonSerializer**   | Serializer class provide displaying data and transforming data for presentation. ```./examples/object_factory_original_headers.py```      |
+# ipscap ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
+```
 
 
 ## Dependencies
 
 - [dnspython](https://github.com/rthalley/dnspython)
 - [geoip2](https://github.com/maxmind/GeoIP2-python) [Optional]
+

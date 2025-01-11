@@ -64,6 +64,7 @@ class IpsCapCmd:
         System.output_data('PARSED_CONDITION', parsed_cond)
 
         packet_filter = self.factory.create_packet_filter(ev_parser)
+        packet_filter.initialize(args)
 
         self.transfer_store = self.factory.create_transfer_store()
 

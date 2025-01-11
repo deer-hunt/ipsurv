@@ -55,16 +55,35 @@ class TestPacketFilter:
         args.fixed_ports = [80, 12345]
         args.tracking = True
         args.find = None
-        args.find_case_sensitive = False
-        args.find_hex = None
         return args
+
+    def test_prepare_find(self, packet_filter, args):
+        args.find_mode = 'REGEX'
+        args.find = 'test'
+        packet_filter.prepare_find(args)
+        assert b'test' in packet_filter._find_bytes
+
+        args.find_mode = 'MATCH'
+        args.find = 'Test'
+        packet_filter.prepare_find(args)
+        assert b'Test' in packet_filter._find_bytes
+
+        args.find_mode = 'BINARY'
+        args.find = 'test'
+        packet_filter.prepare_find(args)
+        assert b'test' in packet_filter._find_bytes
+
+        args.find_mode = 'HEX'
+        args.find = '00'
+        packet_filter.prepare_find(args)
+        assert b'\x00' in packet_filter._find_bytes
 
     def test_verify_capture(self, packet_filter, ip_header, protocol_header, args):
         is_capture = packet_filter.verify_capture(ip_header, protocol_header, args)
         assert is_capture is True
 
     def test_is_tracking_transfer(self, packet_filter, ip_header):
-        packet_filter.trackings.append((ip_header.src_ip, ip_header.dest_ip, 80))
+        packet_filter._trackings.append((ip_header.src_ip, ip_header.dest_ip, 80))
         assert packet_filter._is_tracking_transfer(ip_header.src_ip, ip_header.dest_ip, 80) is True
 
     def test_filter_packet(self, packet_filter, ip_header, protocol_header, args):
@@ -92,7 +111,12 @@ class TestPacketFilter:
 
         assert packet_filter.verify_condition(ip_header, protocol_header) is True
 
+    def create_bytes_by_binary(self, packet_filter):
+        hex_data = "test"
+        byte_data = packet_filter.create_bytes_by_binary(hex_data)
+        assert byte_data == b'test'
+
     def test_create_byte_by_hex(self, packet_filter):
         hex_data = "48656c6c6f20776f726c64"
-        byte_data = packet_filter.create_byte_by_hex(hex_data)
+        byte_data = packet_filter.create_bytes_by_hex(hex_data)
         assert byte_data == b'Hello world'

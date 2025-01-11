@@ -2,7 +2,7 @@
 
 ## Overview
 
-This description is description of development and debugging related ```IpSurv```.
+This description is description of development and debugging related `ipsurv`, `ipscap`.
 
 ## Program specification
 
@@ -14,19 +14,31 @@ This description is description of development and debugging related ```IpSurv``
 *: "IpSurv" doesn't support Python 2.7, However it's easy to refactor to Python 2.7. See the bottom of this document.
 
 
-## Program Architecture and Classes
+## Related documents
 
-Please read [Program Architecture and Classes(.md)](program_architecture_classes.md). There are description of several important classes.
+### ipsurv
 
-
-## Customizing and Examples
-
-Please read [Customizing and Examples(.md)](customize_examples.md). There are some example programs.
+- [Program Architecture and Classes(.md)](./ipsurv-cmd/program_architecture_classes.md)
+- [Customizing and Examples(.md)](./ipsurv-cmd/customize_examples.md)
 
 
 ## Debugging
 
-You can see detailed debug information by specifying `--verbose=3` or `--debug`. In detail, please read `--verbose` option in [Command Arguments(.md)](command_arguments.md).
+You can see detailed debug information by specifying `--verbose=3` or `--debug`. In detail, please read `--verbose` option.
+
+```bash
+$ ipsurv ***** --verbose=2    #INFO
+$ ipsurv ***** --verbose=3    #DEBUG
+
+$ ipsurv ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
+```
+
+```bash
+# ipscap ***** --verbose=2    #INFO
+# ipscap ***** --verbose=3    #DEBUG
+
+# ipscap ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
+```
 
 
 ### Log sample and description

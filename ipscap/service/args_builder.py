@@ -79,6 +79,7 @@ class ArgsBuilder:
 
     def _configure(self, parser, args):
         try:
+            args.fixed_find_mode = self._fix_find_mode(args)
             args.fixed_protocols = self.fix_protocols(args)
             args.fixed_ips = self._fix_ips(args)
             args.fixed_ports = self._fix_ports(args)
@@ -91,6 +92,34 @@ class ArgsBuilder:
 
     def _prepare_arguments(self, parser, arguments):
         ArgsHelper.add_arguments(parser, arguments, {})
+
+    def _fix_find_mode(self, args):
+        find_mode = args.find_mode.upper()
+
+        defines = {
+            1: Constant.FIND_REGEX,
+            2: Constant.FIND_MATCH,
+            3: Constant.FIND_BINARY,
+            4: Constant.FIND_HEX,
+        }
+
+        if find_mode.isdigit():
+            v = int(find_mode)
+
+            if v in defines:
+                find_mode = defines[v]
+            else:
+                find_mode = None
+        else:
+            if find_mode not in defines.values():
+                find_mode = None
+
+        if find_mode is None:
+            raise Exception('Unknown output mode (--find_mode)')
+
+        logging.log(logging.INFO, 'Fixed find_mode:' + find_mode)
+
+        return find_mode
 
     def _fix_ips(self, args):
         ips = re.split(r'[;, ]+', args.ip)
@@ -169,10 +198,10 @@ class ArgsBuilder:
         return output
 
     def _has_filters(self, args):
-        if args.find or args.find_hex:
+        if IPHeader.PROTOCOL_TCP not in args.fixed_protocols:
             return True
 
-        if IPHeader.PROTOCOL_TCP not in args.fixed_protocols:
+        if args.find:
             return True
 
         if args.fixed_ips:

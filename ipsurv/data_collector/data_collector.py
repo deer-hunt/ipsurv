@@ -13,7 +13,7 @@ class DataCollector(ABC):
     :type args: argparse.Namespace
 
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#datacollector
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#datacollector
     """
 
     def __init__(self, requester, args):

@@ -112,7 +112,7 @@ class RdapRequester(Requester):
     :type timeout: float
 
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#requester
     """
 
     ID_ICANN = 0

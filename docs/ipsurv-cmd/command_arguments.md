@@ -154,7 +154,7 @@ RESULT:
 | Name       | Description  |
 |---------------|--------------|
 | `ipinfo_token`  |   ipinfo.io's token.        |
-| `geoip`  |   Description is [here](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html#ipsurv-conf-s-geoip-parameters).       |
+| `geoip`  |   Description is [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html#ipsurv-conf-s-geoip-parameters).       |
 
 ```bash
 $ IPSURV_CONF='{"ipinfo_token": "???????"}'

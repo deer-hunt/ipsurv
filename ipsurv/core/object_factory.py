@@ -23,7 +23,7 @@ from ipsurv.serializer.line_serializer import Serializer
 class ObjectFactory(ABC):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#objectfactory
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#objectfactory
     """
     def get_config(self):
         """

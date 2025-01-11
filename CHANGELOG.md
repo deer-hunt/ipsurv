@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0) (2025-01-11)
+
+- Release "ipscap" command.
+- [ipscap] Change find option. / +find_mode and +BINARY mode, -find_case_sensitive, -find_hex
+
 ## [1.2.0b3](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0b3) (2025-01-09)
 
 - [ipscap] Fixed some bugs.

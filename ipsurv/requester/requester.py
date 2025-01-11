@@ -6,7 +6,7 @@ import http.client
 class Requester(ABC):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#requester
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#requester
     """
 
     def __init__(self, timeout=None):

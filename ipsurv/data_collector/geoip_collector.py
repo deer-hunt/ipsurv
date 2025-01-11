@@ -11,7 +11,7 @@ class GeoIpCollector(DataCollector):
     :type args: argparse.Namespace
 
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html
     """
 
     COUNTRY_COLS = ['continent', 'continent_name', 'country', 'country_name']

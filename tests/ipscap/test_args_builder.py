@@ -1,5 +1,7 @@
 import pytest
 import sys
+from ipscap.util.raw_socket_entity import IPHeader
+
 
 if not sys.platform.startswith('win'):
     from ipscap.service.args_builder import ArgsBuilder
@@ -15,6 +17,7 @@ if not sys.platform.startswith('win'):
             args.fixed_output = 'TEXT'
             args.stat_mode = 2
             args.stat_group = False
+            args.fixed_protocols = [IPHeader.PROTOCOL_TCP]
 
             return args
 

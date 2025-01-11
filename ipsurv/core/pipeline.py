@@ -9,7 +9,7 @@ from ipsurv.serializer.serializer import Serializer
 class Pipeline(ABC):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#pipeline
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#pipeline
     """
     def __init__(self):
         self.config = None  # type: Config

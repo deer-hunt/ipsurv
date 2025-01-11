@@ -8,7 +8,7 @@ from ipsurv.util.sys_util import AppException
 class LineSerializer(Serializer):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#serializer
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#serializer
     """
 
     def transform(self, data):

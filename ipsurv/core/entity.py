@@ -15,7 +15,7 @@ class StoreBase(ABC):
 class Target(StoreBase):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#target
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#target
     """
     def __init__(self, raw=None):
         self.raw = raw
@@ -59,7 +59,7 @@ class TargetGroup:
 class ValueData(ABC):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#valuedata
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#valuedata
     """
     def __init__(self, data):
         """

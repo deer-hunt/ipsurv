@@ -58,6 +58,21 @@ if not sys.platform.startswith('win'):
             assert '192.168.1.2:80' in captured.out
             assert '500' in captured.out
 
+        def test_show_stat_transfer_groups(self, capfd, view_helper, args):
+            transfers = {
+                ('TCP', '192.168.1.2', '192.168.1.100', 80): {
+                    IPHeader.DIRECTION_SEND: {'num': 10, 'unique': 5, 'size': 500},
+                    IPHeader.DIRECTION_RECEIVE: {'num': 8, 'unique': 4, 'size': 400},
+                    'group_count': 1
+                }
+            }
+
+            view_helper._show_stat_transfer_groups(transfers)
+
+            captured = capfd.readouterr()
+
+            assert 'GROUPS:' in captured.out
+
         def test_show_stopped(self, capfd, view_helper):
             view_helper.show_stopped()
 

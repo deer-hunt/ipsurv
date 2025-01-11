@@ -7,7 +7,7 @@ import os
 class GeoIpRequester(Requester):
     """
     Description:
-    https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html
+    https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html
     """
 
     TYPE_COUNTRY = 'country'

@@ -148,7 +148,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 
 ### Parameters
 
-Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows. Description for ```--format``` is [here](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
+Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows. Description for ```--format``` is [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format).
 
 | Parameter          | Description                               |
 |--------------------|-------------------------------------------|

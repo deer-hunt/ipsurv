@@ -93,16 +93,14 @@ class ViewHelper:
 
         direction_code = IPHeader.get_direction_code(direction)
 
-        line = 'num: ' + str(subtotal['num']) + ', ' + 'unique: ' + str(
-            subtotal['unique']) + ', ' + 'size: ' + str(subtotal['size'])
+        line = 'num: ' + str(subtotal['num']) + ', ' + 'unique: ' + str(subtotal['unique']) + ', ' + 'size: ' + str(subtotal['size'])
         System.line((' ' + direction_code + ':').ljust(12) + line)
 
     def show_version(self):
         System.exit(Constant.APP_NAME + ' by ' + Constant.PYPI_NAME + ' ' + __version__)
 
     def show_nofilters(self):
-        System.exit('Any filters are not specified. Set any filter option or`--force` option.',
-                    True)
+        System.exit('Any filters are not specified. Set any filter option or`--force` option.', True)
 
     def output_debug(self, is_capture, ip_header, protocol_header):
         if not System.is_logging():

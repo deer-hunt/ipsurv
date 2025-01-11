@@ -66,7 +66,7 @@ $ conda install conda-forge::ipsurv
 |----------|---------------------------------------------------------------------------------------------------------|
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
 | `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It does not support Windows.   |
-| `ipscli` | Coming soon.   |
+| `ipsend` | Coming soon.   |
 
 It’s best to refer to the help to recognize the functions.
 
@@ -148,7 +148,7 @@ $ ipsurv wikipedia.org --format=default --json=2 --add_ip
 **Format profile/parameters**
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#parameters).
 
 ```
 $ ipsurv github.io --format=heavy            # Profile

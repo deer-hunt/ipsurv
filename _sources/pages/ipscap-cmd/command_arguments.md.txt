@@ -1,0 +1,6 @@
+# Command arguments
+
+This document is description of ipscap's command arguments.
+
+## Index
+

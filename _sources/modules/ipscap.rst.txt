@@ -1,0 +1,12 @@
+ipscap package
+==============
+
+.. include:: top.rst
+
+ipscap.ipscap\_cmd module
+-------------------------
+
+.. automodule:: ipscap.ipscap_cmd
+   :members:
+   :undoc-members:
+   :show-inheritance:

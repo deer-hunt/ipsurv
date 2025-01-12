@@ -1,85 +1,130 @@
 # Command examples
 
-This is introduction of IpSurv's several command examples. You can understand some usage and features. In detail usage, Please read [Command Arguments reference](command_arguments.md).
+This is introduction of ipscap's several command examples. You can understand some usage and features.
 
-## Basic usage
-
-### Show help
+### Basic Usage
 
 ```
-$ipsurv --help
-usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-		 [--disable_env] [--resolve {0,1}] [--identify_int]
-		 [--autodetect] [--begin {number}] [--end {number}]
-		 [--collect {string}] [--all_collect] [--timeout {string}]
-		 [--group {string}] [--skip_duplicate {0,1,2}]
-		 [--range {string}] [--format {string}] [--no_original]
-		 [--sequence] [--add_ip] [--ident] [--enclose {string}]
-		 [--delimiter {string}] [--alt_delimiter {string}]
-		 [--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
-		 [--exhaustive] [--icmp {0,1}] [--tcp {number}]
-		 [--udp {number}] [--http {0,1,2}] [--json_all]
-		 [--geoip_only] [--host_only] [--version]
-		 [target [target ...]]
+$ sudo su -
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ipscap --help
+
+usage: ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+              [--find {string}] [--find_mode [REGEX, MATCH, BINARY, HEX]]
+              [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
+              [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
+              [--stat_group {0,1,2}]
+              [--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+              [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
+              [--web_port] [--general_port] [--force] [--version]
+
+`ipscap` captures "ICMP, TCP, UDP" packets. It supports filtering by various conditions, dumping file, displaying statistics.
 
 optional arguments:
   -h, --help            show this help message and exit
   --verbose {0,1,2,3}   Verbose mode. [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
   --debug               `--debug` is equivalent to `--verbose=3`.
   --log {string}        Verbose log filename.
-  --disable_env         Disable to load env variable for args. Env name: `IPSURV_ARGS`.
-  --resolve {0,1}       Resolve the name to IP if target value is domain or hostname automatically.
-  --identify_int        Identify IP's int value.
-  --autodetect          Autodetect an IP or hostname that is included in the line. [Experimental]
-  --begin {number}      Beginning from sequence number.
-  --end {number}        Ending to sequence number.
-  --collect {string}    Data collectors. See reference manual in detail. ex: rdap;dnstxt;dnsreverse;ipinfo;geoip
-  --all_collect         All data collectors.
-  --timeout {string}    Timeout seconds. Specify single value - ex: 1,3.2. Or specify values of each connection types. "dns,http,reactivity" - "3;5.1;6"
-  --group {string}      Grouping rule. ex: network, 24, 255.255.255.0
-  --skip_duplicate {0,1,2}
-                        Skip duplicate group. *2: It also skip checking server reactivity[icmp, tcp, udp].
-  --range {string}      Check whether IP is in IP/subnet ranges.  The value is CIDR notation. ex: "1.0.0.1/8;192.168.1.1/24"
-  --format {string}     Output format. Specify `Profile` or `Parameter`. See reference manual in detail. ex: simple, default, detail, heavy, geo, hostname etc.
-  --no_original         Cancel outputting the original line automatically.
-  --sequence            Append sequence number.
-  --add_ip              Append "ip" to the output format. For example, use when the target is a hostname, etc.
-  --ident               Append identifier. Default identifier is ip.
-  --enclose {string}    Character of enclose in result line. If you specify "json" option, this option is disabled. ex: '"', "'"
-  --delimiter {string}  Delimiter-char in result line.
-  --alt_delimiter {string}
-                        Alternative delimiter character. If you specify "enclose" or "json" option, this option is disabled.
-  --headers {0,1,2,3}   Show headers. 1: LowerCase, 2: PascalCase, 3: UpperCase
-  --json {0,1,2}        Output JSON data. *2: Output formatted JSON.
-  --json_list           Output JSON list. It makes it easier to parse JSON.
-  --exhaustive          Output exhaustive internal values in JSON. Use with "json" option.
-  --icmp {0,1}          Check ICMP.
-  --tcp {number}        Check TCP port. Specify default port.
-  --udp {number}        Check UDP port. Specify default port.
-  --http {0,1,2}        Check HTTP response.
-  --json_all            `--json_all` is equivalent to `--json=2 --exhaustive`.
-  --geoip_only          `--geoip_only` is equivalent to `--collect=geoip --format=area`.
-  --host_only           `--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.
-  --version             Show version information.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+# ipscap --exclude_ssh
+ 
+Start capture packets...
+
+Press `Ctrl + C` to stop.
+
+Time:           2025-01-03 14:55:13.5109 / ~~~~~.5109, Passage number: 1
+IP header:      Version: 4, IP header length: 20, Packet length: 55, TTL: 64, IP protocol: UDP[17]
+UDP header:     UDP header length: 8
+Source:         IP: 10.0.2.15                 Port: 36305
+Destination:    IP: 8.8.8.8                   Port: 53
+Direction:      SEND [ >>> ]
+Data length:    27 byte
+IP-H data:      45 00 00 37 e4 3b 40 00 40 11 3a 5c 0a 00 02 0f 08 08 08 08 
+UDP-H data:     8d d1 00 35 00 23 1c 53 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### Specifying IP
 
-Surveying a IP and some IPs.
+### Filter port
 
-**Command:**
+- Filter 80 port
+
+> `--port` option filter receive or send packets.
 
 ```bash
-$ ipsurv 8.8.8.8
-8.8.8.8,OK,,US,GOGL,8.8.8.0,8.8.8.255,dns.google
+# ipscap --port=80
 
-$ ipsurv 8.8.4.4 1.1.1.1
-8.8.4.4,OK,,US,GOGL,8.8.4.0,8.8.4.255,dns.google
-1.1.1.1,OK,,AU,APNIC-LABS,1.1.1.0,1.1.1.255,one.one.one.one
+
+Time:           2025-01-02 14:59:45.9329 / ~~~~~~~~.932, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 316, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1536002, Acknowledgement: 844367953, Window: 65535, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 74.6.231.20               Port: 80
+Destination:    IP: 10.0.2.15                 Port: 51196
+Direction:      RECEIVE [ <<< ]
+Data length:    276 byte
+IP-H data:      45 00 01 3c 00 c0 00 00 40 06 3b d3 4a 06 e7 14 0a 00 02 0f 
+TCP-H data:     00 50 c7 fc 00 17 70 02 32 54 08 51 50 18 ff ff 52 a4 00 00 
+
+HTTP/1.1 301 Moved Permanently
+Date: Sun, 12 Jan 2025 05:59:37 GMT
+Connection: keep-alive
+Server: ATS
+Cache-Control: no-store, no-cache
 ```
+
+- Filter 80 and 443 port
+
+```bash
+# ipscap --port=80,443
+
+Time:           2025-01-02 14:58:14.3874 / ~~~~~~~~.3874, Passage number: 1
+IP header:      Version: 4, IP header length: 20, Packet length: 44, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 24, Sequence: 1216001, Acknowledgement: 254560287, Window: 65535, Flags: ['SYN', 'ACK']
+TCP options:    mss:1460
+Source:         IP: 98.137.11.164             Port: 443
+Destination:    IP: 10.0.2.15                 Port: 56118
+Direction:      RECEIVE [ <<< ]
+Data length:    2 byte
+IP-H data:      45 00 00 2c 00 a7 00 00 40 06 ff e9 62 89 0b a4 0a 00 02 0f 
+TCP-H data:     01 bb db 36 00 12 8e 01 0f 2c 48 1f 60 12 ff ff 5b 8a 00 00 02 04 05 b4 
+```
+
+- Filter except 22 port
+
+```bash
+# ipscap --condition="port!=22"
+
+# ipscap --exclude_ssh
+```
+
+- Filter port range
+
+```
+# ipscap --condition="port>=10000"
+
+# ipscap --condition="port>=25; port <=3306"
+```
+
+- Filter only dest port
+
+```
+# ipscap --condition="dest_port=80"
+```
+
+- Filter only source port
+
+```
+# ipscap --condition="src_port=80"
+```
+
+
+## Find and Find mode
+
+
+
 
 ### Specifying domain
 
@@ -99,7 +144,7 @@ stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
 
 ### Multiple rows using pipe
 
-"IpSurv" support the input by pipe. You are able to specify multiple rows.
+"ipsurv" support the input by pipe. You are able to specify multiple rows.
 
 **Example:**
 
@@ -450,9 +495,9 @@ reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 
 ## Using GeoIP2
 
-```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
+```ipsurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
 
-Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html) documentation in detail.
+Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html) documentation in detail.
 
 
 ```

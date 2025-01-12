@@ -1,0 +1,20 @@
+ipscap.core package
+===================
+
+.. include:: top.rst
+
+ipscap.core.object\_factory module
+----------------------------------
+
+.. automodule:: ipscap.core.object_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipscap.core.pipeline module
+---------------------------
+
+.. automodule:: ipscap.core.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:

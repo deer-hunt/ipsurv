@@ -1,6 +1,6 @@
 # Command arguments
 
-This document is description of IpSurv's command arguments.
+This document is description of ipsurv's command arguments.
 
 ## Index
 
@@ -112,7 +112,7 @@ Show help.
 
 ## Environment variable - `IPSURV_ARGS`
 
-"IpSurv" support specifying "Command arguments" by Environment variable (`IPSURV_ARGS`). You are able to change default value by Environment variable.
+"ipsurv" support specifying "Command arguments" by Environment variable (`IPSURV_ARGS`). You are able to change default value by Environment variable.
 Also you are able to disable to load Environment variable by `--disable_env` option.
 
 | Item       | Value  |
@@ -141,7 +141,7 @@ RESULT:
 
 ## Environment variable - `IPSURV_CONF`
 
-"IpSurv" support specifying "Internal configures" by Environment variable (`IPSURV_CONF`). 
+"ipsurv" support specifying "Internal configures" by Environment variable (`IPSURV_CONF`). 
 
 | Item       | Value  |
 |---------------|--------------|
@@ -154,7 +154,7 @@ RESULT:
 | Name       | Description  |
 |---------------|--------------|
 | `ipinfo_token`  |   ipinfo.io's token.        |
-| `geoip`  |   Description is [here](https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html#ipsurv-conf-s-geoip-parameters).       |
+| `geoip`  |   Description is [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html#ipsurv-conf-s-geoip-parameters).       |
 
 ```bash
 $ IPSURV_CONF='{"ipinfo_token": "???????"}'
@@ -393,6 +393,17 @@ Output format. Specify `Profile` or `Parameter`.
 - **Default:** `default`
 - **Values:**
 
+- **Example:**
+
+```
+INPUT: 
+--format=simple
+--format=heavy
+--format="{success},{country},{http}"
+--format="{sequence},{ip},{country},<network>"
+--format="<area><system>"
+```
+
 #### Profiles
 
 > You can see concrete profile's parameters by using `--headers=1` option.
@@ -483,19 +494,6 @@ Output format. Specify `Profile` or `Parameter`.
 | **subdivision**        | Subdivision code.  | CA |
 | **subdivision_name**   | Subdivision name. | California  |
 
-
-
-- **Example:**
-
-```
-INPUT: 
---format="simple", --format="{success},{country},{http}", --format="{sequence},{ip},{country},<network>"
-
-RESULT:
-1,www.whitehouse.gov,37.7749;-122.4194
-2,www.state.gov,35.6895;139.6917
-3,www.treasury.gov,35.6895;139.6917
-```
 
 ### `--sequence`
 

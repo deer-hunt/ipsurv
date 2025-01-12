@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to “ipsurv” &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Command arguments" href="command_arguments.html" />
+    <link rel="prev" title="Welcome to IpSurv" href="../../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_arguments.html" title="Command arguments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../index.html" title="Welcome to IpSurv"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction to “ipsurv”</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-ipsurv">
+<h1>Introduction to “ipsurv”<a class="headerlink" href="#introduction-to-ipsurv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>Specify Target using Argument</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10
+$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10<span class="w"> </span><span class="m">192</span>.168.1.11
+$<span class="w"> </span>ipsurv<span class="w"> </span>test-example-sample-ipsurv.com<span class="w"> </span>--add_ip
+$<span class="w"> </span>ipsurv<span class="w"> </span>x.x.x.x<span class="w"> </span>--format<span class="o">=</span>geo
+</pre></div>
+</div>
+<p><strong>Specify Target using PIPE</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv
+$<span class="w"> </span>cat<span class="w"> </span>apache.log<span class="p">|</span>ipsurv<span class="w"> </span>--add_ip
+</pre></div>
+</div>
+<p><strong>Example result</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">8</span>.8.8.8:53,8.8.8.0,US,ICMP_OK,TCP_OK,UDP_OK
+</pre></div>
+</div>
+</div>
+<div class="section" id="survey-mode">
+<h2>Survey-mode<a class="headerlink" href="#survey-mode" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> have two Survey-mode. Those are “Survey IPs” and “Survey Self”.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Survey-mode</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Survey IPs</strong></p></td>
+<td><p>Primary mode. Surveying IP or Host or URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Survey Self</strong></p></td>
+<td><p>Surveying self IP.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Survey Self e.g.</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>self
+Ip:<span class="w"> </span><span class="m">144</span>.160.*.*
+Hostname:<span class="w"> </span>
+Organization:<span class="w"> </span>AS797<span class="w"> </span>AT<span class="p">&amp;</span>T<span class="w"> </span>Services,<span class="w"> </span>Inc.
+Country:<span class="w"> </span>US
+City:<span class="w"> </span>San<span class="w"> </span>Jose
+Region:<span class="w"> </span>California
+Postal:<span class="w"> </span><span class="m">95103</span>
+Geo:<span class="w"> </span><span class="m">37</span>.3394,-121.8950
+Timezone:<span class="w"> </span>America/Los_Angeles
+LocalIp:<span class="w"> </span><span class="m">10</span>.0.2.5
+LocalDns:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;8.8.8.8&#39;</span>,<span class="w"> </span><span class="s1">&#39;8.8.4.4&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="features-of-survey-ips-mode">
+<h2>Features of “Survey IPs mode”<a class="headerlink" href="#features-of-survey-ips-mode" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Grouping by IP or Subnet.</p></li>
+<li><p>Skip duplicate by the group.</p></li>
+<li><p>Autodetect IP in line. Trying to resolve the name automatically.</p></li>
+<li><p>Autodetect delimiter-char.</p></li>
+<li><p>Customize output format. There are many format.</p></li>
+<li><p>Output JSON format.</p></li>
+<li><p>Show headers.</p></li>
+<li><p>Check ICMP, TCP, UDP, HTTP.</p></li>
+<li><p>Set timeout.</p></li>
+<li><p>Load env variable. And changing arguments and internal configures.</p></li>
+<li><p>Use GeoIP2 via ipsurv optionally.</p></li>
+</ul>
+</div>
+<div class="section" id="command-options">
+<h2>Command options<a class="headerlink" href="#command-options" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> have many options. Please read <a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md">Command arguments(.md) reference</a>.</p>
+<p><strong>Options</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipsurv</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">log</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">disable_env</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">resolve</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">identify_int</span><span class="p">]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">autodetect</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">begin</span> <span class="p">{</span><span class="n">number</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">end</span> <span class="p">{</span><span class="n">number</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">collect</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">all_collect</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">timeout</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">group</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">skip_duplicate</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="nb">range</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">no_original</span><span class="p">]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">sequence</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">add_ip</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ident</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">enclose</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">delimiter</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">alt_delimiter</span> <span class="p">{</span><span class="n">string</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">headers</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">json</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">json_list</span><span class="p">]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">exhaustive</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">icmp</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">tcp</span> <span class="p">{</span><span class="n">number</span><span class="p">}]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">udp</span> <span class="p">{</span><span class="n">number</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">http</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">json_all</span><span class="p">]</span>
+			<span class="p">[</span><span class="o">--</span><span class="n">geoip_only</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">host_only</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">version</span><span class="p">]</span>
+			<span class="p">[</span><span class="n">target</span> <span class="p">[</span><span class="n">target</span> <span class="o">...</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p><strong>Example options</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">24</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span>network
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>country
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>hostname
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{name}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{ip_int},{handle},{port43}&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--ident<span class="w"> </span>--no_original
+
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">255</span>.255.255.0
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--delimiter<span class="o">=</span><span class="s2">&quot;\t&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{group}\t{ip_int}\t{country}\t{handle}\t{port43}&quot;</span><span class="w"> </span>
+$<span class="w"> </span>cat<span class="w"> </span>ips.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{ip_int},{handle},{port43},{icmp},{port},{tcp}&quot;</span><span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--timeout<span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="command-examples">
+<h2>Command examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>Show headers</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>./example_data/government.txt<span class="p">|</span>ipsurv<span class="w"> </span>--headers<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},{group},{country},{name},{cidr},{http},{http_h2}&quot;</span><span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span>
+original,status,group,country,name,cidr,http,http_h2
+www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
+www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
+www.treasury.gov,OK,23.32.0.1,US,AKAMAI,23.32.0.0/11,HTTP_OK,HTTP2
+www.gov.uk,OK,151.101.0.1,US,SKYCA-3,151.101.0.0/16,HTTP_OK,HTTP2
+www.gouvernement.fr,OK,217.70.184.1,FR,GANDIFR-NET4,217.70.184.0/24,HTTP_OK,HTTP1
+www.diplomatie.gouv.fr,OK,77.128.0.1,FR,FR-SFR-20100831,77.128.0.0/11,HTTP_OK,HTTP1
+www.economie.gouv.fr,OK,141.101.88.1,EU,CLOUDFLARE-EU,141.101.88.0/21,HTTP_OK,HTTP2
+www.bundesregierung.de,OK,185.173.230.1,DE,BABIEL-NET-230,185.173.230.0/24,HTTP_OK,HTTP2
+</pre></div>
+</div>
+<p><strong>Add line-number</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>./example_data/government.txt<span class="p">|</span>ipsurv<span class="w"> </span>--sequence<span class="w"> </span>--add_ip
+<span class="m">1</span>,www.whitehouse.gov,192.0.66.168,OK,US,AUTOMATTIC,192.0.64.0,192.0.127.255
+<span class="m">2</span>,www.state.gov,3.165.39.61,OK,US,AMAZON-CF,3.165.0.0,3.165.255.255
+<span class="m">3</span>,www.treasury.gov,23.50.118.187,OK,US,AKAMAI,23.32.0.0,23.67.255.255
+<span class="m">4</span>,www.gov.uk,151.101.192.144,OK,US,SKYCA-3,151.101.0.0,151.101.255.255
+</pre></div>
+</div>
+<p><strong>Output by JSON</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span>default<span class="w"> </span>--json<span class="o">=</span><span class="m">2</span><span class="w"> </span>--add_ip
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;OK&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;WIKIMEDIA-AP&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.255&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Output detailed data by JSON</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--json_all<span class="w">    </span><span class="c1"># `--json_all` is equivalent to `--json=2 --exhaustive`</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span>default<span class="w"> </span>--json<span class="o">=</span><span class="m">2</span><span class="w"> </span>--exhaustive
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;success&quot;</span>:<span class="w"> </span>true,
+<span class="w">  </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;OK&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;requests&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="s2">&quot;RDAP&quot;</span>
+<span class="w">  </span><span class="o">]</span>,
+<span class="w">  </span><span class="s2">&quot;errors&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
+<span class="w">  </span><span class="s2">&quot;sequence&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">  </span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
+<span class="w">  </span><span class="s2">&quot;port&quot;</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">&quot;group_int&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">  </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;group_found&quot;</span>:<span class="w"> </span>false,
+<span class="w">  </span><span class="s2">&quot;group_status&quot;</span>:<span class="w"> </span><span class="s2">&quot;-&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;WIKIMEDIA-AP&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.255&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip_hex&quot;</span>:<span class="w"> </span><span class="s2">&quot;67.66.A6.E0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip_reversed&quot;</span>:<span class="w"> </span><span class="s2">&quot;224.166.102.103&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;ip_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span>,
+~~~~~~~~~~~~~
+<span class="w">  </span><span class="s2">&quot;org&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;address&quot;</span>:<span class="w"> </span><span class="s2">&quot;1 Montgomery Street Suite 1600&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target.raw&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target.identifier&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target.identifier_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
+<span class="w">  </span><span class="s2">&quot;target.identified&quot;</span>:<span class="w"> </span>true,
+<span class="w">  </span><span class="s2">&quot;target.ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target.url&quot;</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">&quot;target.fqdn&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;target.port&quot;</span>:<span class="w"> </span>null,
+<span class="w">  </span><span class="s2">&quot;target.status&quot;</span>:<span class="w"> </span><span class="s2">&quot;EXIST&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Check HTTP response</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv https://www.reddit.com --format=&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}&quot; --http=1
+https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
+
+$ ipsurv https://anaconda.org/ --format=&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}&quot; --http=2
+https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
+
+$ ipsurv https://www.youtube.com/feed/you --format=web --http=2 --headers=1
+original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
+https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,HTTP2,284.0,HTTP_OK
+</pre></div>
+</div>
+<p><strong>Check Host name or PC name</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.120 --host_only
+$ ipsurv 192.168.1.120 --format=&quot;hostname&quot;
+192.168.1.100,MYPC-016
+</pre></div>
+</div>
+<blockquote>
+<div><p>You can also find the Windows PC name in private network.</p>
+</div></blockquote>
+<p>More examples are <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_examples.html">here</a>.</p>
+</div>
+<div class="section" id="output-format">
+<h2>Output Format<a class="headerlink" href="#output-format" title="Permalink to this headline">¶</a></h2>
+<p>You can customize “Output Format” by <code class="docutils literal notranslate"><span class="pre">--format</span></code> option as follows. There are <code class="docutils literal notranslate"><span class="pre">parameter</span> <span class="pre">-</span> <span class="pre">{}</span></code> and <code class="docutils literal notranslate"><span class="pre">profile</span> <span class="pre">-</span> <span class="pre">&lt;&gt;</span></code> in <code class="docutils literal notranslate"><span class="pre">--format</span></code>.
+For more information, please read <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format">–format description</a>, <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles">Profiles</a>, <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters">Parameters</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv github.io --format=heavy            # Profile
+$ ipsurv github.io --format=simple           # Profile
+
+$ ipsurv 8.8.8.8 --format=&quot;{status},{ip},{country},{address}&quot;   # Parameters
+$ ipsurv 8.8.8.8 --format=&quot;{status}\t{ip}\t{hostname}&quot;         # Parameters, TAB char
+
+$ ipsurv cloudflare.com --format=&quot;{ip},&lt;address&gt;,&lt;system&gt;&quot;      # Parameters + Profile
+$ ipsurv wikipedia.org --format=&quot;&lt;address&gt;,{hostname},{ip_type}&quot;     # Profile + Parameters
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-geoip2-optionally">
+<h2>Using GeoIP2 optionally<a class="headerlink" href="#using-geoip2-optionally" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally. If <code class="docutils literal notranslate"><span class="pre">GeoIP2</span></code> module is installed and there are <code class="docutils literal notranslate"><span class="pre">mmdb</span></code> files, You can use GeoIP2 features via <code class="docutils literal notranslate"><span class="pre">ipsurv</span></code>.
+When using the GeoIP2 module, network communication does not occur, which enables faster processing.</p>
+<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html">Using GeoIP2</a> documentation in detail.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
+8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv www.wikipedia.org --format=&quot;{country},{geo}&quot; --collect=geoip --headers=1
+original,country,geo
+www.wikipedia.org,US,37.751;-97.822
+
+$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
+original,continent,continent_name,country,geo
+8.8.8.8,NA,North America,US,37.751;-97.822
+</pre></div>
+</div>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">IpSuv</span></code> support customizing GeoIP2 data path by <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code> env. Please read <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#environment-variable-ipsurv-conf">here</a> about <code class="docutils literal notranslate"><span class="pre">IPSURV_CONF</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="documents">
+<h2>Documents<a class="headerlink" href="#documents" title="Permalink to this headline">¶</a></h2>
+<p>The following documents exist in <code class="docutils literal notranslate"><span class="pre">ipsurv</span></code>. You can read documents in <a class="reference external" href="https://deer-hunt.github.io/ipsurv/">Documentation site</a>.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Title</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Command arguments</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md">command_arguments.md</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Command examples</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_examples.md">command_examples.md</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Program architecture and Classes</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/program_architecture_classes.md">program_architecture_classes.md</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Customizing and Examples</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/customize_examples.md">customize_examples.md</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Development and Debugging</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md">development_debug.md</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>About Using GeoIP2</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/using_geoip2.md">using_geoip2.md</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ipsurv’s Major Modules and Classes</strong></p></td>
+<td><p><a class="reference external" href="https://deer-hunt.github.io/ipsurv/py-modindex.html">github.io / Modules and Classes reference</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>In verbose mode, outputting internal data and behaviors in detail.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--verbose<span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="c1">#INFO</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--verbose<span class="o">=</span><span class="m">3</span><span class="w">    </span><span class="c1">#DEBUG</span>
+
+$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--debug<span class="w">     </span><span class="c1">#DEBUG  This option is equivalent to &quot;--verbose=3&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="customizing-ipsurv">
+<h2>Customizing ipsurv<a class="headerlink" href="#customizing-ipsurv" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> is implemented as customizable program architecture. <code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> provide extending features and several classes.
+And you can use ipsurv’s internal classes in your program. Please read <code class="docutils literal notranslate"><span class="pre">program_architecture_classes.md</span></code>.</p>
+<p><strong>Classes for major customization</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Classes</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pipeline</strong></p></td>
+<td><p>Pipeline class provide catching and customizing the data in each processing. <code class="docutils literal notranslate"><span class="pre">./examples/pipeline_customize.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ObjectFactory</strong></p></td>
+<td><p>ObjectFactory class provide customizing classes and creating original classes. <code class="docutils literal notranslate"><span class="pre">./examples/object_factory.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Serializer, LineSerializer, JsonSerializer</strong></p></td>
+<td><p>Serializer class provide displaying data and transforming data for presentation. <code class="docutils literal notranslate"><span class="pre">./examples/object_factory_original_headers.py</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/rthalley/dnspython">dnspython</a></p></li>
+<li><p><a class="reference external" href="https://github.com/maxmind/GeoIP2-python">geoip2</a> [Optional]</p></li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to “ipsurv”</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#survey-mode">Survey-mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-of-survey-ips-mode">Features of “Survey IPs mode”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-options">Command options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-examples">Command examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output-format">Output Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-ipsurv">Customizing ipsurv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../../index.html"
+                          title="previous chapter">Welcome to IpSurv</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="command_arguments.html"
+                          title="next chapter">Command arguments</a></p>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Others</h3>
+	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="command_arguments.html" title="Command arguments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../../index.html" title="Welcome to IpSurv"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction to “ipsurv”</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

@@ -6,35 +6,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Command examples &#8212; ipsurv  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Customizing and Examples" href="customize_examples.html" />
-    <link rel="prev" title="Development and Debugging" href="development_debug.html" /> 
+    <link rel="prev" title="Program architecture and Classes" href="program_architecture_classes.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="customize_examples.html" title="Customizing and Examples"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="development_debug.html" title="Development and Debugging"
+          <a href="program_architecture_classes.html" title="Program architecture and Classes"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command examples</a></li> 
       </ul>
     </div>  
@@ -46,7 +46,7 @@
             
   <div class="tex2jax_ignore mathjax_ignore section" id="command-examples">
 <h1>Command examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h1>
-<p>This is introduction of IpSurv’s several command examples. You can understand some usage and features. In detail usage, Please read <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments reference</span></a>.</p>
+<p>This is introduction of ipsurv’s several command examples. You can understand some usage and features. In detail usage, Please read <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments reference</span></a>.</p>
 <div class="section" id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="show-help">
@@ -139,7 +139,7 @@ stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
 </div>
 <div class="section" id="multiple-rows-using-pipe">
 <h3>Multiple rows using pipe<a class="headerlink" href="#multiple-rows-using-pipe" title="Permalink to this headline">¶</a></h3>
-<p>“IpSurv” support the input by pipe. You are able to specify multiple rows.</p>
+<p>“ipsurv” support the input by pipe. You are able to specify multiple rows.</p>
 <p><strong>Example:</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>urls.txt<span class="p">|</span>ipsurv
 www.whitehouse.gov,NG,,US,AUTOMATTIC,192.0.64.0,192.0.127.255,
@@ -449,8 +449,8 @@ reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 </div>
 <div class="section" id="using-geoip2">
 <h2>Using GeoIP2<a class="headerlink" href="#using-geoip2" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">IpSurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally.</p>
-<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/using_geoip2.html">Using GeoIP2</a> documentation in detail.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally.</p>
+<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html">Using GeoIP2</a> documentation in detail.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
 8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
 </pre></div>
@@ -524,27 +524,26 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="../index.html">Table of Contents</a></h3>
+<h3><a href="../../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction to “ipsurv”</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development_debug.html">Development and Debugging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_examples.html">Command examples</a></li>
+</ul>
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="development_debug.html"
-                          title="previous chapter">Development and Debugging</a></p>
+    <p class="topless"><a href="program_architecture_classes.html"
+                          title="previous chapter">Program architecture and Classes</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -554,7 +553,7 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
@@ -577,18 +576,18 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../py-modindex.html" title="Python Module Index"
+          <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="customize_examples.html" title="Customizing and Examples"
              >next</a> |</li>
         <li class="right" >
-          <a href="development_debug.html" title="Development and Debugging"
+          <a href="program_architecture_classes.html" title="Program architecture and Classes"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command examples</a></li> 
       </ul>
     </div>

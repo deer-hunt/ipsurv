@@ -1,0 +1,14 @@
+ipsurv.configs module
+==============
+
+.. include:: top.rst
+
+ipscap.configs module
+---------------------
+
+.. automodule:: ipscap.configs
+
+.. autoclass:: ipscap.configs.Config
+   :members: CONDITION_RULES
+   :undoc-members:
+   :show-inheritance:

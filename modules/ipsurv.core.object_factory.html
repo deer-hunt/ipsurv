@@ -46,19 +46,19 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ObjectFactory</span></span><a class="headerlink" href="#ipsurv.core.object_factory.ObjectFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Description:
-<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#objectfactory">https://deer-hunt.github.io/ipsurv/pages/program_architecture_classes.html#objectfactory</a></p>
+<a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#objectfactory">https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html#objectfactory</a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="ipsurv.core.object_factory.ObjectFactory.create_args_builder">
 <span class="sig-name descname"><span class="pre">create_args_builder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.object_factory.ObjectFactory.create_args_builder" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="ipsurv.config.html#ipsurv.configs.Config" title="ipsurv.configs.Config"><em>Config</em></a>) – </p></li>
-<li><p><strong>pipeline</strong> (<a class="reference internal" href="ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline" title="ipsurv.core.pipeline.Pipeline"><em>Pipeline</em></a>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="ipscap.config.html#ipscap.configs.Config" title="ipscap.configs.Config"><em>Config</em></a>) – </p></li>
+<li><p><strong>pipeline</strong> (<a class="reference internal" href="ipscap.core.html#ipscap.core.pipeline.Pipeline" title="ipscap.core.pipeline.Pipeline"><em>Pipeline</em></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder" title="ipsurv.configure.args_builder.ArgsBuilder">ArgsBuilder</a></p>
+<dd class="field-even"><p><a class="reference internal" href="ipscap.service.html#ipscap.service.args_builder.ArgsBuilder" title="ipscap.service.args_builder.ArgsBuilder">ArgsBuilder</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -200,7 +200,7 @@
 <span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.object_factory.ObjectFactory.create_pipeline" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline" title="ipsurv.core.pipeline.Pipeline">Pipeline</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="ipscap.core.html#ipscap.core.pipeline.Pipeline" title="ipscap.core.pipeline.Pipeline">Pipeline</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -287,7 +287,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
-<li><p><strong>pipeline</strong> (<a class="reference internal" href="ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline" title="ipsurv.core.pipeline.Pipeline"><em>Pipeline</em></a>) – </p></li>
+<li><p><strong>pipeline</strong> (<a class="reference internal" href="ipscap.core.html#ipscap.core.pipeline.Pipeline" title="ipscap.core.pipeline.Pipeline"><em>Pipeline</em></a>) – </p></li>
 <li><p><strong>dns_resolver</strong> (<a class="reference internal" href="ipsurv.requester.html#ipsurv.requester.dns_resolver.DnsResolveRequester" title="ipsurv.requester.dns_resolver.DnsResolveRequester"><em>DnsResolveRequester</em></a>) – </p></li>
 </ul>
 </dd>
@@ -336,7 +336,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference internal" href="ipsurv.config.html#ipsurv.configs.Config" title="ipsurv.configs.Config"><em>Config</em></a>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="ipscap.config.html#ipscap.configs.Config" title="ipscap.configs.Config"><em>Config</em></a>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type</dt>
@@ -350,7 +350,7 @@
 <span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.core.object_factory.ObjectFactory.get_config" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="ipsurv.config.html#ipsurv.configs.Config" title="ipsurv.configs.Config">Config</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="ipscap.config.html#ipscap.configs.Config" title="ipscap.configs.Config">Config</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -369,19 +369,21 @@
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/README.html">Introduction to “ipsurv”</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_arguments.html">Command arguments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/program_architecture_classes.html">Program architecture and Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/development_debug.html">Development and Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/command_examples.html">Command examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/customize_examples.html">Customizing and Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/using_geoip2.html">About Using GeoIP2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/README.html">Introduction to “ipscap”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/command_examples.html">Command examples</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

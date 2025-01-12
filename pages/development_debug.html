@@ -15,9 +15,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Command examples" href="command_examples.html" />
-    <link rel="prev" title="Program architecture and Classes" href="program_architecture_classes.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,12 +26,6 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="command_examples.html" title="Command examples"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="program_architecture_classes.html" title="Program architecture and Classes"
-             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Development and Debugging</a></li> 
       </ul>
@@ -48,7 +40,7 @@
 <h1>Development and Debugging<a class="headerlink" href="#development-and-debugging" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>This description is description of development and debugging related <code class="docutils literal notranslate"><span class="pre">IpSurv</span></code>.</p>
+<p>This description is description of development and debugging related <code class="docutils literal notranslate"><span class="pre">ipsurv</span></code>, <code class="docutils literal notranslate"><span class="pre">ipscap</span></code>.</p>
 </div>
 <div class="section" id="program-specification">
 <h2>Program specification<a class="headerlink" href="#program-specification" title="Permalink to this headline">¶</a></h2>
@@ -69,17 +61,31 @@
 </table>
 <p>*: “IpSurv” doesn’t support Python 2.7, However it’s easy to refactor to Python 2.7. See the bottom of this document.</p>
 </div>
-<div class="section" id="program-architecture-and-classes">
-<h2>Program Architecture and Classes<a class="headerlink" href="#program-architecture-and-classes" title="Permalink to this headline">¶</a></h2>
-<p>Please read <a class="reference internal" href="program_architecture_classes.html"><span class="doc std std-doc">Program Architecture and Classes(.md)</span></a>. There are description of several important classes.</p>
+<div class="section" id="related-documents">
+<h2>Related documents<a class="headerlink" href="#related-documents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ipsurv">
+<h3>ipsurv<a class="headerlink" href="#ipsurv" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="ipsurv-cmd/program_architecture_classes.html"><span class="doc std std-doc">Program Architecture and Classes(.md)</span></a></p></li>
+<li><p><a class="reference internal" href="ipsurv-cmd/customize_examples.html"><span class="doc std std-doc">Customizing and Examples(.md)</span></a></p></li>
+</ul>
 </div>
-<div class="section" id="customizing-and-examples">
-<h2>Customizing and Examples<a class="headerlink" href="#customizing-and-examples" title="Permalink to this headline">¶</a></h2>
-<p>Please read <a class="reference internal" href="customize_examples.html"><span class="doc std std-doc">Customizing and Examples(.md)</span></a>. There are some example programs.</p>
 </div>
 <div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
-<p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code> or <code class="docutils literal notranslate"><span class="pre">--debug</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option in <a class="reference internal" href="command_arguments.html"><span class="doc std std-doc">Command Arguments(.md)</span></a>.</p>
+<p>You can see detailed debug information by specifying <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code> or <code class="docutils literal notranslate"><span class="pre">--debug</span></code>. In detail, please read <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--verbose<span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="c1">#INFO</span>
+$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--verbose<span class="o">=</span><span class="m">3</span><span class="w">    </span><span class="c1">#DEBUG</span>
+
+$<span class="w"> </span>ipsurv<span class="w"> </span>*****<span class="w"> </span>--debug<span class="w">     </span><span class="c1">#DEBUG  This option is equivalent to &quot;--verbose=3&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap ***** --verbose=2    #INFO</span>
+<span class="c1"># ipscap ***** --verbose=3    #DEBUG</span>
+
+<span class="c1"># ipscap ***** --debug     #DEBUG  This option is equivalent to &quot;--verbose=3&quot;</span>
+</pre></div>
+</div>
 <div class="section" id="log-sample-and-description">
 <h3>Log sample and description<a class="headerlink" href="#log-sample-and-description" title="Permalink to this headline">¶</a></h3>
 <p>The following is debugging log with each comments.</p>
@@ -272,33 +278,16 @@ socket.herror: [Errno 1] Unknown host
         <div class="sphinxsidebarwrapper">
 <h3><a href="../index.html">Table of Contents</a></h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">IpSurv Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#features">Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#usage">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#using-geoip2-optionally">Using GeoIP2 optionally</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#debugging">Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html#customizing-ipsurv">Customizing IpSurv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/README.html">“ipsurv” command</a></li>
 </ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="program_architecture_classes.html">Program architecture and Classes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Development and Debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="customize_examples.html">Customizing and Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using_geoip2.html">About Using GeoIP2</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
 
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="program_architecture_classes.html"
-                          title="previous chapter">Program architecture and Classes</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="command_examples.html"
-                          title="next chapter">Command examples</a></p>
-  </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -330,12 +319,6 @@ socket.herror: [Errno 1] Unknown host
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="right" >
-          <a href="command_examples.html" title="Command examples"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="program_architecture_classes.html" title="Program architecture and Classes"
-             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Development and Debugging</a></li> 
       </ul>

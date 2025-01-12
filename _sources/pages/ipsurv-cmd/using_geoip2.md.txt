@@ -2,7 +2,7 @@
 
 ## Overview
 
-```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
+```ipsurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```ipsurv```.
 
 When using the GeoIP2 module, network communication does not occur, So fast processing can be realized.
 
@@ -14,7 +14,7 @@ Free version is [GeoLite2](https://github.com/P3TERX/GeoLite.mmdb). Paid version
 
 ## GeoIP2 Installation
 
-It's required installing geoip2 python module to use by ```IpSurv```.
+It's required installing geoip2 python module to use by ```ipsurv```.
 
 ```
 $ pip install geoip2
@@ -40,9 +40,9 @@ And Store ```mmdb file``` to specified path.
 - /usr/local/share/GeoIP/GeoLite2-ASN.mmdb
 
 
-## IpSurv's settings
+## ipsurv's settings
 
-```IpSurv``` detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it's unnecessary to settings.
+```ipsurv``` detect GeoIP2 typical data dirs and data files automatically. So if the path configuration is as follows, it's unnecessary to settings.
 
 ### a. Auto-detect path [Default]
 
@@ -61,7 +61,7 @@ And Store ```mmdb file``` to specified path.
 
 ### b. Specify path manually
 
-If you'd like to specify paths manually, specifying IpSurv's environment variables - ```IPSURV_CONF```. 
+If you'd like to specify paths manually, specifying ipsurv's environment variables - ```IPSURV_CONF```. 
 
 #### `geoip` parameters in `IPSURV_CONF`
 
@@ -102,9 +102,9 @@ $ source ~/.bashrc
 ```
 
 
-## Run IpSurv command
+## Run ipsurv command
 
-After installation and setup, you can use GeoIP2 features via IpSurv. Here are some usage examples.
+After installation and setup, you can use GeoIP2 features via ipsurv. Here are some usage examples.
 
 **--geoip_only option**
 
@@ -148,7 +148,7 @@ www.diplomatie.gouv.fr,EU,Europe,FR,France,Europe/Paris,48.7688;2.3536
 
 ### Parameters
 
-Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows. Description for ```--format``` is [here](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#format).
+Parameters in ```--format```  that can be specified by the `GeoIP2 features are as follows. Description for ```--format``` is [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format).
 
 | Parameter          | Description                               |
 |--------------------|-------------------------------------------|

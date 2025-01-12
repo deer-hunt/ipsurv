@@ -164,394 +164,278 @@ TCP-H<span class="w"> </span>data:<span class="w">     </span><span class="m">01
 </div>
 <div class="section" id="find-and-find-mode">
 <h2>Find and Find mode<a class="headerlink" href="#find-and-find-mode" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="specifying-domain">
-<h3>Specifying domain<a class="headerlink" href="#specifying-domain" title="Permalink to this headline">¶</a></h3>
-<p>Surveying a domain and some domains.</p>
-<p><strong>Command:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>www.wikipedia.org
-www.wikipedia.org,OK,,US,WIKIMEDIA-AP,103.102.166.0,103.102.166.255,text-lb.eqsin.wikimedia.org
+<p><strong>TEXT</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;HTTP&quot;</span>
+</pre></div>
+</div>
+<p><strong>MATCH</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;http&quot; --find_mode=MATCH</span>
+</pre></div>
+</div>
+<p><strong>BINARY</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;\x05yahoo\x03com&quot; --find_mode=BINARY --port=53</span>
+</pre></div>
+</div>
+<p><strong>HEX</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;45 00 00 37&quot; --find_mode=HEX</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-protocol">
+<h2>Filter protocol<a class="headerlink" href="#filter-protocol" title="Permalink to this headline">¶</a></h2>
+<p><strong>UDP</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --protocol=UDP</span>
+</pre></div>
+</div>
+<p><strong>ICMP</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --protocol=ICMP</span>
+</pre></div>
+</div>
+<p><strong>TCP &amp; ICMP</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --protocol=&quot;TCP,ICMP&quot;</span>
+</pre></div>
+</div>
+<p><strong>ALL</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --protocol=ALL</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip">
+<h2>IP<a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --ip=192.168.10.101</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --ip=&quot;192.168.10.101,192.168.10.102&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="condition">
+<h2>Condition<a class="headerlink" href="#condition" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;port!=22&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;client_port=80&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;src_port=80;dest_port&lt;=30000;ttl=64&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;flags=SYN,PSH&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;sack=1;window&gt;1000&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;wscale&gt;1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tracking">
+<h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;HTTP&quot; --tracking</span>
 
-$<span class="w"> </span>ipsurv<span class="w"> </span>www.reddit.com<span class="w"> </span>stackoverflow.com
-www.reddit.com,NG,,US,SKYCA-3,151.101.0.0,151.101.255.255,
-stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
-</pre></div>
-</div>
-</div>
-<div class="section" id="multiple-rows-using-pipe">
-<h3>Multiple rows using pipe<a class="headerlink" href="#multiple-rows-using-pipe" title="Permalink to this headline">¶</a></h3>
-<p>“ipsurv” support the input by pipe. You are able to specify multiple rows.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>urls.txt<span class="p">|</span>ipsurv
-www.whitehouse.gov,NG,,US,AUTOMATTIC,192.0.64.0,192.0.127.255,
-www.state.gov,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255,server-3-165-39-26.nrt12.r.cloudfront.net
-~~~~~~
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="various-output-format">
-<h2>Various output-format<a class="headerlink" href="#various-output-format" title="Permalink to this headline">¶</a></h2>
-<p>You can specify output-format flexibly by <code class="docutils literal notranslate"><span class="pre">--format</span></code> option.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>simple
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>hostname<span class="w"> </span>--add_ip
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>geo
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{country},{group},{geo},{original}&quot;</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>timezone
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},{group},{country},{name},{hostname}&quot;</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status},&lt;web&gt;,{ip}&quot;</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{status}\t{ip}\t{hostname}&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="output-by-json">
-<h2>Output by JSON<a class="headerlink" href="#output-by-json" title="Permalink to this headline">¶</a></h2>
-<p>Outputting JSON by <code class="docutils literal notranslate"><span class="pre">--json</span></code> option.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--json<span class="o">=</span><span class="m">1</span>
-<span class="o">{</span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;www.whitehouse.gov&quot;</span>,<span class="w"> </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;NG&quot;</span>,<span class="w"> </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,<span class="w"> </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;AUTOMATTIC&quot;</span>,<span class="w"> </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;192.0.64.0&quot;</span>,<span class="w"> </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;192.0.127.255&quot;</span>,<span class="w"> </span><span class="s2">&quot;hostname&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="o">}</span>
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">42.3306</span> <span class="o">/</span> <span class="o">~~~~~~~~~</span><span class="mf">.3306</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">114</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">3663095182</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">1344002</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">29200</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60694</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">SEND</span> <span class="p">[</span> <span class="o">&gt;&gt;&gt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">74</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">72</span> <span class="n">eb</span> <span class="mi">76</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="n">d5</span> <span class="n">f6</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="n">ed</span> <span class="mi">16</span> <span class="mi">00</span> <span class="mi">50</span> <span class="n">da</span> <span class="mi">56</span> <span class="mi">65</span> <span class="mi">8</span><span class="n">e</span> <span class="mi">00</span> <span class="mi">14</span> <span class="mi">82</span> <span class="mi">02</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">72</span> <span class="mi">10</span> <span class="mi">79</span> <span class="mi">7</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">00</span> 
 
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--json<span class="o">=</span><span class="m">2</span>
-<span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;www.whitehouse.gov&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;NG&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;AUTOMATTIC&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;192.0.64.0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;192.0.127.255&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;hostname&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="o">}</span>
+<span class="n">GET</span> <span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">curl</span><span class="o">/</span><span class="mf">7.29.0</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">google</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="o">*/*</span>
 
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--json<span class="o">=</span><span class="m">1</span><span class="w"> </span>--json_list<span class="w"> </span>--begin<span class="o">=</span><span class="m">1</span><span class="w"> </span>--end<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{geo},{country}&quot;</span>
-<span class="o">[</span>
-<span class="o">{</span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;www.whitehouse.gov&quot;</span>,<span class="w"> </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;192.0.66.168&quot;</span>,<span class="w"> </span><span class="s2">&quot;geo&quot;</span>:<span class="w"> </span><span class="s2">&quot;37.7749,-122.4194&quot;</span>,<span class="w"> </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="o">}</span>,
-<span class="o">{</span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;www.state.gov&quot;</span>,<span class="w"> </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;3.165.39.61&quot;</span>,<span class="w"> </span><span class="s2">&quot;geo&quot;</span>:<span class="w"> </span><span class="s2">&quot;35.6895,139.6917&quot;</span>,<span class="w"> </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;JP&quot;</span><span class="o">}</span>,
-<span class="o">]</span>
-</pre></div>
-</div>
-<p><strong>Output detailed data by JSON</strong></p>
-<p>Displaying detailed data vertically in JSON.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>wikipedia.org<span class="w"> </span>--format<span class="o">=</span>default<span class="w"> </span>--json<span class="o">=</span><span class="m">2</span><span class="w"> </span>--exhaustive
-<span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;success&quot;</span>:<span class="w"> </span>true,
-<span class="w">  </span><span class="s2">&quot;status&quot;</span>:<span class="w"> </span><span class="s2">&quot;OK&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;requests&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">    </span><span class="s2">&quot;RDAP&quot;</span>
-<span class="w">  </span><span class="o">]</span>,
-<span class="w">  </span><span class="s2">&quot;errors&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
-<span class="w">  </span><span class="s2">&quot;sequence&quot;</span>:<span class="w"> </span><span class="m">1</span>,
-<span class="w">  </span><span class="s2">&quot;original&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ip_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
-<span class="w">  </span><span class="s2">&quot;port&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;group_int&quot;</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">  </span><span class="s2">&quot;group&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;group_found&quot;</span>:<span class="w"> </span>false,
-<span class="w">  </span><span class="s2">&quot;group_status&quot;</span>:<span class="w"> </span><span class="s2">&quot;-&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;country&quot;</span>:<span class="w"> </span><span class="s2">&quot;US&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;WIKIMEDIA-AP&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_start&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;network_end&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.255&quot;</span>,
-~~~~~~~~~~~~~
-<span class="w">  </span><span class="s2">&quot;org&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;address&quot;</span>:<span class="w"> </span><span class="s2">&quot;1 Montgomery Street Suite 1600&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;Wikimedia Foundation, Inc.&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.raw&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.identifier&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.identifier_int&quot;</span>:<span class="w"> </span><span class="m">1734780640</span>,
-<span class="w">  </span><span class="s2">&quot;target.identified&quot;</span>:<span class="w"> </span>true,
-<span class="w">  </span><span class="s2">&quot;target.ip&quot;</span>:<span class="w"> </span><span class="s2">&quot;103.102.166.224&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.url&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;target.fqdn&quot;</span>:<span class="w"> </span><span class="s2">&quot;wikipedia.org&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;target.port&quot;</span>:<span class="w"> </span>null,
-<span class="w">  </span><span class="s2">&quot;target.status&quot;</span>:<span class="w"> </span><span class="s2">&quot;EXIST&quot;</span>
-<span class="o">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="grouping">
-<h2>Grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">¶</a></h2>
-<p>You are able to group by subnet or provider network by <code class="docutils literal notranslate"><span class="pre">--group</span></code> option. And Skipping the duplicate group using <code class="docutils literal notranslate"><span class="pre">--skip_duplicate</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">255</span>.255.255.0<span class="w"> </span>--skip_duplicate<span class="o">=</span><span class="m">1</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span><span class="m">24</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--group<span class="o">=</span>network<span class="w"> </span>--skip_duplicate<span class="o">=</span><span class="m">1</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="show-line-number">
-<h2>Show line-number<a class="headerlink" href="#show-line-number" title="Permalink to this headline">¶</a></h2>
-<p>Show line-number.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--sequence
-<span class="m">1</span>,www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
-<span class="m">2</span>,www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
-<span class="m">3</span>,www.treasury.gov,OK,23.32.0.1,US,AKAMAI,23.32.0.0/11,HTTP_OK,HTTP2
-<span class="m">4</span>,www.gov.uk,OK,151.101.0.1,US,SKYCA-3,151.101.0.0/16,HTTP_OK,HTTP2
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">42.3315</span> <span class="o">/</span> <span class="o">~~~~~~~~~</span><span class="mf">.3315</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">1344002</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">3663095256</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60694</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">RECEIVE</span> <span class="p">[</span> <span class="o">&lt;&lt;&lt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">6</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">28</span> <span class="mi">00</span> <span class="mi">4</span><span class="n">c</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="mi">01</span> <span class="mi">6</span><span class="n">c</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="mi">00</span> <span class="mi">50</span> <span class="n">ed</span> <span class="mi">16</span> <span class="mi">00</span> <span class="mi">14</span> <span class="mi">82</span> <span class="mi">02</span> <span class="n">da</span> <span class="mi">56</span> <span class="mi">65</span> <span class="n">d8</span> <span class="mi">50</span> <span class="mi">10</span> <span class="n">ff</span> <span class="n">ff</span> <span class="mi">87</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">42.4078</span> <span class="o">/</span> <span class="o">~~~~~~~~~</span><span class="mf">.4078</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">813</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">1344002</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">3663095256</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60694</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">RECEIVE</span> <span class="p">[</span> <span class="o">&lt;&lt;&lt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">773</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">03</span> <span class="mi">2</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">4</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="n">fe</span> <span class="mi">65</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="mi">00</span> <span class="mi">50</span> <span class="n">ed</span> <span class="mi">16</span> <span class="mi">00</span> <span class="mi">14</span> <span class="mi">82</span> <span class="mi">02</span> <span class="n">da</span> <span class="mi">56</span> <span class="mi">65</span> <span class="n">d8</span> <span class="mi">50</span> <span class="mi">18</span> <span class="n">ff</span> <span class="n">ff</span> <span class="n">fc</span> <span class="mi">38</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">301</span> <span class="n">Moved</span> <span class="n">Permanently</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span><span class="p">;</span> <span class="n">charset</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Security</span><span class="o">-</span><span class="n">Policy</span><span class="o">-</span><span class="n">Report</span><span class="o">-</span><span class="n">Only</span><span class="p">:</span> <span class="nb">object</span><span class="o">-</span><span class="n">src</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span><span class="n">base</span><span class="o">-</span><span class="n">uri</span> <span class="s1">&#39;self&#39;</span><span class="p">;</span><span class="n">script</span><span class="o">-</span><span class="n">src</span> <span class="s1">&#39;nonce-87RMr0fpufi3bqueM4np7A&#39;</span> <span class="s1">&#39;strict-dynamic&#39;</span> <span class="s1">&#39;report-sample&#39;</span> <span class="s1">&#39;unsafe-eval&#39;</span> <span class="s1">&#39;unsafe-inline&#39;</span> <span class="n">https</span><span class="p">:</span> <span class="n">http</span><span class="p">:;</span><span class="n">report</span><span class="o">-</span><span class="n">uri</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">csp</span><span class="o">.</span><span class="n">withgoogle</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">csp</span><span class="o">/</span><span class="n">gws</span><span class="o">/</span><span class="n">other</span><span class="o">-</span><span class="n">hp</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Sun</span><span class="p">,</span> <span class="mi">12</span> <span class="n">Jan</span> <span class="mi">2025</span> <span class="mi">13</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">34</span> <span class="n">GMT</span>
+<span class="n">Expires</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">11</span> <span class="n">Feb</span> <span class="mi">2025</span> <span class="mi">13</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">34</span> <span class="n">GMT</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">public</span><span class="p">,</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">2592000</span>
+<span class="n">Server</span><span class="p">:</span> <span class="n">gws</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">219</span>
+<span class="n">X</span><span class="o">-</span><span class="n">XSS</span><span class="o">-</span><span class="n">Protection</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span><span class="p">:</span> <span class="n">SAMEORIGIN</span>
+
+<span class="o">&lt;</span><span class="n">HTML</span><span class="o">&gt;&lt;</span><span class="n">HEAD</span><span class="o">&gt;&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s2">&quot;content-type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;text/html;charset=utf-8&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">TITLE</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span><span class="o">&lt;/</span><span class="n">TITLE</span><span class="o">&gt;&lt;/</span><span class="n">HEAD</span><span class="o">&gt;&lt;</span><span class="n">BODY</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">H1</span><span class="o">&gt;</span><span class="mi">301</span> <span class="n">Moved</span><span class="o">&lt;/</span><span class="n">H1</span><span class="o">&gt;</span>
+<span class="n">The</span> <span class="n">document</span> <span class="n">has</span> <span class="n">moved</span>
+<span class="o">&lt;</span><span class="n">A</span> <span class="n">HREF</span><span class="o">=</span><span class="s2">&quot;http://www.google.com/&quot;</span><span class="o">&gt;</span><span class="n">here</span><span class="o">&lt;/</span><span class="n">A</span><span class="o">&gt;.</span>
+<span class="o">&lt;/</span><span class="n">BODY</span><span class="o">&gt;&lt;/</span><span class="n">HTML</span><span class="o">&gt;</span>
+
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">42.4083</span> <span class="o">/</span> <span class="o">~~~~~~~~~</span><span class="mf">.4083</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">3663095256</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">1344775</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">30147</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60694</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">SEND</span> <span class="p">[</span> <span class="o">&gt;&gt;&gt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">0</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">28</span> <span class="n">eb</span> <span class="mi">77</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="n">d6</span> <span class="mi">3</span><span class="n">f</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="n">ed</span> <span class="mi">16</span> <span class="mi">00</span> <span class="mi">50</span> <span class="n">da</span> <span class="mi">56</span> <span class="mi">65</span> <span class="n">d8</span> <span class="mi">00</span> <span class="mi">14</span> <span class="mi">85</span> <span class="mi">07</span> <span class="mi">50</span> <span class="mi">10</span> <span class="mi">75</span> <span class="n">c3</span> <span class="mi">79</span> <span class="mi">33</span> <span class="mi">00</span> <span class="mi">00</span> 
 </pre></div>
 </div>
 </div>
-<div class="section" id="starting-line-number-and-ending-line-number">
-<h2>Starting line-number and Ending line-number<a class="headerlink" href="#starting-line-number-and-ending-line-number" title="Permalink to this headline">¶</a></h2>
-<p>Set starting line-number and ending line-number.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--begin<span class="o">=</span><span class="m">10</span>
-<span class="m">10</span>,91.239.100.101,OK,DK,UNCENSOREDDNS-V4-ANYCAST,91.239.100.0,91.239.100.255
-<span class="m">11</span>,45.33.32.156,OK,US,LINODE,45.33.0.0,45.33.127.255
-<span class="m">12</span>,45.33.32.157,OK,US,LINODE,45.33.0.0,45.33.127.255
-~~~~
+<div class="section" id="output-mode">
+<h2>Output mode<a class="headerlink" href="#output-mode" title="Permalink to this headline">¶</a></h2>
+<p><strong>NONE</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --output=NONE</span>
+
+<span class="o">&gt;</span> <span class="n">Nothing</span> <span class="ow">is</span> <span class="n">displayed</span><span class="o">.</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--begin<span class="o">=</span><span class="m">25</span><span class="w"> </span>--end<span class="o">=</span><span class="m">50</span><span class="w"> </span>--sequence
+<p><strong>HEADER</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --output=HEADER</span>
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">09.7662</span> <span class="o">/</span> <span class="o">~~~~~~~~~~.</span><span class="mf">.7662</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">114</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">133034702</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">1600002</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">29200</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60698</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">SEND</span> <span class="p">[</span> <span class="o">&gt;&gt;&gt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">74</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">72</span> <span class="n">fe</span> <span class="mi">8</span><span class="n">b</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="n">c2</span> <span class="n">e1</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="n">ed</span> <span class="mi">1</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">50</span> <span class="mi">07</span> <span class="n">ed</span> <span class="n">f2</span> <span class="n">ce</span> <span class="mi">00</span> <span class="mi">18</span> <span class="mi">6</span><span class="n">a</span> <span class="mi">02</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">72</span> <span class="mi">10</span> <span class="mi">79</span> <span class="mi">7</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">09.7679</span> <span class="o">/</span> <span class="o">~~~~~~~~~~.</span><span class="mf">.7679</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">1600002</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">133034776</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60698</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">RECEIVE</span> <span class="p">[</span> <span class="o">&lt;&lt;&lt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">6</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">28</span> <span class="mi">00</span> <span class="mi">5</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="mi">01</span> <span class="mi">5</span><span class="n">e</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="mi">00</span> <span class="mi">50</span> <span class="n">ed</span> <span class="mi">1</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">18</span> <span class="mi">6</span><span class="n">a</span> <span class="mi">02</span> <span class="mi">07</span> <span class="n">ed</span> <span class="n">f3</span> <span class="mi">18</span> <span class="mi">50</span> <span class="mi">10</span> <span class="n">ff</span> <span class="n">ff</span> <span class="n">e4</span> <span class="mi">30</span> <span class="mi">00</span> <span class="mi">00</span> 
+</pre></div>
+</div>
+<p><strong>BINARY</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --output=BINARY</span>
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">07.3860</span> <span class="o">/</span> <span class="o">~~~~~~~~~~.</span><span class="mf">.3860</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">114</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">231131098</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">1728002</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">29200</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60700</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">SEND</span> <span class="p">[</span> <span class="o">&gt;&gt;&gt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">74</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">72</span> <span class="mi">2</span><span class="n">a</span> <span class="mi">86</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="mi">96</span> <span class="n">e7</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="n">ed</span> <span class="mi">1</span><span class="n">c</span> <span class="mi">00</span> <span class="mi">50</span> <span class="mi">0</span><span class="n">d</span> <span class="n">c6</span> <span class="n">c7</span> <span class="n">da</span> <span class="mi">00</span> <span class="mi">1</span><span class="n">a</span> <span class="mi">5</span><span class="n">e</span> <span class="mi">02</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">72</span> <span class="mi">10</span> <span class="mi">79</span> <span class="mi">7</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="sa">b</span><span class="s1">&#39;GET / HTTP/1.1</span><span class="se">\r\n</span><span class="s1">User-Agent: curl/7.29.0</span><span class="se">\r\n</span><span class="s1">Host: google.com</span><span class="se">\r\n</span><span class="s1">Accept: */*</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p><strong>HEX</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --output=HEX</span>
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">09.7662</span> <span class="o">/</span> <span class="o">~~~~~~~~~~</span><span class="mf">.7662</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">114</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">133034702</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">1600002</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">29200</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60698</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">SEND</span> <span class="p">[</span> <span class="o">&gt;&gt;&gt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">74</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">72</span> <span class="n">fe</span> <span class="mi">8</span><span class="n">b</span> <span class="mi">40</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="n">c2</span> <span class="n">e1</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="n">ed</span> <span class="mi">1</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">50</span> <span class="mi">07</span> <span class="n">ed</span> <span class="n">f2</span> <span class="n">ce</span> <span class="mi">00</span> <span class="mi">18</span> <span class="mi">6</span><span class="n">a</span> <span class="mi">02</span> <span class="mi">50</span> <span class="mi">18</span> <span class="mi">72</span> <span class="mi">10</span> <span class="mi">79</span> <span class="mi">7</span><span class="n">d</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="mi">47</span> <span class="mi">45</span> <span class="mi">54</span> <span class="mi">20</span> <span class="mi">2</span><span class="n">f</span> <span class="mi">20</span> <span class="mi">48</span> <span class="mi">54</span> <span class="mi">54</span> <span class="mi">50</span> <span class="mi">2</span><span class="n">f</span> <span class="mi">31</span> <span class="mi">2</span><span class="n">e</span> <span class="mi">31</span> <span class="mi">0</span><span class="n">d</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">55</span> <span class="mi">73</span> <span class="mi">65</span> <span class="mi">72</span> <span class="mi">2</span><span class="n">d</span> <span class="mi">41</span> <span class="mi">67</span> <span class="mi">65</span> <span class="mi">6</span><span class="n">e</span> <span class="mi">74</span> <span class="mi">3</span><span class="n">a</span> <span class="mi">20</span> <span class="mi">63</span> <span class="mi">75</span> <span class="mi">72</span> <span class="mi">6</span><span class="n">c</span> <span class="mi">2</span><span class="n">f</span> <span class="mi">37</span> <span class="mi">2</span><span class="n">e</span> <span class="mi">32</span> <span class="mi">39</span> <span class="mi">2</span><span class="n">e</span> <span class="mi">30</span> <span class="mi">0</span><span class="n">d</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">48</span> <span class="mi">6</span><span class="n">f</span> <span class="mi">73</span> <span class="mi">74</span> <span class="mi">3</span><span class="n">a</span> <span class="mi">20</span> <span class="mi">67</span> <span class="mi">6</span><span class="n">f</span> <span class="mi">6</span><span class="n">f</span> <span class="mi">67</span> <span class="mi">6</span><span class="n">c</span> <span class="mi">65</span> <span class="mi">2</span><span class="n">e</span> <span class="mi">63</span> <span class="mi">6</span><span class="n">f</span> <span class="mi">6</span><span class="n">d</span> <span class="mi">0</span><span class="n">d</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">41</span> <span class="mi">63</span> <span class="mi">63</span> <span class="mi">65</span> <span class="mi">70</span> <span class="mi">74</span> <span class="mi">3</span><span class="n">a</span> <span class="mi">20</span> <span class="mi">2</span><span class="n">a</span> <span class="mi">2</span><span class="n">f</span> <span class="mi">2</span><span class="n">a</span> <span class="mi">0</span><span class="n">d</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">0</span><span class="n">d</span> <span class="mi">0</span><span class="n">a</span> 
+
+<span class="n">Time</span><span class="p">:</span>           <span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">12</span> <span class="mi">22</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">09.7679</span> <span class="o">/</span> <span class="o">~~~~~~~~~~.</span><span class="mf">.7679</span><span class="p">,</span> <span class="n">Passage</span> <span class="n">number</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">IP</span> <span class="n">header</span><span class="p">:</span>      <span class="n">Version</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">IP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Packet</span> <span class="n">length</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">TTL</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="n">IP</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">TCP</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">header</span><span class="p">:</span>     <span class="n">TCP</span> <span class="n">header</span> <span class="n">length</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">:</span> <span class="mi">1600002</span><span class="p">,</span> <span class="n">Acknowledgement</span><span class="p">:</span> <span class="mi">133034776</span><span class="p">,</span> <span class="n">Window</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span> <span class="n">Flags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">]</span>
+<span class="n">TCP</span> <span class="n">options</span><span class="p">:</span>    <span class="o">-</span>
+<span class="n">Source</span><span class="p">:</span>         <span class="n">IP</span><span class="p">:</span> <span class="mf">142.251.222.14</span>            <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+<span class="n">Destination</span><span class="p">:</span>    <span class="n">IP</span><span class="p">:</span> <span class="mf">10.0.2.15</span>                 <span class="n">Port</span><span class="p">:</span> <span class="mi">60698</span>
+<span class="n">Direction</span><span class="p">:</span>      <span class="n">RECEIVE</span> <span class="p">[</span> <span class="o">&lt;&lt;&lt;</span> <span class="p">]</span>
+<span class="n">Data</span> <span class="n">length</span><span class="p">:</span>    <span class="mi">6</span> <span class="n">byte</span>
+<span class="n">IP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>      <span class="mi">45</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">28</span> <span class="mi">00</span> <span class="mi">5</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">40</span> <span class="mi">06</span> <span class="mi">01</span> <span class="mi">5</span><span class="n">e</span> <span class="mi">8</span><span class="n">e</span> <span class="n">fb</span> <span class="n">de</span> <span class="mi">0</span><span class="n">e</span> <span class="mi">0</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">0</span><span class="n">f</span> 
+<span class="n">TCP</span><span class="o">-</span><span class="n">H</span> <span class="n">data</span><span class="p">:</span>     <span class="mi">00</span> <span class="mi">50</span> <span class="n">ed</span> <span class="mi">1</span><span class="n">a</span> <span class="mi">00</span> <span class="mi">18</span> <span class="mi">6</span><span class="n">a</span> <span class="mi">02</span> <span class="mi">07</span> <span class="n">ed</span> <span class="n">f3</span> <span class="mi">18</span> <span class="mi">50</span> <span class="mi">10</span> <span class="n">ff</span> <span class="n">ff</span> <span class="n">e4</span> <span class="mi">30</span> <span class="mi">00</span> <span class="mi">00</span> 
+
+<span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> 
+</pre></div>
+</div>
+<p><strong>LINE</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --output=LINE</span>
+
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.6990</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">2193112253</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">29200</span><span class="p">,</span>          <span class="p">[</span><span class="s1">&#39;SYN&#39;</span><span class="p">],</span>              <span class="mi">0</span><span class="p">,</span>      <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="n">mss</span><span class="p">:</span><span class="mi">1460</span><span class="p">;</span><span class="n">sack</span><span class="p">;</span><span class="n">timestamp</span><span class="p">:</span><span class="mi">601968655</span><span class="p">;</span><span class="n">nop</span><span class="p">;</span><span class="n">wscale</span><span class="p">:</span><span class="mi">7</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.7241</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1856001</span><span class="p">,</span> <span class="mi">2193112254</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;SYN&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">],</span>       <span class="mi">2</span><span class="p">,</span>      <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="n">RECEIVE</span><span class="p">,</span>       <span class="n">mss</span><span class="p">:</span><span class="mi">1460</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.7244</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2193112254</span><span class="p">,</span> <span class="mi">1856002</span><span class="p">,</span> <span class="mi">29200</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">],</span>              <span class="mi">0</span><span class="p">,</span>      <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.7251</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span>     <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2193112254</span><span class="p">,</span> <span class="mi">1856002</span><span class="p">,</span> <span class="mi">29200</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">],</span>       <span class="mi">74</span><span class="p">,</span>     <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.7253</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1856002</span><span class="p">,</span> <span class="mi">2193112328</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">],</span>              <span class="mi">6</span><span class="p">,</span>      <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="n">RECEIVE</span><span class="p">,</span>       <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8116</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">813</span><span class="p">,</span>     <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1856002</span><span class="p">,</span> <span class="mi">2193112328</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;PSH&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">],</span>       <span class="mi">773</span><span class="p">,</span>    <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="n">RECEIVE</span><span class="p">,</span>       <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8122</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2193112328</span><span class="p">,</span> <span class="mi">1856775</span><span class="p">,</span> <span class="mi">30147</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">],</span>              <span class="mi">0</span><span class="p">,</span>      <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8126</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2193112328</span><span class="p">,</span> <span class="mi">1856775</span><span class="p">,</span> <span class="mi">30147</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;FIN&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">],</span>       <span class="mi">0</span><span class="p">,</span>      <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8139</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1856775</span><span class="p">,</span> <span class="mi">2193112329</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">],</span>              <span class="mi">6</span><span class="p">,</span>      <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="n">RECEIVE</span><span class="p">,</span>       <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8341</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1856775</span><span class="p">,</span> <span class="mi">2193112329</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;FIN&#39;</span><span class="p">,</span> <span class="s1">&#39;ACK&#39;</span><span class="p">],</span>       <span class="mi">6</span><span class="p">,</span>      <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="n">RECEIVE</span><span class="p">,</span>       <span class="o">-</span>
+<span class="mi">2025</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">11</span> <span class="mi">22</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mf">43.8344</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span>      <span class="n">TCP</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2193112329</span><span class="p">,</span> <span class="mi">1856776</span><span class="p">,</span> <span class="mi">30147</span><span class="p">,</span>    <span class="p">[</span><span class="s1">&#39;ACK&#39;</span><span class="p">],</span>              <span class="mi">0</span><span class="p">,</span>      <span class="mf">10.0.2.15</span><span class="p">:</span><span class="mi">60702</span><span class="p">,</span>         <span class="mf">142.251.222.14</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span>       <span class="n">SEND</span><span class="p">,</span>          <span class="o">-</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dumpfile">
+<h2>Dumpfile<a class="headerlink" href="#dumpfile" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --dumpfile=1</span>
+
+<span class="o">~~~~~~~~~~</span>
+<span class="o">************************************************************************************************************************</span>
+                                                   <span class="n">Captured</span> <span class="n">Dump</span> <span class="n">Logs</span>                                                   
+<span class="o">************************************************************************************************************************</span>
+
+<span class="n">Path</span><span class="p">:</span>   <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">dump_logs</span><span class="o">/</span>
+<span class="n">Files</span><span class="p">:</span>  <span class="mi">4</span>
+
+
+<span class="c1"># ls -la ./dump_logs/</span>
+
+<span class="n">total</span> <span class="mi">20</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>   <span class="mi">2</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">228</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="o">.</span>
+<span class="n">dr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span><span class="o">---.</span> <span class="mi">19</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">4096</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="o">..</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">773</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="n">tcp_10</span><span class="mf">.0.2.15_60704_142.251.222.14_80</span><span class="n">_receive</span><span class="o">.</span><span class="n">dat</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>   <span class="mi">74</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="n">tcp_10</span><span class="mf">.0.2.15_60704_142.251.222.14_80</span><span class="n">_send</span><span class="o">.</span><span class="n">dat</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>  <span class="mi">773</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="n">tcp_10</span><span class="mf">.0.2.15_60706_142.251.222.14_80</span><span class="n">_receive</span><span class="o">.</span><span class="n">dat</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>   <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span>   <span class="mi">74</span> <span class="n">Jan</span> <span class="mi">10</span> <span class="mi">23</span><span class="p">:</span><span class="mi">03</span> <span class="n">tcp_10</span><span class="mf">.0.2.15_60706_142.251.222.14_80</span><span class="n">_send</span><span class="o">.</span><span class="n">dat</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="timeout">
 <h2>Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
-<p>Set request timeout by <code class="docutils literal notranslate"><span class="pre">--timeout</span></code>.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--timeout<span class="o">=</span><span class="m">5</span>.1
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--timeout<span class="o">=</span><span class="s2">&quot;3.5;4.5;3.2&quot;</span><span class="w"> </span><span class="c1">#DNS timeout, HTTP timeout, Reactivity timeout</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="change-delimiter-char">
-<h2>Change delimiter char<a class="headerlink" href="#change-delimiter-char" title="Permalink to this headline">¶</a></h2>
-<p>Change delimiter char by <code class="docutils literal notranslate"><span class="pre">--delimiter</span></code>.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--delimiter<span class="o">=</span><span class="s2">&quot;;&quot;</span>
-<span class="m">8</span>.8.8.8:53<span class="p">;</span>OK<span class="p">;</span>US<span class="p">;</span>GOGL<span class="p">;</span><span class="m">8</span>.8.8.0<span class="p">;</span><span class="m">8</span>.8.8.255
-<span class="m">8</span>.8.4.4:53<span class="p">;</span>OK<span class="p">;</span>US<span class="p">;</span>GOGL<span class="p">;</span><span class="m">8</span>.8.4.0<span class="p">;</span><span class="m">8</span>.8.4.255
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--delimiter<span class="o">=</span><span class="s2">&quot;\t&quot;</span>
-<span class="m">8</span>.8.8.8:53<span class="w">      </span>OK<span class="w">      </span>US<span class="w">      </span>GOGL<span class="w">    </span><span class="m">8</span>.8.8.0<span class="w"> </span><span class="m">8</span>.8.8.255
-<span class="m">8</span>.8.4.4:53<span class="w">      </span>OK<span class="w">      </span>US<span class="w">      </span>GOGL<span class="w">    </span><span class="m">8</span>.8.4.0<span class="w"> </span><span class="m">8</span>.8.4.255
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--delimiter<span class="o">=</span><span class="s2">&quot;&amp;&quot;</span>
-<span class="m">8</span>.8.8.8:53<span class="p">&amp;</span>OK<span class="p">&amp;</span>US<span class="p">&amp;</span>GOGL<span class="p">&amp;</span><span class="m">8</span>.8.8.0<span class="p">&amp;</span><span class="m">8</span>.8.8.255
-<span class="m">8</span>.8.4.4:53<span class="p">&amp;</span>OK<span class="p">&amp;</span>US<span class="p">&amp;</span>GOGL<span class="p">&amp;</span><span class="m">8</span>.8.4.0<span class="p">&amp;</span><span class="m">8</span>.8.4.255
-</pre></div>
-</div>
-</div>
-<div class="section" id="add-enclose-char">
-<h2>Add enclose char<a class="headerlink" href="#add-enclose-char" title="Permalink to this headline">¶</a></h2>
-<p>Add enclose char by <code class="docutils literal notranslate"><span class="pre">--enclose</span></code>.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--enclose<span class="o">=</span><span class="m">1</span>
-cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--enclose<span class="o">=</span><span class="s1">&#39;&quot;&#39;</span>
-<span class="s2">&quot;8.8.8.8:53&quot;</span>,<span class="s2">&quot;OK&quot;</span>,<span class="s2">&quot;US&quot;</span>,<span class="s2">&quot;GOGL&quot;</span>,<span class="s2">&quot;8.8.8.0&quot;</span>,<span class="s2">&quot;8.8.8.255&quot;</span>
-<span class="s2">&quot;8.8.4.4:53&quot;</span>,<span class="s2">&quot;OK&quot;</span>,<span class="s2">&quot;US&quot;</span>,<span class="s2">&quot;GOGL&quot;</span>,<span class="s2">&quot;8.8.4.0&quot;</span>,<span class="s2">&quot;8.8.4.255&quot;</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--enclose<span class="o">=</span><span class="s2">&quot;&#39;&quot;</span>
-<span class="s1">&#39;8.8.8.8:53&#39;</span>,<span class="s1">&#39;OK&#39;</span>,<span class="s1">&#39;US&#39;</span>,<span class="s1">&#39;GOGL&#39;</span>,<span class="s1">&#39;8.8.8.0&#39;</span>,<span class="s1">&#39;8.8.8.255&#39;</span>
-<span class="s1">&#39;8.8.4.4:53&#39;</span>,<span class="s1">&#39;OK&#39;</span>,<span class="s1">&#39;US&#39;</span>,<span class="s1">&#39;GOGL&#39;</span>,<span class="s1">&#39;8.8.4.0&#39;</span>,<span class="s1">&#39;8.8.4.255&#39;</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--enclose<span class="o">=</span><span class="s1">&#39;`&#39;</span>
-<span class="sb">`</span><span class="m">8</span>.8.8.8:53<span class="sb">`</span>,<span class="sb">`</span>OK<span class="sb">`</span>,<span class="sb">`</span>US<span class="sb">`</span>,<span class="sb">`</span>GOGL<span class="sb">`</span>,<span class="sb">`</span><span class="m">8</span>.8.8.0<span class="sb">`</span>,<span class="sb">`</span><span class="m">8</span>.8.8.255<span class="sb">`</span>
-<span class="sb">`</span><span class="m">8</span>.8.4.4:53<span class="sb">`</span>,<span class="sb">`</span>OK<span class="sb">`</span>,<span class="sb">`</span>US<span class="sb">`</span>,<span class="sb">`</span>GOGL<span class="sb">`</span>,<span class="sb">`</span><span class="m">8</span>.8.4.0<span class="sb">`</span>,<span class="sb">`</span><span class="m">8</span>.8.4.255<span class="sb">`</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-whether-ip-is-in-ip-subnet-ranges">
-<h2>Check whether IP is in IP/subnet ranges<a class="headerlink" href="#check-whether-ip-is-in-ip-subnet-ranges" title="Permalink to this headline">¶</a></h2>
-<p>Set <code class="docutils literal notranslate"><span class="pre">--range</span></code> and <code class="docutils literal notranslate"><span class="pre">{in_range}</span></code>.</p>
-<p><strong>Example:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.10<span class="w"> </span><span class="m">1</span>.0.0.1<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{in_range}&quot;</span><span class="w"> </span>--identify_int<span class="w"> </span>--range<span class="o">=</span><span class="s2">&quot;1.0.0.1/24;192.168.1.8/24&quot;</span>
-<span class="m">192</span>.168.1.10,RANGE_OK
-<span class="m">1</span>.0.0.1,RANGE_OK
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">10</span>.0.0.1<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{in_range}&quot;</span><span class="w"> </span>--identify_int<span class="w"> </span>--range<span class="o">=</span><span class="s2">&quot;1.0.0.1/24;192.168.1.8/24&quot;</span>
-<span class="m">10</span>.0.0.1,RANGE_NG
-</pre></div>
-</div>
-</div>
-<div class="section" id="public-ip-or-private-ip">
-<h2>Public IP or Private IP<a class="headerlink" href="#public-ip-or-private-ip" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip_type}&quot;</span>
-<span class="m">192</span>.168.1.100,PRIVATE
-</pre></div>
-</div>
-</div>
-<div class="section" id="ip-address-ip-int">
-<h2>IP address &lt;–&gt; IP int<a class="headerlink" href="#ip-address-ip-int" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip_int}&quot;</span>
-<span class="m">192</span>.168.1.100,3232235876
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span><span class="m">16777217</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip}&quot;</span><span class="w"> </span>--identify_int
-<span class="m">16777217</span>,1.0.0.1
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-icmp">
-<h2>Check ICMP<a class="headerlink" href="#check-icmp" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--icmp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{icmp},{icmp_time}&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-tcp-port">
-<h2>Check TCP port<a class="headerlink" href="#check-tcp-port" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">80</span><span class="w"> </span>--format<span class="o">=</span>country
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--tcp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{tcp},{tcp_time}&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-udp-port">
-<h2>Check UDP port<a class="headerlink" href="#check-udp-port" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">1</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">53</span><span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--sequence
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--udp<span class="o">=</span><span class="m">1</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{udp},{udp_time}&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-http-response">
-<h2>Check HTTP response<a class="headerlink" href="#check-http-response" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">1</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_status},{http_h2}&quot;</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}&quot;</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.txt<span class="p">|</span>ipsurv<span class="w"> </span>--http<span class="o">=</span><span class="m">2</span><span class="w"> </span>--format<span class="o">=</span><span class="s2">&quot;web&quot;</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv https://www.youtube.com/feed/you --format=web --http=1 --headers=1
-original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
-https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,N/A,184.0,HTTP_OK
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv https://www.reddit.com --format=&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}&quot; --http=1
-https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv https://anaconda.org/ --format=&quot;{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}&quot; --http=2
-https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
-</pre></div>
-</div>
-</div>
-<div class="section" id="apache-log">
-<h2>Apache log<a class="headerlink" href="#apache-log" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
-<span class="m">192</span>.168.56.100,OK,US,PRIVATE-ADDRESS-CBLK-RFC1918-IANA-RESERVED,192.168.0.0,192.168.255.255
-~~~
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ipscap --port=80 --timeout=10
 
-$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>country<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
-$<span class="w"> </span>cat<span class="w"> </span>/var/log/httpd/access_log<span class="p">|</span>ipsurv<span class="w"> </span>--format<span class="o">=</span>geo<span class="w"> </span>--add_ip<span class="w"> </span>--no_original
-</pre></div>
-</div>
-</div>
-<div class="section" id="check-host-name-or-pc-name">
-<h2>Check Host name or PC name<a class="headerlink" href="#check-host-name-or-pc-name" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.120 --host_only
-$ ipsurv 192.168.1.120 --format=&quot;hostname&quot;
-192.168.1.100,MYPC-00176
-</pre></div>
-</div>
-<blockquote>
-<div><p>You can also find the Windows PC name in private network.</p>
-</div></blockquote>
-</div>
-<div class="section" id="survey-self">
-<h2>Survey Self<a class="headerlink" href="#survey-self" title="Permalink to this headline">¶</a></h2>
-<p>Surveying self global IP and local IP information.</p>
-<p><strong>Command:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ipsurv<span class="w"> </span>self<span class="w"> </span>
-</pre></div>
-</div>
-<p><strong>Result:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Ip:<span class="w"> </span><span class="m">144</span>.160.*.*
-Hostname:<span class="w"> </span>
-Organization:<span class="w"> </span>AS797<span class="w"> </span>AT<span class="p">&amp;</span>T<span class="w"> </span>Services,<span class="w"> </span>Inc.
-Country:<span class="w"> </span>US
-City:<span class="w"> </span>San<span class="w"> </span>Jose
-Region:<span class="w"> </span>California
-Postal:<span class="w"> </span><span class="m">95103</span>
-Geo:<span class="w"> </span><span class="m">37</span>.3394,-121.8950
-Timezone:<span class="w"> </span>America/Los_Angeles
-LocalIp:<span class="w"> </span><span class="m">10</span>.0.2.5
-LocalDns:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;8.8.8.8&#39;</span>,<span class="w"> </span><span class="s1">&#39;8.8.4.4&#39;</span><span class="o">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="ip-values-for-system">
-<h2>IP values for system<a class="headerlink" href="#ip-values-for-system" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv reddit.com --format=system --add_ip --headers=1
-original,ip,ip_type,ip_int,ip_hex,ip_reversed
-reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
-</pre></div>
-</div>
-</div>
-<div class="section" id="using-geoip2">
-<h2>Using GeoIP2<a class="headerlink" href="#using-geoip2" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">ipsurv</span></code> support <a class="reference external" href="https://github.com/maxmind/GeoIP2-python">GeoIP2</a> optionally.</p>
-<p>Please refer to the <a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html">Using GeoIP2</a> documentation in detail.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --geoip_only
-8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.100 --format=&quot;{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
+Start capture packets...
 
-$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{geo}&quot; --collect=&quot;geoip&quot; --headers=1
-original,continent,continent_name,country,geo
-8.8.8.8,NA,North America,US,37.751;-97.822
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 8.8.8.8 --collect=geoip --format=area
-$ ipsurv 8.8.8.8 --format=&quot;{continent},{continent_name},{country},{country_name},{timezone},{geo}&quot; --collect=&quot;geoip&quot;
-8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv reddit.com --geoip_only --headers=1
-original,continent,continent_name,country,country_name,timezone,geo
-reddit.com,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
-</pre></div>
-</div>
-</div>
-<div class="section" id="enable-verbose-log">
-<h2>Enable verbose log<a class="headerlink" href="#enable-verbose-log" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.100 --verbose=1 # TRACE ERROR
-$ ipsurv 192.168.1.100 --verbose=2 # INFO
-$ ipsurv 192.168.1.100 --verbose=3 # DEBUG
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsurv 192.168.1.100 --verbose=3
-Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
-2024-12-01 13:06:36,572 - INFO - ENV(IPSURV_ARGS):
-{}
-2024-12-01 13:06:36,573 - INFO - ENV(IPSURV_CONF):
-{}
-2024-12-01 13:06:36,573 - INFO - ARGUMENTS:
-{ &#39;add_ip&#39;: False,
-  &#39;all_collect&#39;: False,
-  &#39;alt_delimiter&#39;: &#39;;&#39;,
-  &#39;autodetect&#39;: False,
-  &#39;begin&#39;: -1,
-  &#39;collect&#39;: &#39;rdap;dnstxt;dnsreverse;ipinfo&#39;,
-  &#39;delimiter&#39;: None,
-  &#39;disable_env&#39;: False,
-  &#39;enclose&#39;: None,
-  &#39;end&#39;: -1,
-  &#39;exhaustive&#39;: False,
-  &#39;format&#39;: &#39;default&#39;,
-  &#39;group&#39;: None,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2024-12-01 13:06:37,413 - INFO - RDAP:OK
-2024-12-01 13:06:37,413 - INFO - RDAP_TIME(ms):832.5
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:DNSTXT
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:DNSREVERSE
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:IPINFO
-2024-12-01 13:06:37,414 - INFO - COLLECTED_DATA:
-{ &#39;address&#39;: &#39;12025 Waterfront Drive Suite 300 Los Angeles CA 90292 United &#39;
-             &#39;States&#39;,
-  &#39;cidr&#39;: &#39;192.168.0.0/16&#39;,
-  &#39;country&#39;: &#39;US&#39;,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+`--timeout` option is enabled. The capture will stop 10.0 seconds automatically.
 </pre></div>
 </div>
 </div>
@@ -574,6 +458,9 @@ Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
 <li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/command_examples.html">Command examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction to “ipscap”</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="command_arguments.html">Command arguments</a></li>

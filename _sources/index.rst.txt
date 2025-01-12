@@ -57,7 +57,8 @@ Commands
    `ipsurv`  `ipsurv` is a surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports.
    --------  ---------------------------------------------------------------------------------------------------
    `ipscap`  `ipscap` is a packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP-header and TCP-header, UDP-header, and dumping files functions.
-             <br><br>* `ipscap` must be executed as the "root" user. It does not support Windows.
+
+             * `ipscap` must be executed as the "root" user. It does not support Windows.
    --------  ---------------------------------------------------------------------------------------------------
    `ipsend`  Coming soon.
    ========  ===================================================================================================

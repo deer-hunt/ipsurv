@@ -123,447 +123,314 @@ TCP-H data:     01 bb db 36 00 12 8e 01 0f 2c 48 1f 60 12 ff ff 5b 8a 00 00 02 0
 
 ## Find and Find mode
 
+**TEXT**
 
+```
+# ipscap --find="HTTP"
+```
 
+**MATCH**
 
-### Specifying domain
+```
+# ipscap --find="http" --find_mode=MATCH
+```
 
-Surveying a domain and some domains.
+**BINARY**
 
-**Command:**
+```
+# ipscap --find="\x05yahoo\x03com" --find_mode=BINARY --port=53
+```
 
-```bash
-$ ipsurv www.wikipedia.org
-www.wikipedia.org,OK,,US,WIKIMEDIA-AP,103.102.166.0,103.102.166.255,text-lb.eqsin.wikimedia.org
+**HEX**
 
-$ ipsurv www.reddit.com stackoverflow.com
-www.reddit.com,NG,,US,SKYCA-3,151.101.0.0,151.101.255.255,
-stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
+```
+# ipscap --find="45 00 00 37" --find_mode=HEX
 ```
 
 
-### Multiple rows using pipe
+## Filter protocol
 
-"ipsurv" support the input by pipe. You are able to specify multiple rows.
 
-**Example:**
+**UDP**
 
-```bash
-$ cat urls.txt|ipsurv
-www.whitehouse.gov,NG,,US,AUTOMATTIC,192.0.64.0,192.0.127.255,
-www.state.gov,OK,,US,AMAZON-CF,3.165.0.0,3.165.255.255,server-3-165-39-26.nrt12.r.cloudfront.net
-~~~~~~
+```
+# ipscap --protocol=UDP
 ```
 
-## Various output-format
+**ICMP**
 
-You can specify output-format flexibly by `--format` option.
-
-**Example:**
-
-```bash
-$ cat list.txt|ipsurv --format=simple
-$ cat list.txt|ipsurv --format=hostname --add_ip
-$ cat list.txt|ipsurv --format=geo
-$ cat list.txt|ipsurv --format="{country},{group},{geo},{original}"
-$ cat list.txt|ipsurv --format=timezone
-$ cat list.txt|ipsurv --format="{status},{group},{country},{name},{hostname}"
-$ cat list.txt|ipsurv --format="{status},<web>,{ip}"
-$ cat list.txt|ipsurv --format="{status}\t{ip}\t{hostname}"
+```
+# ipscap --protocol=ICMP
 ```
 
-## Output by JSON
+**TCP & ICMP**
 
-Outputting JSON by `--json` option.
-
-**Example:**
-
-```bash
-$ cat list.txt|ipsurv --json=1
-{"original": "www.whitehouse.gov", "status": "NG", "group": "", "country": "US", "name": "AUTOMATTIC", "network_start": "192.0.64.0", "network_end": "192.0.127.255", "hostname": ""}
-
-$ cat list.txt|ipsurv --json=2
-{
-  "original": "www.whitehouse.gov",
-  "status": "NG",
-  "group": "",
-  "country": "US",
-  "name": "AUTOMATTIC",
-  "network_start": "192.0.64.0",
-  "network_end": "192.0.127.255",
-  "hostname": ""
-}
-
-$ cat list.txt|ipsurv --json=1 --json_list --begin=1 --end=2 --format="{ip},{geo},{country}"
-[
-{"original": "www.whitehouse.gov", "ip": "192.0.66.168", "geo": "37.7749,-122.4194", "country": "US"},
-{"original": "www.state.gov", "ip": "3.165.39.61", "geo": "35.6895,139.6917", "country": "JP"},
-]
+```
+# ipscap --protocol="TCP,ICMP"
 ```
 
-**Output detailed data by JSON**
+**ALL**
 
-Displaying detailed data vertically in JSON.
-
-```bash
-$ ipsurv wikipedia.org --format=default --json=2 --exhaustive
-{
-  "success": true,
-  "status": "OK",
-  "requests": [
-    "RDAP"
-  ],
-  "errors": [],
-  "sequence": 1,
-  "original": "wikipedia.org",
-  "target": "103.102.166.224",
-  "ip": "103.102.166.224",
-  "ip_int": 1734780640,
-  "port": null,
-  "group_int": 0,
-  "group": "",
-  "group_found": false,
-  "group_status": "-",
-  "country": "US",
-  "name": "WIKIMEDIA-AP",
-  "network_start": "103.102.166.0",
-  "network_end": "103.102.166.255",
-~~~~~~~~~~~~~
-  "org": "Wikimedia Foundation, Inc.",
-  "address": "1 Montgomery Street Suite 1600",
-  "description": "Wikimedia Foundation, Inc.",
-  "target.raw": "wikipedia.org",
-  "target.identifier": "103.102.166.224",
-  "target.identifier_int": 1734780640,
-  "target.identified": true,
-  "target.ip": "103.102.166.224",
-  "target.url": null,
-  "target.fqdn": "wikipedia.org",
-  "target.port": null,
-  "target.status": "EXIST"
-}
+```
+# ipscap --protocol=ALL
 ```
 
-## Grouping
+## IP
 
-You are able to group by subnet or provider network by `--group` option. And Skipping the duplicate group using `--skip_duplicate`.
+```
+# ipscap --ip=192.168.10.101
+```
 
-```bash
-$ cat list.txt|ipsurv --group=255.255.255.0 --skip_duplicate=1
-$ cat list.txt|ipsurv --group=24
-$ cat list.txt|ipsurv --group=network --skip_duplicate=1
+```
+# ipscap --ip="192.168.10.101,192.168.10.102"
+```
+
+## Condition
+
+```
+# ipscap --condition="port!=22"
+```
+
+```
+# ipscap --condition="client_port=80"
+```
+
+```
+# ipscap --condition="src_port=80;dest_port<=30000;ttl=64"
+```
+
+```
+# ipscap --condition="flags=SYN,PSH"
+```
+
+```
+# ipscap --condition="sack=1;window>1000"
+```
+
+```
+# ipscap --condition="wscale>1"
 ```
 
 
-## Show line-number
+## Tracking
 
-Show line-number.
+```
+# ipscap --find="HTTP" --tracking
 
-**Example:**
+Time:           2025-01-12 22:42:42.3306 / ~~~~~~~~~.3306, Passage number: 1
+IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 3663095182, Acknowledgement: 1344002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60694
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 eb 76 40 00 40 06 d5 f6 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 16 00 50 da 56 65 8e 00 14 82 02 50 18 72 10 79 7d 00 00 
 
-```bash
-$ cat list.txt|ipsurv --sequence
-1,www.whitehouse.gov,OK,192.0.64.1,US,AUTOMATTIC,192.0.64.0/18,HTTP_OK,HTTP2
-2,www.state.gov,OK,3.165.0.1,US,AMAZON-CF,3.165.0.0/16,HTTP_OK,HTTP2
-3,www.treasury.gov,OK,23.32.0.1,US,AKAMAI,23.32.0.0/11,HTTP_OK,HTTP2
-4,www.gov.uk,OK,151.101.0.1,US,SKYCA-3,151.101.0.0/16,HTTP_OK,HTTP2
+GET / HTTP/1.1
+User-Agent: curl/7.29.0
+Host: google.com
+Accept: */*
+
+
+Time:           2025-01-12 22:42:42.3315 / ~~~~~~~~~.3315, Passage number: 1
+IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1344002, Acknowledgement: 3663095256, Window: 65535, Flags: ['ACK']
+TCP options:    -
+Source:         IP: 142.251.222.14            Port: 80
+Destination:    IP: 10.0.2.15                 Port: 60694
+Direction:      RECEIVE [ <<< ]
+Data length:    6 byte
+IP-H data:      45 00 00 28 00 4c 00 00 40 06 01 6c 8e fb de 0e 0a 00 02 0f 
+TCP-H data:     00 50 ed 16 00 14 82 02 da 56 65 d8 50 10 ff ff 87 0f 00 00 
+
+Time:           2025-01-12 22:42:42.4078 / ~~~~~~~~~.4078, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Packet length: 813, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1344002, Acknowledgement: 3663095256, Window: 65535, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 142.251.222.14            Port: 80
+Destination:    IP: 10.0.2.15                 Port: 60694
+Direction:      RECEIVE [ <<< ]
+Data length:    773 byte
+IP-H data:      45 00 03 2d 00 4d 00 00 40 06 fe 65 8e fb de 0e 0a 00 02 0f 
+TCP-H data:     00 50 ed 16 00 14 82 02 da 56 65 d8 50 18 ff ff fc 38 00 00 
+
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-87RMr0fpufi3bqueM4np7A' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+Date: Sun, 12 Jan 2025 13:42:34 GMT
+Expires: Tue, 11 Feb 2025 13:42:34 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+
+
+Time:           2025-01-12 22:42:42.4083 / ~~~~~~~~~.4083, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 3663095256, Acknowledgement: 1344775, Window: 30147, Flags: ['ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60694
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    0 byte
+IP-H data:      45 00 00 28 eb 77 40 00 40 06 d6 3f 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 16 00 50 da 56 65 d8 00 14 85 07 50 10 75 c3 79 33 00 00 
 ```
 
 
-## Starting line-number and Ending line-number
+## Output mode
 
-Set starting line-number and ending line-number.
+**NONE**
 
-**Example:**
+```
+# ipscap --port=80 --output=NONE
 
-```bash
-$ cat list.txt|ipsurv --begin=10
-10,91.239.100.101,OK,DK,UNCENSOREDDNS-V4-ANYCAST,91.239.100.0,91.239.100.255
-11,45.33.32.156,OK,US,LINODE,45.33.0.0,45.33.127.255
-12,45.33.32.157,OK,US,LINODE,45.33.0.0,45.33.127.255
-~~~~
+> Nothing is displayed.
 ```
 
-```bash
-$ cat list.txt|ipsurv --begin=25 --end=50 --sequence
+**HEADER**
+
 ```
+# ipscap --port=80 --output=HEADER
+
+Time:           2025-01-12 22:54:09.7662 / ~~~~~~~~~~..7662, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 133034702, Acknowledgement: 1600002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60698
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 fe 8b 40 00 40 06 c2 e1 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 1a 00 50 07 ed f2 ce 00 18 6a 02 50 18 72 10 79 7d 00 00 
+
+Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~..7679, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1600002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
+TCP options:    -
+Source:         IP: 142.251.222.14            Port: 80
+Destination:    IP: 10.0.2.15                 Port: 60698
+Direction:      RECEIVE [ <<< ]
+Data length:    6 byte
+IP-H data:      45 00 00 28 00 5a 00 00 40 06 01 5e 8e fb de 0e 0a 00 02 0f 
+TCP-H data:     00 50 ed 1a 00 18 6a 02 07 ed f3 18 50 10 ff ff e4 30 00 00 
+```
+
+**BINARY**
+
+```
+# ipscap --port=80 --output=BINARY
+
+Time:           2025-01-12 22:55:07.3860 / ~~~~~~~~~~..3860, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 231131098, Acknowledgement: 1728002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60700
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 2a 86 40 00 40 06 96 e7 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 1c 00 50 0d c6 c7 da 00 1a 5e 02 50 18 72 10 79 7d 00 00 
+
+b'GET / HTTP/1.1\r\nUser-Agent: curl/7.29.0\r\nHost: google.com\r\nAccept: */*\r\n\r\n'
+```
+
+
+**HEX**
+
+```
+# ipscap --port=80 --output=HEX
+
+Time:           2025-01-12 22:54:09.7662 / ~~~~~~~~~~.7662, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 133034702, Acknowledgement: 1600002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60698
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 fe 8b 40 00 40 06 c2 e1 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 1a 00 50 07 ed f2 ce 00 18 6a 02 50 18 72 10 79 7d 00 00 
+
+47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 65 72 2d 41 67 65 6e 74 3a 20 63 75 72 6c 2f 37 2e 32 39 2e 30 0d 0a 48 6f 73 74 3a 20 67 6f 6f 67 6c 65 2e 63 6f 6d 0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a 
+
+Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~..7679, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1600002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
+TCP options:    -
+Source:         IP: 142.251.222.14            Port: 80
+Destination:    IP: 10.0.2.15                 Port: 60698
+Direction:      RECEIVE [ <<< ]
+Data length:    6 byte
+IP-H data:      45 00 00 28 00 5a 00 00 40 06 01 5e 8e fb de 0e 0a 00 02 0f 
+TCP-H data:     00 50 ed 1a 00 18 6a 02 07 ed f3 18 50 10 ff ff e4 30 00 00 
+
+00 00 00 00 00 00 
+```
+
+**LINE**
+
+```
+# ipscap --port=80 --output=LINE
+
+2025-01-11 22:57:43.6990, 1,  4, 20, 64, 60,      TCP, 40, 2193112253, 0, 29200,          ['SYN'],              0,      10.0.2.15:60702,         142.251.222.14:80,       SEND,          mss:1460;sack;timestamp:601968655;nop;wscale:7
+2025-01-11 22:57:43.7241, 1,  4, 20, 64, 44,      TCP, 24, 1856001, 2193112254, 65535,    ['SYN', 'ACK'],       2,      142.251.222.14:80,       10.0.2.15:60702,         RECEIVE,       mss:1460
+2025-01-11 22:57:43.7244, 2,  4, 20, 64, 40,      TCP, 20, 2193112254, 1856002, 29200,    ['ACK'],              0,      10.0.2.15:60702,         142.251.222.14:80,       SEND,          -
+2025-01-11 22:57:43.7251, 3,  4, 20, 64, 114,     TCP, 20, 2193112254, 1856002, 29200,    ['PSH', 'ACK'],       74,     10.0.2.15:60702,         142.251.222.14:80,       SEND,          -
+2025-01-11 22:57:43.7253, 2,  4, 20, 64, 40,      TCP, 20, 1856002, 2193112328, 65535,    ['ACK'],              6,      142.251.222.14:80,       10.0.2.15:60702,         RECEIVE,       -
+2025-01-11 22:57:43.8116, 3,  4, 20, 64, 813,     TCP, 20, 1856002, 2193112328, 65535,    ['PSH', 'ACK'],       773,    142.251.222.14:80,       10.0.2.15:60702,         RECEIVE,       -
+2025-01-11 22:57:43.8122, 4,  4, 20, 64, 40,      TCP, 20, 2193112328, 1856775, 30147,    ['ACK'],              0,      10.0.2.15:60702,         142.251.222.14:80,       SEND,          -
+2025-01-11 22:57:43.8126, 5,  4, 20, 64, 40,      TCP, 20, 2193112328, 1856775, 30147,    ['FIN', 'ACK'],       0,      10.0.2.15:60702,         142.251.222.14:80,       SEND,          -
+2025-01-11 22:57:43.8139, 4,  4, 20, 64, 40,      TCP, 20, 1856775, 2193112329, 65535,    ['ACK'],              6,      142.251.222.14:80,       10.0.2.15:60702,         RECEIVE,       -
+2025-01-11 22:57:43.8341, 5,  4, 20, 64, 40,      TCP, 20, 1856775, 2193112329, 65535,    ['FIN', 'ACK'],       6,      142.251.222.14:80,       10.0.2.15:60702,         RECEIVE,       -
+2025-01-11 22:57:43.8344, 6,  4, 20, 64, 40,      TCP, 20, 2193112329, 1856776, 30147,    ['ACK'],              0,      10.0.2.15:60702,         142.251.222.14:80,       SEND,          -
+```
+
+
+## Dumpfile
+
+```
+# ipscap --port=80 --dumpfile=1
+
+~~~~~~~~~~
+************************************************************************************************************************
+                                                   Captured Dump Logs                                                   
+************************************************************************************************************************
+
+Path:   /path/dump_logs/
+Files:  4
+
+
+# ls -la ./dump_logs/
+
+total 20
+drwxr-xr-x   2 root root  228 Jan 10 23:03 .
+dr-xr-x---. 19 root root 4096 Jan 10 23:03 ..
+-rw-r--r--   1 root root  773 Jan 10 23:03 tcp_10.0.2.15_60704_142.251.222.14_80_receive.dat
+-rw-r--r--   1 root root   74 Jan 10 23:03 tcp_10.0.2.15_60704_142.251.222.14_80_send.dat
+-rw-r--r--   1 root root  773 Jan 10 23:03 tcp_10.0.2.15_60706_142.251.222.14_80_receive.dat
+-rw-r--r--   1 root root   74 Jan 10 23:03 tcp_10.0.2.15_60706_142.251.222.14_80_send.dat
+```
+
 
 ## Timeout
 
-Set request timeout by ```--timeout```.
+```
+# ipscap --port=80 --timeout=10
 
-**Example:**
+Start capture packets...
 
-```bash
-$ cat list.txt|ipsurv --timeout=5.1
-$ cat list.txt|ipsurv --timeout="3.5;4.5;3.2" #DNS timeout, HTTP timeout, Reactivity timeout
+`--timeout` option is enabled. The capture will stop 10.0 seconds automatically.
 ```
 
-## Change delimiter char
-
-Change delimiter char by ```--delimiter```.
-
-**Example:**
-
-```bash
-$ cat list.txt|ipsurv --delimiter=";"
-8.8.8.8:53;OK;US;GOGL;8.8.8.0;8.8.8.255
-8.8.4.4:53;OK;US;GOGL;8.8.4.0;8.8.4.255
-```
-
-```bash
-$ cat list.txt|ipsurv --delimiter="\t"
-8.8.8.8:53      OK      US      GOGL    8.8.8.0 8.8.8.255
-8.8.4.4:53      OK      US      GOGL    8.8.4.0 8.8.4.255
-```
-
-```bash
-$ cat list.txt|ipsurv --delimiter="&"
-8.8.8.8:53&OK&US&GOGL&8.8.8.0&8.8.8.255
-8.8.4.4:53&OK&US&GOGL&8.8.4.0&8.8.4.255
-```
-
-## Add enclose char
-
-Add enclose char by ```--enclose```.
-
-**Example:**
-
-```bash
-cat list.txt|ipsurv --enclose=1
-cat list.txt|ipsurv --enclose='"'
-"8.8.8.8:53","OK","US","GOGL","8.8.8.0","8.8.8.255"
-"8.8.4.4:53","OK","US","GOGL","8.8.4.0","8.8.4.255"
-```
-
-```bash
-$ cat list.txt|ipsurv --enclose="'"
-'8.8.8.8:53','OK','US','GOGL','8.8.8.0','8.8.8.255'
-'8.8.4.4:53','OK','US','GOGL','8.8.4.0','8.8.4.255'
-```
-
-```bash
-cat list.txt|ipsurv --enclose='`'
-`8.8.8.8:53`,`OK`,`US`,`GOGL`,`8.8.8.0`,`8.8.8.255`
-`8.8.4.4:53`,`OK`,`US`,`GOGL`,`8.8.4.0`,`8.8.4.255`
-```
-
-
-## Check whether IP is in IP/subnet ranges
-
-Set ```--range``` and ```{in_range}```.
-
-**Example:**
-
-```bash
-$ ipsurv 192.168.1.10 1.0.0.1 --format="{in_range}" --identify_int --range="1.0.0.1/24;192.168.1.8/24"
-192.168.1.10,RANGE_OK
-1.0.0.1,RANGE_OK
-```
-
-```bash
-$ ipsurv 10.0.0.1 --format="{in_range}" --identify_int --range="1.0.0.1/24;192.168.1.8/24"
-10.0.0.1,RANGE_NG
-```
-
-## Public IP or Private IP
-
-```bash
-$ ipsurv 192.168.1.100 --format="{ip_type}"
-192.168.1.100,PRIVATE
-```
-
-## IP address <--> IP int
-
-```bash
-$ ipsurv 192.168.1.100 --format="{ip_int}"
-192.168.1.100,3232235876
-```
-
-```bash
-$ ipsurv 16777217 --format="{ip}" --identify_int
-16777217,1.0.0.1
-```
-
-
-## Check ICMP
-
-```bash
-$ cat list.txt|ipsurv --icmp=1
-$ cat list.txt|ipsurv --icmp=1 --format="{ip},{icmp},{icmp_time}"
-```
-
-## Check TCP port
-
-```bash
-$ cat list.txt|ipsurv --tcp=1
-$ cat list.txt|ipsurv --tcp=80 --format=country
-$ cat list.txt|ipsurv --tcp=1 --format="{ip},{tcp},{tcp_time}"
-```
-
-## Check UDP port
-
-```bash
-$ cat list.txt|ipsurv --udp=1
-$ cat list.txt|ipsurv --udp=53 --format=country --sequence
-$ cat list.txt|ipsurv --udp=1 --format="{ip},{udp},{udp_time}"
-```
-
-## Check HTTP response
-
-```bash
-$ cat list.txt|ipsurv --http=1
-$ cat list.txt|ipsurv --http=2 --format=country --add_ip
-$ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_h2}"
-$ cat list.txt|ipsurv --http=2 --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2}"
-$ cat list.txt|ipsurv --http=2 --format="web"
-```
-
-```
-$ ipsurv https://www.youtube.com/feed/you --format=web --http=1 --headers=1
-original,http,http_status,http_size,http_server,http_mime,http_h2,http_time,http
-https://www.youtube.com/feed/you,HTTP_OK,200,558086,ESF,text/html,N/A,184.0,HTTP_OK
-```
-
-```
-$ ipsurv https://www.reddit.com --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=1
-https://www.reddit.com,151.101.129.140,HTTP_OK,200,707634,text/html,snooserv,N/A,130.2
-```
-
-```
-$ ipsurv https://anaconda.org/ --format="{ip},{http},{http_status},{http_size},{http_mime},{http_server},{http_h2},{http_time}" --http=2
-https://anaconda.org/,104.19.144.37,HTTP_OK,403,7054,text/html,cloudflare,HTTP2,86.5
-```
-
-
-## Apache log
-
-```bash
-$ cat /var/log/httpd/access_log|ipsurv --add_ip --no_original
-192.168.56.100,OK,US,PRIVATE-ADDRESS-CBLK-RFC1918-IANA-RESERVED,192.168.0.0,192.168.255.255
-~~~
-
-$ cat /var/log/httpd/access_log|ipsurv --format=country --add_ip --no_original
-$ cat /var/log/httpd/access_log|ipsurv --format=geo --add_ip --no_original
-```
-
-
-## Check Host name or PC name
-   
-```
-$ ipsurv 192.168.1.120 --host_only
-$ ipsurv 192.168.1.120 --format="hostname"
-192.168.1.100,MYPC-00176
-```
-
-> You can also find the Windows PC name in private network.
-
-
-## Survey Self
-
-Surveying self global IP and local IP information.
-
-**Command:**
-
-```bash
-$ ipsurv self 
-```
-
-**Result:**
-
-```bash
-Ip: 144.160.*.*
-Hostname: 
-Organization: AS797 AT&T Services, Inc.
-Country: US
-City: San Jose
-Region: California
-Postal: 95103
-Geo: 37.3394,-121.8950
-Timezone: America/Los_Angeles
-LocalIp: 10.0.2.5
-LocalDns: ['8.8.8.8', '8.8.4.4']
-```
-
-## IP values for system
-
-```
-$ ipsurv reddit.com --format=system --add_ip --headers=1
-original,ip,ip_type,ip_int,ip_hex,ip_reversed
-reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
-```
-
-## Using GeoIP2
-
-```ipsurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
-
-Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html) documentation in detail.
-
-
-```
-$ ipsurv 8.8.8.8 --geoip_only
-8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
-```
-
-```
-$ ipsurv 192.168.1.100 --format="{country},{geo}" --collect="geoip" --headers=1
-
-$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{geo}" --collect="geoip" --headers=1
-original,continent,continent_name,country,geo
-8.8.8.8,NA,North America,US,37.751;-97.822
-```
-
-```
-$ ipsurv 8.8.8.8 --collect=geoip --format=area
-$ ipsurv 8.8.8.8 --format="{continent},{continent_name},{country},{country_name},{timezone},{geo}" --collect="geoip"
-8.8.8.8,NA,North America,US,United States,America/Chicago,AS15169,37.751;-97.822
-```
-
-```
-$ ipsurv reddit.com --geoip_only --headers=1
-original,continent,continent_name,country,country_name,timezone,geo
-reddit.com,NA,North America,US,United States,America/Los_Angeles,37.7642;-122.3993
-```
-
-## Enable verbose log
-
-```
-$ ipsurv 192.168.1.100 --verbose=1 # TRACE ERROR
-$ ipsurv 192.168.1.100 --verbose=2 # INFO
-$ ipsurv 192.168.1.100 --verbose=3 # DEBUG
-```
-
-```
-$ ipsurv 192.168.1.100 --verbose=3
-Enable verbose mode. Current:3 [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]
-2024-12-01 13:06:36,572 - INFO - ENV(IPSURV_ARGS):
-{}
-2024-12-01 13:06:36,573 - INFO - ENV(IPSURV_CONF):
-{}
-2024-12-01 13:06:36,573 - INFO - ARGUMENTS:
-{ 'add_ip': False,
-  'all_collect': False,
-  'alt_delimiter': ';',
-  'autodetect': False,
-  'begin': -1,
-  'collect': 'rdap;dnstxt;dnsreverse;ipinfo',
-  'delimiter': None,
-  'disable_env': False,
-  'enclose': None,
-  'end': -1,
-  'exhaustive': False,
-  'format': 'default',
-  'group': None,
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2024-12-01 13:06:37,413 - INFO - RDAP:OK
-2024-12-01 13:06:37,413 - INFO - RDAP_TIME(ms):832.5
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:DNSTXT
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:DNSREVERSE
-2024-12-01 13:06:37,413 - DEBUG - UNNECESSARY:IPINFO
-2024-12-01 13:06:37,414 - INFO - COLLECTED_DATA:
-{ 'address': '12025 Waterfront Drive Suite 300 Los Angeles CA 90292 United '
-             'States',
-  'cidr': '192.168.0.0/16',
-  'country': 'US',
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```

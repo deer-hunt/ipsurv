@@ -423,6 +423,32 @@ dr-xr-x---. 19 root root 4096 Jan 10 23:03 ..
 -rw-r--r--   1 root root   74 Jan 10 23:03 tcp_10.0.2.15_60706_142.251.222.14_80_send.dat
 ```
 
+## Grouping in statistics
+
+```
+# ipscap --port=80 --stat_group=1
+
+~~~~~~~~~~~~~
+
+
+*The following is the statistics for captured transfers only. If you'd like see to the statistics for all transfers, set`--stat_mode=2` option.
+
+
+[TCP] 10.0.2.15 <-> 142.251.42.206       Port: 80
+ SEND:      num: 18, unique: 3, size: 222
+ RECEIVE:   num: 15, unique: 3, size: 2379
+ GROUPS:    3
+
+[TCP] 10.0.2.15 <-> 142.250.199.110      Port: 80
+ SEND:      num: 6, unique: 1, size: 74
+ RECEIVE:   num: 5, unique: 1, size: 793
+ GROUPS:    1
+
+[TCP] 10.0.2.15 <-> 142.251.222.14       Port: 80
+ SEND:      num: 6, unique: 1, size: 74
+ RECEIVE:   num: 5, unique: 1, size: 793
+ GROUPS:    1
+```
 
 ## Timeout
 

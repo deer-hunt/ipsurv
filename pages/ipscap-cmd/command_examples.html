@@ -429,6 +429,33 @@ TCP-H<span class="w"> </span>data:<span class="w">     </span><span class="m">01
 </pre></div>
 </div>
 </div>
+<div class="section" id="grouping-in-statistics">
+<h2>Grouping in statistics<a class="headerlink" href="#grouping-in-statistics" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --stat_group=1</span>
+
+<span class="o">~~~~~~~~~~~~~</span>
+
+
+<span class="o">*</span><span class="n">The</span> <span class="n">following</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">captured</span> <span class="n">transfers</span> <span class="n">only</span><span class="o">.</span> <span class="n">If</span> <span class="n">you</span><span class="s1">&#39;d like see to the statistics for all transfers, set`--stat_mode=2` option.</span>
+
+
+<span class="p">[</span><span class="n">TCP</span><span class="p">]</span> <span class="mf">10.0.2.15</span> <span class="o">&lt;-&gt;</span> <span class="mf">142.251.42.206</span>       <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+ <span class="n">SEND</span><span class="p">:</span>      <span class="n">num</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">222</span>
+ <span class="n">RECEIVE</span><span class="p">:</span>   <span class="n">num</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">2379</span>
+ <span class="n">GROUPS</span><span class="p">:</span>    <span class="mi">3</span>
+
+<span class="p">[</span><span class="n">TCP</span><span class="p">]</span> <span class="mf">10.0.2.15</span> <span class="o">&lt;-&gt;</span> <span class="mf">142.250.199.110</span>      <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+ <span class="n">SEND</span><span class="p">:</span>      <span class="n">num</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">74</span>
+ <span class="n">RECEIVE</span><span class="p">:</span>   <span class="n">num</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">793</span>
+ <span class="n">GROUPS</span><span class="p">:</span>    <span class="mi">1</span>
+
+<span class="p">[</span><span class="n">TCP</span><span class="p">]</span> <span class="mf">10.0.2.15</span> <span class="o">&lt;-&gt;</span> <span class="mf">142.251.222.14</span>       <span class="n">Port</span><span class="p">:</span> <span class="mi">80</span>
+ <span class="n">SEND</span><span class="p">:</span>      <span class="n">num</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">74</span>
+ <span class="n">RECEIVE</span><span class="p">:</span>   <span class="n">num</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">unique</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="mi">793</span>
+ <span class="n">GROUPS</span><span class="p">:</span>    <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="timeout">
 <h2>Timeout<a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ipscap --port=80 --timeout=10

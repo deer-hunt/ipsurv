@@ -1,7 +1,7 @@
 import pytest
-import sys
+import os
 
-if not sys.platform.startswith('win'):
+if os.name == 'posix':
     from ipscap.core.pipeline import Pipeline
 
     class TestPipeline:

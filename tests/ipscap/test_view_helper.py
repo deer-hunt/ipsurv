@@ -1,8 +1,8 @@
 import pytest
 import time
-import sys
+import os
 
-if not sys.platform.startswith('win'):
+if os.name == 'posix':
     from ipscap.configs import Constant
     from ipscap.service.view_helper import ViewHelper
     from ipscap.service.dumpfile import DumpFile

@@ -1,8 +1,5 @@
 import pytest
-import sys
-
-if sys.platform.startswith('win'):
-    pytest.mark.skip('Skipping Windows')
+import os
 
 from ipscap.util.raw_socket_entity import IPHeader, TCPHeader
 from ipscap.service.packet_filter import PacketFilter

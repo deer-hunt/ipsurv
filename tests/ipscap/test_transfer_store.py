@@ -1,7 +1,7 @@
 import pytest
-import sys
+import os
 
-if not sys.platform.startswith('win'):
+if os.name == 'posix':
     from ipscap.util.raw_socket_entity import IPHeader, TCPHeader
     from ipscap.service.transfer_store import TransferStore
 

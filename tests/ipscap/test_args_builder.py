@@ -1,9 +1,10 @@
 import pytest
 import sys
+import os
 from ipscap.util.raw_socket_entity import IPHeader
 
 
-if not sys.platform.startswith('win'):
+if os.name == 'posix':
     from ipscap.service.args_builder import ArgsBuilder
     from ipscap.util.evaluation_parser import EvaluationParser
     from ipscap.core.pipeline import Pipeline

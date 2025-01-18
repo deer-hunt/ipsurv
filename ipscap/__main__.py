@@ -1,7 +1,7 @@
 from ipscap.core.object_factory import ObjectFactory
 from ipscap.ipscap_cmd import IpsCapCmd
 from ipsurv.util.sys_util import System
-import platform
+import os
 
 
 def main():
@@ -9,8 +9,8 @@ def main():
         System.exit('"ipaddress" module is required. Please install by `pip install ipaddress`.',
                     True)
 
-    if platform.system() == 'Windows':
-        System.exit('`ipscap` doesn\'t support Windows.', True)
+    if os.name != 'posix':
+        System.exit('`ipscap` support only Unix/Linux OS.', True)
 
     factory = ObjectFactory()
 

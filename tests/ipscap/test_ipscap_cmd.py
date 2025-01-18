@@ -1,31 +1,34 @@
 import pytest
-from unittest.mock import patch
-from ipscap.core.object_factory import ObjectFactory
-from ipscap.ipscap_cmd import IpsCapCmd
-import re
-import sys
-import io
 import os
-import logging
 
 
-class TestIpscapCmd:
-    @pytest.fixture
-    def ipscap_cmd(self, mocker):
-        factory = ObjectFactory()
+if os.name == 'posix':
+    from unittest.mock import patch
+    from ipscap.core.object_factory import ObjectFactory
+    from ipscap.ipscap_cmd import IpsCapCmd
+    import re
+    import sys
+    import io
+    import os
+    import logging
 
-        ipscap_cmd = IpsCapCmd(factory)
+    class TestIpscapCmd:
+        @pytest.fixture
+        def ipscap_cmd(self, mocker):
+            factory = ObjectFactory()
 
-        return ipscap_cmd
+            ipscap_cmd = IpsCapCmd(factory)
 
-    def test_version(self, capsys, monkeypatch, ipscap_cmd):
-        monkeypatch.setattr(sys, 'argv', ['test.py', '--version'])
-        monkeypatch.setattr(os, '_exit', lambda v: 0)
+            return ipscap_cmd
 
-        monkeypatch.setattr(ipscap_cmd, 'dispatch', lambda v: 0)
+        def test_version(self, capsys, monkeypatch, ipscap_cmd):
+            monkeypatch.setattr(sys, 'argv', ['test.py', '--version'])
+            monkeypatch.setattr(os, '_exit', lambda v: 0)
 
-        ipscap_cmd.run()
+            monkeypatch.setattr(ipscap_cmd, 'dispatch', lambda v: 0)
 
-        captured = capsys.readouterr()
+            ipscap_cmd.run()
 
-        assert re.search(r'(Permission|ipscap)', captured.out)
+            captured = capsys.readouterr()
+
+            assert re.search(r'(Permission|ipscap)', captured.out)

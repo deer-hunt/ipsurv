@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Command examples" href="command_examples.html" />
-    <link rel="prev" title="About Using GeoIP2" href="../ipsurv-cmd/using_geoip2.html" /> 
+    <link rel="prev" title="Introduction to “ipscap”" href="README.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -32,7 +32,7 @@
           <a href="command_examples.html" title="Command examples"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../ipsurv-cmd/using_geoip2.html" title="About Using GeoIP2"
+          <a href="README.html" title="Introduction to “ipscap”"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 
@@ -49,6 +49,499 @@
 <p>This document is description of ipscap’s command arguments.</p>
 <div class="section" id="index">
 <h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#general-and-debugging">General and Debugging</a></p></li>
+<li><p><a class="reference external" href="#filtering">Filtering</a></p></li>
+<li><p><a class="reference external" href="#output">Output</a></p></li>
+<li><p><a class="reference external" href="#statistics">Statistics</a></p></li>
+<li><p><a class="reference external" href="#miscellaneous">Miscellaneous</a></p></li>
+</ul>
+</div>
+<div class="section" id="general-and-debugging">
+<h2>General and Debugging<a class="headerlink" href="#general-and-debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verbose">
+<h3><code class="docutils literal notranslate"><span class="pre">--verbose</span></code><a class="headerlink" href="#verbose" title="Permalink to this headline">¶</a></h3>
+<p>Verbose mode. Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>TRACE_ERROR. Output error with trace.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>INFO. Output setting values and internal values.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>DEBUG. Output maximum debug information.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">RESULT</span><span class="p">:</span>
+<span class="n">Enable</span> <span class="n">verbose</span> <span class="n">mode</span><span class="o">.</span> <span class="n">Current</span><span class="p">:</span><span class="mi">3</span> <span class="p">[</span><span class="n">Level</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span><span class="n">TRACE_ERROR</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="n">INFO</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="n">DEBUG</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debug">
+<h3><code class="docutils literal notranslate"><span class="pre">--debug</span></code><a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">debug</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h3><code class="docutils literal notranslate"><span class="pre">--log</span></code><a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h3>
+<p>Verbose log filename.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">log</span><span class="o">=</span><span class="n">verbose</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="filtering">
+<h2>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="find">
+<h3><code class="docutils literal notranslate"><span class="pre">--find</span></code><a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h3>
+<p>Find character string by regex and ignoring case.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">find</span><span class="o">=</span><span class="s2">&quot;HTTP&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-mode">
+<h3><code class="docutils literal notranslate"><span class="pre">--find_mode</span></code><a class="headerlink" href="#find-mode" title="Permalink to this headline">¶</a></h3>
+<p>Find mode. REGEX, MATCH, BINARY, HEX.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">REGEX</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REGEX</p></td>
+<td><p>Regular expression mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MATCH</p></td>
+<td><p>Match mode.</p></td>
+</tr>
+<tr class="row-even"><td><p>BINARY</p></td>
+<td><p>Binary mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>HEX</p></td>
+<td><p>Hex mode.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> 
+<span class="o">--</span><span class="n">find_mode</span><span class="o">=</span><span class="n">HEX</span>
+<span class="o">--</span><span class="n">find_mode</span><span class="o">=</span><span class="n">BINARY</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="port">
+<h3><code class="docutils literal notranslate"><span class="pre">--port</span></code><a class="headerlink" href="#port" title="Permalink to this headline">¶</a></h3>
+<p>Filter port. It is source port or destination port.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> 
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="mi">443</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="protocol">
+<h3><code class="docutils literal notranslate"><span class="pre">--protocol</span></code><a class="headerlink" href="#protocol" title="Permalink to this headline">¶</a></h3>
+<p>Filter Protocol. Default: “TCP,UDP”.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">TCP,UDP</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> 
+<span class="o">--</span><span class="n">protocol</span><span class="o">=</span><span class="n">TCP</span>
+<span class="o">--</span><span class="n">protocol</span><span class="o">=</span><span class="n">TCP</span><span class="p">,</span><span class="n">ICMP</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip">
+<h3><code class="docutils literal notranslate"><span class="pre">--ip</span></code><a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h3>
+<p>Filter IP.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">192.168.1.10</span>
+<span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">192.168.1.101</span><span class="p">,</span><span class="mf">192.168.1.102</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="condition">
+<h3><code class="docutils literal notranslate"><span class="pre">--condition</span></code><a class="headerlink" href="#condition" title="Permalink to this headline">¶</a></h3>
+<p>Filter by detail condition.</p>
+<p><strong>Condition Rules</strong></p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>port</p></td>
+<td><p>int</p></td>
+<td><p>Port number. Source or Destination.</p></td>
+</tr>
+<tr class="row-odd"><td><p>client_port</p></td>
+<td><p>int</p></td>
+<td><p>Client port number.</p></td>
+</tr>
+<tr class="row-even"><td><p>src_port</p></td>
+<td><p>int</p></td>
+<td><p>Source port number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>dest_port</p></td>
+<td><p>int</p></td>
+<td><p>Destination port number.</p></td>
+</tr>
+<tr class="row-even"><td><p>ttl</p></td>
+<td><p>int</p></td>
+<td><p>TTL.</p></td>
+</tr>
+<tr class="row-odd"><td><p>flags</p></td>
+<td><p>str</p></td>
+<td><p>TCP flags. Uppercase, list of flags, single flag.</p></td>
+</tr>
+<tr class="row-even"><td><p>seq</p></td>
+<td><p>int</p></td>
+<td><p>Sequence number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ack</p></td>
+<td><p>int</p></td>
+<td><p>Acknowledgement number.</p></td>
+</tr>
+<tr class="row-even"><td><p>window</p></td>
+<td><p>int</p></td>
+<td><p>Window size.</p></td>
+</tr>
+<tr class="row-odd"><td><p>mss</p></td>
+<td><p>int</p></td>
+<td><p>mss.</p></td>
+</tr>
+<tr class="row-even"><td><p>wscale</p></td>
+<td><p>int</p></td>
+<td><p>wscale.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sack</p></td>
+<td><p>int</p></td>
+<td><p>sack.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="n">condition</span><span class="o">=</span><span class="s2">&quot;src_port=80;dest_port&lt;=30000;ttl=64;flags=SYN,PSH&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --condition=&quot;port!=22&quot;</span>
+<span class="c1"># ipscap --condition=&quot;port&gt;=25; port &lt;=3306&quot;</span>
+<span class="c1"># ipscap --condition=&quot;src_port=80;dest_port&lt;=30000;ttl=64&quot;</span>
+<span class="c1"># ipscap --condition=&quot;flags=SYN,PSH&quot;</span>
+<span class="c1"># ipscap --condition=&quot;wscale&gt;1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tracking">
+<h3><code class="docutils literal notranslate"><span class="pre">--tracking</span></code><a class="headerlink" href="#tracking" title="Permalink to this headline">¶</a></h3>
+<p>Tracking transfers that have been matched by filters.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">tracking</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">--output</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Output mode about header and data. NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NONE</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>HEADER</p></td>
+<td><p>Header only</p></td>
+</tr>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>Text data</p></td>
+</tr>
+<tr class="row-odd"><td><p>BINARY</p></td>
+<td><p>Binary data</p></td>
+</tr>
+<tr class="row-even"><td><p>BINARY_ALL</p></td>
+<td><p>Binary headers and data</p></td>
+</tr>
+<tr class="row-odd"><td><p>HEX</p></td>
+<td><p>Hex data</p></td>
+</tr>
+<tr class="row-even"><td><p>HEX_ALL</p></td>
+<td><p>Hex headers and data</p></td>
+</tr>
+<tr class="row-odd"><td><p>LINE</p></td>
+<td><p>Single line</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span>
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">HEX</span>
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">BINARY</span>
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">BINARY_ALL</span>
+
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">HEX</span>
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">HEX_ALL</span>
+
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">LINE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dumpfile">
+<h3><code class="docutils literal notranslate"><span class="pre">--dumpfile</span></code><a class="headerlink" href="#dumpfile" title="Permalink to this headline">¶</a></h3>
+<p>Dump data to files. Dir: <code class="docutils literal notranslate"><span class="pre">./dump_logs/</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Dump data</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Dump headers and data</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">dumpfile</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stat-mode">
+<h3><code class="docutils literal notranslate"><span class="pre">--stat_mode</span></code><a class="headerlink" href="#stat-mode" title="Permalink to this headline">¶</a></h3>
+<p>Statistics mode. 0: None, 1: Captured transfers, 2: All transfers.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Captured transfers</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>All transfers</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">stat_mode</span><span class="o">=</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stat-group">
+<h3><code class="docutils literal notranslate"><span class="pre">--stat_group</span></code><a class="headerlink" href="#stat-group" title="Permalink to this headline">¶</a></h3>
+<p>Group the transfer in statistics. 0: None, 1: Grouping by IPs and service port, 2: Grouping by IPs.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Grouping by IPs and service port</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Grouping by IPs</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">stat_group</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">--timeout</span></code><a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
+<p>Stop automatically after the specified number of seconds.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="mf">60.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exclude-ssh">
+<h3><code class="docutils literal notranslate"><span class="pre">--exclude_ssh</span></code><a class="headerlink" href="#exclude-ssh" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--exclude_ssh</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--condition=&quot;port!=22&quot;</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">exclude_ssh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="web-port">
+<h3><code class="docutils literal notranslate"><span class="pre">--web_port</span></code><a class="headerlink" href="#web-port" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--web_port</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=80,443,53</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">web_port</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="general-port">
+<h3><code class="docutils literal notranslate"><span class="pre">--general_port</span></code><a class="headerlink" href="#general-port" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--general_port</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=21,22,23,25,53,80,110,143,220,443,465,990,993,995,1433,3306</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">general_port</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="force">
+<h3><code class="docutils literal notranslate"><span class="pre">--force</span></code><a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h3>
+<p>Run force if any filter options aren’t specified.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">force</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="version">
+<h3><code class="docutils literal notranslate"><span class="pre">--version</span></code><a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h3>
+<p>Show version information.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INPUT</span><span class="p">:</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -70,6 +563,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction to “ipscap”</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Command arguments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="command_examples.html">Command examples</a></li>
@@ -77,8 +573,8 @@
 
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="../ipsurv-cmd/using_geoip2.html"
-                          title="previous chapter">About Using GeoIP2</a></p>
+    <p class="topless"><a href="README.html"
+                          title="previous chapter">Introduction to “ipscap”</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -120,7 +616,7 @@
           <a href="command_examples.html" title="Command examples"
              >next</a> |</li>
         <li class="right" >
-          <a href="../ipsurv-cmd/using_geoip2.html" title="About Using GeoIP2"
+          <a href="README.html" title="Introduction to “ipscap”"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 

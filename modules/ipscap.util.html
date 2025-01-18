@@ -269,8 +269,13 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HeaderParser</span></span><a class="headerlink" href="#ipscap.util.raw_socket_parser.HeaderParser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.HeaderParser.get_hex">
+<span class="sig-name descname"><span class="pre">get_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.HeaderParser.get_hex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.HeaderParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.HeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.HeaderParser.parse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -286,7 +291,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.ICMPHeaderParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.ICMPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.ICMPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.ICMPHeaderParser.parse_bytes">
+<span class="sig-name descname"><span class="pre">parse_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icmp_header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.ICMPHeaderParser.parse_bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -326,6 +336,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.IPHeaderParser.get_hex">
+<span class="sig-name descname"><span class="pre">get_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.IPHeaderParser.get_hex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.IPHeaderParser.get_ip_header">
 <span class="sig-name descname"><span class="pre">get_ip_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.IPHeaderParser.get_ip_header" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -337,7 +352,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.IPHeaderParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.IPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.IPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.IPHeaderParser.parse_bytes">
+<span class="sig-name descname"><span class="pre">parse_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.IPHeaderParser.parse_bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -353,7 +373,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.TCPHeaderParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.TCPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.TCPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.TCPHeaderParser.parse_bytes">
+<span class="sig-name descname"><span class="pre">parse_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcp_header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.TCPHeaderParser.parse_bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -374,7 +399,12 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.UDPHeaderParser.parse">
-<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.UDPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtu_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raws</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.UDPHeaderParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipscap.util.raw_socket_parser.UDPHeaderParser.parse_bytes">
+<span class="sig-name descname"><span class="pre">parse_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">udp_header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipscap.util.raw_socket_parser.UDPHeaderParser.parse_bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

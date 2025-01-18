@@ -14,7 +14,7 @@ usage: ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
               [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
               [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
               [--stat_group {0,1,2}]
-              [--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+              [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
               [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
               [--web_port] [--general_port] [--force] [--version]
 
@@ -34,7 +34,7 @@ Start capture packets...
 Press `Ctrl + C` to stop.
 
 Time:           2025-01-03 14:55:13.5109 / ~~~~~.5109, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 55, TTL: 64, IP protocol: UDP[17]
+IP header:      Version: 4, IP header length: 20, Total length: 55, TTL: 64, IP protocol: UDP[17]
 UDP header:     UDP header length: 8
 Source:         IP: 10.0.2.15                 Port: 36305
 Destination:    IP: 8.8.8.8                   Port: 53
@@ -58,7 +58,7 @@ UDP-H data:     8d d1 00 35 00 23 1c 53
 
 
 Time:           2025-01-02 14:59:45.9329 / ~~~~~~~~.932, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 316, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 316, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1536002, Acknowledgement: 844367953, Window: 65535, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 74.6.231.20               Port: 80
@@ -81,7 +81,7 @@ Cache-Control: no-store, no-cache
 # ipscap --port=80,443
 
 Time:           2025-01-02 14:58:14.3874 / ~~~~~~~~.3874, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 44, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 44, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 24, Sequence: 1216001, Acknowledgement: 254560287, Window: 65535, Flags: ['SYN', 'ACK']
 TCP options:    mss:1460
 Source:         IP: 98.137.11.164             Port: 443
@@ -218,7 +218,7 @@ TCP-H data:     01 bb db 36 00 12 8e 01 0f 2c 48 1f 60 12 ff ff 5b 8a 00 00 02 0
 # ipscap --find="HTTP" --tracking
 
 Time:           2025-01-12 22:42:42.3306 / ~~~~~~~~~.3306, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 3663095182, Acknowledgement: 1344002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60694
@@ -235,7 +235,7 @@ Accept: */*
 
 
 Time:           2025-01-12 22:42:42.3315 / ~~~~~~~~~.3315, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1344002, Acknowledgement: 3663095256, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
@@ -246,7 +246,7 @@ IP-H data:      45 00 00 28 00 4c 00 00 40 06 01 6c 8e fb de 0e 0a 00 02 0f
 TCP-H data:     00 50 ed 16 00 14 82 02 da 56 65 d8 50 10 ff ff 87 0f 00 00 
 
 Time:           2025-01-12 22:42:42.4078 / ~~~~~~~~~.4078, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 813, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 813, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1344002, Acknowledgement: 3663095256, Window: 65535, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
@@ -277,7 +277,7 @@ The document has moved
 
 
 Time:           2025-01-12 22:42:42.4083 / ~~~~~~~~~.4083, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 3663095256, Acknowledgement: 1344775, Window: 30147, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60694
@@ -305,7 +305,7 @@ TCP-H data:     ed 16 00 50 da 56 65 d8 00 14 85 07 50 10 75 c3 79 33 00 00
 # ipscap --port=80 --output=HEADER
 
 Time:           2025-01-12 22:54:09.7662 / ~~~~~~~~~~..7662, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 133034702, Acknowledgement: 1600002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60698
@@ -316,7 +316,7 @@ IP-H data:      45 00 00 72 fe 8b 40 00 40 06 c2 e1 0a 00 02 0f 8e fb de 0e
 TCP-H data:     ed 1a 00 50 07 ed f2 ce 00 18 6a 02 50 18 72 10 79 7d 00 00 
 
 Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~..7679, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1600002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
@@ -333,7 +333,7 @@ TCP-H data:     00 50 ed 1a 00 18 6a 02 07 ed f3 18 50 10 ff ff e4 30 00 00
 # ipscap --port=80 --output=BINARY
 
 Time:           2025-01-12 22:55:07.3860 / ~~~~~~~~~~..3860, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 231131098, Acknowledgement: 1728002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60700
@@ -353,7 +353,7 @@ b'GET / HTTP/1.1\r\nUser-Agent: curl/7.29.0\r\nHost: google.com\r\nAccept: */*\r
 # ipscap --port=80 --output=HEX
 
 Time:           2025-01-12 22:54:09.7662 / ~~~~~~~~~~.7662, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 133034702, Acknowledgement: 1600002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60698
@@ -366,7 +366,7 @@ TCP-H data:     ed 1a 00 50 07 ed f2 ce 00 18 6a 02 50 18 72 10 79 7d 00 00
 47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 65 72 2d 41 67 65 6e 74 3a 20 63 75 72 6c 2f 37 2e 32 39 2e 30 0d 0a 48 6f 73 74 3a 20 67 6f 6f 67 6c 65 2e 63 6f 6d 0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a 
 
 Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~..7679, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 1600002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80

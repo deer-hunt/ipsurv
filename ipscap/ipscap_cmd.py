@@ -231,6 +231,6 @@ class CaptureThread(threading.Thread):
 
         self.pipeline.process_captured_transfer(ip_header, protocol_header, passage_num)
 
-        protocol_service = ProtocolService.get_service(ip_header.protocol)  #  type: ProtocolService
+        protocol_service = ProtocolService.get_service(ip_header.protocol)  # type: ProtocolService
 
         protocol_service.show_transfer(ip_header, protocol_header, passage_num, datetime.now(), self.args)

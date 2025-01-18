@@ -19,6 +19,7 @@ if not sys.platform.startswith('win'):
 
             args.timeout = None
             args.fixed_output = Constant.OUTPUT_NONE
+            args.fixed_protocols = []
             args.stat_mode = 2
             args.stat_group = False
 

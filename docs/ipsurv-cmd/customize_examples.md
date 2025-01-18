@@ -2,7 +2,7 @@
 
 ## Overview
 
-```IpSurv``` is implemented as customizable program architecture. It provide extending features and several classes.
+```ipsurv``` is implemented as customizable program architecture. It provide extending features and several classes.
 
 ## Program Architecture and Classes
 
@@ -10,9 +10,11 @@ See `program_architecture_classes.md`.
 
 ## Example programs
 
-There are several example programs of how to customize. Please refer to the comments in each program for more details..
+There are several example programs of how to customize. Please refer to the comments in each program for more details.
 
 **Path:** [``./examples/``](https://github.com/deer-hunt/ipsurv/tree/main/examples)
+
+**Dir:** ```./ipsurv/```
 
 | Program                  | Description                                      |
 |-------------------------------|--------------------------------------------------|

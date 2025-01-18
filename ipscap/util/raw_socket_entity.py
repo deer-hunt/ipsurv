@@ -54,9 +54,11 @@ class IPHeader:
         self.iph_length = 0
         self.flags = 0
         self.ttl = 0
-        self.packet_length = 0
+        self.total_length = 0
+        self.identification = 0
         self.protocol = 0
         self.protocol_code = None
+        self.checksum = 0
         self.src_ip = None
         self.src_ip_int = None
         self.dest_ip = None
@@ -65,6 +67,8 @@ class IPHeader:
         self.direction = 0
         self.direction_code = None
 
+        self.raws = {}
+
 
 class ProtocolHeader(ABC):
     def __init__(self):
@@ -72,9 +76,12 @@ class ProtocolHeader(ABC):
 
         self.src_port = 0
         self.dest_port = 0
+        self.checksum = 0
 
         self.payload_length = 0
         self.payload_data = b''
+
+        self.raws = {}
 
     def get_sanitized_data(self):
         return re.sub(rb'^\x00+$', b'', self.payload_data)
@@ -91,7 +98,6 @@ class ICMPHeader(ProtocolHeader):
 
         self.icmp_type = 0
         self.code = 0
-        self.checksum = 0
 
 
 class TCPHeader(ProtocolHeader):
@@ -175,7 +181,7 @@ class TCPHeader(ProtocolHeader):
         self.flags = 0
         self.flag_codes = []
         self.window = 0
-        self.checksum = 0
+        self.urgent_pointer = 0
         self.tcp_options = None
 
 
@@ -186,4 +192,3 @@ class UDPHeader(ProtocolHeader):
         self.src_port = 0
         self.dest_port = 0
         self.udph_length = 0
-        self.checksum = 0

@@ -7,12 +7,15 @@ from ipscap.core.pipeline import Pipeline
 from ipscap.util.raw_socket_entity import IPHeader
 from ipsurv.util.args_util import ArgsHelper
 from ipsurv.util.sys_util import System
+from ipscap.util.evaluation_parser import EvaluationParser, EvaluationParserException
+from ipsurv.util.sys_util import AppException
 
 
 class ArgsBuilder:
-    def __init__(self, config, pipeline):
+    def __init__(self, config, pipeline, ev_parser):
         self.config = config
         self.pipeline = pipeline  # type: Pipeline
+        self.ev_parser = ev_parser  # type: EvaluationParser
 
     def parse(self):
         parent_parser, args = self.init_args(self.config.PRE_ARGUMENTS)
@@ -53,9 +56,11 @@ class ArgsBuilder:
 
         self._configure(parser, args)
 
+        self._parse_condition(args)
+
         self._notice(args)
 
-        return (args, parser)
+        return (args, parser, self.ev_parser)
 
     def _create_bottom_desc(self):
         desc = ''
@@ -175,8 +180,10 @@ class ArgsBuilder:
             1: Constant.OUTPUT_HEADER,
             2: Constant.OUTPUT_TEXT,
             3: Constant.OUTPUT_BINARY,
-            4: Constant.OUTPUT_HEX,
-            5: Constant.OUTPUT_LINE
+            4: Constant.OUTPUT_BINARY_ALL,
+            5: Constant.OUTPUT_HEX,
+            6: Constant.OUTPUT_HEX_ALL,
+            7: Constant.OUTPUT_LINE
         }
 
         if output.isdigit():
@@ -214,6 +221,16 @@ class ArgsBuilder:
             return True
 
         return False
+
+    def _parse_condition(self, args):
+        self.ev_parser.initialize(self.config.CONDITION_RULES)
+
+        try:
+            parsed_cond = self.ev_parser.parse(args.condition)
+        except EvaluationParserException as e:
+            raise AppException(str(e))
+
+        System.output_data('PARSED_CONDITION', parsed_cond)
 
     def logging(self, args):
         params = vars(args)

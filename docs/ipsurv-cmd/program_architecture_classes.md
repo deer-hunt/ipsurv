@@ -46,7 +46,7 @@ The following is overview of process flow. You would be better off checking the 
 
 ## Survey-mode
 
-"IpSurv" have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
+"ipsurv" have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
 
 | Survey-mode              | Filename        | Class      |
 |-------------------|------------------|-----------------|

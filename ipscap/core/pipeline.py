@@ -52,3 +52,12 @@ class Pipeline(ABC):
 
     def complete(self, transfers):
         pass
+
+    def get_filename(self, ip_header, protocol_header, filename):
+        return filename
+
+    def pre_writefile(self, ip_header, protocol_header, file):
+        pass
+
+    def post_writefile(self, ip_header, protocol_header, file):
+        pass

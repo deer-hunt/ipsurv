@@ -15,9 +15,9 @@ from ipscap.service.packet_filter import PacketFilter
 from ipscap.service.protocol_service import ProtocolService
 from ipscap.service.transfer_store import TransferStore
 from ipscap.service.view_helper import ViewHelper
-from ipscap.util.evaluation_parser import EvaluationParser
 from ipscap.util.raw_socket_parser import IPHeaderParser
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import AppException
+import time
 
 
 class IpsCapCmd:
@@ -29,13 +29,16 @@ class IpsCapCmd:
         self.capture_thread = None  # type: CaptureThread
         self.transfer_store = None  # type: TransferStore
         self.dumpfile = None  # type: DumpFile
+        self.begin_tm = None
         self.view_helper = None  # type: ViewHelper
 
     def run(self):
         try:
-            args, parser = self._parse_args()
+            self._pre_initialize()
 
-            self._initialize(args)
+            args, parser, ev_parser = self._parse_args()
+
+            self._initialize(ev_parser, args)
 
             self._verify_args(args, parser)
 
@@ -54,28 +57,25 @@ class IpsCapCmd:
         elif not args.has_filters and not args.force:
             self.view_helper.show_nofilters()
 
-    def _initialize(self, args):
+    def _pre_initialize(self):
+        self.view_helper = self.factory.create_view_helper()
+
+    def _initialize(self, ev_parser, args):
         self._register_protocol_services()
-
-        ev_parser = EvaluationParser()
-        ev_parser.initialize(self.config.CONDITION_RULES)
-        parsed_cond = ev_parser.parse(args.condition)
-
-        System.output_data('PARSED_CONDITION', parsed_cond)
 
         packet_filter = self.factory.create_packet_filter(ev_parser)
         packet_filter.initialize(args)
 
         self.transfer_store = self.factory.create_transfer_store()
 
-        self.dumpfile = self.factory.create_dumpfile()
+        self.dumpfile = self.factory.create_dumpfile(self.pipeline)
 
         if args.dumpfile:
             self.dumpfile.initialize(Constant.DUMPFILE_DIR)
 
-        self.view_helper = self.factory.create_view_helper()
-
         signal.signal(signal.SIGINT, partial(self.signal_stop, args=args))
+
+        self.begin_tm = time.time()
 
         self.capture_thread = CaptureThread(self.factory, self.pipeline, packet_filter, self.transfer_store, self.dumpfile, self.view_helper, args)
 
@@ -102,9 +102,13 @@ class IpsCapCmd:
 
         self.capture_thread.join(args.timeout)
 
+        self.capture_thread.trigger_stop()
+
         self._complete(args)
 
     def signal_stop(self, sig, frame, args):
+        self.capture_thread.trigger_stop()
+
         self.view_helper.show_stopped()
 
         self._complete(args)
@@ -116,7 +120,9 @@ class IpsCapCmd:
 
         self.pipeline.complete(transfers)
 
-        self.view_helper.show_statistics(transfers, args)
+        end_tm = time.time()
+
+        self.view_helper.show_statistics(transfers, self.begin_tm, end_tm, args)
 
         if args.dumpfile:
             self.view_helper.show_dumpfile_info(self.dumpfile)
@@ -125,8 +131,6 @@ class IpsCapCmd:
 class CaptureThread(threading.Thread):
     def __init__(self, factory, pipeline, packet_filter, transfer_store, dumpfile, view_helper, args):
         super().__init__()
-
-        self.daemon = True
 
         self.factory = factory  # type: ObjectFactory
         self.pipeline = pipeline  # type: Pipeline
@@ -138,6 +142,8 @@ class CaptureThread(threading.Thread):
 
         self.eth_socket = None  # type: EthSocket
         self.ip_header_parser = None  # type: IPHeaderParser
+
+        self._active = True
 
     def initialize(self):
         self.eth_socket = self.factory.create_eth_socket()
@@ -154,11 +160,14 @@ class CaptureThread(threading.Thread):
 
         self.ip_header_parser.initialize(eth_ips)
 
+    def trigger_stop(self):
+        self._active = False
+
     def run(self):
         self.pipeline.pre_recieve_loop(self.eth_socket, self.ip_header_parser)
 
-        try:
-            while True:
+        while True:
+            try:
                 raw_data = self.eth_socket.recvfrom(Constant.RECV_BUF_SIZE)
 
                 eth_header = self.eth_socket.get_eth_header(raw_data)
@@ -175,8 +184,6 @@ class CaptureThread(threading.Thread):
 
                 is_capture = self._verify_capture(ip_header, protocol_header)
 
-                self.view_helper.output_debug(is_capture, ip_header, protocol_header)
-
                 passage_num = -1
 
                 if (is_capture and self.args.stat_mode == 1) or self.args.stat_mode == 2:
@@ -184,21 +191,27 @@ class CaptureThread(threading.Thread):
 
                 if is_capture:
                     self._process_captured_transfer(ip_header, protocol_header, passage_num)
-        except Exception as e:
-            self.view_helper.output_error(e)
+            except Exception as e:
+                self.view_helper.output_error(e)
 
-            logging.log(logging.ERROR, str(e), exc_info=True)
+                logging.log(logging.ERROR, str(e), exc_info=True)
+
+            if not self._active:
+                break
 
     def _parse_ip_mtu(self, mtu_data):
-        ip_header = self.ip_header_parser.parse(mtu_data)
+        try:
+            ip_header = self.ip_header_parser.parse(mtu_data, self.args.output_raw)
 
-        self.pipeline.pass_ip_header(mtu_data, ip_header)
+            self.pipeline.pass_ip_header(mtu_data, ip_header)
 
-        header_parser = self.ip_header_parser.get_header_parser(ip_header)
+            header_parser = self.ip_header_parser.get_header_parser(ip_header)
 
-        header_parser = self.pipeline.pass_header_parser(ip_header, header_parser)
+            header_parser = self.pipeline.pass_header_parser(ip_header, header_parser)
 
-        protocol_header = header_parser.parse(ip_header, mtu_data)
+            protocol_header = header_parser.parse(ip_header, mtu_data, self.args.output_raw)
+        except Exception:
+            raise AppException('Packet parse error.\n' + self.view_helper.get_hex_data(mtu_data))
 
         return (ip_header, protocol_header)
 
@@ -208,6 +221,8 @@ class CaptureThread(threading.Thread):
         return self.pipeline.verify_capture(self.packet_filter, ip_header, protocol_header, is_capture)
 
     def _process_captured_transfer(self, ip_header, protocol_header, passage_num):
+        self.view_helper.output_debug(ip_header, protocol_header)
+
         if self.args.dumpfile:  # Dump logs
             append_header = (self.args.dumpfile == 2)
 
@@ -216,6 +231,6 @@ class CaptureThread(threading.Thread):
 
         self.pipeline.process_captured_transfer(ip_header, protocol_header, passage_num)
 
-        protocol_service = ProtocolService.get_service(ip_header.protocol)
+        protocol_service = ProtocolService.get_service(ip_header.protocol)  #  type: ProtocolService
 
-        protocol_service.show_transfer(ip_header, protocol_header, passage_num, datetime.now(), self.args.fixed_output)
+        protocol_service.show_transfer(ip_header, protocol_header, passage_num, datetime.now(), self.args)

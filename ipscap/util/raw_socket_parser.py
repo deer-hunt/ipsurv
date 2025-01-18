@@ -17,7 +17,7 @@ class IPHeaderParser:
     def get_ip_header(self, data):
         return data[0:20]
 
-    def parse(self, mtu_data):
+    def parse(self, mtu_data, raws=False):
         ip_header = self.create_ip_header()
 
         ip_header.header_data = self.get_ip_header(mtu_data)
@@ -32,11 +32,14 @@ class IPHeaderParser:
 
         ip_header.iph_length = ihl * 4
 
-        ip_header.packet_length = iph[2]
+        ip_header.total_length = iph[2]
+        ip_header.identification = iph[3]
 
         ip_header.ttl = iph[5]
         ip_header.protocol = iph[6]
         ip_header.protocol_code = IPHeader.get_protocol_code(ip_header.protocol)
+
+        ip_header.checksum = iph[7]
 
         ip_header.src_ip = socket.inet_ntoa(iph[8])
         ip_header.src_ip_int = int.from_bytes(iph[8], byteorder='big')
@@ -45,10 +48,34 @@ class IPHeaderParser:
         ip_header.dest_ip_int = int.from_bytes(iph[9], byteorder='big')
 
         ip_header.direction = self.detect_direction(ip_header)
-
         ip_header.direction_code = IPHeader.get_direction_code(ip_header.direction)
 
+        if raws:
+            ip_header.raws = self.parse_bytes(ip_header)
+
         return ip_header
+
+    def parse_bytes(self, ip_header):
+        raws = {}
+
+        hdata = ip_header.header_data
+
+        raws['version_ihl'] = self.get_hex(hdata, 0)
+        raws['total_length'] = self.get_hex(hdata, 2, 2)
+        raws['identification'] = self.get_hex(hdata, 4, 2)
+        raws['flags_offset'] = self.get_hex(hdata, 6, 2)
+        raws['ttl'] = self.get_hex(hdata, 8)
+        raws['protocol'] = self.get_hex(hdata, 9)
+        raws['checksum'] = self.get_hex(hdata, 10, 2)
+        raws['src_ip'] = self.get_hex(hdata, 12, 4)
+        raws['dest_ip'] = self.get_hex(hdata, 16, 4)
+
+        return raws
+
+    def get_hex(self, header_data, begin, size=1):
+        end = begin + size
+
+        return header_data[begin:end].hex().upper()
 
     def detect_direction(self, ip_header):
         direction = 0
@@ -96,15 +123,20 @@ class IPHeaderParser:
 
 
 class HeaderParser(ABC):
-    def parse(self, ip_header, data):
+    def parse(self, ip_header, data, raws=False):
         pass
+
+    def get_hex(self, header_data, begin, size=1):
+        end = begin + size
+
+        return header_data[begin:end].hex()
 
 
 class ICMPHeaderParser(HeaderParser):
     def create_icmp_header(self):
         return ICMPHeader()
 
-    def parse(self, ip_header, mtu_data):
+    def parse(self, ip_header, mtu_data, raws=False):
         icmp_header = self.create_icmp_header()
 
         icmp_header.icmph_length = ICMPHeader.DEFAULT_HEADER_LEN
@@ -117,14 +149,28 @@ class ICMPHeaderParser(HeaderParser):
         icmp_header.code = icmph[1]
         icmp_header.checksum = icmph[2]
 
+        if raws:
+            icmp_header.raws = self.parse_bytes(icmp_header)
+
         return icmp_header
+
+    def parse_bytes(self, icmp_header):
+        raws = {}
+
+        hdata = icmp_header.header_data
+
+        raws['icmp_type'] = self.get_hex(hdata, 0)
+        raws['code'] = self.get_hex(hdata, 1)
+        raws['checksum'] = self.get_hex(hdata, 2, 2)
+
+        return raws
 
 
 class TCPHeaderParser(HeaderParser):
     def create_tcp_header(self):
         return TCPHeader()
 
-    def parse(self, ip_header, mtu_data):
+    def parse(self, ip_header, mtu_data, raws=False):
         tcp_header = self.create_tcp_header()
 
         tcph_start = ip_header.iph_length
@@ -146,6 +192,7 @@ class TCPHeaderParser(HeaderParser):
 
         tcp_header.window = tcph[5]
         tcp_header.checksum = tcph[6]
+        tcp_header.urgent_pointer = tcph[7]
 
         payload_start = ip_header.iph_length + tcp_header.tcph_length
 
@@ -156,6 +203,9 @@ class TCPHeaderParser(HeaderParser):
 
         tcp_header.payload_data = mtu_data[payload_start:]
         tcp_header.payload_length = len(tcp_header.payload_data)
+
+        if raws:
+            tcp_header.raws = self.parse_bytes(tcp_header)
 
         return tcp_header
 
@@ -203,12 +253,28 @@ class TCPHeaderParser(HeaderParser):
 
         return tcp_options
 
+    def parse_bytes(self, tcp_header):
+        raws = {}
+
+        hdata = tcp_header.header_data
+
+        raws['src_port'] = self.get_hex(hdata, 0, 2)
+        raws['dest_port'] = self.get_hex(hdata, 2, 2)
+        raws['seq_no'] = self.get_hex(hdata, 4, 4)
+        raws['ack_no'] = self.get_hex(hdata, 8, 4)
+        raws['flags'] = self.get_hex(hdata, 12, 2)
+        raws['window'] = self.get_hex(hdata, 14, 2)
+        raws['checksum'] = self.get_hex(hdata, 16, 2)
+        raws['urgent_pointer'] = self.get_hex(hdata, 18, 2)
+
+        return raws
+
 
 class UDPHeaderParser(HeaderParser):
     def create_udp_header(self):
         return UDPHeader()
 
-    def parse(self, ip_header, mtu_data):
+    def parse(self, ip_header, mtu_data, raws=False):
         udp_header = self.create_udp_header()
 
         udp_header.udph_length = UDPHeader.DEFAULT_HEADER_LEN
@@ -229,4 +295,19 @@ class UDPHeaderParser(HeaderParser):
         udp_header.payload_data = mtu_data[payload_start:udph_start + udp_header.udp_length]
         udp_header.payload_length = len(udp_header.payload_data)
 
+        if raws:
+            udp_header.raws = self.parse_bytes(udp_header)
+
         return udp_header
+
+    def parse_bytes(self, udp_header):
+        raws = {}
+
+        hdata = udp_header.header_data
+
+        raws['src_port'] = self.get_hex(hdata, 0, 2)
+        raws['dest_port'] = self.get_hex(hdata, 2, 2)
+        raws['udph_length'] = self.get_hex(hdata, 4, 2)
+        raws['checksum'] = self.get_hex(hdata, 6, 2)
+
+        return raws

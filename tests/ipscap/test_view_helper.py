@@ -1,4 +1,5 @@
 import pytest
+import time
 import sys
 
 if not sys.platform.startswith('win'):
@@ -45,12 +46,15 @@ if not sys.platform.startswith('win'):
         def test_show_statistics(self, capfd, view_helper, args):
             transfers = {
                 ('TCP', '192.168.1.2', 80, '192.168.1.100', 8080): {
-                    IPHeader.DIRECTION_SEND: {'num': 10, 'unique': 5, 'size': 500},
-                    IPHeader.DIRECTION_RECEIVE: {'num': 8, 'unique': 4, 'size': 400},
+                    IPHeader.DIRECTION_SEND: {'count': 10, 'unique': 5, 'size': 500},
+                    IPHeader.DIRECTION_RECEIVE: {'count': 8, 'unique': 4, 'size': 400},
                 }
             }
 
-            view_helper.show_statistics(transfers, args)
+            begin_tm = time.time()
+            end_tm = time.time()
+
+            view_helper.show_statistics(transfers, begin_tm, end_tm, args)
 
             captured = capfd.readouterr()
 
@@ -61,8 +65,8 @@ if not sys.platform.startswith('win'):
         def test_show_stat_transfer_groups(self, capfd, view_helper, args):
             transfers = {
                 ('TCP', '192.168.1.2', '192.168.1.100', 80): {
-                    IPHeader.DIRECTION_SEND: {'num': 10, 'unique': 5, 'size': 500},
-                    IPHeader.DIRECTION_RECEIVE: {'num': 8, 'unique': 4, 'size': 400},
+                    IPHeader.DIRECTION_SEND: {'count': 10, 'unique': 5, 'size': 500},
+                    IPHeader.DIRECTION_RECEIVE: {'count': 8, 'unique': 4, 'size': 400},
                     'group_count': 1
                 }
             }

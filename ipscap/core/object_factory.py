@@ -12,6 +12,7 @@ from ipscap.service.protocol_service import UDPProtocolService
 from ipscap.service.transfer_store import TransferStore
 from ipscap.service.view_helper import ViewHelper
 from ipscap.util.raw_socket_parser import IPHeaderParser
+from ipscap.util.evaluation_parser import EvaluationParser
 
 
 class ObjectFactory(ABC):
@@ -39,7 +40,12 @@ class ObjectFactory(ABC):
         :type pipeline: Pipeline
         :rtype: ArgsBuilder
         """
-        return ArgsBuilder(config, pipeline)
+        ev_parser = self.create_evaluation_parser()
+
+        return ArgsBuilder(config, pipeline, ev_parser)
+
+    def create_evaluation_parser(self):
+        return EvaluationParser()
 
     def create_eth_socket(self):
         return EthSocket()
@@ -53,8 +59,8 @@ class ObjectFactory(ABC):
     def create_transfer_store(self):
         return TransferStore()
 
-    def create_dumpfile(self):
-        return DumpFile()
+    def create_dumpfile(self, pipeline):
+        return DumpFile(pipeline)
 
     def create_view_helper(self):
         return ViewHelper()

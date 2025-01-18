@@ -5,6 +5,7 @@ from ipscap.util.raw_socket_entity import IPHeader
 
 if not sys.platform.startswith('win'):
     from ipscap.service.args_builder import ArgsBuilder
+    from ipscap.util.evaluation_parser import EvaluationParser
     from ipscap.core.pipeline import Pipeline
     from ipscap.configs import Config
 
@@ -25,12 +26,12 @@ if not sys.platform.startswith('win'):
         def args_builder(self):
             pipeline = Pipeline()
 
-            return ArgsBuilder(Config, pipeline)
+            return ArgsBuilder(Config, pipeline, EvaluationParser())
 
         def test_parse(self, args_builder, monkeypatch):
             monkeypatch.setattr(sys, 'argv', ['ipscap'])
 
-            args, parser = args_builder.parse()
+            args, parser, ev_parser = args_builder.parse()
 
             assert args.verbose == 0
             assert parser is not None
@@ -83,6 +84,13 @@ if not sys.platform.startswith('win'):
             args.output = 'INVALID'
             with pytest.raises(Exception, match='Unknown output'):
                 args_builder._fix_output(args)
+
+        def test_parse_condition(self, args, args_builder):
+            args.condition = 'port=80'
+
+            args_builder._parse_condition(args)
+
+            assert args_builder.ev_parser.evaluate('port', 80)
 
         def test_has_filters(self, args_builder, args):
             args.find = 'value'

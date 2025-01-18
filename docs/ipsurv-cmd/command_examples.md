@@ -1,6 +1,6 @@
 # Command examples
 
-This is introduction of IpSurv's several command examples. You can understand some usage and features. In detail usage, Please read [Command Arguments reference](command_arguments.md).
+This is introduction of ipsurv's several command examples. You can understand some usage and features. In detail usage, Please read [Command Arguments reference](command_arguments.md).
 
 ## Basic usage
 
@@ -99,7 +99,7 @@ stackoverflow.com,NG,,US,CLOUDFLARENET,172.64.0.0,172.71.255.255,
 
 ### Multiple rows using pipe
 
-"IpSurv" support the input by pipe. You are able to specify multiple rows.
+"ipsurv" support the input by pipe. You are able to specify multiple rows.
 
 **Example:**
 
@@ -450,7 +450,7 @@ reddit.com,151.101.129.140,PUBLIC,2540011916,97.65.81.8C,140.129.101.151
 
 ## Using GeoIP2
 
-```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
+```ipsurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally.
 
 Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html) documentation in detail.
 

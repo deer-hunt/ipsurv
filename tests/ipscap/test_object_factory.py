@@ -48,7 +48,7 @@ if not sys.platform.startswith('win'):
             assert obj.__class__.__name__ == 'TransferStore'
 
         def test_create_dumpfile(self):
-            obj = self.object_factory.create_dumpfile()
+            obj = self.object_factory.create_dumpfile(None)
             assert obj.__class__.__name__ == 'DumpFile'
 
         def test_create_view_helper(self):

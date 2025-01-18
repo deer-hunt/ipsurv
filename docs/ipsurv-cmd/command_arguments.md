@@ -1,6 +1,6 @@
 # Command arguments
 
-This document is description of IpSurv's command arguments.
+This document is description of ipsurv's command arguments.
 
 ## Index
 
@@ -112,7 +112,7 @@ Show help.
 
 ## Environment variable - `IPSURV_ARGS`
 
-"IpSurv" support specifying "Command arguments" by Environment variable (`IPSURV_ARGS`). You are able to change default value by Environment variable.
+"ipsurv" support specifying "Command arguments" by Environment variable (`IPSURV_ARGS`). You are able to change default value by Environment variable.
 Also you are able to disable to load Environment variable by `--disable_env` option.
 
 | Item       | Value  |
@@ -141,7 +141,7 @@ RESULT:
 
 ## Environment variable - `IPSURV_CONF`
 
-"IpSurv" support specifying "Internal configures" by Environment variable (`IPSURV_CONF`). 
+"ipsurv" support specifying "Internal configures" by Environment variable (`IPSURV_CONF`). 
 
 | Item       | Value  |
 |---------------|--------------|

@@ -9,15 +9,15 @@ class TransferStore:
         key = self._get_transfer_key(ip_header, protocol_header)
 
         if key not in self.transfers:
-            self.transfers[key] = {IPHeader.DIRECTION_SEND: {'num': 0, 'unique': 0, 'size': 0},
-                                   IPHeader.DIRECTION_RECEIVE: {'num': 0, 'unique': 0, 'size': 0},
+            self.transfers[key] = {IPHeader.DIRECTION_SEND: {'count': 0, 'unique': 0, 'size': 0},
+                                   IPHeader.DIRECTION_RECEIVE: {'count': 0, 'unique': 0, 'size': 0},
                                    'cur': 0}
 
         transfer = self.transfers[key][ip_header.direction]
-        transfer['num'] += 1
+        transfer['count'] += 1
         transfer['size'] += protocol_header.payload_length
 
-        passage_num = transfer['num']
+        passage_num = transfer['count']
 
         if len(protocol_header.get_sanitized_data()) > 0:
             cur = self.transfers[key]['cur']
@@ -62,8 +62,8 @@ class TransferStore:
                 key = (protocol, first_ip, second_ip, -1)
 
             if key not in transfers:
-                transfers[key] = {IPHeader.DIRECTION_SEND: {'num': 0, 'unique': 0, 'size': 0},
-                                  IPHeader.DIRECTION_RECEIVE: {'num': 0, 'unique': 0, 'size': 0},
+                transfers[key] = {IPHeader.DIRECTION_SEND: {'count': 0, 'unique': 0, 'size': 0},
+                                  IPHeader.DIRECTION_RECEIVE: {'count': 0, 'unique': 0, 'size': 0},
                                   'group_count': 0}
 
             rtransfer = transfers[key]

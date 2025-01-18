@@ -65,7 +65,7 @@ $ conda install conda-forge::ipsurv
 | Command     | Description                                                                                             |
 |----------|---------------------------------------------------------------------------------------------------------|
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
-| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP header and TCP header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It does not support Windows.   |
+| `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP-header and TCP-header, UDP-header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It does not support Windows.   |
 | `ipsend` | Coming soon.   |
 
 It’s best to refer to the help to recognize the functions.
@@ -174,7 +174,7 @@ $ ipsurv 8.8.8.8 --geoip_only
 
 ### Command options
 
-```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv/ipsurv-cmd/command_arguments.md).
+```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md).
 
 ```
 [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
@@ -200,7 +200,7 @@ $ ipsurv 8.8.8.8 --geoip_only
 ### Features
 
 - Capture TCP, UDP, ICMP packets
-- Show IP header values and protocol's header values.
+- Show IP-header values and protocol's header values.
 - Output the binary data of headers in HEX format.
 - Filter by strings or various criteria.
 - Allows tracking matched transfers.
@@ -254,27 +254,39 @@ $ ipsurv 8.8.8.8 --geoip_only
 
 ```bash
 # ipscap --port=80
-Time:           2025-01-02 14:48:07.9597 / 1704200887.9597, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
-TCP header:     TCP header length: 20, Sequence: 1187996480, Acknowledgement: 2944002, Window: 29200, Flags: ['ACK']
+
+Time:           2025-01-04 17:23:46.7809 / 1736011426.7809, Passage number: 1
+IP header:      Version: 4, IP header length: 20, Total length: 44, Checksum: 17625, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 24, Checksum: 36766, Sequence: 132160001, Acknowledgement: 57321677, Window: 65535, Flags: ['SYN', 'ACK']
+TCP options:    mss:1460
+Source:         IP: 151.101.129.140           Port: 80
+Destination:    IP: 10.0.2.15                 Port: 38158
+Direction:      RECEIVE [ <<< ]
+Data length:    2 byte
+IP-H data:      45 00 00 2c 10 f3 00 00 40 06 44 d9 97 65 81 8c 0a 00 02 0f 
+TCP-H data:     00 50 95 0e 07 e0 9a 01 03 6a a8 cd 60 12 ff ff 8f 9e 00 00 02 04 05 b4 
+
+Time:           2025-01-04 17:23:46.7812 / 1736011426.7812, Passage number: 2
+IP header:      Version: 4, IP header length: 20, Total length: 40, Checksum: 31449, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Checksum: 9499, Sequence: 57321677, Acknowledgement: 132160002, Window: 29200, Flags: ['ACK']
 TCP options:    -
-Source:         IP: 10.0.2.15                 Port: 60684
-Destination:    IP: 151.101.1.140             Port: 80
+Source:         IP: 10.0.2.15                 Port: 38158
+Destination:    IP: 151.101.129.140           Port: 80
 Direction:      SEND [ >>> ]
 Data length:    0 byte
-IP-H data:      45 00 00 28 43 54 40 00 40 06 52 7c 0a 00 02 0f 97 65 01 8c 
-TCP-H data:     ed 0c 00 50 46 cf 63 40 00 2c ec 02 50 10 72 10 a5 1a 00 00 
+IP-H data:      45 00 00 28 9a f6 40 00 40 06 7a d9 0a 00 02 0f 97 65 81 8c 
+TCP-H data:     95 0e 00 50 03 6a a8 cd 07 e0 9a 02 50 10 72 10 25 1b 00 00 
 
-Time:           2025-01-02 14:48:07.9599 / 1704200887.9599, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 118, TTL: 64, IP protocol: TCP[6]
-TCP header:     TCP header length: 20, Sequence: 1187996480, Acknowledgement: 2944002, Window: 29200, Flags: ['PSH', 'ACK']
+Time:           2025-01-04 17:23:46.7814 / 1736011426.781, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Total length: 118, Checksum: 31370, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Checksum: 9577, Sequence: 57321677, Acknowledgement: 132160002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
-Source:         IP: 10.0.2.15                 Port: 60684
-Destination:    IP: 151.101.1.140             Port: 80
+Source:         IP: 10.0.2.15                 Port: 38158
+Destination:    IP: 151.101.129.140           Port: 80
 Direction:      SEND [ >>> ]
 Data length:    78 byte
-IP-H data:      45 00 00 76 43 55 40 00 40 06 52 2d 0a 00 02 0f 97 65 01 8c 
-TCP-H data:     ed 0c 00 50 46 cf 63 40 00 2c ec 02 50 18 72 10 a5 68 00 00 
+IP-H data:      45 00 00 76 9a f7 40 00 40 06 7a 8a 0a 00 02 0f 97 65 81 8c 
+TCP-H data:     95 0e 00 50 03 6a a8 cd 07 e0 9a 02 50 18 72 10 25 69 00 00 
 
 GET / HTTP/1.1
 User-Agent: curl/7.29.0
@@ -303,9 +315,10 @@ Accept: */*
 
 ```bash
 # ipscap --port=80 --output=HEX
+
 Time:           2025-01-02 22:29:48 / 1735787388.957, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 978, TTL: 64, IP protocol: TCP[6]
-TCP header:     TCP header length: 20, Sequence: 67904002, Acknowledgement: 172468636, Window: 65535, Flags: ['PSH', 'ACK']
+IP header:      Version: 4, IP header length: 20, Total length: 978, Checksum: 18625, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Checksum: 26766, Sequence: 67904002, Acknowledgement: 172468636, Window: 65535, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 151.101.129.140           Port: 80
 Destination:    IP: 10.0.2.15                 Port: 52386
@@ -330,7 +343,7 @@ TCP-H data:     00 50 cc a2 04 0c 22 02 0a 47 a9 9c 50 18 ff ff 06 2f 00 00
 [--port {int}] [--protocol [ICMP, TCP, UDP]]
 [--ip {string}] [--condition {string}] [--tracking]
 [--stat_mode {0,1,2}] [--stat_group {0,1,2}]
-[--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+[--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
 [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
 [--web_port] [--general_port] [--force] [--version]
 ```
@@ -342,7 +355,7 @@ TCP-H data:     00 50 cc a2 04 0c 22 02 0a 47 a9 9c 50 18 ff ff 06 2f 00 00
 | `.github`            | GitHub Actions files          |
 | `docs`               | Documentation files                                 |
 | `example_data`       | Sample data files for testing                       |
-| `examples`           | Example programs                 |
+| `examples`           | Customizing program examples                 |
 | `ipscap`             | ipscap package/Sources                            |
 | `ipsurv`             | Main package/Sources                            |
 | `tests`              | Test files                     |

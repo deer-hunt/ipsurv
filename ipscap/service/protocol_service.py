@@ -3,6 +3,7 @@ from abc import ABC
 from ipscap.configs import Constant
 from ipscap.util.raw_socket_entity import IPHeader
 from ipsurv.util.sys_util import System
+import copy
 
 
 class ProtocolService(ABC):
@@ -18,24 +19,45 @@ class ProtocolService(ABC):
     def get_service(cls, protocol):
         return cls._instances.get(protocol)
 
-    def show_transfer(self, ip_header, protocol_header, passage_num, now, output):
-        if output != Constant.OUTPUT_NONE:
-            if output != Constant.OUTPUT_LINE:
-                self.show_overview(ip_header, protocol_header, now, passage_num)
-                self.show_payload(protocol_header, output)
+    def show_transfer(self, ip_header, protocol_header, passage_num, now, args):
+        if args.fixed_output != Constant.OUTPUT_NONE:
+            if args.fixed_output != Constant.OUTPUT_LINE:
+                self.show_overview(ip_header, protocol_header, now, passage_num, args.output_raw)
+                self.show_payload(ip_header, protocol_header, args.fixed_output)
             else:
                 self.show_line(ip_header, protocol_header, now, passage_num)
 
-    def show_overview(self, ip_header, protocol_header, now, passage_num):
+    def show_overview(self, ip_header, protocol_header, now, passage_num, output_raw):
         pass
+
+    def create_decorated_ip_header(self, ip_header):
+        ip_header = copy.deepcopy(ip_header)
+
+        self.add_raw(ip_header, 'total_length')
+        self.add_raw(ip_header, 'identification')
+        self.add_raw(ip_header, 'ttl')
+        self.add_raw(ip_header, 'src_ip')
+        self.add_raw(ip_header, 'dest_ip')
+        self.add_raw(ip_header, 'checksum')
+
+        return ip_header
+
+    def create_decorated_protocol_header(self, protocol_header):
+        pass
+
+    def create_decorated_headers(self, ip_header, protocol_header):
+        ip_header = self.create_decorated_ip_header(ip_header)
+        protocol_header = self.create_decorated_protocol_header(protocol_header)
+
+        return ip_header, protocol_header
 
     def show_head(self, ip_header, now, passage_num):
         System.line(self.label('Time:') + self.get_datatime(now) + ' / ' + self.get_timestamp(now) + ', Passage number: ' + str(passage_num))
-        System.line(self.label('IP header:') + 'Version: ' + str(ip_header.version) + ', IP header length: ' + str(ip_header.iph_length) + ', Packet length: ' + str(ip_header.packet_length) + ', TTL: ' + str(ip_header.ttl) + ', IP protocol: ' + ip_header.protocol_code + "[{}]".format(str(ip_header.protocol)))
+        System.line(self.label('IP header:') + 'Version: ' + str(ip_header.version) + ', IP header length: ' + str(ip_header.iph_length) + ', Identification: ' + str(ip_header.identification) + ', Total length: ' + str(ip_header.total_length) + ', Checksum: ' + str(ip_header.checksum) + ', TTL: ' + str(ip_header.ttl) + ', IP protocol: ' + ip_header.protocol_code + "[{}]".format(str(ip_header.protocol)))
 
     def show_middle(self, ip_header, protocol_header, show_data_len):
-        System.line(self.label('Source:') + self.label('IP: ' + str(ip_header.src_ip), 30) + 'Port: ' + str(protocol_header.src_port))
-        System.line(self.label('Destination:') + self.label('IP: ' + str(ip_header.dest_ip), 30) + 'Port: ' + str(protocol_header.dest_port))
+        System.line(self.label('Source:') + self.label('IP: ' + str(ip_header.src_ip), 35) + 'Port: ' + str(protocol_header.src_port))
+        System.line(self.label('Destination:') + self.label('IP: ' + str(ip_header.dest_ip), 35) + 'Port: ' + str(protocol_header.dest_port))
 
         if ip_header.direction == 1:
             direction_msg = 'SEND [ >>> ]'
@@ -52,7 +74,7 @@ class ProtocolService(ABC):
     def show_line(self, ip_header, protocol_header, now, passage_num, split=', '):
         pass
 
-    def show_payload(self, protocol_header, output):
+    def show_payload(self, ip_header, protocol_header, output):
         if output == Constant.OUTPUT_TEXT:
             data = protocol_header.payload_data.decode('utf-8', errors='ignore')
 
@@ -61,9 +83,18 @@ class ProtocolService(ABC):
         elif output == Constant.OUTPUT_BINARY:
             System.line(protocol_header.payload_data)
             System.line('')
+        elif output == Constant.OUTPUT_BINARY_ALL:
+            System.line(self.get_all_data(ip_header, protocol_header))
+            System.line('')
         elif output == Constant.OUTPUT_HEX:
             hex_data = self.get_hex_data(protocol_header.payload_data)
             System.line(hex_data + "\n")
+        elif output == Constant.OUTPUT_HEX_ALL:
+            hex_data = self.get_hex_data(self.get_all_data(ip_header, protocol_header))
+            System.line(hex_data + "\n")
+
+    def get_all_data(self, ip_header, protocol_header):
+        return ip_header.header_data + protocol_header.header_data + protocol_header.payload_data
 
     def get_datatime(self, now):
         return now.strftime("%Y-%m-%d %H:%M:%S.%f")[:-2]
@@ -79,9 +110,19 @@ class ProtocolService(ABC):
     def label(self, v, n=16):
         return v.ljust(n)
 
+    def add_raw(self, header, name, raw_name=None):
+        v = str(getattr(header, name))
+
+        raw_name = raw_name if raw_name is not None else name
+
+        setattr(header, name, v + '[' + header.raws[raw_name] + ']')
+
 
 class ICMPProtocolService(ProtocolService):
-    def show_overview(self, ip_header, protocol_header, now, passage_num):
+    def show_overview(self, ip_header, protocol_header, now, passage_num, output_raw):
+        if output_raw:
+            ip_header, protocol_header = self.create_decorated_headers(ip_header, protocol_header)
+
         self.show_head(ip_header, now, passage_num)
 
         System.line(self.label('ICMP header:') + 'ICMP header length: ' + str(protocol_header.icmph_length) + ', Type: ' + str(protocol_header.icmp_type) + ', Code: ' + str(protocol_header.code))
@@ -92,6 +133,15 @@ class ICMPProtocolService(ProtocolService):
         System.line(self.label('ICMP-H data:') + self.get_hex_data(protocol_header.header_data))
         System.line('')
 
+    def create_decorated_protocol_header(self, protocol_header):
+        protocol_header = copy.deepcopy(protocol_header)
+
+        self.add_raw(protocol_header, 'icmp_type')
+        self.add_raw(protocol_header, 'code')
+        self.add_raw(protocol_header, 'checksum')
+
+        return protocol_header
+
     def show_line(self, ip_header, protocol_header, now, passage_num, split=', '):
         line = ''
 
@@ -99,7 +149,7 @@ class ICMPProtocolService(ProtocolService):
         line += str(passage_num) + split
         line = line.ljust(30)
 
-        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.packet_length) + split
+        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.total_length) + split
         line = line.ljust(50)
 
         line += str(ip_header.protocol_code) + split
@@ -119,15 +169,18 @@ class ICMPProtocolService(ProtocolService):
 
         System.line(line)
 
-    def show_payload(self, protocol_header, output):
+    def show_payload(self, ip_header, protocol_header, output):
         pass
 
 
 class TCPProtocolService(ProtocolService):
-    def show_overview(self, ip_header, protocol_header, now, passage_num):
+    def show_overview(self, ip_header, protocol_header, now, passage_num, output_raw):
+        if output_raw:
+            ip_header, protocol_header = self.create_decorated_headers(ip_header, protocol_header)
+
         self.show_head(ip_header, now, passage_num)
 
-        System.line(self.label('TCP header:') + 'TCP header length: ' + str(protocol_header.tcph_length) + ', Sequence: ' + str(protocol_header.seq_no) + ', Acknowledgement: ' + str(protocol_header.ack_no) + ', Window: ' + str(protocol_header.window) + ', Flags: ' + str(protocol_header.flag_codes))
+        System.line(self.label('TCP header:') + 'TCP header length: ' + str(protocol_header.tcph_length) + ', Checksum: ' + str(protocol_header.checksum) + ', Sequence: ' + str(protocol_header.seq_no) + ', Acknowledgement: ' + str(protocol_header.ack_no) + ', Window: ' + str(protocol_header.window) + ', Flags: ' + str(protocol_header.flag_codes))
         System.line(self.label('TCP options:') + self._get_tcp_options(protocol_header.tcp_options))
 
         self.show_middle(ip_header, protocol_header, True)
@@ -136,6 +189,19 @@ class TCPProtocolService(ProtocolService):
         System.line(self.label('TCP-H data:') + self.get_hex_data(protocol_header.header_data))
         System.line('')
 
+    def create_decorated_protocol_header(self, protocol_header):
+        protocol_header = copy.deepcopy(protocol_header)
+
+        self.add_raw(protocol_header, 'src_port')
+        self.add_raw(protocol_header, 'dest_port')
+        self.add_raw(protocol_header, 'seq_no')
+        self.add_raw(protocol_header, 'ack_no')
+        self.add_raw(protocol_header, 'flags')
+        self.add_raw(protocol_header, 'window')
+        self.add_raw(protocol_header, 'checksum')
+
+        return protocol_header
+
     def show_line(self, ip_header, protocol_header, now, passage_num, split=', '):
         line = ''
 
@@ -143,7 +209,7 @@ class TCPProtocolService(ProtocolService):
         line += str(passage_num) + split
         line = line.ljust(30)
 
-        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.packet_length) + split
+        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.total_length) + split
         line = line.ljust(50)
 
         line += str(ip_header.protocol_code) + split
@@ -189,16 +255,28 @@ class TCPProtocolService(ProtocolService):
 
 
 class UDPProtocolService(ProtocolService):
-    def show_overview(self, ip_header, protocol_header, now, passage_num):
+    def show_overview(self, ip_header, protocol_header, now, passage_num, output_raw):
+        if output_raw:
+            ip_header, protocol_header = self.create_decorated_headers(ip_header, protocol_header)
+
         self.show_head(ip_header, now, passage_num)
 
-        System.line(self.label('UDP header:') + 'UDP header length: ' + str(protocol_header.udph_length))
+        System.line(self.label('UDP header:') + 'UDP header length: ' + str(protocol_header.udph_length) + ', Checksum: ' + str(protocol_header.checksum))
 
         self.show_middle(ip_header, protocol_header, True)
 
         System.line(self.label('IP-H data:') + self.get_hex_data(ip_header.header_data))
         System.line(self.label('UDP-H data:') + self.get_hex_data(protocol_header.header_data))
         System.line('')
+
+    def create_decorated_protocol_header(self, protocol_header):
+        protocol_header = copy.deepcopy(protocol_header)
+
+        self.add_raw(protocol_header, 'src_port')
+        self.add_raw(protocol_header, 'dest_port')
+        self.add_raw(protocol_header, 'udph_length')
+
+        return protocol_header
 
     def show_line(self, ip_header, protocol_header, now, passage_num, split=', '):
         line = ''
@@ -207,7 +285,7 @@ class UDPProtocolService(ProtocolService):
         line += str(passage_num) + split
         line = line.ljust(30)
 
-        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.packet_length) + split
+        line += str(ip_header.version) + split + str(ip_header.iph_length) + split + str(ip_header.ttl) + split + str(ip_header.total_length) + split
         line = line.ljust(50)
 
         line += str(ip_header.protocol_code) + split

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.1) (2025-01-18)
+
+- Fixed some bugs.
+- Add output mode.
+
 ## [1.2.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.2.0) (2025-01-11)
 
 - Release "ipscap" command.

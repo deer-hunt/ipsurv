@@ -1,4 +1,4 @@
-# "ipsurv" command
+# Introduction to "ipsurv"
 
 ## Usage
 
@@ -26,7 +26,7 @@ $ cat apache.log|ipsurv --add_ip
 
 ## Survey-mode
 
-```IpSurv``` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
+`ipsurv` have two Survey-mode. Those are "Survey IPs" and "Survey Self". 
 
 | Survey-mode              | Description              |
 |-------------------|------------------------|
@@ -62,11 +62,11 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 - Check ICMP, TCP, UDP, HTTP.
 - Set timeout.
 - Load env variable. And changing arguments and internal configures.
-- Use GeoIP2 via IpSurv optionally.
+- Use GeoIP2 via ipsurv optionally.
 
 ## Command options
 
-```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md).
+`ipsurv` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md).
 
 **Options**
 
@@ -237,7 +237,7 @@ $ ipsurv wikipedia.org --format="<address>,{hostname},{ip_type}"     # Profile +
 
 ## Using GeoIP2 optionally
 
-```IpSurv``` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via ```IpSurv```.
+`ipsurv` support [GeoIP2](https://github.com/maxmind/GeoIP2-python) optionally. If ```GeoIP2``` module is installed and there are ```mmdb``` files, You can use GeoIP2 features via `ipsurv`.
 When using the GeoIP2 module, network communication does not occur, which enables faster processing.
 
 Please refer to the [Using GeoIP2](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html) documentation in detail.
@@ -264,7 +264,7 @@ original,continent,continent_name,country,geo
 
 ## Documents
 
-The following documents exist in ```IpSurv```. You can read documents in [Documentation site](https://deer-hunt.github.io/ipsurv/).
+The following documents exist in `ipsurv`. You can read documents in [Documentation site](https://deer-hunt.github.io/ipsurv/).
 
 | Title                       | Path                                        |
 |-------------------------------|---------------------------------------------|
@@ -274,7 +274,7 @@ The following documents exist in ```IpSurv```. You can read documents in [Docume
 | **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/customize_examples.md) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
 | **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/using_geoip2.md)  |
-| **IpSurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
+| **ipsurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
 
 
 ## Debugging
@@ -288,10 +288,10 @@ $ ipsurv ***** --verbose=3    #DEBUG
 $ ipsurv ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
 ```
 
-## Customizing IpSurv
+## Customizing ipsurv
 
-```IpSurv``` is implemented as customizable program architecture. ```IpSurv``` provide extending features and several classes. 
-And you can use IpSurv's internal classes in your program. Please read ```program_architecture_classes.md```.
+`ipsurv` is implemented as customizable program architecture. `ipsurv` provide extending features and several classes. 
+And you can use ipsurv's internal classes in your program. Please read ```program_architecture_classes.md```.
 
 **Classes for major customization**
 

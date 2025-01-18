@@ -5,8 +5,9 @@ import logging
 
 
 class DumpFile:
-    def __init__(self):
+    def __init__(self, pipeline):
         self.dirname = None
+        self.pipeline = pipeline
 
     def initialize(self, dirname):
         self.dirname = dirname
@@ -21,11 +22,15 @@ class DumpFile:
         logging.log(logging.INFO, 'DUMPFILE_PATH: ' + path)
 
         with open(path, 'ab') as file:
+            self.pipeline.pre_writefile(ip_header, protocol_header, file)
+
             if append_header:
                 file.write(ip_header.header_data)
                 file.write(protocol_header.header_data)
 
             file.write(protocol_header.payload_data)
+
+            self.pipeline.post_writefile(ip_header, protocol_header, file)
 
         return path
 
@@ -43,6 +48,8 @@ class DumpFile:
             filename = 'server_' + filename
 
         filename += '_' + ip_header.direction_code.lower() + ext
+
+        filename = self.pipeline.get_filename(ip_header, protocol_header, filename)
 
         return filename
 

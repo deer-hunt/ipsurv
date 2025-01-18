@@ -46,7 +46,9 @@ documents:
     OUTPUT_HEADER = 'HEADER'
     OUTPUT_TEXT = 'TEXT'
     OUTPUT_BINARY = 'BINARY'
+    OUTPUT_BINARY_ALL = 'BINARY_ALL'
     OUTPUT_HEX = 'HEX'
+    OUTPUT_HEX_ALL = 'HEX_ALL'
     OUTPUT_LINE = 'LINE'
 
     DUMPFILE_DIR = 'dump_logs'
@@ -69,7 +71,8 @@ class Config:
         'tracking': {'default': False, 'action': 'store_true', 'help': 'Tracking transfers that have been matched by filters.'},
         'stat_mode': {'default': 1, 'type': int, 'help': 'Statistics mode.\n0: None, 1: Captured transfers, 2: All transfers', 'choices': [0, 1, 2]},
         'stat_group': {'default': 0, 'type': int, 'help': 'Group the transfer in statistics.\n0: None, 1: Grouping by IPs and service port, 2: Grouping by IPs', 'choices': [0, 1, 2]},
-        'output': {'default': 'TEXT', 'help': 'Output mode about header and data. [Mode name] or [0 - 5]\nNONE: \nHEADER: header only, TEXT: text data\nBINARY: binary data, HEX: hex data\nLINE: single line', 'metavar': '[NONE, HEADER, TEXT, BINARY, HEX, LINE]'},
+        'output': {'default': 'TEXT', 'help': 'Output mode about header and data. [Mode name] or [0 - 7]\nNONE: none\nHEADER: header only, TEXT: text data\nBINARY: binary data, BINARY_ALL: binary headers and data\nHEX: hex data, HEX_ALL: hex headers and data\nLINE: single line', 'metavar': '[NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]'},
+        'output_raw': {'default': False, 'help': 'Output "Raw block". Show HEX data in each values.', 'action': 'store_true'},
         'dumpfile': {'default': 0, 'type': int, 'help': 'Dump data to files. Dir: `./dump_logs/`\n0: Off, 1: Dump data, 2: Dump headers and data', 'choices': [0, 1, 2]},
         'timeout': {'default': None, 'type': float, 'help': 'Stop automatically after the specified number of seconds.', 'metavar': '{float}'},
 

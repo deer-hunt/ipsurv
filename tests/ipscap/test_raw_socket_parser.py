@@ -31,7 +31,7 @@ if not sys.platform.startswith('win'):
 
             assert ip_header.version == 4
             assert ip_header.iph_length == 20
-            assert ip_header.packet_length == 60
+            assert ip_header.total_length == 60
             assert ip_header.src_ip == '192.168.1.1'
             assert ip_header.dest_ip == '192.168.1.2'
             assert ip_header.direction == 2

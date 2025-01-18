@@ -55,7 +55,7 @@ if not sys.platform.startswith('win'):
             sorted_transfers = dict(sorted(transfer_store.transfers.items()))
             key = next(iter(sorted_transfers))
             transfer = sorted_transfers[key]
-            rtransfer = {IPHeader.DIRECTION_SEND: {'num': 0, 'unique': 0, 'size': 0}, IPHeader.DIRECTION_RECEIVE: {'num': 0, 'unique': 0, 'size': 0}, 'group_count': 0}
+            rtransfer = {IPHeader.DIRECTION_SEND: {'count': 0, 'unique': 0, 'size': 0}, IPHeader.DIRECTION_RECEIVE: {'count': 0, 'unique': 0, 'size': 0}, 'group_count': 0}
             transfer_store.totalize_direction(rtransfer, transfer, IPHeader.DIRECTION_SEND)
 
-            assert rtransfer[IPHeader.DIRECTION_SEND]['num'] == 1
+            assert rtransfer[IPHeader.DIRECTION_SEND]['count'] == 1

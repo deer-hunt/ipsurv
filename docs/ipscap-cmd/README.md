@@ -1,4 +1,4 @@
-# "ipscap" command
+# Introduction to "ipscap"
 
 `ipscap` captures "ICMP, TCP, UDP" packets. It supports filtering by various conditions, dumping file, displaying statistics.
 
@@ -24,10 +24,11 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 			[--port {int}] [--protocol [ICMP, TCP, UDP]]
 			[--ip {string}] [--condition {string}] [--tracking]
 			[--stat_mode {0,1,2}] [--stat_group {0,1,2}]
-			[--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+			[--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
 			[--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
 			[--web_port] [--general_port] [--force] [--version]
 ```
+
 
 ## Optional Arguments
 
@@ -46,7 +47,7 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --tracking                     | Tracking transfers that have been matched by filters.                                         |
 | --stat_mode {0,1,2}            | Statistics mode. <br><br>0: None, <br> 1: Captured transfers, <br> 2: All transfers            |
 | --stat_group {0,1,2}           | Group the transfer in statistics. <br><br> 0: None, <br> 1: Grouping by IPs and service port, <br> 2: Grouping by IPs |
-| --output [NONE, HEADER, TEXT, BINARY, HEX, LINE] | Output mode about header and data. [Mode name] or [0 - 5]<br><br>NONE: none, <br> HEADER: header only, <br> TEXT: text data <br> BINARY: binary data, <br> HEX: hex data <br> LINE: single line |
+| --output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE] | Output mode about header and data. [Mode name] or [0 - 7]<br><br>NONE: none, <br> HEADER: header only, <br> TEXT: text data <br> BINARY: binary data, <br> HEX: hex data <br> LINE: single line |
 | --dumpfile {0,1,2}             | Dump data to files. <br><br> Dir: `./dump_logs/` <br> 0: Off, <br> 1: Dump data, <br> 2: Dump headers and data |
 | --timeout {float}              | Stop automatically after the specified number of seconds.                                     |
 | --exclude_ssh                  | `--exclude_ssh` is equivalent to `--condition="port!=22"`.                                   |
@@ -108,7 +109,7 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 ```bash
 # ipscap --port=80
 Time:           2025-01-03 22:34:35.7259 / 1735863240.7259, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 3577694814, Acknowledgement: 68032002, Window: 29200, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 50396
@@ -119,7 +120,7 @@ IP-H data:      45 00 00 28 cb 64 40 00 40 06 55 16 0a 00 02 0f 67 66 a6 e0
 TCP-H data:     c4 dc 00 50 d5 3f 4a 5e 04 0e 16 02 50 10 72 10 1a 70 00 00 
 
 Time:           2025-01-03 22:34:35.7262 / 1735863240.7262, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 117, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 117, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 3577694814, Acknowledgement: 68032002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 50396
@@ -136,7 +137,7 @@ Accept: */*
 
 
 Time:           2025-01-03 22:34:35.7263 / 1735863240.7263, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 68032002, Acknowledgement: 3577694891, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 103.102.166.224           Port: 80
@@ -169,7 +170,7 @@ TCP-H data:     00 50 c4 dc 04 0e 16 02 d5 3f 4a ab 50 10 ff ff 96 57 00 00
 ```bash
 # ipscap --port=80 --output=HEX
 Time:           2025-01-02 22:29:48.9683 / 1735787388.9683, Passage number: 3
-IP header:      Version: 4, IP header length: 20, Packet length: 316, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 316, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 67776002, Acknowledgement: 1486460925, Window: 65535, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 74.6.143.25               Port: 80
@@ -195,7 +196,7 @@ TCP-H data:     00 50 b5 9e 04 0a 2e 02 58 99 97 fd 50 18 ff ff 4c 2b 00 00
 
 
 Time:           2025-01-04 22:41:22.7246 / 1735940482.7246, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 114, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 67488716, Acknowledgement: 68672002, Window: 29200, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 10.0.2.15                 Port: 60288
@@ -211,7 +212,7 @@ Host: google.com
 Accept: */*
 
 Time:           2025-01-04 22:41:22.7251 / 1735940482.7251, Passage number: 1
-IP header:      Version: 4, IP header length: 20, Packet length: 40, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 68672002, Acknowledgement: 67488790, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
@@ -222,7 +223,7 @@ IP-H data:      45 00 00 28 3e da 00 00 40 06 c2 dd 8e fb de 0e 0a 00 02 0f
 TCP-H data:     00 50 eb 80 04 17 da 02 04 05 cc 16 50 10 ff ff 9c b5 00 00 
 
 Time:           2025-01-04 22:41:22.8006 / 1735940482.8006, Passage number: 2
-IP header:      Version: 4, IP header length: 20, Packet length: 813, TTL: 64, IP protocol: TCP[6]
+IP header:      Version: 4, IP header length: 20, Total length: 813, TTL: 64, IP protocol: TCP[6]
 TCP header:     TCP header length: 20, Sequence: 68672002, Acknowledgement: 67488790, Window: 65535, Flags: ['PSH', 'ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
@@ -246,3 +247,15 @@ The document has moved
 </BODY></HTML>
 ```
 
+
+## Documents
+
+The following documents exist in `ipsurv`. You can read documents in [Documentation site](https://deer-hunt.github.io/ipsurv/).
+
+| Title                       | Path                                                                                                                             |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/command_arguments.md)                       |
+| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/command_examples.md)                         |
+| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/customize_examples.md)                     |
+| **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)                                  |
+| **ipsurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)                                 |

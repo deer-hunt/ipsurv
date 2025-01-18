@@ -4,6 +4,7 @@ import subprocess
 import platform
 
 from ipsurv.requester.requester import Requester
+from ipsurv.util.sys_util import System
 
 
 class ServerReactivity(Requester):
@@ -22,7 +23,7 @@ class ServerReactivity(Requester):
         timeout = round(self.timeout)
         timeout = timeout if timeout > 0 else 1
 
-        if platform.system() != 'Windows':
+        if not System.verify_os(windows=True):
             subprocess.check_output(['ping', '-c', str(count), '-w', str(timeout), host], universal_newlines=True)
         else:
             subprocess.check_output(['ping', '-n', str(count), '-w', str(timeout), host], universal_newlines=True)

@@ -2,6 +2,7 @@ import pprint
 import logging
 import os
 import sys
+import platform
 
 
 class AppException(Exception):
@@ -15,6 +16,21 @@ class System:
         minor = sys.version_info.minor
 
         return float(major) + minor / 10
+
+    @classmethod
+    def verify_os(cls, windows=False, macos=False, linux=False):
+        os_name = platform.system()
+
+        if windows and os_name == 'Windows':
+            return True
+
+        if macos and os_name == 'Darwin':
+            return True
+
+        if linux and os_name == 'Linux':
+            return True
+
+        return False
 
     @classmethod
     def load_module(cls, name):

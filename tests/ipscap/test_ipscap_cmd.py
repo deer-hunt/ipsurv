@@ -1,8 +1,7 @@
 import pytest
-import os
+import platform
 
-
-if os.name == 'posix':
+if platform.system() == 'Linux':
     from unittest.mock import patch
     from ipscap.core.object_factory import ObjectFactory
     from ipscap.ipscap_cmd import IpsCapCmd

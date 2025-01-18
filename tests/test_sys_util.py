@@ -16,6 +16,11 @@ class TestSystem:
 
         assert ver > 2.0
 
+    def test_verify_is(self):
+        is_match = System.verify_os()
+
+        assert not is_match
+
     def test_line(self, capfd):
         System.line('ABC')
 

@@ -6,10 +6,9 @@ import os
 
 def main():
     if System.get_python_ver() <= 3.2 and not System.load_module('ipaddress'):
-        System.exit('"ipaddress" module is required. Please install by `pip install ipaddress`.',
-                    True)
+        System.exit('"ipaddress" module is required. Please install by `pip install ipaddress`.', True)
 
-    if os.name != 'posix':
+    if System.verify_os(windows=True, macos=True):
         System.exit('`ipscap` support only Unix/Linux OS.', True)
 
     factory = ObjectFactory()

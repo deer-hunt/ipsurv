@@ -1,6 +1,7 @@
 import pytest
 import os
 
+
 if os.name == 'posix':
     from ipscap.core.object_factory import ObjectFactory
 

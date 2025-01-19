@@ -1,5 +1,6 @@
 
-<!DOCTYPE html>
+
+<!doctype html>
 
 <html>
   <head>
@@ -7,17 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction to “ipscap” &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/nature.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Command arguments" href="command_arguments.html" />
-    <link rel="prev" title="About Using GeoIP2" href="../ipsurv-cmd/using_geoip2.html" /> 
+    <link rel="prev" title="About Using GeoIP2" href="../ipsurv-cmd/using_geoip2.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -100,8 +107,8 @@
 <tr class="row-even"><td><p>–find {string}</p></td>
 <td><p>Find character string by regex and ignoring case. <br> ex: “3\d1”, “HTTP”</p></td>
 </tr>
-<tr class="row-odd"><td><p>–find_mode [REGEX, MATCH, BINARY, HEX]</p></td>
-<td><p>Find mode. [Mode name] or [1 - 4]</p></td>
+<tr class="row-odd"><td><p>–find_mode</p></td>
+<td><p>Find mode.  [REGEX, MATCH, BINARY, HEX] or [1 - 4]<br><br>REGEX: find by regex.<br>MATCH: find match word.<br>BINARY: find by binary string. e.g.: “\x00”<br>HEX: find by HEX string.</p></td>
 </tr>
 <tr class="row-even"><td><p>–port {int}</p></td>
 <td><p>Filter port. <br> It is source port or destination port. <br> ex: =80, =53,80</p></td>
@@ -124,8 +131,8 @@
 <tr class="row-even"><td><p>–stat_group {0,1,2}</p></td>
 <td><p>Group the transfer in statistics. <br><br> 0: None, <br> 1: Grouping by IPs and service port, <br> 2: Grouping by IPs</p></td>
 </tr>
-<tr class="row-odd"><td><p>–output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]</p></td>
-<td><p>Output mode about header and data. [Mode name] or [0 - 7]<br><br>NONE: none, <br> HEADER: header only, <br> TEXT: text data <br> BINARY: binary data, <br> HEX: hex data <br> LINE: single line</p></td>
+<tr class="row-odd"><td><p>–output</p></td>
+<td><p>Output mode about header and data. [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE] or [0 - 7]<br><br>NONE: none<br>HEADER: header only<br>TEXT: text data<br>BINARY: binary data<br>BINARY_ALL: binary data with headers<br>HEX: hex data<br>HEX_ALL: hex data with headers<br>LINE: single line</p></td>
 </tr>
 <tr class="row-even"><td><p>–dumpfile {0,1,2}</p></td>
 <td><p>Dump data to files. <br><br> Dir: <code class="docutils literal notranslate"><span class="pre">./dump_logs/</span></code> <br> 0: Off, <br> 1: Dump data, <br> 2: Dump headers and data</p></td>
@@ -171,7 +178,7 @@
 <span class="c1"># ipscap --force</span>
 </pre></div>
 </div>
-<p><strong>Filterings</strong></p>
+<p><strong>Filters</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;HTTP/1.1 \d01&quot;</span>
 <span class="c1"># ipscap --find=&quot;http&quot; --find_mode=MATCH</span>
 <span class="c1"># ipscap --find=&quot;00 99 f0 e0 78 4e 23 70 a1&quot; --find_mode=HEX</span>
@@ -180,16 +187,17 @@
 <span class="c1"># ipscap --condition=&quot;port!=22&quot;</span>
 <span class="c1"># ipscap --condition=&quot;src_port&gt;=80;src_port&lt;=500;flags=SYN,PSH&quot;</span>
 <span class="c1"># ipscap --condition=&quot;ttl&gt;=120&quot;</span>
+
+<span class="c1"># ipscap --output=HEADER # HEADER only</span>
+<span class="c1"># ipscap --output=BINARY --port=&quot;80&quot; # Binary of payload</span>
+<span class="c1"># ipscap --output=BINARY_ALL --port=&quot;80&quot;  # Binary of payload with headers. </span>
+<span class="c1"># ipscap --output=LINE --port=&quot;80&quot; #LINE</span>
+<span class="c1"># ipscap --output=HEX --port=&quot;80&quot; # HEX of payload</span>
+<span class="c1"># ipscap --output=HEX_ALL --port=&quot;80&quot;  # HEX of payload with headers. </span>
 </pre></div>
 </div>
 <p><strong>Dump files</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --dumpfile=1</span>
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --output=HEADER # HEADER only</span>
-<span class="c1"># ipscap --output=BINARY --port=&quot;80&quot; # BINARY</span>
-<span class="c1"># ipscap --output=LINE --port=&quot;80&quot; #LINE</span>
-<span class="c1"># ipscap --output=HEX --port=&quot;80&quot; # HEX</span>
 </pre></div>
 </div>
 <p><strong>Capture 80 port</strong></p>
@@ -270,7 +278,23 @@ TCP-H<span class="w"> </span>data:<span class="w">     </span><span class="m">00
 6f<span class="w"> </span><span class="m">63</span><span class="w"> </span><span class="m">61</span><span class="w"> </span><span class="m">74</span><span class="w"> </span><span class="m">69</span><span class="w"> </span>6f<span class="w"> </span>6e<span class="w"> </span>3a<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">68</span><span class="w"> </span><span class="m">74</span><span class="w"> </span><span class="m">74</span><span class="w"> </span><span class="m">70</span><span class="w"> </span><span class="m">73</span><span class="w"> </span>3a<span class="w"> </span>2f<span class="w"> </span>2f<span class="w"> </span><span class="m">79</span><span class="w"> </span><span class="m">61</span><span class="w"> </span><span class="m">68</span><span class="w"> </span>6f<span class="w"> </span>6f<span class="w"> </span>2e<span class="w"> </span><span class="m">63</span><span class="w"> </span>6f<span class="w"> </span>6d<span class="w"> </span>2f<span class="w"> </span>0d<span class="w"> </span>0a<span class="w"> </span><span class="m">43</span><span class="w"> </span>6f<span class="w"> </span>6e<span class="w"> </span><span class="m">74</span><span class="w"> </span><span class="m">65</span><span class="w"> </span>6e<span class="w"> </span><span class="m">74</span><span class="w"> </span>2d<span class="w"> </span>4c<span class="w"> </span><span class="m">65</span><span class="w"> </span>6e<span class="w"> </span><span class="m">67</span><span class="w"> </span><span class="m">74</span><span class="w"> </span><span class="m">68</span><span class="w"> </span>3a<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">38</span><span class="w"> </span>0d<span class="w"> </span>0a<span class="w"> </span>0d<span class="w"> </span>0a<span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">69</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="m">65</span><span class="w"> </span>
 </pre></div>
 </div>
-<p><strong>Filtering and tracking</strong></p>
+<p><strong>Output BINARY_ALL</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span># ipscap --port=80 --output=BINARY_ALL
+Time:           2025-01-19 00:29:01.3744 / 1737300541.37, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Identification: 235, Total length: 813, Checksum: 5225, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Checksum: 26441, Sequence: 3776002, Acknowledgement: 1113370711, Window: 65535, Flags: [&#39;PSH&#39;, &#39;ACK&#39;]
+TCP options:    -
+Source:         IP: 142.250.199.110                Port: 80
+Destination:    IP: 10.0.2.15                      Port: 36290
+Direction:      RECEIVE [ &lt;&lt;&lt; ]
+Data length:    773 byte
+IP-H data:      45 00 03 2d 00 eb 00 00 40 06 14 69 8e fa c7 6e 0a 00 02 0f 
+TCP-H data:     00 50 8d c2 00 39 9e 02 42 5c b0 57 50 18 ff ff 67 49 00 00 
+
+b&#39;E\x00\x03-\x00\xeb\x00\x00@\x06\x14i\x8e\xfa\xc7n\n\x00\x02\x0f\x00P\x8d\xc2\x009\x9e\x02B\\\xb0WP\x18\xff\xffgI\x00\x00HTTP/1.1 301 Moved Permanently\r\nLocation: http://www.google.com/\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Security-Policy-Report-Only: object-src \&#39;none\&#39;;base-uri \&#39;self\&#39;;script-src \&#39;nonce-e1_QsOtq8Yf-OJsvozjQXQ\&#39; \&#39;strict-dynamic\&#39; \&#39;report-sample\&#39; \&#39;unsafe-eval\&#39; \&#39;unsafe-inline\&#39; https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp\r\nDate: Sun, 19 Jan 2025 15:28:51 GMT\r\nExpires: Tue, 18 Feb 2025 15:28:51 GMT\r\nCache-Control: public, max-age=2592000\r\nServer: gws\r\nContent-Length: 219\r\nX-XSS-Protection: 0\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n&lt;HTML&gt;&lt;HEAD&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=utf-8&quot;&gt;\n&lt;TITLE&gt;301 Moved&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;\n&lt;H1&gt;301 Moved&lt;/H1&gt;\nThe document has moved\n&lt;A HREF=&quot;http://www.google.com/&quot;&gt;here&lt;/A&gt;.\r\n&lt;/BODY&gt;&lt;/HTML&gt;\r\n&#39;
+</pre></div>
+</div>
+<p><strong>Filter and tracking</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --port=80 --find=GET --tracking --output=HEX</span>
 
 

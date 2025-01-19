@@ -13,7 +13,7 @@ Welcome to IpSurv's documentation! This document explains the basic usage and sy
    :align: center
 
 Github
-==================================
+-------------
 
 The latest version and documentation may be found on GitHub. The Github URL is the following.
 
@@ -46,7 +46,7 @@ The latest version and documentation may be found on GitHub. The Github URL is t
 
 
 Commands
-==================================
+-------------
 
 .. table::
    :widths: 15 85
@@ -65,7 +65,6 @@ Commands
 
 
 |
-|
 
 
 It’s best to refer to the help to recognize the functions.
@@ -79,7 +78,7 @@ It’s best to refer to the help to recognize the functions.
 
 
 Installation
-==================================
+-------------
 
 **PyPI**
 
@@ -102,7 +101,7 @@ Installation
 
 
 Requirements
-==================================
+-------------
 
 .. code-block:: shell
 
@@ -117,11 +116,11 @@ Requirements
 
 
 
-`ipsurv`command
-==================================
+"ipsurv" command
+--------------------------
 
 Introduction
-----------------------------------
+~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 2
@@ -168,8 +167,8 @@ Introduction
                  [target [target ...]]
 
 
-`ipsurv`'s documents
-----------------------------------
+ipsurv's documents
+~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
@@ -183,11 +182,11 @@ Introduction
 
 
 
-`ipscap`command
-==================================
+"ipscap" command
+--------------------------
 
 Introduction
-----------------------------------
+~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 2
@@ -203,10 +202,19 @@ Introduction
    # ipscap --force
 
    # ipscap --port="80;53" --find="GET"
+
+   # ipscap --find="HTTP/1.1 \d01"
+   # ipscap --find="http" --find_mode=MATCH
+
    # ipscap --condition="port=80,443,53,-1" --protocol=TCP,UDP,ICMP
    # ipscap --find="HTTP" --tracking
 
    # ipscap --port=80,443 --stat_group=1
+
+   # ipscap --output=HEADER # HEADER only
+   # ipscap --output=BINARY --port="80" # Binary of payload
+   # ipscap --output=BINARY_ALL --port="80"  # Binary of payload with headers.
+   # ipscap --output=LINE --port="80" #LINE
 
 
 **Command options**
@@ -220,12 +228,12 @@ Introduction
                  [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
                  [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
                  [--stat_group {0,1,2}]
-                 [--output [NONE, HEADER, TEXT, BINARY, HEX, LINE]]
+                 [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
                  [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
                  [--web_port] [--general_port] [--force] [--version]
 
-`ipscap`'s documents
-----------------------------------
+ipscap's documents
+~~~~~~~~~~~~~~~
 
 .. toctree::
    :maxdepth: 1
@@ -236,7 +244,7 @@ Introduction
 
 
 Modules and Classes reference
-==================================
+--------------------------
 
 The following is the documentation for the module and class. `Github source <https://github.com/deer-hunt/ipsurv/tree/main/ipsurv>`_
 

@@ -1,3 +1,23 @@
+body {
+	font-size: 15px;
+}
+
+.body {
+	max-width: 1000px !important;
+}
+
+h2 {
+	font-size: 1.5em !important;
+}
+
+h3 {
+	border-bottom: none !important;
+}
+
+pre {
+	line-height: 150% !important;
+}
+
 blockquote {
 	color: #789;
 	margin: 15px 0;

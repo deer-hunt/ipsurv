@@ -39,7 +39,7 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --debug                         | `--debug` is equivalent to `--verbose=3`.                                                    |
 | --log {string}                 | Verbose log filename.                                                                         |
 | --find {string}                | Find character string by regex and ignoring case. <br> ex: "3\d1", "HTTP"                   |
-| --find_mode [REGEX, MATCH, BINARY, HEX] | Find mode. [Mode name] or [1 - 4]                                                  |
+| --find_mode | Find mode.  [REGEX, MATCH, BINARY, HEX] or [1 - 4]<br><br>REGEX: find by regex.<br>MATCH: find match word.<br>BINARY: find by binary string. e.g.: "\x00"<br>HEX: find by HEX string.                                                  |
 | --port {int}                   | Filter port. <br> It is source port or destination port. <br> ex: =80, =53,80                |
 | --protocol [ICMP, TCP, UDP]    | Filter Protocol. <br> Default: "TCP,UDP"                                                    |
 | --ip {string}                  | Filter IP. <br> ex: =192.168.1.10, =192.168.1.10,192.168.1.20                              |
@@ -47,7 +47,7 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --tracking                     | Tracking transfers that have been matched by filters.                                         |
 | --stat_mode {0,1,2}            | Statistics mode. <br><br>0: None, <br> 1: Captured transfers, <br> 2: All transfers            |
 | --stat_group {0,1,2}           | Group the transfer in statistics. <br><br> 0: None, <br> 1: Grouping by IPs and service port, <br> 2: Grouping by IPs |
-| --output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE] | Output mode about header and data. [Mode name] or [0 - 7]<br><br>NONE: none, <br> HEADER: header only, <br> TEXT: text data <br> BINARY: binary data, <br> HEX: hex data <br> LINE: single line |
+| --output | Output mode about header and data. [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE] or [0 - 7]<br><br>NONE: none<br>HEADER: header only<br>TEXT: text data<br>BINARY: binary data<br>BINARY_ALL: binary data with headers<br>HEX: hex data<br>HEX_ALL: hex data with headers<br>LINE: single line |
 | --dumpfile {0,1,2}             | Dump data to files. <br><br> Dir: `./dump_logs/` <br> 0: Off, <br> 1: Dump data, <br> 2: Dump headers and data |
 | --timeout {float}              | Stop automatically after the specified number of seconds.                                     |
 | --exclude_ssh                  | `--exclude_ssh` is equivalent to `--condition="port!=22"`.                                   |
@@ -78,7 +78,7 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 # ipscap --force
 ```
 
-**Filterings**
+**Filters**
 
 ```
 # ipscap --find="HTTP/1.1 \d01"
@@ -89,19 +89,20 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 # ipscap --condition="port!=22"
 # ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
 # ipscap --condition="ttl>=120"
+
+# ipscap --output=HEADER # HEADER only
+# ipscap --output=BINARY --port="80" # Binary of payload
+# ipscap --output=BINARY_ALL --port="80"  # Binary of payload with headers. 
+# ipscap --output=LINE --port="80" #LINE
+# ipscap --output=HEX --port="80" # HEX of payload
+# ipscap --output=HEX_ALL --port="80"  # HEX of payload with headers. 
 ```
+
 
 **Dump files**
 
 ```bash
 # ipscap --port=80 --dumpfile=1
-```
-
-```bash
-# ipscap --output=HEADER # HEADER only
-# ipscap --output=BINARY --port="80" # BINARY
-# ipscap --output=LINE --port="80" #LINE
-# ipscap --output=HEX --port="80" # HEX
 ```
 
 **Capture 80 port**
@@ -188,8 +189,27 @@ TCP-H data:     00 50 b5 9e 04 0a 2e 02 58 99 97 fd 50 18 ff ff 4c 2b 00 00
 6f 63 61 74 69 6f 6e 3a 20 68 74 74 70 73 3a 2f 2f 79 61 68 6f 6f 2e 63 6f 6d 2f 0d 0a 43 6f 6e 74 65 6e 74 2d 4c 65 6e 67 74 68 3a 20 38 0d 0a 0d 0a 72 65 64 69 72 65 
 ```
 
+**Output BINARY_ALL**
 
-**Filtering and tracking**
+```bash
+# ipscap --port=80 --output=BINARY_ALL
+Time:           2025-01-19 00:29:01.3744 / 1737300541.37, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Identification: 235, Total length: 813, Checksum: 5225, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Checksum: 26441, Sequence: 3776002, Acknowledgement: 1113370711, Window: 65535, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 142.250.199.110                Port: 80
+Destination:    IP: 10.0.2.15                      Port: 36290
+Direction:      RECEIVE [ <<< ]
+Data length:    773 byte
+IP-H data:      45 00 03 2d 00 eb 00 00 40 06 14 69 8e fa c7 6e 0a 00 02 0f 
+TCP-H data:     00 50 8d c2 00 39 9e 02 42 5c b0 57 50 18 ff ff 67 49 00 00 
+
+b'E\x00\x03-\x00\xeb\x00\x00@\x06\x14i\x8e\xfa\xc7n\n\x00\x02\x0f\x00P\x8d\xc2\x009\x9e\x02B\\\xb0WP\x18\xff\xffgI\x00\x00HTTP/1.1 301 Moved Permanently\r\nLocation: http://www.google.com/\r\nContent-Type: text/html; charset=UTF-8\r\nContent-Security-Policy-Report-Only: object-src \'none\';base-uri \'self\';script-src \'nonce-e1_QsOtq8Yf-OJsvozjQXQ\' \'strict-dynamic\' \'report-sample\' \'unsafe-eval\' \'unsafe-inline\' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp\r\nDate: Sun, 19 Jan 2025 15:28:51 GMT\r\nExpires: Tue, 18 Feb 2025 15:28:51 GMT\r\nCache-Control: public, max-age=2592000\r\nServer: gws\r\nContent-Length: 219\r\nX-XSS-Protection: 0\r\nX-Frame-Options: SAMEORIGIN\r\n\r\n<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">\n<TITLE>301 Moved</TITLE></HEAD><BODY>\n<H1>301 Moved</H1>\nThe document has moved\n<A HREF="http://www.google.com/">here</A>.\r\n</BODY></HTML>\r\n'
+```
+
+
+
+**Filter and tracking**
 
 ```bash
 # ipscap --port=80 --find=GET --tracking --output=HEX

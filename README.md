@@ -84,7 +84,7 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 
 ## "ipsurv" command
 
-`ipsurv` command reference is [here](./docs/ipsurv-cmd/README.md).
+`ipsurv` command reference is [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/README.html).
 
 ### Features
 
@@ -195,7 +195,7 @@ $ ipsurv 8.8.8.8 --geoip_only
 
 ## "ipscap" command
 
-`ipscap` command reference is [here](./docs/ipscap-cmd/README.md).
+`ipscap` command reference is [here](https://deer-hunt.github.io/ipsurv/pages/ipscap-cmd/README.html).
 
 ### Features
 

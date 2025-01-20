@@ -1,5 +1,6 @@
 body {
 	font-size: 15px;
+	font-family: "Segoe UI" !important;
 }
 
 .body {
@@ -16,6 +17,14 @@ h3 {
 
 pre {
 	line-height: 150% !important;
+}
+
+.highlight .c1 {
+	color: #4688a6 !important;
+}
+
+a code {
+	color: #2079bb !important;
 }
 
 blockquote {

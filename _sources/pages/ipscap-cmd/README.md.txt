@@ -274,8 +274,8 @@ The following documents exist in `ipsurv`. You can read documents in [Documentat
 
 | Title                       | Path                                                                                                                             |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/command_arguments.md)                       |
-| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/command_examples.md)                         |
-| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipscap-cmd/customize_examples.md)                     |
+| **Command arguments**    | [command_arguments.md](https://deer-hunt.github.io/ipsurv/pages/ipscap-cmd/command_arguments.html)                       |
+| **Command examples**               | [command_examples.md](https://deer-hunt.github.io/ipsurv/pages/ipscap-cmd/command_examples.html)                         |
+| **Customizing and Examples**       | [customize_examples.md](https://deer-hunt.github.io/ipsurv/pages/ipscap-cmd/customize_examples.html)                     |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)                                  |
 | **ipsurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)                                 |

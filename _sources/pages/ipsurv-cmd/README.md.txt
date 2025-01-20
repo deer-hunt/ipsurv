@@ -268,12 +268,12 @@ The following documents exist in `ipsurv`. You can read documents in [Documentat
 
 | Title                       | Path                                        |
 |-------------------------------|---------------------------------------------|
-| **Command arguments**    | [command_arguments.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md) |
-| **Command examples**               | [command_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_examples.md)   |
-| **Program architecture and Classes** | [program_architecture_classes.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/program_architecture_classes.md) |
-| **Customizing and Examples**       | [customize_examples.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/customize_examples.md) |
+| **Command arguments**    | [command_arguments.md](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html) |
+| **Command examples**               | [command_examples.md](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_examples.html)   |
+| **Program architecture and Classes** | [program_architecture_classes.md](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/program_architecture_classes.html) |
+| **Customizing and Examples**       | [customize_examples.md](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/customize_examples.html) |
 | **Development and Debugging**          | [development_debug.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md)   |
-| **About Using GeoIP2** | [using_geoip2.md](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/using_geoip2.md)  |
+| **About Using GeoIP2** | [using_geoip2.md](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/using_geoip2.html)  |
 | **ipsurv's Major Modules and Classes** | [github.io / Modules and Classes reference](https://deer-hunt.github.io/ipsurv/py-modindex.html)  |
 
 

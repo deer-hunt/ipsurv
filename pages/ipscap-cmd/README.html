@@ -179,21 +179,17 @@
 </pre></div>
 </div>
 <p><strong>Filters</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;HTTP/1.1 \d01&quot;</span>
-<span class="c1"># ipscap --find=&quot;http&quot; --find_mode=MATCH</span>
-<span class="c1"># ipscap --find=&quot;00 99 f0 e0 78 4e 23 70 a1&quot; --find_mode=HEX</span>
-<span class="c1"># ipscap --find=&quot;Accept-Ranges: bytes\r\n\r\n\x00\x00\x01\x00\x01\x00&quot; --find_mode=BINARY</span>
-<span class="c1"># ipscap --find=&quot;HTTP&quot; --tracking</span>
-<span class="c1"># ipscap --condition=&quot;port!=22&quot;</span>
-<span class="c1"># ipscap --condition=&quot;src_port&gt;=80;src_port&lt;=500;flags=SYN,PSH&quot;</span>
-<span class="c1"># ipscap --condition=&quot;ttl&gt;=120&quot;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --output=HEADER # HEADER only</span>
 
-<span class="c1"># ipscap --output=HEADER # HEADER only</span>
 <span class="c1"># ipscap --output=BINARY --port=&quot;80&quot; # Binary of payload</span>
+<span class="c1"># ipscap --output=binary --port=&quot;80&quot; # Binary of payload</span>
 <span class="c1"># ipscap --output=BINARY_ALL --port=&quot;80&quot;  # Binary of payload with headers. </span>
-<span class="c1"># ipscap --output=LINE --port=&quot;80&quot; #LINE</span>
+
 <span class="c1"># ipscap --output=HEX --port=&quot;80&quot; # HEX of payload</span>
-<span class="c1"># ipscap --output=HEX_ALL --port=&quot;80&quot;  # HEX of payload with headers. </span>
+<span class="c1"># ipscap --output=hex --port=&quot;80&quot; # HEX of payload</span>
+<span class="c1"># ipscap --output=HEX_ALL --port=&quot;80&quot;  # HEX of payload with headers.</span>
+
+<span class="c1"># ipscap --output=LINE --port=&quot;80&quot; #LINE </span>
 </pre></div>
 </div>
 <p><strong>Dump files</strong></p>
@@ -240,6 +236,17 @@ Direction:<span class="w">      </span>RECEIVE<span class="w"> </span><span clas
 Data<span class="w"> </span>length:<span class="w">    </span><span class="m">6</span><span class="w"> </span>byte
 IP-H<span class="w"> </span>data:<span class="w">      </span><span class="m">45</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">28</span><span class="w"> </span>3e<span class="w"> </span>ac<span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">06</span><span class="w"> </span><span class="m">21</span><span class="w"> </span>cf<span class="w"> </span><span class="m">67</span><span class="w"> </span><span class="m">66</span><span class="w"> </span>a6<span class="w"> </span>e0<span class="w"> </span>0a<span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>0f<span class="w"> </span>
 TCP-H<span class="w"> </span>data:<span class="w">     </span><span class="m">00</span><span class="w"> </span><span class="m">50</span><span class="w"> </span>c4<span class="w"> </span>dc<span class="w"> </span><span class="m">04</span><span class="w"> </span>0e<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">02</span><span class="w"> </span>d5<span class="w"> </span>3f<span class="w"> </span>4a<span class="w"> </span>ab<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>ff<span class="w"> </span>ff<span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">57</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span>
+</pre></div>
+</div>
+<p><strong>Output</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipscap --find=&quot;HTTP/1.1 \d01&quot;</span>
+<span class="c1"># ipscap --find=&quot;http&quot; --find_mode=MATCH</span>
+<span class="c1"># ipscap --find=&quot;00 99 f0 e0 78 4e 23 70 a1&quot; --find_mode=HEX</span>
+<span class="c1"># ipscap --find=&quot;Accept-Ranges: bytes\r\n\r\n\x00\x00\x01\x00\x01\x00&quot; --find_mode=BINARY</span>
+<span class="c1"># ipscap --find=&quot;HTTP&quot; --tracking</span>
+<span class="c1"># ipscap --condition=&quot;port!=22&quot;</span>
+<span class="c1"># ipscap --condition=&quot;src_port&gt;=80;src_port&lt;=500;flags=SYN,PSH&quot;</span>
+<span class="c1"># ipscap --condition=&quot;ttl&gt;=120&quot;</span>
 </pre></div>
 </div>
 <p><strong>Output line format</strong></p>

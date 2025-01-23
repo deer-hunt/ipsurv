@@ -214,6 +214,7 @@ Introduction
    # ipscap --output=HEADER # HEADER only
    # ipscap --output=BINARY --port="80" # Binary of payload
    # ipscap --output=BINARY_ALL --port="80"  # Binary of payload with headers.
+   # ipscap --output=BASE64 --port="80" # BASE64 of payload
    # ipscap --output=LINE --port="80" #LINE
 
 
@@ -228,7 +229,7 @@ Introduction
                  [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
                  [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
                  [--stat_group {0,1,2}]
-                 [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
+                 [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, BASE64, BASE64_ALL, LINE]]
                  [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
                  [--web_port] [--general_port] [--force] [--version]
 

@@ -202,7 +202,7 @@ INPUT: --tracking
 
 ### `--output`
 
-Output mode about header and data. NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE.
+Output mode about header and data. NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, BASE64, BASE64_ALL, LINE.
 
 - **Type:** `str`
 - **Default:** `TEXT`
@@ -218,6 +218,8 @@ Output mode about header and data. NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, 
 | BINARY_ALL  | Binary headers and data |
 | HEX         | Hex data    |
 | HEX_ALL     | Hex headers and data |
+| BASE64         | BASE64 data    |
+| BASE64_ALL     | BASE64 headers and data |
 | LINE        | Single line |
 
 - **Example:**

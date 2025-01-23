@@ -78,24 +78,21 @@ ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 # ipscap --force
 ```
 
+
 **Filters**
 
 ```
-# ipscap --find="HTTP/1.1 \d01"
-# ipscap --find="http" --find_mode=MATCH
-# ipscap --find="00 99 f0 e0 78 4e 23 70 a1" --find_mode=HEX
-# ipscap --find="Accept-Ranges: bytes\r\n\r\n\x00\x00\x01\x00\x01\x00" --find_mode=BINARY
-# ipscap --find="HTTP" --tracking
-# ipscap --condition="port!=22"
-# ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
-# ipscap --condition="ttl>=120"
-
 # ipscap --output=HEADER # HEADER only
+
 # ipscap --output=BINARY --port="80" # Binary of payload
+# ipscap --output=binary --port="80" # Binary of payload
 # ipscap --output=BINARY_ALL --port="80"  # Binary of payload with headers. 
-# ipscap --output=LINE --port="80" #LINE
+
 # ipscap --output=HEX --port="80" # HEX of payload
-# ipscap --output=HEX_ALL --port="80"  # HEX of payload with headers. 
+# ipscap --output=hex --port="80" # HEX of payload
+# ipscap --output=HEX_ALL --port="80"  # HEX of payload with headers.
+
+# ipscap --output=LINE --port="80" #LINE 
 ```
 
 
@@ -148,6 +145,21 @@ Data length:    6 byte
 IP-H data:      45 00 00 28 3e ac 00 00 40 06 21 cf 67 66 a6 e0 0a 00 02 0f 
 TCP-H data:     00 50 c4 dc 04 0e 16 02 d5 3f 4a ab 50 10 ff ff 96 57 00 00 
 ```
+
+
+**Output**
+
+```
+# ipscap --find="HTTP/1.1 \d01"
+# ipscap --find="http" --find_mode=MATCH
+# ipscap --find="00 99 f0 e0 78 4e 23 70 a1" --find_mode=HEX
+# ipscap --find="Accept-Ranges: bytes\r\n\r\n\x00\x00\x01\x00\x01\x00" --find_mode=BINARY
+# ipscap --find="HTTP" --tracking
+# ipscap --condition="port!=22"
+# ipscap --condition="src_port>=80;src_port<=500;flags=SYN,PSH"
+# ipscap --condition="ttl>=120"
+```
+
 
 **Output line format**
 

@@ -1,6 +1,6 @@
 body {
 	font-size: 15px;
-	font-family: "Segoe UI" !important;
+	font-family: "Segoe UI", sans-serif !important;
 }
 
 .body {
@@ -17,14 +17,29 @@ h3 {
 
 pre {
 	line-height: 150% !important;
+	padding: 15px;
 }
 
 .highlight .c1 {
-	color: #4688a6 !important;
+	color: #156fa5 !important;
+}
+
+.highlight {
+	background: #f2f4fa;
+}
+
+.highlight pre {
+	border-left-color: #dce2ed;
+	border-right-color: #dce2ed;
 }
 
 a code {
 	color: #2079bb !important;
+}
+
+table.colwidths-auto td {
+	border: 1px solid #e2e3e5;
+	padding: 6px 5px;
 }
 
 blockquote {

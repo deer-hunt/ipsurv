@@ -55,7 +55,7 @@ class Config:
         'disable_env': {'default': False, 'help': 'Disable to load env variable for args. Env name: `IPSURV_ARGS`.', 'action': 'store_true'}
     }
 
-    APP_ARGUMENTS = {
+    ARGUMENTS = {
         'resolve': {'default': True, 'type': strtobool, 'help': 'Resolve the name to IP if target value is domain or hostname automatically.', 'choices': [0, 1]},
         'identify_int': {'default': False, 'help': 'Identify IP\'s int value.', 'action': 'store_true'},
         'autodetect': {'default': False, 'help': 'Autodetect an IP or hostname that is included in the line. [Experimental]', 'action': 'store_true'},

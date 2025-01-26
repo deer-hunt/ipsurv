@@ -66,7 +66,7 @@ $ conda install conda-forge::ipsurv
 |----------|---------------------------------------------------------------------------------------------------------|
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
 | `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP-header and TCP-header, UDP-header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It support only Unix/Linux.   |
-| `ipsend` | Coming soon.   |
+| `ipsend` | `ipsend` is a network transmission tool that supports TCP, SSL, UDP, and Raw sockets, as well as interactive transmission.   |
 
 It’s best to refer to the help to recognize the functions.
 
@@ -74,6 +74,8 @@ It’s best to refer to the help to recognize the functions.
 $ ipsurv --help
 
 # ipscap --help
+
+$ ipsend --help
 ```
 
 
@@ -246,8 +248,12 @@ $ ipsurv 8.8.8.8 --geoip_only
 
 # ipscap --output=HEADER # HEADER only
 # ipscap --output=BINARY --port="80" # BINARY
+# ipscap --output=binary --port="80" # BINARY
+# ipscap --output=BINARY_ALL --port="80" # BINARY with headers
 # ipscap --output=LINE --port="80" #LINE
 # ipscap --output=HEX --port="80" # HEX
+# ipscap --output=hex --port="80" # HEX
+# ipscap --output=BASE64 --port="80" # BASE64
 ```
 
 **Capture 80 port**
@@ -347,6 +353,55 @@ TCP-H data:     00 50 cc a2 04 0c 22 02 0a 47 a9 9c 50 18 ff ff 06 2f 00 00
 [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
 [--web_port] [--general_port] [--force] [--version]
 ```
+
+## "ipsend" command
+
+### Features
+
+- Transmit by TCP, UDP, SSL.
+- Transmit by Raw socket.
+- Support Instant transmission and Interactive transmission.
+- Change Input and Output format - TEXT, HEX, BINARY, BASE64.
+- Set SSL context - SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3.
+
+> IPv6 is not supported.
+
+
+### Usage
+
+```bash
+$ ipsend --dest=google.com --http -I
+$ ipsend --dest=google.com --port=80 --interactive=2
+
+$ ipsend "GET /index.html HTTP/1.1\\n" --dest=google.com --http
+$ ipsend "GET / HTTP/1.1\\n" --dest=google.com --https
+$ ipsend --dest=google.com --https -I --output=BASE64
+$ ipsend --mode=UDP --dest=8.8.8.8 --port=53
+$ ipsend --mode=TCP --dest=wikipedia.org --http -I --output=BINARY
+
+$ ipsend --mode=SSL --dest=google.com --port=443 -I
+$ ipsend --mode=SSL --dest=google.com --https -I --output=BINARY
+```
+
+### Command options
+
+```
+[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+[--mode {TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD}]
+[--input {TEXT,BINARY,HEX,BASE64}]
+[--output {NONE,TEXT,BINARY,HEX,BASE64}]
+[--interactive {int}]
+[--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
+[--output_send {int}] [--auto_lb {bool}] [--dest {string}]
+[--port {int}] [--timeout {float}] [--ip_flags {int}]
+[--ip_identification {int}] [--ip_ttl {int}]
+[--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
+[--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
+[--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
+[--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
+[--icmp_seq {int}] [-I] [--http] [--https] [--version]
+```
+
 
 ## Path summary
 

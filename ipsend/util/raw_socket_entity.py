@@ -4,16 +4,9 @@ from abc import ABC
 
 class Header(ABC):
     def __init__(self):
-        self.header_data = b''
         self.checksum = 0
-
         self.payload_length = 0
         self.payload_data = b''
-
-        self.raws = {}
-
-    def get_sanitized_data(self):
-        return re.sub(rb'^\x00+$', b'', self.payload_data)
 
 
 class IPHeader(Header):
@@ -23,43 +16,6 @@ class IPHeader(Header):
 
     DIRECTION_SEND = 1
     DIRECTION_RECEIVE = 2
-
-    @classmethod
-    def get_protocol_code(cls, protocol):
-        if protocol == IPHeader.PROTOCOL_ICMP:
-            code = 'ICMP'
-        elif protocol == IPHeader.PROTOCOL_TCP:
-            code = 'TCP'
-        elif protocol == IPHeader.PROTOCOL_UDP:
-            code = 'UDP'
-        else:
-            code = 'UNKNOWN'
-
-        return code
-
-    @classmethod
-    def get_protocol(cls, code):
-        protocol = 0
-
-        if code == 'ICMP':
-            protocol = IPHeader.PROTOCOL_ICMP
-        elif code == 'TCP':
-            protocol = IPHeader.PROTOCOL_TCP
-        elif code == 'UDP':
-            protocol = IPHeader.PROTOCOL_UDP
-
-        return protocol
-
-    @classmethod
-    def get_direction_code(cls, direction):
-        if direction == IPHeader.DIRECTION_SEND:
-            code = 'SEND'
-        elif direction == IPHeader.DIRECTION_RECEIVE:
-            code = 'RECEIVE'
-        else:
-            code = 'UNKNOWN'
-
-        return code
 
     def __init__(self):
         super().__init__()
@@ -79,14 +35,14 @@ class IPHeader(Header):
         self.dest_ip = None
         self.dest_ip_int = None
 
-        self.direction = 0
-        self.direction_code = None
-
 
 class ProtocolHeader(ABC):
     def __init__(self):
         self.src_port = 0
         self.dest_port = 0
+
+    def get_sanitized_data(self):
+        return re.sub(rb'^\x00+$', b'', self.payload_data)
 
 
 class ICMPHeader(Header, ProtocolHeader):
@@ -113,36 +69,6 @@ class TCPHeader(Header, ProtocolHeader):
     FLAG_URG = 32
     FLAG_ECE = 64
     FLAG_CWR = 128
-
-    @classmethod
-    def get_flag_codes(cls, flags):
-        flag_codes = []
-
-        if flags & TCPHeader.FLAG_FIN:
-            flag_codes.append('FIN')
-
-        if flags & TCPHeader.FLAG_SYN:
-            flag_codes.append('SYN')
-
-        if flags & TCPHeader.FLAG_RST:
-            flag_codes.append('RST')
-
-        if flags & TCPHeader.FLAG_PSH:
-            flag_codes.append('PSH')
-
-        if flags & TCPHeader.FLAG_ACK:
-            flag_codes.append('ACK')
-
-        if flags & TCPHeader.FLAG_URG:
-            flag_codes.append('URG')
-
-        if flags & TCPHeader.FLAG_ECE:
-            flag_codes.append('ECE')
-
-        if flags & TCPHeader.FLAG_CWR:
-            flag_codes.append('CWR')
-
-        return flag_codes
 
     @classmethod
     def get_flags(cls, codes):

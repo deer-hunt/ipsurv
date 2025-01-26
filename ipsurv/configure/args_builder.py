@@ -26,7 +26,7 @@ class ArgsBuilder:
 
         env_conf = self._load_env_conf(Constant.ENV_CONF_VAR)
 
-        args = self.build_args(parent_parser, self.config.APP_ARGUMENTS, env_ags, env_conf)
+        args = self.build_args(parent_parser, self.config.ARGUMENTS, env_ags, env_conf)
 
         return args
 

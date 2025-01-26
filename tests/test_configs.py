@@ -16,7 +16,7 @@ class TestConstant:
 class TestConfig:
     def test_vars(self):
         assert hasattr(Config, 'PRE_ARGUMENTS')
-        assert hasattr(Config, 'APP_ARGUMENTS')
+        assert hasattr(Config, 'ARGUMENTS')
         assert hasattr(Config, 'ENV_CONFS')
         assert hasattr(Config, 'FORMAT_PROFILES')
         assert hasattr(Config, 'FORMAT_PARAMS')

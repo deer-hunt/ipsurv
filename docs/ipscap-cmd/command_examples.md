@@ -14,7 +14,7 @@ usage: ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
               [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
               [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
               [--stat_group {0,1,2}]
-              [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
+              [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, BASE64, BASE64_ALL, LINE]]
               [--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
               [--web_port] [--general_port] [--force] [--version]
 
@@ -365,9 +365,9 @@ TCP-H data:     ed 1a 00 50 07 ed f2 ce 00 18 6a 02 50 18 72 10 79 7d 00 00
 
 47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 65 72 2d 41 67 65 6e 74 3a 20 63 75 72 6c 2f 37 2e 32 39 2e 30 0d 0a 48 6f 73 74 3a 20 67 6f 6f 67 6c 65 2e 63 6f 6d 0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a 
 
-Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~..7679, Passage number: 2
+Time:           2025-01-12 22:54:09.7679 / ~~~~~~~~~~.7679, Passage number: 2
 IP header:      Version: 4, IP header length: 20, Total length: 40, TTL: 64, IP protocol: TCP[6]
-TCP header:     TCP header length: 20, Sequence: 1600002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
+TCP header:     TCP header length: 20, Sequence: 160002, Acknowledgement: 133034776, Window: 65535, Flags: ['ACK']
 TCP options:    -
 Source:         IP: 142.251.222.14            Port: 80
 Destination:    IP: 10.0.2.15                 Port: 60698
@@ -378,6 +378,27 @@ TCP-H data:     00 50 ed 1a 00 18 6a 02 07 ed f3 18 50 10 ff ff e4 30 00 00
 
 00 00 00 00 00 00 
 ```
+
+
+**BASE64**
+
+```
+# ipscap --port=80 --output=BASE64
+
+Time:           2025-01-22 22:55:07.3860 / ~~~~~~~~~~.2860, Passage number: 3
+IP header:      Version: 4, IP header length: 20, Total length: 114, TTL: 64, IP protocol: TCP[6]
+TCP header:     TCP header length: 20, Sequence: 1098, Acknowledgement: 28002, Window: 29200, Flags: ['PSH', 'ACK']
+TCP options:    -
+Source:         IP: 10.0.2.15                 Port: 60700
+Destination:    IP: 142.251.222.14            Port: 80
+Direction:      SEND [ >>> ]
+Data length:    74 byte
+IP-H data:      45 00 00 72 2a 86 40 00 40 06 96 e7 0a 00 02 0f 8e fb de 0e 
+TCP-H data:     ed 1c 00 50 0d c6 c7 da 00 1a 5e 02 50 18 72 10 79 7d 00 00 
+
+SFRUUC8xLjEgMzAxIE1vdmVkIFBlcm1hbmVudGx5DQpMb2NhdGlvbjogaHR0cDovL3d3dy5nb29nb ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Ij5oZXJlPC9BPi4NCjwvQk9EWT48L0hUTUw+DQo=BASE64
+```
+
 
 **LINE**
 

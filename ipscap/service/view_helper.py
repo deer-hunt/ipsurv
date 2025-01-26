@@ -23,7 +23,7 @@ class ViewHelper:
             self.show_filter_options(args)
 
     def show_filter_options(self, args):
-        System.line('[Filters]')
+        System.line('[FILTERS]')
 
         if args.protocol != 'TCP,UDP':
             self._show_option(args, 'protocol', 'fixed_protocols', lambda w: [IPHeader.get_protocol_code(v) for v in w])
@@ -71,7 +71,7 @@ class ViewHelper:
     def _show_stat_top(self, stat_mode):
         border = self.get_border()
 
-        System.line(border + 'Captured Transfers Statistics'.center(self.TITLE_WIDTH) + border)
+        System.line(border + 'TRANSFER STATISTICS'.center(self.TITLE_WIDTH) + border)
 
         if stat_mode == 0:
             System.line('*The statistics is disabled by `--stat_mode` option.')

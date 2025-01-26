@@ -32,8 +32,13 @@ class IPHeaderParser:
 
         ip_header.iph_length = ihl * 4
 
+        ip_header.tos = iph[1]
         ip_header.total_length = iph[2]
         ip_header.identification = iph[3]
+
+        flags_fragment_offset = iph[4]
+        ip_header.flags = (flags_fragment_offset >> 13)
+        ip_header.fragment_offset = flags_fragment_offset & 0x1FFF
 
         ip_header.ttl = iph[5]
         ip_header.protocol = iph[6]
@@ -63,7 +68,7 @@ class IPHeaderParser:
         raws['version_ihl'] = self.get_hex(hdata, 0)
         raws['total_length'] = self.get_hex(hdata, 2, 2)
         raws['identification'] = self.get_hex(hdata, 4, 2)
-        raws['flags_offset'] = self.get_hex(hdata, 6, 2)
+        raws['flags_fragment_offset'] = self.get_hex(hdata, 6, 2)
         raws['ttl'] = self.get_hex(hdata, 8)
         raws['protocol'] = self.get_hex(hdata, 9)
         raws['checksum'] = self.get_hex(hdata, 10, 2)

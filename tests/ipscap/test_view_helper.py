@@ -59,7 +59,7 @@ if os.name == 'posix':
 
             captured = capfd.readouterr()
 
-            assert 'Captured Transfers Statistics' in captured.out
+            assert 'STATISTICS' in captured.out
             assert '192.168.1.2:80' in captured.out
             assert '500' in captured.out
 

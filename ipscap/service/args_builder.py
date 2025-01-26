@@ -20,7 +20,7 @@ class ArgsBuilder:
     def parse(self):
         parent_parser, args = self.init_args(self.config.PRE_ARGUMENTS)
 
-        return self.build_args(parent_parser, self.config.APP_ARGUMENTS)
+        return self.build_args(parent_parser, self.config.ARGUMENTS)
 
     def init_args(self, arguments):
         parser, args = ArgsHelper.init_parser(arguments)
@@ -183,7 +183,9 @@ class ArgsBuilder:
             4: Constant.OUTPUT_BINARY_ALL,
             5: Constant.OUTPUT_HEX,
             6: Constant.OUTPUT_HEX_ALL,
-            7: Constant.OUTPUT_LINE
+            7: Constant.OUTPUT_BASE64,
+            8: Constant.OUTPUT_BASE64_ALL,
+            9: Constant.OUTPUT_LINE,
         }
 
         if output.isdigit():

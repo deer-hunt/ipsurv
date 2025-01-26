@@ -19,7 +19,7 @@ Command:
 
 class MyObjectFactory(ObjectFactory):
     def get_config(self):
-        Config.APP_ARGUMENTS['json']['default'] = 2
+        Config.ARGUMENTS['json']['default'] = 2
         Config.COLLECTORS = ['dnsreverse']
 
         return Config

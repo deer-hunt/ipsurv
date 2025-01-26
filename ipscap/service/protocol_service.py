@@ -3,6 +3,7 @@ from abc import ABC
 from ipscap.configs import Constant
 from ipscap.util.raw_socket_entity import IPHeader
 from ipsurv.util.sys_util import System
+import base64
 import copy
 
 
@@ -92,6 +93,12 @@ class ProtocolService(ABC):
         elif output == Constant.OUTPUT_HEX_ALL:
             hex_data = self.get_hex_data(self.get_all_data(ip_header, protocol_header))
             System.line(hex_data + "\n")
+        elif output == Constant.OUTPUT_BASE64:
+            data = self.get_base64_data(protocol_header.payload_data)
+            System.line(data + "\n")
+        elif output == Constant.OUTPUT_BASE64_ALL:
+            data = self.get_base64_data(self.get_all_data(ip_header, protocol_header))
+            System.line(data + "\n")
 
     def get_all_data(self, ip_header, protocol_header):
         return ip_header.header_data + protocol_header.header_data + protocol_header.payload_data
@@ -106,6 +113,11 @@ class ProtocolService(ABC):
         hex_data = ''.join(f'{byte:02x} ' for byte in data)
 
         return hex_data
+
+    def get_base64_data(self, data):
+        base64_data = base64.b64encode(data)
+
+        return base64_data.decode('utf-8')
 
     def label(self, v, n=16):
         return v.ljust(n)

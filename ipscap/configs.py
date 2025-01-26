@@ -49,6 +49,8 @@ documents:
     OUTPUT_BINARY_ALL = 'BINARY_ALL'
     OUTPUT_HEX = 'HEX'
     OUTPUT_HEX_ALL = 'HEX_ALL'
+    OUTPUT_BASE64 = 'BASE64'
+    OUTPUT_BASE64_ALL = 'BASE64_ALL'
     OUTPUT_LINE = 'LINE'
 
     DUMPFILE_DIR = 'dump_logs'
@@ -61,7 +63,7 @@ class Config:
         'log': {'default': None, 'type': str, 'help': 'Verbose log filename.', 'metavar': '{string}'}
     }
 
-    APP_ARGUMENTS = {
+    ARGUMENTS = {
         'find': {'default': '', 'help': 'Find character string by regex and ignoring case. ex: "3\\d1", "HTTP"', 'metavar': '{string}'},
         'find_mode': {'default': 'REGEX', 'help': 'Find mode. [Mode name] or [1 - 4]\nREGEX, MATCH, BINARY, HEX', 'metavar': '[REGEX, MATCH, BINARY, HEX]'},
         'port': {'default': '', 'type': str, 'help': 'Filter port. It is source port or destination port. ex: =80, =53,80', 'metavar': '{int}'},

@@ -44,10 +44,10 @@ class ArgValidator(ABC):
 
 class ArgsHelper:
     @staticmethod
-    def init_parser(arguments, formatter_class=argparse.ArgumentDefaultsHelpFormatter):
+    def init_parser(arguments, formatter_class=argparse.ArgumentDefaultsHelpFormatter, raw=False, group_names=None):
         parser = argparse.ArgumentParser(add_help=False, formatter_class=formatter_class)
 
-        ArgsHelper.add_arguments(parser, arguments, [])
+        ArgsHelper.add_arguments(parser, arguments, [], raw=raw, group_names=group_names)
 
         args, unknown = parser.parse_known_args()
 
@@ -78,8 +78,27 @@ class ArgsHelper:
         logging.basicConfig(**opts)
 
     @staticmethod
-    def add_arguments(parser, arguments, overrides):
+    def add_arguments(parser, arguments, overrides, raw=False, group_names=None):
+        groups = {}
+
         for arg, options in arguments.items():
+            if raw:
+                options = {'action': options['action']} if 'action' in options else {}
+
+            if 'group' in options:
+                group_key = options['group']
+
+                if group_key not in groups:
+                    name = group_names[group_key] if group_names is not None and group_key in group_names else group_key
+                    target_parser = parser.add_argument_group(name)
+                    groups[group_key] = target_parser
+                else:
+                    target_parser = groups[group_key]
+
+                del options['group']
+            else:
+                target_parser = parser
+
             if arg in overrides:
                 options['default'] = overrides[arg]
 
@@ -89,7 +108,24 @@ class ArgsHelper:
             if 'type' in options and 'choices' not in options and 'metavar' not in options:
                 options['metavar'] = ''
 
-            parser.add_argument('--{}'.format(arg), **options)
+            if not options.get('nargs'):
+                params = []
+
+                format = '--{}'
+
+                if 'shorten' in options:
+                    if options['shorten'] is not True:
+                        params.append(options['shorten'])
+                    else:
+                        format = '-{}'
+
+                    del options['shorten']
+
+                params.append(format.format(arg))
+
+                target_parser.add_argument(*params, **options)
+            else:
+                target_parser.add_argument(arg, **options)
 
 
 class StdinLoader:

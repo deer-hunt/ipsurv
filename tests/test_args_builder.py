@@ -60,7 +60,7 @@ class TestArgsBuilder:
 
         parent_parser.parse_known_args()
 
-        arguments = Config.APP_ARGUMENTS
+        arguments = Config.ARGUMENTS
 
         env_args = {}
         env_conf = {}
@@ -75,7 +75,7 @@ class TestArgsBuilder:
     def test_prepare_arguments(self, args_builder):
         parser = argparse.ArgumentParser(add_help=False, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-        args_builder._prepare_arguments(parser, Config.APP_ARGUMENTS, {})
+        args_builder._prepare_arguments(parser, Config.ARGUMENTS, {})
 
     def test_logging(self, args_builder, caplog):
         data = ValueData({})

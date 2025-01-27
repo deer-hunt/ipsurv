@@ -1,0 +1,421 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to “ipsend” &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction to “ipsend”</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-ipsend">
+<h1>Introduction to “ipsend”<a class="headerlink" href="#introduction-to-ipsend" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ipsend</span></code> is a network transmission tool that supports TCP, SSL, UDP, and Raw sockets, as well as interactive transmission.</p>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Transmit by TCP, UDP, SSL.</p></li>
+<li><p>Transmit by Raw socket.</p></li>
+<li><p>Support Instant transmission and Interactive transmission.</p></li>
+<li><p>Specify Input and Output format - TEXT, HEX, BINARY, BASE64.</p></li>
+<li><p>Set SSL context - SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3.</p></li>
+</ul>
+<blockquote>
+<div><p>IPv6 is not supported.</p>
+</div></blockquote>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>Options</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>usage:<span class="w"> </span>ipsend<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>--verbose<span class="w"> </span><span class="o">{</span><span class="m">0</span>,1,2,3<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>--log<span class="w"> </span><span class="o">{</span>string<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--input<span class="w"> </span><span class="o">{</span>TEXT,BINARY,HEX,BASE64<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--output<span class="w"> </span><span class="o">{</span>NONE,TEXT,BINARY,HEX,BASE64<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--interactive<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--ssl_context<span class="w"> </span><span class="o">{</span>SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--output_send<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--auto_lb<span class="w"> </span><span class="o">{</span>bool<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--dest<span class="w"> </span><span class="o">{</span>string<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--port<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--timeout<span class="w"> </span><span class="o">{</span>float<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--ip_flags<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--ip_identification<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--ip_ttl<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--ip_protocol<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--src_ip<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--src_port<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--dest_ip<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--dest_port<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--tcp_flags<span class="w"> </span><span class="o">{</span>str<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--tcp_seq<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--tcp_ack<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--tcp_window<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--icmp_type<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--icmp_code<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--icmp_id<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--icmp_seq<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>-I<span class="o">]</span><span class="w"> </span><span class="o">[</span>--http<span class="o">]</span><span class="w"> </span><span class="o">[</span>--https<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="optional-arguments">
+<h2>Optional Arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-h, –help</p></td>
+<td><p>Show this help message and exit</p></td>
+</tr>
+<tr class="row-odd"><td><p>–verbose {0,1,2,3}</p></td>
+<td><p>Verbose mode. [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]</p></td>
+</tr>
+<tr class="row-even"><td><p>–debug</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–log {string}</p></td>
+<td><p>Verbose log filename.</p></td>
+</tr>
+<tr class="row-even"><td><p>–mode</p></td>
+<td><p>Transmission mode. <br>[TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD]</p></td>
+</tr>
+<tr class="row-odd"><td><p>–input {TEXT,BINARY,HEX,BASE64}</p></td>
+<td><p>Input format. Default: TEXT</p></td>
+</tr>
+<tr class="row-even"><td><p>–output {NONE,TEXT,BINARY,HEX,BASE64}</p></td>
+<td><p>Output format. Default: TEXT</p></td>
+</tr>
+<tr class="row-odd"><td><p>–interactive {int}</p></td>
+<td><p>Enable INTERACTIVE mode. <br>[1: Line-break to send, 2: Ctrl-key to send]</p></td>
+</tr>
+<tr class="row-even"><td><p>–ssl_context</p></td>
+<td><p>SSL context.<br>[SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3]</p></td>
+</tr>
+<tr class="row-odd"><td><p>–output_send {int}</p></td>
+<td><p>Output Send-data in INSTANT mode. [1: Output &amp; Send, 2: Only output]</p></td>
+</tr>
+<tr class="row-even"><td><p>–auto_lb {bool}</p></td>
+<td><p>Append Line-break in INSTANT mode and <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> input format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–dest {string}</p></td>
+<td><p>Destination IP or Hostname.</p></td>
+</tr>
+<tr class="row-even"><td><p>–port {int}</p></td>
+<td><p>Destination port.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–timeout {float}</p></td>
+<td><p>Timeout. Default: 20.0</p></td>
+</tr>
+<tr class="row-even"><td><p>–version</p></td>
+<td><p>Show version information.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–ip_flags {int}</p></td>
+<td><p>IP flags.</p></td>
+</tr>
+<tr class="row-even"><td><p>–ip_identification {int}</p></td>
+<td><p>IP identification.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–ip_ttl {int}</p></td>
+<td><p>IP TTL.</p></td>
+</tr>
+<tr class="row-even"><td><p>–ip_protocol {int}</p></td>
+<td><p>IP Protocol number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–src_ip {int}</p></td>
+<td><p>Source IP.</p></td>
+</tr>
+<tr class="row-even"><td><p>–src_port {int}</p></td>
+<td><p>Source port.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–dest_ip {int}</p></td>
+<td><p>Destination IP.</p></td>
+</tr>
+<tr class="row-even"><td><p>–dest_port {int}</p></td>
+<td><p>Destination port.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–tcp_flags {str}</p></td>
+<td><p>TCP flags. ex: FIN,SYN,RST,PSH,ACK</p></td>
+</tr>
+<tr class="row-even"><td><p>–tcp_seq {int}</p></td>
+<td><p>TCP sequence number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–tcp_ack {int}</p></td>
+<td><p>TCP acknowledgment number.</p></td>
+</tr>
+<tr class="row-even"><td><p>–tcp_window {int}</p></td>
+<td><p>TCP window size.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–icmp_type {int}</p></td>
+<td><p>ICMP type.</p></td>
+</tr>
+<tr class="row-even"><td><p>–icmp_code {int}</p></td>
+<td><p>ICMP code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–icmp_id {int}</p></td>
+<td><p>ICMP identifier.</p></td>
+</tr>
+<tr class="row-even"><td><p>–icmp_seq {int}</p></td>
+<td><p>ICMP sequence number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-I</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-I</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--interactive=1</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>–http</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--http</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=80</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>–https</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--https</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=443</span> <span class="pre">--mode=SSL</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="command-examples">
+<h2>Command Examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>INSTANT mode</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET /index.html HTTP/1.1\n&quot; --dest=google.com --http
+
+HTTP/1.1 200 OK
+Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+Content-Security-Policy-Report-Only: object-src &#39;none&#39;;base-uri &#39;self&#39;;script-src &#39;nonce-w83nSY4SHEvUEbhHyzS0hw&#39; &#39;strict-dynamic&#39; &#39;report-sample&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+P3P: CP=&quot;This is not a P3P policy! See g.co/p3phelp for more info.&quot;
+Server: gws
+X-XSS-Protection: 0
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET / HTTP/1.1\n&quot; --dest=google.com --https
+
+HTTP/1.1 200 OK
+Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET / HTTP/1.1\n&quot; --dest=wikipedia.org --mode=SSL --port=443
+
+HTTP/1.1 400 Bad Request
+date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
+server: Varnish
+x-cache: cp5022 int
+x-cache-status: int-front
+</pre></div>
+</div>
+<p><strong>INTERACTIVE mode</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
+
+python3 -m ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+GET / HTTP/1.1
+
+HTTP/1.1 200 OK
+Date: Mon, 27 Jan 2025 10:25:13 GMT
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=wikipedia.org --https -I
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+GET / HTTP/1.1
+
+HTTP/1.1 400 Bad Request
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=google.com --https -I --output=BASE64
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+GET / HTTP/1.1
+
+SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBNb24sIDI3IEphbiAyMDI1IDEwOjI4OjA4IEdNVA0KRXhwaXJlczogLTENCkNhY2hlLUNvbnRyb2w6IHByaXZhdGUsIG1heC1hZ~~~~~~
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=gmail-smtp-in.l.google.com --port=25 -I
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+220 mx.google.com ESMTP d2e1a72fcca58-72f8a78e16asi10830435b3a.292 - gsmtp
+
+EHLO gmail.com
+MAIL FROM:&lt;???????@???????.com&gt;
+RCPT TO:&lt;????????@gmail.com&gt;
+DATA
+
+451-4.5.0 SMTP protocol violation. For more information, go to
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=google.com --port=80 --interactive=2
+[INTERACTIVE] / Ctrl-key to send
+
+Please input send-data. Press `Ctrl+D` to send.
+~~~~~
+</pre></div>
+</div>
+<p><strong>Various output</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=wikipedia.org --http -I --output=HEX
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+GET / HTTP/1.1
+
+48 54 54 50 2f 31 2e 31 20 33 30 31 20 4d 6f 76 65 64 20 50 65 72 6d 61 6e 65 6e 74 6c 79 0d 0a 63 6f 6e 74 65 ~~~~~~~~ 6f 6e 6e 65 63 74 69 6f 6e 3a 20 63 6c 6f 73 65 0d 0a 0d 0a
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=wikipedia.org --http -I --output=BASE64
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=UDP --dest=8.8.8.8 --port=53 --input=BINARY --interactive=2
+[INTERACTIVE] / Ctrl-key to send
+
+Please input send-data. Press `Ctrl+D` to send.
+
+\xdb!\x01 \x00\x01\x00\x00\x00\x00\x00\x01\x03www\x06google\x03com\x00\x00\x01\x00\x01\x00\x00)\x10\x00\x00\x00\x00\x00\x00\x00
+!wwwgooglecom)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=wikipedia.org --https -I --output=BINARY
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+
+GET / HTTP/1.1
+
+b&#39;HTTP/1.1 400 Bad Request\r\ndate: Mon, 27 Jan 2025 10:32:55 GMT\r\nserver: Varnish\r\nx-cache: ~~~~~ &lt;/div&gt;\n&lt;/html&gt;\n&#39;
+</pre></div>
+</div>
+<p><strong>Header send</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipsend &#39;47 45 54 20 2f 69 6e 64 65 78 2e 68 74 6d 6c 20 48 54 54 50 2f 31 2e 31 0a 0a 0a&#39; --mode=TCP --dest=172.217.31.174 --port=80 --input=HEX</span>
+<span class="c1"># ipsend &#39;R0VUIC9pbmRleC5odG1sIEhUVFAvMS4xCkhvc3Q6IHd3dy5nb29nbGUuY29tCgo=&#39; --mode=TCP --dest=172.217.31.174 --port=80 --input=BASE64</span>
+
+<span class="c1"># ipsend &#39;\xaa\x1e\x00P\xc9\x94o&quot;\x005\xb6\x02P\x18r\x10y}\x00\x00GET / HTTP/1.1\r\nAccept: */*\r\n\r\n&#39; --mode=TCP_HEADER --dest=google.com --input=BINARY</span>
+<span class="c1"># ipsend &#39;\xaa\x1e\x00P\xc9\x94o&quot;\x005\xb6\x02P\x18r\x10y}\x00\x00GET / HTTP/1.1\r\nHost: google.com\r\n\r\n&#39; --mode=TCP_HEADER --dest=172.217.31.174 --input=binary</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="documents">
+<h2>Documents<a class="headerlink" href="#documents" title="Permalink to this headline">¶</a></h2>
+<p>The following documents exist in <code class="docutils literal notranslate"><span class="pre">ipsurv</span></code>. You can read documents in <a class="reference external" href="https://deer-hunt.github.io/ipsurv/">Documentation site</a>.</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Title</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Command arguments</strong></p></td>
+<td><p><a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsend-cmd/command_arguments.html">command_arguments.md</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Customizing and Examples</strong></p></td>
+<td><p><a class="reference external" href="https://deer-hunt.github.io/ipsurv/pages/ipsend-cmd/customize_examples.html">customize_examples.md</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Development and Debugging</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/deer-hunt/ipsurv/blob/main/docs/development_debug.md">development_debug.md</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ipsurv’s Major Modules and Classes</strong></p></td>
+<td><p><a class="reference external" href="https://deer-hunt.github.io/ipsurv/py-modindex.html">github.io / Modules and Classes reference</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/README.html">Introduction to “ipsurv”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/README.html">Introduction to “ipscap”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_examples.html">Command examples</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Others</h3>
+	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introduction to “ipsend”</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,690 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Command arguments &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bizstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="command-arguments">
+<h1>Command arguments<a class="headerlink" href="#command-arguments" title="Permalink to this headline">¶</a></h1>
+<p>This document is description of ipsend’s command arguments.</p>
+<div class="section" id="general-and-debugging">
+<h2>General and Debugging<a class="headerlink" href="#general-and-debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verbose">
+<h3><code class="docutils literal notranslate"><span class="pre">--verbose</span></code><a class="headerlink" href="#verbose" title="Permalink to this headline">¶</a></h3>
+<p>Verbose mode. Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Choices:</strong></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>TRACE_ERROR. Output error with trace.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>INFO. Output setting values and internal values.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>DEBUG. Output maximum debug information.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span>
+<span class="o">--</span><span class="n">verbose</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debug">
+<h3><code class="docutils literal notranslate"><span class="pre">--debug</span></code><a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--verbose=3</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">debug</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h3><code class="docutils literal notranslate"><span class="pre">--log</span></code><a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h3>
+<p>Verbose log filename.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">log</span><span class="o">=</span><span class="n">verbose</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="primary-options">
+<h2>Primary options<a class="headerlink" href="#primary-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mode">
+<h3><code class="docutils literal notranslate"><span class="pre">--mode</span></code><a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<p>Transmission mode. Default: TCP.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">TCP</span></code></p></li>
+<li><p><strong>Choices:</strong> <code class="docutils literal notranslate"><span class="pre">TCP</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP</span></code>, <code class="docutils literal notranslate"><span class="pre">SSL</span></code>, <code class="docutils literal notranslate"><span class="pre">IP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">TCP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">ICMP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">IP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">TCP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">ICMP_PAYLOAD</span></code></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TCP</p></td>
+<td><p>TCP protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP</p></td>
+<td><p>UDP protocol.</p></td>
+</tr>
+<tr class="row-even"><td><p>SSL</p></td>
+<td><p>SSL protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IP_HEADER</p></td>
+<td><p>IP Header which contains Protocol headers and payload.</p></td>
+</tr>
+<tr class="row-even"><td><p>TCP_HEADER</p></td>
+<td><p>TCP Header which contains payload.</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP_HEADER</p></td>
+<td><p>UDP Header which contains payload.</p></td>
+</tr>
+<tr class="row-even"><td><p>ICMP_HEADER</p></td>
+<td><p>ICMP Header which contains payload.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IP_PAYLOAD</p></td>
+<td><p>IP Payload. The header data is generated by parameters automatically.</p></td>
+</tr>
+<tr class="row-even"><td><p>TCP_PAYLOAD</p></td>
+<td><p>TCP Payload. The header data is generated by parameters automatically.</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP_PAYLOAD</p></td>
+<td><p>UDP Payload. The header data is generated by parameters automatically.</p></td>
+</tr>
+<tr class="row-even"><td><p>ICMP_PAYLOAD</p></td>
+<td><p>ICMP Payload. The header data is generated by parameters automatically.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">TCP</span>
+<span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">UDP</span>
+<span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="n">SSL</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="input">
+<h3><code class="docutils literal notranslate"><span class="pre">--input</span></code><a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<p>Input format. Default: TEXT.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></li>
+<li><p><strong>Choices:</strong> <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">BINARY</span></code>, <code class="docutils literal notranslate"><span class="pre">HEX</span></code>, <code class="docutils literal notranslate"><span class="pre">BASE64</span></code></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>Text format</p></td>
+</tr>
+<tr class="row-odd"><td><p>BINARY</p></td>
+<td><p>Binary format</p></td>
+</tr>
+<tr class="row-even"><td><p>HEX</p></td>
+<td><p>Hexadecimal format</p></td>
+</tr>
+<tr class="row-odd"><td><p>BASE64</p></td>
+<td><p>Base64 encoded format</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="nb">input</span><span class="o">=</span><span class="n">TEXT</span>
+<span class="o">--</span><span class="nb">input</span><span class="o">=</span><span class="n">BINARY</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output">
+<h3><code class="docutils literal notranslate"><span class="pre">--output</span></code><a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<p>Output format. Default: TEXT.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">TEXT</span></code></p></li>
+<li><p><strong>Choices:</strong> <code class="docutils literal notranslate"><span class="pre">NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">TEXT</span></code>, <code class="docutils literal notranslate"><span class="pre">BINARY</span></code>, <code class="docutils literal notranslate"><span class="pre">HEX</span></code>, <code class="docutils literal notranslate"><span class="pre">BASE64</span></code></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>Text format</p></td>
+</tr>
+<tr class="row-odd"><td><p>BINARY</p></td>
+<td><p>Binary format</p></td>
+</tr>
+<tr class="row-even"><td><p>HEX</p></td>
+<td><p>Hexadecimal format</p></td>
+</tr>
+<tr class="row-odd"><td><p>BASE64</p></td>
+<td><p>Base64 encoded format</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">TEXT</span>
+<span class="o">--</span><span class="n">output</span><span class="o">=</span><span class="n">HEX</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interactive">
+<h3><code class="docutils literal notranslate"><span class="pre">--interactive</span></code><a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h3>
+<p>Enable INTERACTIVE mode.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>INSTANT mode.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Enable INTERACTIVE mode. Line-break to send.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Enable INTERACTIVE mode. Ctrl-key to send</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">interactive</span><span class="o">=</span><span class="mi">1</span>
+<span class="o">--</span><span class="n">interactive</span><span class="o">=</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ssl-context">
+<h3><code class="docutils literal notranslate"><span class="pre">--ssl_context</span></code><a class="headerlink" href="#ssl-context" title="Permalink to this headline">¶</a></h3>
+<p>SSL context in SSL protocol.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><strong>Choices:</strong> <code class="docutils literal notranslate"><span class="pre">SSLV3</span></code>, <code class="docutils literal notranslate"><span class="pre">TLS1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">TLS1.1</span></code>, <code class="docutils literal notranslate"><span class="pre">TLS1.2</span></code>, <code class="docutils literal notranslate"><span class="pre">TLS1.3</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">ssl_context</span><span class="o">=</span><span class="n">TLS1</span><span class="mf">.2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-send">
+<h3><code class="docutils literal notranslate"><span class="pre">--output_send</span></code><a class="headerlink" href="#output-send" title="Permalink to this headline">¶</a></h3>
+<p>Output Send-data in INSTANT mode.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Output &amp; Send.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Only output.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">output_send</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auto-lb">
+<h3><code class="docutils literal notranslate"><span class="pre">--auto_lb</span></code><a class="headerlink" href="#auto-lb" title="Permalink to this headline">¶</a></h3>
+<p>Append Line-break in INSTANT mode and <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> input format.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">auto_lb</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dest">
+<h3><code class="docutils literal notranslate"><span class="pre">--dest</span></code><a class="headerlink" href="#dest" title="Permalink to this headline">¶</a></h3>
+<p>Destination IP or Hostname.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">google</span><span class="o">.</span><span class="n">com</span>
+<span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="mf">192.168.1.100</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="port">
+<h3><code class="docutils literal notranslate"><span class="pre">--port</span></code><a class="headerlink" href="#port" title="Permalink to this headline">¶</a></h3>
+<p>Destination port.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span>
+<span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">443</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timeout">
+<h3><code class="docutils literal notranslate"><span class="pre">--timeout</span></code><a class="headerlink" href="#timeout" title="Permalink to this headline">¶</a></h3>
+<p>Timeout. Default: 20.0</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">20.0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="header-mode-options">
+<h2>Header mode options<a class="headerlink" href="#header-mode-options" title="Permalink to this headline">¶</a></h2>
+<p>Header mode options is available only in <code class="docutils literal notranslate"><span class="pre">IP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">TCP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">ICMP_HEADER</span></code>, <code class="docutils literal notranslate"><span class="pre">IP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">TCP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">UDP_PAYLOAD</span></code>, <code class="docutils literal notranslate"><span class="pre">ICMP_PAYLOAD</span></code>  mode.</p>
+<div class="section" id="ip-flags">
+<h3><code class="docutils literal notranslate"><span class="pre">--ip_flags</span></code><a class="headerlink" href="#ip-flags" title="Permalink to this headline">¶</a></h3>
+<p>IP flags.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">ip_flags</span><span class="o">=</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-identification">
+<h3><code class="docutils literal notranslate"><span class="pre">--ip_identification</span></code><a class="headerlink" href="#ip-identification" title="Permalink to this headline">¶</a></h3>
+<p>IP identification.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">ip_identification</span><span class="o">=</span><span class="mi">12345</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-ttl">
+<h3><code class="docutils literal notranslate"><span class="pre">--ip_ttl</span></code><a class="headerlink" href="#ip-ttl" title="Permalink to this headline">¶</a></h3>
+<p>IP TTL.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">64</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">ip_ttl</span><span class="o">=</span><span class="mi">128</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ip-protocol">
+<h3><code class="docutils literal notranslate"><span class="pre">--ip_protocol</span></code><a class="headerlink" href="#ip-protocol" title="Permalink to this headline">¶</a></h3>
+<p>IP Protocol number.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">6</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">ip_protocol</span><span class="o">=</span><span class="mi">17</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="src-ip">
+<h3><code class="docutils literal notranslate"><span class="pre">--src_ip</span></code><a class="headerlink" href="#src-ip" title="Permalink to this headline">¶</a></h3>
+<p>Source IP.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">src_ip</span><span class="o">=</span><span class="mf">192.168.1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="src-port">
+<h3><code class="docutils literal notranslate"><span class="pre">--src_port</span></code><a class="headerlink" href="#src-port" title="Permalink to this headline">¶</a></h3>
+<p>Source port.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">src_port</span><span class="o">=</span><span class="mi">12345</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dest-ip">
+<h3><code class="docutils literal notranslate"><span class="pre">--dest_ip</span></code><a class="headerlink" href="#dest-ip" title="Permalink to this headline">¶</a></h3>
+<p>Destination IP.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">dest_ip</span><span class="o">=</span><span class="mf">8.8.8.8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dest-port">
+<h3><code class="docutils literal notranslate"><span class="pre">--dest_port</span></code><a class="headerlink" href="#dest-port" title="Permalink to this headline">¶</a></h3>
+<p>Destination port.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">dest_port</span><span class="o">=</span><span class="mi">80</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tcp-flags">
+<h3><code class="docutils literal notranslate"><span class="pre">--tcp_flags</span></code><a class="headerlink" href="#tcp-flags" title="Permalink to this headline">¶</a></h3>
+<p>TCP flags. ex: FIN,SYN,RST,PSH,ACK</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">tcp_flags</span><span class="o">=</span><span class="n">SYN</span><span class="p">,</span><span class="n">ACK</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tcp-seq">
+<h3><code class="docutils literal notranslate"><span class="pre">--tcp_seq</span></code><a class="headerlink" href="#tcp-seq" title="Permalink to this headline">¶</a></h3>
+<p>TCP sequence number.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">tcp_seq</span><span class="o">=</span><span class="mi">12345</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tcp-ack">
+<h3><code class="docutils literal notranslate"><span class="pre">--tcp_ack</span></code><a class="headerlink" href="#tcp-ack" title="Permalink to this headline">¶</a></h3>
+<p>TCP acknowledgment number.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">tcp_ack</span><span class="o">=</span><span class="mi">12346</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tcp-window">
+<h3><code class="docutils literal notranslate"><span class="pre">--tcp_window</span></code><a class="headerlink" href="#tcp-window" title="Permalink to this headline">¶</a></h3>
+<p>TCP window size.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">tcp_window</span><span class="o">=</span><span class="mi">65535</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="icmp-type">
+<h3><code class="docutils literal notranslate"><span class="pre">--icmp_type</span></code><a class="headerlink" href="#icmp-type" title="Permalink to this headline">¶</a></h3>
+<p>ICMP type.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">icmp_type</span><span class="o">=</span><span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="icmp-code">
+<h3><code class="docutils literal notranslate"><span class="pre">--icmp_code</span></code><a class="headerlink" href="#icmp-code" title="Permalink to this headline">¶</a></h3>
+<p>ICMP code.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">icmp_code</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="icmp-id">
+<h3><code class="docutils literal notranslate"><span class="pre">--icmp_id</span></code><a class="headerlink" href="#icmp-id" title="Permalink to this headline">¶</a></h3>
+<p>ICMP identifier.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">icmp_id</span><span class="o">=</span><span class="mi">12345</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="icmp-seq">
+<h3><code class="docutils literal notranslate"><span class="pre">--icmp_seq</span></code><a class="headerlink" href="#icmp-seq" title="Permalink to this headline">¶</a></h3>
+<p>ICMP sequence number.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">icmp_seq</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shortcut">
+<h2>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="i">
+<h3><code class="docutils literal notranslate"><span class="pre">-I</span></code><a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">-I</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--interactive=1</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipsend</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span> <span class="o">-</span><span class="n">I</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http">
+<h3><code class="docutils literal notranslate"><span class="pre">--http</span></code><a class="headerlink" href="#http" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--http</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=80</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipsend</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span> <span class="o">--</span><span class="n">http</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="https">
+<h3><code class="docutils literal notranslate"><span class="pre">--https</span></code><a class="headerlink" href="#https" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--https</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">--port=443</span> <span class="pre">--mode=SSL</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipsend</span> <span class="o">--</span><span class="n">dest</span><span class="o">=</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">80</span> <span class="o">--</span><span class="n">https</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version">
+<h3><code class="docutils literal notranslate"><span class="pre">--version</span></code><a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h3>
+<p>Show version information.</p>
+<ul class="simple">
+<li><p><strong>Type:</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><strong>Example:</strong></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipsend</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/README.html">Introduction to “ipsurv”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/README.html">Introduction to “ipscap”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipscap-cmd/command_examples.html">Command examples</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Others</h3>
+	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Command arguments</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

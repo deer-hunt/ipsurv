@@ -1,0 +1,454 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ipsend.util package &#8212; ipsurv  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsend.util package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ipsend-util-package">
+<h1>ipsend.util package<a class="headerlink" href="#ipsend-util-package" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
+<div class="section" id="module-ipsend.util.data_io">
+<span id="ipsend-util-data-io-module"></span><h2>ipsend.util.data_io module<a class="headerlink" href="#module-ipsend.util.data_io" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.INPUT_BASE64">
+<span class="sig-name descname"><span class="pre">INPUT_BASE64</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BASE64'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataInput.INPUT_BASE64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.INPUT_BINARY">
+<span class="sig-name descname"><span class="pre">INPUT_BINARY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BINARY'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataInput.INPUT_BINARY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.INPUT_HEX">
+<span class="sig-name descname"><span class="pre">INPUT_HEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HEX'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataInput.INPUT_HEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.INPUT_RAW">
+<span class="sig-name descname"><span class="pre">INPUT_RAW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NONE'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataInput.INPUT_RAW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.INPUT_TEXT">
+<span class="sig-name descname"><span class="pre">INPUT_TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TEXT'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataInput.INPUT_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.decode_base64">
+<span class="sig-name descname"><span class="pre">decode_base64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base64_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataInput.decode_base64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.decode_hex">
+<span class="sig-name descname"><span class="pre">decode_hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hex_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataInput.decode_hex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataInput.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataInput.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataInput.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.OUTPUT_BASE64">
+<span class="sig-name descname"><span class="pre">OUTPUT_BASE64</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BASE64'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataOutput.OUTPUT_BASE64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.OUTPUT_BINARY">
+<span class="sig-name descname"><span class="pre">OUTPUT_BINARY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BINARY'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataOutput.OUTPUT_BINARY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.OUTPUT_HEX">
+<span class="sig-name descname"><span class="pre">OUTPUT_HEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HEX'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataOutput.OUTPUT_HEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.OUTPUT_TEXT">
+<span class="sig-name descname"><span class="pre">OUTPUT_TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TEXT'</span></em><a class="headerlink" href="#ipsend.util.data_io.DataOutput.OUTPUT_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.get_base64_data">
+<span class="sig-name descname"><span class="pre">get_base64_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput.get_base64_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.get_data">
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput.get_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.get_hex_data">
+<span class="sig-name descname"><span class="pre">get_hex_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput.get_hex_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.DataOutput.output_binary">
+<span class="sig-name descname"><span class="pre">output_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.DataOutput.output_binary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.data_io.InteractiveInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InteractiveInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctrlkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.InteractiveInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.InteractiveInput.get_input">
+<span class="sig-name descname"><span class="pre">get_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.InteractiveInput.get_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.InteractiveInput.get_line">
+<span class="sig-name descname"><span class="pre">get_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.InteractiveInput.get_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.data_io.InteractiveInput.get_stdin_read">
+<span class="sig-name descname"><span class="pre">get_stdin_read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.data_io.InteractiveInput.get_stdin_read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ipsend.util.raw_socket_entity">
+<span id="ipsend-util-raw-socket-entity-module"></span><h2>ipsend.util.raw_socket_entity module<a class="headerlink" href="#module-ipsend.util.raw_socket_entity" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.Header">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Header</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.Header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.ICMPHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ICMPHeader</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.ICMPHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_entity.Header" title="ipsend.util.raw_socket_entity.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.Header</span></code></a>, <a class="reference internal" href="#ipsend.util.raw_socket_entity.ProtocolHeader" title="ipsend.util.raw_socket_entity.ProtocolHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.ProtocolHeader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.ICMPHeader.DEFAULT_HEADER_LEN">
+<span class="sig-name descname"><span class="pre">DEFAULT_HEADER_LEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.ICMPHeader.DEFAULT_HEADER_LEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IPHeader</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_entity.Header" title="ipsend.util.raw_socket_entity.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.Header</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader.DIRECTION_RECEIVE">
+<span class="sig-name descname"><span class="pre">DIRECTION_RECEIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader.DIRECTION_RECEIVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader.DIRECTION_SEND">
+<span class="sig-name descname"><span class="pre">DIRECTION_SEND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader.DIRECTION_SEND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_ICMP">
+<span class="sig-name descname"><span class="pre">PROTOCOL_ICMP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_ICMP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_TCP">
+<span class="sig-name descname"><span class="pre">PROTOCOL_TCP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_TCP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_UDP">
+<span class="sig-name descname"><span class="pre">PROTOCOL_UDP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">17</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_UDP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.ProtocolHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ProtocolHeader</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.ProtocolHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.ProtocolHeader.get_sanitized_data">
+<span class="sig-name descname"><span class="pre">get_sanitized_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_entity.ProtocolHeader.get_sanitized_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TCPHeader</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_entity.Header" title="ipsend.util.raw_socket_entity.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.Header</span></code></a>, <a class="reference internal" href="#ipsend.util.raw_socket_entity.ProtocolHeader" title="ipsend.util.raw_socket_entity.ProtocolHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.ProtocolHeader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.DEFAULT_HEADER_LEN">
+<span class="sig-name descname"><span class="pre">DEFAULT_HEADER_LEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.DEFAULT_HEADER_LEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_ACK">
+<span class="sig-name descname"><span class="pre">FLAG_ACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_ACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_CWR">
+<span class="sig-name descname"><span class="pre">FLAG_CWR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">128</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_CWR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_ECE">
+<span class="sig-name descname"><span class="pre">FLAG_ECE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">64</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_ECE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_FIN">
+<span class="sig-name descname"><span class="pre">FLAG_FIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_FIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_PSH">
+<span class="sig-name descname"><span class="pre">FLAG_PSH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_PSH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_RST">
+<span class="sig-name descname"><span class="pre">FLAG_RST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_RST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_SYN">
+<span class="sig-name descname"><span class="pre">FLAG_SYN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_SYN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.FLAG_URG">
+<span class="sig-name descname"><span class="pre">FLAG_URG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.FLAG_URG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.TCPHeader.get_flags">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_flags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">codes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_entity.TCPHeader.get_flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.UDPHeader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UDPHeader</span></span><a class="headerlink" href="#ipsend.util.raw_socket_entity.UDPHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_entity.Header" title="ipsend.util.raw_socket_entity.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.Header</span></code></a>, <a class="reference internal" href="#ipsend.util.raw_socket_entity.ProtocolHeader" title="ipsend.util.raw_socket_entity.ProtocolHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_entity.ProtocolHeader</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_entity.UDPHeader.DEFAULT_HEADER_LEN">
+<span class="sig-name descname"><span class="pre">DEFAULT_HEADER_LEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#ipsend.util.raw_socket_entity.UDPHeader.DEFAULT_HEADER_LEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ipsend.util.raw_socket_generator">
+<span id="ipsend-util-raw-socket-generator-module"></span><h2>ipsend.util.raw_socket_generator module<a class="headerlink" href="#module-ipsend.util.raw_socket_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.HeaderGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HeaderGenerator</span></span><a class="headerlink" href="#ipsend.util.raw_socket_generator.HeaderGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.HeaderGenerator.calculate_checksum">
+<span class="sig-name descname"><span class="pre">calculate_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.HeaderGenerator.calculate_checksum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.HeaderGenerator.create_pseudo_header">
+<span class="sig-name descname"><span class="pre">create_pseudo_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.HeaderGenerator.create_pseudo_header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.HeaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.HeaderGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.ICMPHeaderGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ICMPHeaderGenerator</span></span><a class="headerlink" href="#ipsend.util.raw_socket_generator.ICMPHeaderGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_generator.HeaderGenerator" title="ipsend.util.raw_socket_generator.HeaderGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_generator.HeaderGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.ICMPHeaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">icmp_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.ICMPHeaderGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.IPHeaderGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IPHeaderGenerator</span></span><a class="headerlink" href="#ipsend.util.raw_socket_generator.IPHeaderGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.IPHeaderGenerator.calculate_checksum">
+<span class="sig-name descname"><span class="pre">calculate_checksum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.IPHeaderGenerator.calculate_checksum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.IPHeaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_header</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.IPHeaderGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.TCPHeaderGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TCPHeaderGenerator</span></span><a class="headerlink" href="#ipsend.util.raw_socket_generator.TCPHeaderGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_generator.HeaderGenerator" title="ipsend.util.raw_socket_generator.HeaderGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_generator.HeaderGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.TCPHeaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tcp_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.TCPHeaderGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.UDPHeaderGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UDPHeaderGenerator</span></span><a class="headerlink" href="#ipsend.util.raw_socket_generator.UDPHeaderGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ipsend.util.raw_socket_generator.HeaderGenerator" title="ipsend.util.raw_socket_generator.HeaderGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsend.util.raw_socket_generator.HeaderGenerator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.UDPHeaderGenerator.create_udp_header">
+<span class="sig-name descname"><span class="pre">create_udp_header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.UDPHeaderGenerator.create_udp_header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.util.raw_socket_generator.UDPHeaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">udp_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.util.raw_socket_generator.UDPHeaderGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../index.html">Table of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/README.html">Introduction to “ipsurv”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/program_architecture_classes.html">Program architecture and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/command_examples.html">Command examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/customize_examples.html">Customizing and Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsurv-cmd/using_geoip2.html">About Using GeoIP2</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/README.html">Introduction to “ipscap”</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/command_arguments.html">Command arguments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipscap-cmd/command_examples.html">Command examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsend-cmd/README.html">Introduction to “ipsend”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/ipsend-cmd/command_arguments.html">Command arguments</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script><div class="custom-sidebar">
+	<h3>Others</h3>
+	<ul>
+		<li><a href="https://deer-hunt.github.io/ipsurv/py-modindex.html">Module Index</a></li>
+		<li><a href="https://deer-hunt.github.io/ipsurv/genindex.html">Classes and Methods docs</a></li>
+		<li>&nbsp;</li>
+		<li><a href="https://github.com/deer-hunt/ipsurv" target="_blank">GitHub</a></li>
+	</ul>
+</div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ipsend.util package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2024, deer-hunt.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    </div>
+  </body>
+</html>

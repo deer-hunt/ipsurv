@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ipsurv.data_collector package &#8212; ipsurv  documentation</title>
+    <title>ipsend package &#8212; ipsurv  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/bizstyle.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -34,7 +34,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">ipsurv.data_collector package</a></li> 
+        <li class="nav-item nav-item-this"><a href="">ipsend package</a></li> 
       </ul>
     </div>  
 
@@ -43,52 +43,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="ipsurv-data-collector-package">
-<h1>ipsurv.data_collector package<a class="headerlink" href="#ipsurv-data-collector-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="ipsend-package">
+<h1>ipsend package<a class="headerlink" href="#ipsend-package" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="/ipsurv/py-modindex.html">IpSurv’s Module Index</a></p>
-<div class="section" id="ipsurv-data-collector-self-collector-module">
-<h2>ipsurv.data_collector.self_collector module<a class="headerlink" href="#ipsurv-data-collector-self-collector-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-ipsend.ipsend_cmd">
+<span id="ipsend-ipsend-cmd-module"></span><h2>ipsend.ipsend_cmd module<a class="headerlink" href="#module-ipsend.ipsend_cmd" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="ipsurv.data_collector.self_collector.SelfCollector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SelfCollector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requester</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dns_resolver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_reactivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.self_collector.SelfCollector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector" title="ipsurv.data_collector.data_collector.DataCollector"><code class="xref py py-class docutils literal notranslate"><span class="pre">ipsurv.data_collector.data_collector.DataCollector</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>requester</strong> (<a class="reference internal" href="ipsurv.requester.html#ipsurv.requester.ip_info.IpInfoRequester" title="ipsurv.requester.ip_info.IpInfoRequester"><em>ipsurv.requester.ip_info.IpInfoRequester</em></a>) – </p></li>
-<li><p><strong>dns_resolver</strong> (<a class="reference internal" href="ipsurv.requester.html#ipsurv.requester.dns_resolver.DnsResolveRequester" title="ipsurv.requester.dns_resolver.DnsResolveRequester"><em>ipsurv.requester.dns_resolver.DnsResolveRequester</em></a>) – </p></li>
-<li><p><strong>server_reactivity</strong> (<a class="reference internal" href="ipsurv.requester.html#ipsurv.requester.server_reactivity.ServerReactivity" title="ipsurv.requester.server_reactivity.ServerReactivity"><em>ipsurv.requester.server_reactivity.ServerReactivity</em></a>) – </p></li>
-<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – </p></li>
-</ul>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="ipsend.ipsend_cmd.IpSendCmd">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">IpSendCmd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.ipsend_cmd.IpSendCmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="ipsurv.data_collector.self_collector.SelfCollector.build_data">
-<span class="sig-name descname"><span class="pre">build_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.self_collector.SelfCollector.build_data" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
-<li><p><strong>data</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.ValueData" title="ipsurv.core.entity.ValueData"><em>ValueData</em></a>) – </p></li>
-<li><p><strong>response</strong> (<em>dict</em>) – </p></li>
-<li><p><strong>response_time</strong> (<em>float</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ipsend.ipsend_cmd.IpSendCmd.dispatch">
+<span class="sig-name descname"><span class="pre">dispatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.ipsend_cmd.IpSendCmd.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ipsurv.data_collector.self_collector.SelfCollector.request_data">
-<span class="sig-name descname"><span class="pre">request_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsurv.data_collector.self_collector.SelfCollector.request_data" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>target</strong> (<a class="reference internal" href="ipsurv.core.entity.html#ipsurv.core.entity.Target" title="ipsurv.core.entity.Target"><em>Target</em></a>) – </p></li>
-<li><p><strong>requires</strong> (<em>list</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ipsend.ipsend_cmd.IpSendCmd.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.ipsend_cmd.IpSendCmd.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ipsend.ipsend_cmd.IpSendCmd.signal_stop">
+<span class="sig-name descname"><span class="pre">signal_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ipsend.ipsend_cmd.IpSendCmd.signal_stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -157,7 +134,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">ipsurv  documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">ipsurv.data_collector package</a></li> 
+        <li class="nav-item nav-item-this"><a href="">ipsend package</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

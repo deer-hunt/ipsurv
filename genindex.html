@@ -100,6 +100,8 @@
       <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder">ArgsBuilder (class in ipscap.service.args_builder)</a>
 
       <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.args_builder.ArgsBuilder">(class in ipsend.service.args_builder)</a>
+</li>
         <li><a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder">(class in ipsurv.configure.args_builder)</a>
 </li>
       </ul></li>
@@ -121,7 +123,7 @@
         <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueDataFactory.build">(ValueDataFactory method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.build_args">build_args() (ArgsBuilder method)</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.build_args">[1]</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.build_args">build_args() (ArgsBuilder method)</a>, <a href="modules/ipsend.service.html#ipsend.service.args_builder.ArgsBuilder.build_args">[1]</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.build_args">[2]</a>
 </li>
       <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector.build_data">build_data() (DataCollector method)</a>
 
@@ -175,11 +177,19 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.HeaderGenerator.calculate_checksum">calculate_checksum() (HeaderGenerator method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.IPHeaderGenerator.calculate_checksum">(IPHeaderGenerator method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.CaptureThread">CaptureThread (class in ipscap.ipscap_cmd)</a>
+</li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.close">close() (Socket method)</a>
 </li>
       <li><a href="modules/ipsurv.config.html#ipsurv.configs.Config.COLLECTORS">COLLECTORS (Config attribute)</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.complete">complete() (Pipeline method)</a>
+      <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.complete">complete() (Pipeline method)</a>, <a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.complete">[1]</a>
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.complete_process">complete_process() (Pipeline method)</a>
 </li>
@@ -191,17 +201,39 @@
         <li><a href="modules/ipsurv.config.html#ipsurv.configs.Config">(class in ipsurv.configs)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.connected">connected() (Pipeline method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.connected">(RawSocket method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.connected">(Socket method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.rdap.CountryDetector">CountryDetector (class in ipsurv.requester.rdap)</a>
 </li>
-      <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueDataFactory.create">create() (ValueDataFactory method)</a>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.create">create() (RawSocket method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.create">(RichSocket method)</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_args_builder">create_args_builder() (ObjectFactory method)</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_args_builder">[1]</a>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.create">(Socket method)</a>
+</li>
+        <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueDataFactory.create">(ValueDataFactory method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_args_builder">create_args_builder() (ObjectFactory method)</a>, <a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_args_builder">[1]</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_args_builder">[2]</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.create_bytes_by_binary">create_bytes_by_binary() (PacketFilter method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.create_bytes_by_hex">create_bytes_by_hex() (PacketFilter method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_collectors">create_collectors() (ObjectFactory method)</a>
+</li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.packet_generator.PacketGenerator.create_data">create_data() (PacketGenerator method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_data_input">create_data_input() (ObjectFactory method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_data_output">create_data_output() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.create_decorated_headers">create_decorated_headers() (ProtocolService method)</a>
 </li>
@@ -235,19 +267,25 @@
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_http">create_http() (ObjectFactory method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_http_collector">create_http_collector() (ObjectFactory method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_icmp_collector">create_icmp_collector() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.ICMPHeaderParser.create_icmp_header">create_icmp_header() (ICMPHeaderParser method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_icmp_header_generator">create_icmp_header_generator() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.create_icmp_header_parser">create_icmp_header_parser() (IPHeaderParser method)</a>
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_icmp_protocol_service">create_icmp_protocol_service() (ObjectFactory method)</a>
 </li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_interactive_input">create_interactive_input() (ObjectFactory method)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.create_ip_header">create_ip_header() (IPHeaderParser method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_ip_header_generator">create_ip_header_generator() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_ip_header_parser">create_ip_header_parser() (ObjectFactory method)</a>
 </li>
@@ -257,11 +295,17 @@
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_packet_filter">create_packet_filter() (ObjectFactory method)</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_pipeline">create_pipeline() (ObjectFactory method)</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_pipeline">[1]</a>
+      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_pipeline">create_pipeline() (ObjectFactory method)</a>, <a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_pipeline">[1]</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_pipeline">[2]</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.HeaderGenerator.create_pseudo_header">create_pseudo_header() (HeaderGenerator method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_raw_socket">create_raw_socket() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_rdap_collector">create_rdap_collector() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_reactivities">create_reactivities() (ObjectFactory method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_rich_socket">create_rich_socket() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_self_collector">create_self_collector() (ObjectFactory method)</a>
 </li>
@@ -270,6 +314,12 @@
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_server_reactivity">create_server_reactivity() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.eth_socket.EthSocket.create_socket">create_socket() (EthSocket method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.create_socket">(Pipeline method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_socket_thread">create_socket_thread() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_target_parser">create_target_parser() (ObjectFactory method)</a>
 </li>
@@ -277,23 +327,35 @@
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.TCPHeaderParser.create_tcp_header">create_tcp_header() (TCPHeaderParser method)</a>
 </li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_tcp_header_generator">create_tcp_header_generator() (ObjectFactory method)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.create_tcp_header_parser">create_tcp_header_parser() (IPHeaderParser method)</a>
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_tcp_protocol_service">create_tcp_protocol_service() (ObjectFactory method)</a>
+</li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.create_tcp_socket">create_tcp_socket() (RichSocket method)</a>
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_transfer_store">create_transfer_store() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_udp_collector">create_udp_collector() (ObjectFactory method)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.UDPHeaderParser.create_udp_header">create_udp_header() (UDPHeaderParser method)</a>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.UDPHeaderGenerator.create_udp_header">create_udp_header() (UDPHeaderGenerator method)</a>
+
+      <ul>
+        <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.UDPHeaderParser.create_udp_header">(UDPHeaderParser method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_udp_header_generator">create_udp_header_generator() (ObjectFactory method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.create_udp_header_parser">create_udp_header_parser() (IPHeaderParser method)</a>
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_udp_protocol_service">create_udp_protocol_service() (ObjectFactory method)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.create_udp_socket">create_udp_socket() (RichSocket method)</a>
+</li>
       <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.create_value_data_factory">create_value_data_factory() (ObjectFactory method)</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_view_helper">create_view_helper() (ObjectFactory method)</a>
+      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.create_view_helper">create_view_helper() (ObjectFactory method)</a>, <a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.create_view_helper">[1]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -303,12 +365,20 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector">DataCollector (class in ipsurv.data_collector.data_collector)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.ICMPHeader.DEFAULT_HEADER_LEN">DEFAULT_HEADER_LEN (ICMPHeader attribute)</a>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput">DataInput (class in ipsend.util.data_io)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput">DataOutput (class in ipsend.util.data_io)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.decode_base64">decode_base64() (DataInput method)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.decode_hex">decode_hex() (DataInput method)</a>
+</li>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.ICMPHeader.DEFAULT_HEADER_LEN">DEFAULT_HEADER_LEN (ICMPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.ICMPHeader.DEFAULT_HEADER_LEN">[1]</a>
 
       <ul>
-        <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.DEFAULT_HEADER_LEN">(TCPHeader attribute)</a>
+        <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.DEFAULT_HEADER_LEN">(TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.DEFAULT_HEADER_LEN">[1]</a>
 </li>
-        <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.UDPHeader.DEFAULT_HEADER_LEN">(UDPHeader attribute)</a>
+        <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.UDPHeader.DEFAULT_HEADER_LEN">(UDPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.UDPHeader.DEFAULT_HEADER_LEN">[1]</a>
 </li>
       </ul></li>
       <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueData.delete">delete() (ValueData method)</a>
@@ -325,17 +395,19 @@
 </li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.rdap.RdapRequester.detect_server_from_ip">detect_server_from_ip() (RdapRequester method)</a>
 </li>
-      <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.detect_survey_mode">detect_survey_mode() (Pipeline method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.DIRECTION_RECEIVE">DIRECTION_RECEIVE (IPHeader attribute)</a>
+      <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.detect_survey_mode">detect_survey_mode() (Pipeline method)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.DIRECTION_SEND">DIRECTION_SEND (IPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.DIRECTION_RECEIVE">DIRECTION_RECEIVE (IPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader.DIRECTION_RECEIVE">[1]</a>
+</li>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.DIRECTION_SEND">DIRECTION_SEND (IPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader.DIRECTION_SEND">[1]</a>
 </li>
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.IpsCapCmd.dispatch">dispatch() (IpsCapCmd method)</a>
 
       <ul>
+        <li><a href="modules/ipsend.html#ipsend.ipsend_cmd.IpSendCmd.dispatch">(IpSendCmd method)</a>
+</li>
         <li><a href="modules/ipsurv.html#ipsurv.survey_ips.SurveyIps.dispatch">(SurveyIps method)</a>
 </li>
         <li><a href="modules/ipsurv.html#ipsurv.survey_self.SurveySelf.dispatch">(SurveySelf method)</a>
@@ -407,23 +479,23 @@
       </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.fix_protocols">fix_protocols() (ArgsBuilder method)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_ACK">FLAG_ACK (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_ACK">FLAG_ACK (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_ACK">[1]</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_CWR">FLAG_CWR (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_CWR">FLAG_CWR (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_CWR">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_ECE">FLAG_ECE (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_ECE">FLAG_ECE (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_ECE">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_FIN">FLAG_FIN (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_FIN">FLAG_FIN (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_FIN">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_PSH">FLAG_PSH (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_PSH">FLAG_PSH (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_PSH">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_RST">FLAG_RST (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_RST">FLAG_RST (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_RST">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_SYN">FLAG_SYN (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_SYN">FLAG_SYN (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_SYN">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_URG">FLAG_URG (TCPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.FLAG_URG">FLAG_URG (TCPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.FLAG_URG">[1]</a>
 </li>
       <li><a href="modules/ipsurv.config.html#ipsurv.configs.Config.FORMAT_PARAMS">FORMAT_PARAMS (Config attribute)</a>
 </li>
@@ -437,6 +509,18 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.HeaderGenerator.generate">generate() (HeaderGenerator method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.ICMPHeaderGenerator.generate">(ICMPHeaderGenerator method)</a>
+</li>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.IPHeaderGenerator.generate">(IPHeaderGenerator method)</a>
+</li>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.TCPHeaderGenerator.generate">(TCPHeaderGenerator method)</a>
+</li>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.UDPHeaderGenerator.generate">(UDPHeaderGenerator method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipsurv.data_collector.geoip.html#ipsurv.data_collector.geoip_collector.GeoIpCollector">GeoIpCollector (class in ipsurv.data_collector.geoip_collector)</a>
 </li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.geoip.GeoIpRequester">GeoIpRequester (class in ipsurv.requester.geoip)</a>
@@ -449,21 +533,33 @@
       </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_all_data">get_all_data() (ProtocolService method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_base64_data">get_base64_data() (ProtocolService method)</a>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.get_base64_data">get_base64_data() (DataOutput method)</a>
+
+      <ul>
+        <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_base64_data">(ProtocolService method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.get_border">get_border() (ViewHelper method)</a>
 </li>
       <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector.get_cidr">get_cidr() (DataCollector method)</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.get_config">get_config() (ObjectFactory method)</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.get_config">[1]</a>
+      <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory.get_config">get_config() (ObjectFactory method)</a>, <a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory.get_config">[1]</a>, <a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory.get_config">[2]</a>
 </li>
-      <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueData.get_data">get_data() (ValueData method)</a>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.get_data">get_data() (DataInput method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.get_data">(DataOutput method)</a>
 </li>
+        <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.ValueData.get_data">(ValueData method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.geoip.GeoIpRequester.get_data_path">get_data_path() (GeoIpRequester method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_datatime">get_datatime() (ProtocolService method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.get_direction_code">get_direction_code() (IPHeader class method)</a>
+</li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.get_error">get_error() (Socket static method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.eth_socket.EthSocket.get_eth_header">get_eth_header() (EthSocket method)</a>
 </li>
@@ -483,7 +579,7 @@
       </ul></li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.get_flag_codes">get_flag_codes() (TCPHeader class method)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.get_flags">get_flags() (TCPHeader class method)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader.get_flags">get_flags() (TCPHeader class method)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader.get_flags">[1]</a>
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.get_group_identify">get_group_identify() (Pipeline method)</a>
 </li>
@@ -495,16 +591,20 @@
         <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.get_hex">(IPHeaderParser method)</a>
 </li>
       </ul></li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_hex_data">get_hex_data() (ProtocolService method)</a>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.get_hex_data">get_hex_data() (DataOutput method)</a>
 
       <ul>
-        <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.get_hex_data">(ViewHelper method)</a>
+        <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_hex_data">(ProtocolService method)</a>
+</li>
+        <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.get_hex_data">(ViewHelper method)</a>, <a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.get_hex_data">[1]</a>
 </li>
       </ul></li>
-      <li><a href="modules/ipsurv.requester.html#ipsurv.requester.requester.Requester.get_host">get_host() (Requester method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipsurv.requester.html#ipsurv.requester.requester.Requester.get_host">get_host() (Requester method)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.InteractiveInput.get_input">get_input() (InteractiveInput method)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser.get_ip_header">get_ip_header() (IPHeaderParser method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.eth_socket.EthSocket.get_ip_mtu">get_ip_mtu() (EthSocket method)</a>
@@ -512,6 +612,8 @@
       <li><a href="modules/ipscap.util.html#ipscap.util.evaluation_parser.EvaluationParser.get_items">get_items() (EvaluationParser method)</a>
 </li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.get_label">get_label() (Serializer method)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.InteractiveInput.get_line">get_line() (InteractiveInput method)</a>
 </li>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.sys_util.System.get_log_level">get_log_level() (System class method)</a>
 </li>
@@ -533,6 +635,8 @@
       </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.dumpfile.DumpFile.get_path">get_path() (DumpFile method)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.get_proto">get_proto() (RawSocket method)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.get_protocol">get_protocol() (IPHeader class method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.get_protocol_code">get_protocol_code() (IPHeader class method)</a>
@@ -552,8 +656,14 @@
       <li><a href="modules/ipscap.util.html#ipscap.util.evaluation_parser.EvaluationParser.get_rule">get_rule() (EvaluationParser method)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.Header.get_sanitized_data">get_sanitized_data() (Header method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.ProtocolHeader.get_sanitized_data">(ProtocolHeader method)</a>
 </li>
+      </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_service">get_service() (ProtocolService class method)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.InteractiveInput.get_stdin_read">get_stdin_read() (InteractiveInput method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.get_timestamp">get_timestamp() (ProtocolService method)</a>
 </li>
@@ -576,11 +686,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.Header">Header (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.Header">(class in ipsend.util.raw_socket_entity)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.HeaderParser">HeaderParser (class in ipscap.util.raw_socket_parser)</a>
+      </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.HeaderGenerator">HeaderGenerator (class in ipsend.util.raw_socket_generator)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.HeaderParser">HeaderParser (class in ipscap.util.raw_socket_parser)</a>
+</li>
       <li><a href="modules/ipsurv.data_collector.reactivity.html#ipsurv.data_collector.reactivity_collectors.HttpCollector">HttpCollector (class in ipsurv.data_collector.reactivity_collectors)</a>
 </li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.http.HttpRequester">HttpRequester (class in ipsurv.requester.http)</a>
@@ -594,19 +710,29 @@
       <li><a href="modules/ipsurv.data_collector.reactivity.html#ipsurv.data_collector.reactivity_collectors.ICMPCollector">ICMPCollector (class in ipsurv.data_collector.reactivity_collectors)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.ICMPHeader">ICMPHeader (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.ICMPHeader">(class in ipsend.util.raw_socket_entity)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.ICMPHeaderGenerator">ICMPHeaderGenerator (class in ipsend.util.raw_socket_generator)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.ICMPHeaderParser">ICMPHeaderParser (class in ipscap.util.raw_socket_parser)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ICMPProtocolService">ICMPProtocolService (class in ipscap.service.protocol_service)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.init_args">init_args() (ArgsBuilder method)</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.init_args">[1]</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.init_args">init_args() (ArgsBuilder method)</a>, <a href="modules/ipsend.service.html#ipsend.service.args_builder.ArgsBuilder.init_args">[1]</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.init_args">[2]</a>
 </li>
-      <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.init_configure">init_configure() (Pipeline method)</a>, <a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.init_configure">[1]</a>
+      <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.init_configure">init_configure() (Pipeline method)</a>, <a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.init_configure">[1]</a>, <a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.init_configure">[2]</a>
 </li>
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.CaptureThread.initialize">initialize() (CaptureThread method)</a>
 
       <ul>
         <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector.initialize">(DataCollector method)</a>
+</li>
+        <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.initialize">(DataInput method)</a>
+</li>
+        <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.initialize">(DataOutput method)</a>
 </li>
         <li><a href="modules/ipscap.service.html#ipscap.service.dumpfile.DumpFile.initialize">(DumpFile method)</a>
 </li>
@@ -618,14 +744,38 @@
 </li>
         <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.initialize">(PacketFilter method)</a>
 </li>
-        <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.initialize">(Pipeline method)</a>, <a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.initialize">[1]</a>
+        <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.initialize">(Pipeline method)</a>, <a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.initialize">[1]</a>, <a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.initialize">[2]</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.initialize">(RawSocket method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.initialize">(RichSocket method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.initialize">(Socket method)</a>
 </li>
         <li><a href="modules/ipsurv.html#ipsurv.survey_ips.SurveyIps.initialize">(SurveyIps method)</a>
 </li>
         <li><a href="modules/ipsurv.html#ipsurv.survey_self.SurveySelf.initialize">(SurveySelf method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.INPUT_BASE64">INPUT_BASE64 (DataInput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.INPUT_BINARY">INPUT_BINARY (DataInput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.INPUT_HEX">INPUT_HEX (DataInput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.INPUT_RAW">INPUT_RAW (DataInput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataInput.INPUT_TEXT">INPUT_TEXT (DataInput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.InteractiveInput">InteractiveInput (class in ipsend.util.data_io)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader">IPHeader (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader">(class in ipsend.util.raw_socket_entity)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.IPHeaderGenerator">IPHeaderGenerator (class in ipsend.util.raw_socket_generator)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.IPHeaderParser">IPHeaderParser (class in ipscap.util.raw_socket_parser)</a>
 </li>
@@ -734,6 +884,80 @@
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.IpsCapCmd">IpsCapCmd (class in ipscap.ipscap_cmd)</a>
 </li>
       <li>
+    ipsend.core.object_factory
+
+      <ul>
+        <li><a href="modules/ipsend.core.html#module-ipsend.core.object_factory">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.core.pipeline
+
+      <ul>
+        <li><a href="modules/ipsend.core.html#module-ipsend.core.pipeline">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.ipsend_cmd
+
+      <ul>
+        <li><a href="modules/ipsend.html#module-ipsend.ipsend_cmd">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    ipsend.service.args_builder
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.args_builder">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.service.packet_generator
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.packet_generator">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.service.sockets
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.sockets">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.service.view_helper
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.view_helper">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.util.data_io
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.data_io">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.util.raw_socket_entity
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.raw_socket_entity">module</a>
+</li>
+      </ul></li>
+      <li>
+    ipsend.util.raw_socket_generator
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.raw_socket_generator">module</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.html#ipsend.ipsend_cmd.IpSendCmd">IpSendCmd (class in ipsend.ipsend_cmd)</a>
+</li>
+      <li>
     ipsurv.configs
 
       <ul>
@@ -747,8 +971,6 @@
         <li><a href="modules/ipsurv.configure.html#module-ipsurv.configure.args_builder">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ipsurv.configure.args_validators
 
@@ -949,7 +1171,7 @@
 </li>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.sys_util.System.load_module">load_module() (System class method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.logging">logging() (ArgsBuilder method)</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.logging">[1]</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.logging">logging() (ArgsBuilder method)</a>, <a href="modules/ipsend.service.html#ipsend.service.args_builder.ArgsBuilder.logging">[1]</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.logging">[2]</a>
 </li>
   </ul></td>
 </tr></table>
@@ -990,6 +1212,26 @@
         <li><a href="modules/ipscap.util.html#module-ipscap.util.raw_socket_entity">ipscap.util.raw_socket_entity</a>
 </li>
         <li><a href="modules/ipscap.util.html#module-ipscap.util.raw_socket_parser">ipscap.util.raw_socket_parser</a>
+</li>
+        <li><a href="modules/ipsend.core.html#module-ipsend.core.object_factory">ipsend.core.object_factory</a>
+</li>
+        <li><a href="modules/ipsend.core.html#module-ipsend.core.pipeline">ipsend.core.pipeline</a>
+</li>
+        <li><a href="modules/ipsend.html#module-ipsend.ipsend_cmd">ipsend.ipsend_cmd</a>
+</li>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.args_builder">ipsend.service.args_builder</a>
+</li>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.packet_generator">ipsend.service.packet_generator</a>
+</li>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.sockets">ipsend.service.sockets</a>
+</li>
+        <li><a href="modules/ipsend.service.html#module-ipsend.service.view_helper">ipsend.service.view_helper</a>
+</li>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.data_io">ipsend.util.data_io</a>
+</li>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.raw_socket_entity">ipsend.util.raw_socket_entity</a>
+</li>
+        <li><a href="modules/ipsend.util.html#module-ipsend.util.raw_socket_generator">ipsend.util.raw_socket_generator</a>
 </li>
         <li><a href="modules/ipsurv.config.html#module-ipsurv.configs">ipsurv.configs</a>
 </li>
@@ -1053,6 +1295,8 @@
       <li><a href="modules/ipscap.core.html#ipscap.core.object_factory.ObjectFactory">ObjectFactory (class in ipscap.core.object_factory)</a>
 
       <ul>
+        <li><a href="modules/ipsend.core.html#ipsend.core.object_factory.ObjectFactory">(class in ipsend.core.object_factory)</a>
+</li>
         <li><a href="modules/ipsurv.core.object_factory.html#ipsurv.core.object_factory.ObjectFactory">(class in ipsurv.core.object_factory)</a>
 </li>
       </ul></li>
@@ -1072,27 +1316,37 @@
         <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.output">(Serializer method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.OUTPUT_BASE64">OUTPUT_BASE64 (DataOutput attribute)</a>
+</li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.json_serializer.JsonSerializer.output_begin">output_begin() (JsonSerializer method)</a>
 
       <ul>
         <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.output_begin">(Serializer method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.OUTPUT_BINARY">OUTPUT_BINARY (DataOutput attribute)</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.output_binary">output_binary() (DataOutput method)</a>
+</li>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.sys_util.System.output_body">output_body() (System class method)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.output_closed_error">output_closed_error() (ViewHelper method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.json_serializer.JsonSerializer.output_complete">output_complete() (JsonSerializer method)</a>
 
       <ul>
         <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.output_complete">(Serializer method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.sys_util.System.output_data">output_data() (System class method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.output_debug">output_debug() (ViewHelper method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.output_error">output_error() (ViewHelper method)</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.output_error">output_error() (ViewHelper method)</a>, <a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.output_error">[1]</a>
+</li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.OUTPUT_HEX">OUTPUT_HEX (DataOutput attribute)</a>
 </li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.json_serializer.JsonSerializer.output_item">output_item() (JsonSerializer method)</a>
 
@@ -1120,6 +1374,8 @@
       </ul></li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.output_result_self">output_result_self() (Pipeline method)</a>
 </li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.data_io.DataOutput.OUTPUT_TEXT">OUTPUT_TEXT (DataOutput attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1128,7 +1384,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter">PacketFilter (class in ipscap.service.packet_filter)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.parse">parse() (ArgsBuilder method)</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.parse">[1]</a>
+      <li><a href="modules/ipsend.service.html#ipsend.service.packet_generator.PacketGenerator">PacketGenerator (class in ipsend.service.packet_generator)</a>
+</li>
+      <li><a href="modules/ipscap.service.html#ipscap.service.args_builder.ArgsBuilder.parse">parse() (ArgsBuilder method)</a>, <a href="modules/ipsend.service.html#ipsend.service.args_builder.ArgsBuilder.parse">[1]</a>, <a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.parse">[2]</a>
 
       <ul>
         <li><a href="modules/ipscap.util.html#ipscap.util.evaluation_parser.EvaluationParser.parse">(EvaluationParser method)</a>
@@ -1175,6 +1433,8 @@
       <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline">Pipeline (class in ipscap.core.pipeline)</a>
 
       <ul>
+        <li><a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline">(class in ipsend.core.pipeline)</a>
+</li>
         <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline">(class in ipsurv.core.pipeline)</a>
 </li>
       </ul></li>
@@ -1183,6 +1443,8 @@
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.post_collect">post_collect() (Pipeline method)</a>
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.post_configure">post_configure() (Pipeline method)</a>
+</li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.post_receive">post_receive() (Pipeline method)</a>
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.post_request">post_request() (Pipeline method)</a>
 </li>
@@ -1198,6 +1460,8 @@
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.pre_request">pre_request() (Pipeline method)</a>
 </li>
+      <li><a href="modules/ipsend.core.html#ipsend.core.pipeline.Pipeline.pre_send">pre_send() (Pipeline method)</a>
+</li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.pre_target_identify">pre_target_identify() (Pipeline method)</a>
 </li>
       <li><a href="modules/ipsurv.core.pipeline.html#ipsurv.core.pipeline.Pipeline.pre_target_parse">pre_target_parse() (Pipeline method)</a>
@@ -1208,14 +1472,18 @@
 </li>
       <li><a href="modules/ipscap.core.html#ipscap.core.pipeline.Pipeline.process_captured_transfer">process_captured_transfer() (Pipeline method)</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_ICMP">PROTOCOL_ICMP (IPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_ICMP">PROTOCOL_ICMP (IPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_ICMP">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_TCP">PROTOCOL_TCP (IPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_TCP">PROTOCOL_TCP (IPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_TCP">[1]</a>
 </li>
-      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_UDP">PROTOCOL_UDP (IPHeader attribute)</a>
+      <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.IPHeader.PROTOCOL_UDP">PROTOCOL_UDP (IPHeader attribute)</a>, <a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.IPHeader.PROTOCOL_UDP">[1]</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.ProtocolHeader">ProtocolHeader (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.ProtocolHeader">(class in ipsend.util.raw_socket_entity)</a>
 </li>
+      </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService">ProtocolService (class in ipscap.service.protocol_service)</a>
 </li>
       <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.data_collector.DataCollector.put">put() (DataCollector method)</a>
@@ -1228,12 +1496,22 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket">RawSocket (class in ipsend.service.sockets)</a>
+</li>
       <li><a href="modules/ipsurv.data_collector.basic.html#ipsurv.data_collector.basic_collectors.RdapCollector">RdapCollector (class in ipsurv.data_collector.basic_collectors)</a>
 </li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.rdap.RdapRequester">RdapRequester (class in ipsurv.requester.rdap)</a>
 </li>
       <li><a href="modules/ipsurv.configure.html#ipsurv.configure.args_builder.ArgsBuilder.read_lines">read_lines() (ArgsBuilder method)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.receive">receive() (RawSocket method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.receive">(RichSocket method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.receive">(Socket method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.eth_socket.EthSocket.recvfrom">recvfrom() (EthSocket method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.register_services">register_services() (ProtocolService class method)</a>
@@ -1326,16 +1604,22 @@
 </li>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.network_util.ReverseThread">ReverseThread (class in ipsurv.util.network_util)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket">RichSocket (class in ipsend.service.sockets)</a>
+</li>
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.CaptureThread.run">run() (CaptureThread method)</a>
 
       <ul>
         <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.IpsCapCmd.run">(IpsCapCmd method)</a>
+</li>
+        <li><a href="modules/ipsend.html#ipsend.ipsend_cmd.IpSendCmd.run">(IpSendCmd method)</a>
 </li>
         <li><a href="modules/ipsurv.html#ipsurv.ip_surv_cmd.IpSurvCmd.run">(IpSurvCmd method)</a>
 </li>
         <li><a href="modules/ipsurv.util.html#ipsurv.util.network_util.ResolveThread.run">(ResolveThread method)</a>
 </li>
         <li><a href="modules/ipsurv.util.html#ipsurv.util.network_util.ReverseThread.run">(ReverseThread method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.SocketThread.run">(SocketThread method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1346,6 +1630,14 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipsurv.data_collector.misc.html#ipsurv.data_collector.self_collector.SelfCollector">SelfCollector (class in ipsurv.data_collector.self_collector)</a>
 </li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RawSocket.send">send() (RawSocket method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.send">(RichSocket method)</a>
+</li>
+        <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket.send">(Socket method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer">Serializer (class in ipsurv.serializer.serializer)</a>
 </li>
       <li><a href="modules/ipsurv.requester.html#ipsurv.requester.server_reactivity.ServerReactivity">ServerReactivity (class in ipsurv.requester.server_reactivity)</a>
@@ -1364,6 +1656,8 @@
         <li><a href="modules/ipsurv.requester.html#ipsurv.requester.ip_info.IpInfoRequester.set_headers">(IpInfoRequester method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.RichSocket.set_ssl_context">set_ssl_context() (RichSocket method)</a>
+</li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.set_status">set_status() (Serializer method)</a>
 </li>
       <li><a href="modules/ipsurv.serializer.html#ipsurv.serializer.serializer.Serializer.set_survey_mode">set_survey_mode() (Serializer method)</a>
@@ -1375,9 +1669,11 @@
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.show_head">show_head() (ProtocolService method)</a>
 
       <ul>
-        <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_head">(ViewHelper method)</a>
+        <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_head">(ViewHelper method)</a>, <a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.show_head">[1]</a>
 </li>
       </ul></li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.show_interactive_mode">show_interactive_mode() (ViewHelper method)</a>
+</li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ICMPProtocolService.show_line">show_line() (ICMPProtocolService method)</a>
 
       <ul>
@@ -1412,13 +1708,21 @@
       </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_statistics">show_statistics() (ViewHelper method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_stopped">show_stopped() (ViewHelper method)</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_stopped">show_stopped() (ViewHelper method)</a>, <a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.show_stopped">[1]</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.ProtocolService.show_transfer">show_transfer() (ProtocolService method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_version">show_version() (ViewHelper method)</a>
+      <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper.show_version">show_version() (ViewHelper method)</a>, <a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper.show_version">[1]</a>
 </li>
       <li><a href="modules/ipscap.html#ipscap.ipscap_cmd.IpsCapCmd.signal_stop">signal_stop() (IpsCapCmd method)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.html#ipsend.ipsend_cmd.IpSendCmd.signal_stop">(IpSendCmd method)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.Socket">Socket (class in ipsend.service.sockets)</a>
+</li>
+      <li><a href="modules/ipsend.service.html#ipsend.service.sockets.SocketThread">SocketThread (class in ipsend.service.sockets)</a>
 </li>
       <li><a href="modules/ipsurv.core.entity.html#ipsurv.core.entity.StoreBase">StoreBase (class in ipsurv.core.entity)</a>
 </li>
@@ -1445,6 +1749,12 @@
       <li><a href="modules/ipsurv.data_collector.reactivity.html#ipsurv.data_collector.reactivity_collectors.TCPCollector">TCPCollector (class in ipsurv.data_collector.reactivity_collectors)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.TCPHeader">TCPHeader (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.TCPHeader">(class in ipsend.util.raw_socket_entity)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.TCPHeaderGenerator">TCPHeaderGenerator (class in ipsend.util.raw_socket_generator)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.TCPHeaderParser">TCPHeaderParser (class in ipscap.util.raw_socket_parser)</a>
 </li>
@@ -1456,10 +1766,10 @@
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.transfer_store.TransferStore.totalize">totalize() (TransferStore method)</a>
 </li>
-      <li><a href="modules/ipscap.service.html#ipscap.service.transfer_store.TransferStore.totalize_direction">totalize_direction() (TransferStore method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipscap.service.html#ipscap.service.transfer_store.TransferStore.totalize_direction">totalize_direction() (TransferStore method)</a>
+</li>
       <li><a href="modules/ipscap.service.html#ipscap.service.transfer_store.TransferStore.totalize_groups">totalize_groups() (TransferStore method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.transfer_store.TransferStore">TransferStore (class in ipscap.service.transfer_store)</a>
@@ -1497,9 +1807,15 @@
       <li><a href="modules/ipsurv.data_collector.reactivity.html#ipsurv.data_collector.reactivity_collectors.UDPCollector">UDPCollector (class in ipsurv.data_collector.reactivity_collectors)</a>
 </li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_entity.UDPHeader">UDPHeader (class in ipscap.util.raw_socket_entity)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_entity.UDPHeader">(class in ipsend.util.raw_socket_entity)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="modules/ipsend.util.html#ipsend.util.raw_socket_generator.UDPHeaderGenerator">UDPHeaderGenerator (class in ipsend.util.raw_socket_generator)</a>
+</li>
       <li><a href="modules/ipscap.util.html#ipscap.util.raw_socket_parser.UDPHeaderParser">UDPHeaderParser (class in ipscap.util.raw_socket_parser)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.protocol_service.UDPProtocolService">UDPProtocolService (class in ipscap.service.protocol_service)</a>
@@ -1524,10 +1840,10 @@
       </ul></li>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.verify_condition">verify_condition() (PacketFilter method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.verify_find">verify_find() (PacketFilter method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.verify_ip">verify_ip() (PacketFilter method)</a>
 </li>
       <li><a href="modules/ipsurv.util.html#ipsurv.util.sys_util.System.verify_os">verify_os() (System class method)</a>
@@ -1537,7 +1853,11 @@
       <li><a href="modules/ipscap.service.html#ipscap.service.packet_filter.PacketFilter.verify_protocol">verify_protocol() (PacketFilter method)</a>
 </li>
       <li><a href="modules/ipscap.service.html#ipscap.service.view_helper.ViewHelper">ViewHelper (class in ipscap.service.view_helper)</a>
+
+      <ul>
+        <li><a href="modules/ipsend.service.html#ipsend.service.view_helper.ViewHelper">(class in ipsend.service.view_helper)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

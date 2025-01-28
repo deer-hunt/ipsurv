@@ -2,7 +2,6 @@ import logging
 import socket
 import ssl
 import threading
-import logging
 
 from ipsend.configs import Constant
 from ipsurv.util.sys_util import AppException

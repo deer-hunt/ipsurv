@@ -116,7 +116,7 @@ class Config:
 
         'dest': {'default': '', 'type': str, 'help': 'Destination IP or Hostname.', 'metavar': '{string}'},
         'port': {'default': 0, 'type': int, 'help': 'Destination port.', 'metavar': '{int}'},
-        'timeout': {'default': 20.0, 'type': float, 'help': 'Timeout. Default: 20.0', 'metavar': '{float}'},
+        'timeout': {'default': 30.0, 'type': float, 'help': 'Timeout. Default: 30.0', 'metavar': '{float}'},
 
         'ip_flags': {'default': 0, 'type': int, 'help': 'IP flags.', 'group': 'header', 'metavar': '{int}'},
         'ip_identification': {'default': 0, 'type': int, 'help': 'IP identification.', 'group': 'header', 'metavar': '{int}'},

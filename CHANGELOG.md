@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.0b2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.0b2) (2025-01-28)
+
+- [ipsend] Fixed some bugs.
+
 ## [1.3.0b1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.0b1) (2025-01-26)
 
 - Add `ipsend` command. `ipsend` is a network transmission tool that supports TCP, SSL, UDP.

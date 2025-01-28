@@ -1,6 +1,7 @@
 import argparse
 import logging
 import ssl
+import sys
 
 from ipsend.configs import Constant
 from ipsend.core.pipeline import Pipeline
@@ -111,6 +112,9 @@ class ArgsBuilder:
 
     def _validate_options(self, parser, args, arguments):
         _, rawargs = ArgsHelper.init_parser(arguments, raw=True)
+
+        if args.version or len(sys.argv) == 1:
+            return
 
         mode = args.mode
 

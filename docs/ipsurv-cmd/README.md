@@ -66,7 +66,7 @@ LocalDns: ['8.8.8.8', '8.8.4.4']
 
 ## Command options
 
-`ipsurv` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md).
+`ipsurv` have many options. Please read [Command arguments(.md) reference](https://deer-hunt.github.io/ipsurv/pages/ipscap-cmd/command_arguments.html).
 
 **Options**
 
@@ -221,7 +221,7 @@ More examples are [here](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/com
 ## Output Format
 
 You can customize "Output Format" by ```--format``` option as follows. There are ```parameter - {}``` and ```profile - <>``` in ```--format```.
-For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/command_arguments.html#parameters).
+For more information, please read [--format description](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#format), [Profiles](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#profiles), [Parameters](https://deer-hunt.github.io/ipsurv/pages/ipsurv-cmd/command_arguments.html#parameters).
 
 ```
 $ ipsurv github.io --format=heavy            # Profile

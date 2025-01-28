@@ -2,18 +2,20 @@ import logging
 import socket
 import ssl
 import threading
+import logging
 
 from ipsend.configs import Constant
 from ipsurv.util.sys_util import AppException
 
 
 class Socket:
-    def __init__(self):
+    def __init__(self, pipeline):
         self._sock = None
         self._data_input = None
         self._data_output = None
         self._mode = None
         self._timeout = -1
+        self._pipeline = pipeline
 
     @staticmethod
     def get_error(e):
@@ -51,13 +53,15 @@ class Socket:
             self._hostname = None
             self._port = None
 
+            logging.log(logging.INFO, 'Socket closed.')
+
     def __del__(self):
         self.close()
 
 
 class RichSocket(Socket):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, pipeline):
+        super().__init__(pipeline)
 
     def initialize(self, data_input, data_output, mode, timeout):
         self._data_input = data_input
@@ -83,7 +87,15 @@ class RichSocket(Socket):
 
         sock.settimeout(self._timeout)
 
+        logging.log(logging.INFO, 'Created TCP socket.')
+
+        self._pipeline.create_socket(sock)
+
         sock.connect((hostname, port))
+
+        self._pipeline.connected(self._sock)
+
+        logging.log(logging.INFO, 'Connected.({}:{})'.format(hostname, port))
 
         if self._mode == Constant.MODE_SSL:
             if not self._ssl_context:
@@ -100,12 +112,18 @@ class RichSocket(Socket):
 
         sock.settimeout(self._timeout)
 
+        logging.log(logging.INFO, 'Created UDP socket.')
+
+        self._pipeline.create_socket(sock)
+
         return sock
 
     def send(self, data):
         byte_data = self._data_input.get_data(data)
 
-        if self._mode:
+        byte_data = self._pipeline.pre_send(byte_data)
+
+        if self._mode != Constant.MODE_UDP:
             self._sock.sendall(byte_data)
         else:
             self._sock.sendto(byte_data, (self._hostname, self._port))
@@ -113,21 +131,23 @@ class RichSocket(Socket):
     def receive(self, bufsize=Constant.RECV_BUF_SIZE):
         while True:
             if self._mode:
-                data = self._sock.recv(bufsize)
+                byte_data = self._sock.recv(bufsize)
             else:
-                data, _ = self._sock.recvfrom(bufsize)
+                byte_data, _ = self._sock.recvfrom(bufsize)
 
-            if not data:
+            byte_data = self._pipeline.post_receive(byte_data)
+
+            if not byte_data:
                 break
 
-            self._data_output.output_binary(data)
+            self._data_output.output_binary(byte_data)
 
         self.close()
 
 
 class RawSocket(Socket):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, pipeline):
+        super().__init__(pipeline)
 
         self._mode = None
 
@@ -145,6 +165,10 @@ class RawSocket(Socket):
             self._sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, self.get_proto(self._mode))
 
             self._sock.settimeout(self._timeout)
+
+            logging.log(logging.INFO, 'Created Raw socket.')
+
+            self._pipeline.create_socket(self._sock)
         except PermissionError:
             raise AppException('Permission error. Please run as "root" user.')
 
@@ -167,13 +191,17 @@ class RawSocket(Socket):
     def send(self, data):
         byte_data = self._data_input.get_data(data)
 
+        byte_data = self._pipeline.pre_send(byte_data)
+
         self._sock.sendto(byte_data, (self._hostname, 0))
 
     def receive(self, bufsize=Constant.RECV_BUF_SIZE):
         while True:
-            data, _ = self._sock.recvfrom(bufsize)
+            byte_data, _ = self._sock.recvfrom(bufsize)
 
-            self._data_output.output_binary(data)
+            byte_data = self._pipeline.post_receive(byte_data)
+
+            self._data_output.output_binary(byte_data)
 
         self.close()
 

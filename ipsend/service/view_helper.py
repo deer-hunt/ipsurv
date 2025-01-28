@@ -51,3 +51,6 @@ class ViewHelper:
             System.warn('An error has occurred.' + msg + '\n')
         else:
             System.warn(str(e) + msg + '\n')
+
+    def output_closed_error(self):
+        System.line('Connection is closed unexpectedly.')

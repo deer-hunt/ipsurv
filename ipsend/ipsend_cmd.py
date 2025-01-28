@@ -65,10 +65,10 @@ class IpSendCmd:
         socket = None
 
         if mode in Constant.RICH_SOCKET_MODES:
-            socket = self.factory.create_rich_socket()
+            socket = self.factory.create_rich_socket(self.pipeline)
             socket.set_ssl_context(ssl_context)
         elif mode in Constant.RAW_SOCKET_MODES:
-            socket = self.factory.create_raw_socket()
+            socket = self.factory.create_raw_socket(self.pipeline)
 
         return socket
 
@@ -140,7 +140,7 @@ class IpSendCmd:
             line = interactive_input.get_input()
 
             if not self.socket.connected():
-                print('Connection is closed unexpectedly.')
+                self.view_helper.output_closed_error()
                 break
 
             if line is not None:

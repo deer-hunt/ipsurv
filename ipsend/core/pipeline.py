@@ -26,5 +26,17 @@ class Pipeline(ABC):
         """
         pass
 
+    def create_socket(self, socket):
+        pass
+
+    def connected(self, socket):
+        pass
+
+    def pre_send(self, byte_data):
+        return byte_data
+
+    def post_receive(self, byte_data):
+        return byte_data
+
     def complete(self):
         pass

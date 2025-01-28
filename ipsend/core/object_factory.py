@@ -47,11 +47,11 @@ class ObjectFactory(ABC):
     def create_interactive_input(self, ctrlkey):
         return InteractiveInput(ctrlkey)
 
-    def create_rich_socket(self):
-        return RichSocket()
+    def create_rich_socket(self, pipeline):
+        return RichSocket(pipeline)
 
-    def create_raw_socket(self):
-        return RawSocket()
+    def create_raw_socket(self, pipeline):
+        return RawSocket(pipeline)
 
     def create_socket_thread(self, socket, view_helper):
         return SocketThread(socket, view_helper)

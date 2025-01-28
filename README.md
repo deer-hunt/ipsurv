@@ -23,7 +23,7 @@
 <div>
 <img width="100" height="100" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
-```ipsurv``` is a command-line tool for surveying IP addresses, host information, and more. Additionally ```ipscap``` bundling tool is a packet capture tool that supports the ICMP, TCP, and UDP protocols. Each tools and internal program are extensible using Python.
+`IpSurv` are investigation tools for surveying IP addresses, network investigation, test and debugging - "ipsurv, ipscap, ipsend". Those tools allow for packet capture, such as tcpdump, and packet sending tests. Each tools and internal program are extensible using Python.
 
 </div>
 
@@ -179,19 +179,18 @@ $ ipsurv 8.8.8.8 --geoip_only
 ```ipsurv``` have many options. Please read [Command arguments(.md) reference](https://github.com/deer-hunt/ipsurv/blob/main/docs/ipsurv-cmd/command_arguments.md).
 
 ```
-[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-[--disable_env] [--resolve {0,1}] [--identify_int]
-[--autodetect] [--begin {number}] [--end {number}]
-[--collect {string}] [--all_collect] [--timeout {string}]
-[--group {string}] [--skip_duplicate {0,1,2}]
-[--range {string}] [--format {string}] [--no_original]
-[--sequence] [--add_ip] [--ident] [--enclose {string}]
-[--delimiter {string}] [--alt_delimiter {string}]
-[--headers {0,1,2,3}] [--json {0,1,2}] [--json_list]
-[--exhaustive] [--icmp {0,1}] [--tcp {number}]
-[--udp {number}] [--http {0,1,2}] [--json_all]
-[--geoip_only] [--host_only] [--version]
-[target [target ...]]
+usage: ipsurv [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+              [--disable_env] [--resolve {0,1}] [--identify_int]
+              [--autodetect] [--begin {number}] [--end {number}]
+              [--collect {string}] [--all_collect] [--timeout {string}]
+              [--group {string}] [--skip_duplicate {0,1,2}] [--range {string}]
+              [--format {string}] [--no_original] [--sequence] [--add_ip]
+              [--ident] [--enclose {string}] [--delimiter {string}]
+              [--alt_delimiter {string}] [--headers {0,1,2,3}]
+              [--json {0,1,2}] [--json_list] [--exhaustive] [--icmp {0,1}]
+              [--tcp {number}] [--udp {number}] [--http {0,1,2}] [--json_all]
+              [--geoip_only] [--host_only] [--version]
+              [target [target ...]]
 ```
 
 
@@ -344,24 +343,27 @@ TCP-H data:     00 50 cc a2 04 0c 22 02 0a 47 a9 9c 50 18 ff ff 06 2f 00 00
 ### Command options
 
 ```
-[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-[--find {string}] [--find_mode [REGEX, MATCH, BINARY, HEX]]
-[--port {int}] [--protocol [ICMP, TCP, UDP]]
-[--ip {string}] [--condition {string}] [--tracking]
-[--stat_mode {0,1,2}] [--stat_group {0,1,2}]
-[--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
-[--dumpfile {0,1,2}] [--timeout {float}] [--exclude_ssh]
-[--web_port] [--general_port] [--force] [--version]
+usage: ipscap [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+              [--find {string}] [--find_mode [REGEX, MATCH, BINARY, HEX]]
+              [--port {int}] [--protocol [ICMP, TCP, UDP]] [--ip {string}]
+              [--condition {string}] [--tracking] [--stat_mode {0,1,2}]
+              [--stat_group {0,1,2}]
+              [--output [NONE, HEADER, TEXT, BINARY, BINARY_ALL, HEX, HEX_ALL, LINE]]
+              [--output_raw] [--dumpfile {0,1,2}] [--timeout {float}]
+              [--exclude_ssh] [--web_port] [--general_port] [--force]
+              [--version]
 ```
 
 ## "ipsend" command
+
+`ipsend` command reference is [here](https://deer-hunt.github.io/ipsurv/pages/ipsend-cmd/README.html).
 
 ### Features
 
 - Transmit by TCP, UDP, SSL.
 - Transmit by Raw socket.
 - Support Instant transmission and Interactive transmission.
-- Change Input and Output format - TEXT, HEX, BINARY, BASE64.
+- Specify Input and Output format - TEXT, HEX, BINARY, BASE64.
 - Set SSL context - SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3.
 
 > IPv6 is not supported.
@@ -383,23 +385,24 @@ $ ipsend --mode=SSL --dest=google.com --port=443 -I
 $ ipsend --mode=SSL --dest=google.com --https -I --output=BINARY
 ```
 
+
 ### Command options
 
 ```
-[-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-[--mode {TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD}]
-[--input {TEXT,BINARY,HEX,BASE64}]
-[--output {NONE,TEXT,BINARY,HEX,BASE64}]
-[--interactive {int}]
-[--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
-[--output_send {int}] [--auto_lb {bool}] [--dest {string}]
-[--port {int}] [--timeout {float}] [--ip_flags {int}]
-[--ip_identification {int}] [--ip_ttl {int}]
-[--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
-[--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
-[--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
-[--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
-[--icmp_seq {int}] [-I] [--http] [--https] [--version]
+usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
+                   [--mode {TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD}]
+                   [--input {TEXT,BINARY,HEX,BASE64}]
+                   [--output {NONE,TEXT,BINARY,HEX,BASE64}]
+                   [--interactive {int}]
+                   [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
+                   [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
+                   [--port {int}] [--timeout {float}] [--ip_flags {int}]
+                   [--ip_identification {int}] [--ip_ttl {int}]
+                   [--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
+                   [--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
+                   [--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
+                   [--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
+                   [--icmp_seq {int}] [-I] [--http] [--https] [--version]
 ```
 
 
@@ -411,8 +414,9 @@ $ ipsend --mode=SSL --dest=google.com --https -I --output=BINARY
 | `docs`               | Documentation files                                 |
 | `example_data`       | Sample data files for testing                       |
 | `examples`           | Customizing program examples                 |
-| `ipscap`             | ipscap package/Sources                            |
 | `ipsurv`             | Main package/Sources                            |
+| `ipscap`             | ipscap package/Sources                            |
+| `ipsend`             | ipsend package/Sources                            |
 | `tests`              | Test files                     |
 
 

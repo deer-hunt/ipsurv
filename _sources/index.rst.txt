@@ -6,7 +6,8 @@
 Welcome to IpSurv
 ==================================
 
-Welcome to IpSurv's documentation! This document explains the basic usage and system information.
+Welcome to IpSurv's documentation! IpSurv are investigation tools for surveying IP addresses, network investigation, test and debugging - "ipsurv, ipscap, ipsend". Those tools allow for packet capture, such as tcpdump, and packet sending tests. Each tools and internal program are extensible using Python.
+
 
 .. image:: images/ipsurv.gif
    :alt: IpSurv

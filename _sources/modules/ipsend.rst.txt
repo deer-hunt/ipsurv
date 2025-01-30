@@ -1,0 +1,12 @@
+ipsend package
+==============
+
+.. include:: top.rst
+
+ipsend.ipsend\_cmd module
+-------------------------
+
+.. automodule:: ipsend.ipsend_cmd
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -25,13 +25,14 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
                    [--interactive {int}]
                    [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
                    [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
-                   [--port {int}] [--timeout {float}] [--ip_flags {int}]
-                   [--ip_identification {int}] [--ip_ttl {int}]
-                   [--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
-                   [--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
-                   [--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
-                   [--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
-                   [--icmp_seq {int}] [-I] [--http] [--https] [--version]
+                   [--port {int}] [--timeout {float}] [--dumpfile]
+                   [--ip_flags {int}] [--ip_identification {int}]
+                   [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]
+                   [--src_port {int}] [--dest_ip {int}] [--dest_port {int}]
+                   [--tcp_flags {str}] [--tcp_seq {int}] [--tcp_ack {int}]
+                   [--tcp_window {int}] [--icmp_type {int}]
+                   [--icmp_code {int}] [--icmp_id {int}] [--icmp_seq {int}]
+                   [-I] [--http] [--https] [--version]
 ```
 
 
@@ -52,6 +53,7 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --auto_lb {bool}                                                | Append Line-break in INSTANT mode and `TEXT` input format.                                                                                   |
 | --dest {string}                                                 | Destination IP or Hostname.                                                                                                                  |
 | --port {int}                                                    | Destination port.                                                                                                                            |
+| --dumpfile                                              | Dump response data to files. Dir: `./dump_logs/`                                                                                                                    |
 | --timeout {float}                                               | Timeout. Default: 20.0                                                                                                                       |
 | --version                                                       | Show version information.                                                                                                                    |
 | --ip_flags {int}                                                | IP flags.                                                                                                                                    |

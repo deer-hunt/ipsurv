@@ -1,0 +1,21 @@
+ipsend.core package
+===================
+
+.. include:: top.rst
+
+ipsend.core.object\_factory module
+----------------------------------
+
+.. automodule:: ipsend.core.object_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ipsend.core.pipeline module
+---------------------------
+
+.. automodule:: ipsend.core.pipeline
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.3.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.0b2) (2025-01-30)
+## [1.3.0](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.0) (2025-01-30)
 
 - Release "ipsend" command.
 - [ipsend] Fixed some bugs.

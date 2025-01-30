@@ -9,9 +9,12 @@ from ipsurv.util.sys_util import AppException
 
 class Socket:
     def __init__(self, pipeline):
+        self._hostname = None
+        self._port = None
         self._sock = None
         self._data_input = None
         self._data_output = None
+        self._dumpfile = None
         self._mode = None
         self._timeout = -1
         self._pipeline = pipeline
@@ -29,7 +32,7 @@ class Socket:
 
         return error
 
-    def initialize(self, data_input, data_output, mode, timeout):
+    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
         pass
 
     def create(self, hostname, port=0):
@@ -62,9 +65,10 @@ class RichSocket(Socket):
     def __init__(self, pipeline):
         super().__init__(pipeline)
 
-    def initialize(self, data_input, data_output, mode, timeout):
+    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
         self._data_input = data_input
         self._data_output = data_output
+        self._dumpfile = dumpfile
         self._mode = mode
         self._timeout = timeout
         self._ssl_context = None
@@ -141,6 +145,9 @@ class RichSocket(Socket):
 
             self._data_output.output_binary(byte_data)
 
+            if self._dumpfile:
+                self._dumpfile.write(self._hostname, self._port, byte_data)
+
         self.close()
 
 
@@ -150,9 +157,10 @@ class RawSocket(Socket):
 
         self._mode = None
 
-    def initialize(self, data_input, data_output, mode, timeout):
+    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
         self._data_input = data_input
         self._data_output = data_output
+        self._dumpfile = dumpfile
         self._mode = mode
         self._timeout = timeout
 
@@ -172,6 +180,7 @@ class RawSocket(Socket):
             raise AppException('Permission error. Please run as "root" user.')
 
         self._hostname = hostname
+        self._port = port
 
     def get_proto(self, mode):
         if mode in [Constant.MODE_IP_HEADER, Constant.MODE_IP_PAYLOAD]:
@@ -201,6 +210,9 @@ class RawSocket(Socket):
             byte_data = self._pipeline.post_receive(byte_data)
 
             self._data_output.output_binary(byte_data)
+
+            if self._dumpfile:
+                self._dumpfile.write(self._hostname, self._port, byte_data)
 
         self.close()
 

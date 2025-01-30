@@ -3,6 +3,7 @@ from abc import ABC
 from ipsend.configs import Config
 from ipsend.core.pipeline import Pipeline
 from ipsend.service.args_builder import ArgsBuilder
+from ipsend.service.dumpfile import DumpFile
 from ipsend.service.sockets import RichSocket, RawSocket, SocketThread
 from ipsend.service.view_helper import ViewHelper
 from ipsend.util.data_io import DataInput, DataOutput, InteractiveInput
@@ -67,6 +68,9 @@ class ObjectFactory(ABC):
 
     def create_icmp_header_generator(self):
         return (ICMPHeaderGenerator(), ICMPHeader())
+
+    def create_dumpfile(self, pipeline):
+        return DumpFile(pipeline)
 
     def create_view_helper(self):
         return ViewHelper()

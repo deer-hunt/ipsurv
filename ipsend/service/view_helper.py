@@ -9,7 +9,19 @@ from ipsurv.util.sys_util import System
 
 class ViewHelper:
     def show_head(self, args):
-        pass
+        if not args.quiet:
+            System.line('Mode: ' + args.mode)
+            System.line('Input: ' + str(args.input) + ' / ' + 'Output: ' + str(args.output))
+
+            if args.mode in Constant.RICH_SOCKET_MODES:
+                System.line('Destination: ' + args.dest)
+                System.line('Port: ' + str(args.port))
+
+            if args.mode == Constant.MODE_SSL:
+                ssl_context = args.ssl_context if args.ssl_context is not None else 'auto'
+                System.line('SSL context: ' + ssl_context)
+
+            System.line('')
 
     def show_stopped(self):
         System.line(' Stopped by user...\n')

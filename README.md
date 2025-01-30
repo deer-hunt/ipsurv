@@ -385,6 +385,17 @@ $ ipsend --mode=SSL --dest=google.com --port=443 -I
 $ ipsend --mode=SSL --dest=google.com --https -I --output=BINARY
 ```
 
+```
+$ ipsend --dest=google.com --http -I
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 80
+
+[INTERACTIVE] / Line-break to send
+
+Please input send-data. Input a line break to send.
+```
 
 ### Command options
 
@@ -396,13 +407,14 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
                    [--interactive {int}]
                    [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
                    [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
-                   [--port {int}] [--timeout {float}] [--ip_flags {int}]
-                   [--ip_identification {int}] [--ip_ttl {int}]
-                   [--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
-                   [--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
-                   [--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
-                   [--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
-                   [--icmp_seq {int}] [-I] [--http] [--https] [--version]
+                   [--port {int}] [--timeout {float}] [--dumpfile]
+                   [--ip_flags {int}] [--ip_identification {int}]
+                   [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]
+                   [--src_port {int}] [--dest_ip {int}] [--dest_port {int}]
+                   [--tcp_flags {str}] [--tcp_seq {int}] [--tcp_ack {int}]
+                   [--tcp_window {int}] [--icmp_type {int}]
+                   [--icmp_code {int}] [--icmp_id {int}] [--icmp_seq {int}]
+                   [-I] [--http] [--https] [--version]
 ```
 
 

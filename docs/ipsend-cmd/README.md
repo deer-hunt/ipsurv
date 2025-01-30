@@ -25,13 +25,14 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
                    [--interactive {int}]
                    [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
                    [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
-                   [--port {int}] [--timeout {float}] [--ip_flags {int}]
-                   [--ip_identification {int}] [--ip_ttl {int}]
-                   [--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
-                   [--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
-                   [--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
-                   [--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
-                   [--icmp_seq {int}] [-I] [--http] [--https] [--version]
+                   [--port {int}] [--timeout {float}] [--dumpfile]
+                   [--ip_flags {int}] [--ip_identification {int}]
+                   [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]
+                   [--src_port {int}] [--dest_ip {int}] [--dest_port {int}]
+                   [--tcp_flags {str}] [--tcp_seq {int}] [--tcp_ack {int}]
+                   [--tcp_window {int}] [--icmp_type {int}]
+                   [--icmp_code {int}] [--icmp_id {int}] [--icmp_seq {int}]
+                   [-I] [--http] [--https] [--version]
 ```
 
 
@@ -52,6 +53,7 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --auto_lb {bool}                                                | Append Line-break in INSTANT mode and `TEXT` input format.                                                                                   |
 | --dest {string}                                                 | Destination IP or Hostname.                                                                                                                  |
 | --port {int}                                                    | Destination port.                                                                                                                            |
+| --dumpfile                                              | Dump response data to files. Dir: `./dump_logs/`                                                                                                                    |
 | --timeout {float}                                               | Timeout. Default: 20.0                                                                                                                       |
 | --version                                                       | Show version information.                                                                                                                    |
 | --ip_flags {int}                                                | IP flags.                                                                                                                                    |
@@ -82,6 +84,10 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 
 ```
 $ ipsend "GET /index.html HTTP/1.1\n" --dest=google.com --http
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 80
 
 HTTP/1.1 200 OK
 Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -96,6 +102,10 @@ X-XSS-Protection: 0
 
 ```
 $ ipsend "GET / HTTP/1.1\n" --dest=google.com --https
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 443
 
 HTTP/1.1 200 OK
 Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -106,6 +116,11 @@ Content-Type: text/html; charset=ISO-8859-1
 
 ```
 $ ipsend "GET / HTTP/1.1\n" --dest=wikipedia.org --mode=SSL --port=443
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: wikipedia.org
+Port: 443
+SSL context: auto
 
 HTTP/1.1 400 Bad Request
 date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -119,6 +134,10 @@ x-cache-status: int-front
 
 ```
 $ ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 80
 
 python3 -m ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
 [INTERACTIVE] / Line-break to send
@@ -133,6 +152,12 @@ Date: Mon, 27 Jan 2025 10:25:13 GMT
 
 ```
 $ ipsend --dest=wikipedia.org --https -I
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: wikipedia.org
+Port: 443
+SSL context: auto
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -144,6 +169,12 @@ HTTP/1.1 400 Bad Request
 
 ```
 $ ipsend --dest=google.com --https -I --output=BASE64
+Mode: SSL
+Input: TEXT / Output: BASE64
+Destination: google.com
+Port: 443
+SSL context: auto
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -155,6 +186,11 @@ SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBNb24sIDI3IEphbiAyMDI1IDEwOjI4OjA4IEdNVA0KRXhwaXJl
 
 ```
 $ ipsend --dest=gmail-smtp-in.l.google.com --port=25 -I
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: gmail-smtp-in.l.google.com
+Port: 25
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -182,6 +218,11 @@ Please input send-data. Press `Ctrl+D` to send.
 
 ```
 $ ipsend --mode=TCP --dest=wikipedia.org --http -I --output=HEX
+Mode: TCP
+Input: TEXT / Output: HEX
+Destination: wikipedia.org
+Port: 80
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.

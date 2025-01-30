@@ -95,6 +95,8 @@ documents:
         'ssl_context'
     ]
 
+    DUMPFILE_DIR = 'dump_logs'
+
 
 class Config:
     PRE_ARGUMENTS = {
@@ -117,6 +119,7 @@ class Config:
         'dest': {'default': '', 'type': str, 'help': 'Destination IP or Hostname.', 'metavar': '{string}'},
         'port': {'default': 0, 'type': int, 'help': 'Destination port.', 'metavar': '{int}'},
         'timeout': {'default': 30.0, 'type': float, 'help': 'Timeout. Default: 30.0', 'metavar': '{float}'},
+        'dumpfile': {'default': False, 'help': 'Dump response data to files. Dir: `./dump_logs/`', 'action': 'store_true'},
 
         'ip_flags': {'default': 0, 'type': int, 'help': 'IP flags.', 'group': 'header', 'metavar': '{int}'},
         'ip_identification': {'default': 0, 'type': int, 'help': 'IP identification.', 'group': 'header', 'metavar': '{int}'},
@@ -141,6 +144,7 @@ class Config:
         'http': {'default': False, 'help': '`--http` is equivalent to `--port=80`.', 'action': 'store_true', 'group': 'shortcut'},
         'https': {'default': False, 'help': '`--https` is equivalent to `--port=443 --mode=SSL`.', 'action': 'store_true', 'group': 'shortcut'},
 
+        'quiet': {'default': False, 'help': 'Hide conditions.', 'action': 'store_true'},
         'version': {'default': False, 'help': 'Show version information.', 'action': 'store_true'}
     }
 

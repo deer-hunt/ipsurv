@@ -19,6 +19,7 @@ class IpSendCmd:
         self.data_input = None
         self.data_output = None
 
+        self.dumpfile = None
         self.view_helper = None  # type: ViewHelper
 
     def run(self):
@@ -54,8 +55,12 @@ class IpSendCmd:
         self.data_output = self.factory.create_data_output()
         self.data_output.initialize(args.output)
 
+        if args.dumpfile:
+            self.dumpfile = self.factory.create_dumpfile(self.pipeline)
+            self.dumpfile.initialize(Constant.DUMPFILE_DIR)
+
         self.socket = self._create_socket(args.mode, args.fixed_ssl_context)
-        self.socket.initialize(self.data_input, self.data_output, args.mode, args.timeout)
+        self.socket.initialize(self.data_input, self.data_output, self.dumpfile, args.mode, args.timeout)
 
         self.pipeline.initialize(self.config)
 
@@ -78,6 +83,8 @@ class IpSendCmd:
         return args_builder.parse()
 
     def dispatch(self, args):
+        self.view_helper.show_head(args)
+
         if not args.interactive:
             self._run_instant(args)
         else:

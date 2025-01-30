@@ -226,6 +226,20 @@ Destination port.
 --port=443
 ```
 
+### `--dumpfile`
+
+Dump response data to files. Dir: `./dump_logs/`
+
+- **Type:** `bool`
+- **Default:** `False`
+
+- **Example:**
+
+```
+--dumpfile
+```
+
+
 ### `--timeout`
 
 Timeout. Default: 20.0

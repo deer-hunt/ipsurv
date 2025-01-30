@@ -40,3 +40,12 @@ class Pipeline(ABC):
 
     def complete(self):
         pass
+
+    def get_filename(self, dest, port, filename):
+        return filename
+
+    def pre_writefile(self, dest, port, byte_data, file):
+        pass
+
+    def post_writefile(self, dest, port, byte_data, file):
+        pass

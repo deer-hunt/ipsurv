@@ -91,7 +91,7 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 
 ### Features
 
-- Grouping by IP or Subnet.
+- Grouping by IP or subnet.
 - Skip duplicate by the group.
 - Autodetect IP in line. Trying to resolve the name automatically.
 - Autodetect delimiter-char.

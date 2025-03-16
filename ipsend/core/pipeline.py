@@ -32,11 +32,11 @@ class Pipeline(ABC):
     def connected(self, socket):
         pass
 
-    def pre_send(self, byte_data):
-        return byte_data
+    def pre_send(self, binary):
+        return binary
 
-    def post_receive(self, byte_data):
-        return byte_data
+    def post_receive(self, binary):
+        return binary
 
     def complete(self):
         pass
@@ -44,8 +44,8 @@ class Pipeline(ABC):
     def get_filename(self, dest, port, filename):
         return filename
 
-    def pre_writefile(self, dest, port, byte_data, file):
+    def pre_writefile(self, dest, port, binary, file):
         pass
 
-    def post_writefile(self, dest, port, byte_data, file):
+    def post_writefile(self, dest, port, binary, file):
         pass

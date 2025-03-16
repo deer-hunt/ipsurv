@@ -206,8 +206,8 @@ class PacketFilter:
             if len(data) % 2 != 0:
                 raise Exception()
 
-            byte_data = bytes.fromhex(data)
+            binary = bytes.fromhex(data)
         except Exception:
             raise Exception('Hex data parse error.')
 
-        return byte_data
+        return binary

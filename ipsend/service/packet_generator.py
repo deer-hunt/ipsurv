@@ -10,28 +10,28 @@ class PacketGenerator:
         self.data_input = data_input
 
     def create_data(self, args):
-        byte_data = None
+        binary = None
 
         data = self.data_input.get_data(args.data)
 
         if args.mode == Constant.MODE_ICMP_PAYLOAD:
             generator, entity = self.factory.create_ip_header_generator()
-            byte_data = self._create_ip_header_data(generator, entity, args, data)
+            binary = self._create_ip_header_data(generator, entity, args, data)
         elif args.mode == Constant.MODE_TCP_PAYLOAD:
             generator, entity = self.factory.create_tcp_header_generator()
-            byte_data = self._create_tcp_header_data(generator, entity, args, data)
+            binary = self._create_tcp_header_data(generator, entity, args, data)
         elif args.mode == Constant.MODE_UDP_PAYLOAD:
             generator, entity = self.factory.create_udp_header_generator()
-            byte_data = self._create_udp_header_data(generator, entity, args, data)
+            binary = self._create_udp_header_data(generator, entity, args, data)
         elif args.mode == Constant.MODE_ICMP_PAYLOAD:
             generator, entity = self.factory.create_icmp_header_generator()
-            byte_data = self._create_icmp_header_data(generator, entity, args, data)
+            binary = self._create_icmp_header_data(generator, entity, args, data)
         else:
             raise Exception('Unknown mode.')
 
         self.data_input.initialize(DataInput.INPUT_RAW)
 
-        return byte_data
+        return binary
 
     def _create_ip_header_data(self, generator, entity, args, data):
         entity.version = 4

@@ -7,7 +7,7 @@ from ipsurv.core.target_groups import TargetGroups
 from ipsurv.core.target_parser import TargetParser
 from ipsurv.core.entity import HeaderTarget
 from ipsurv.serializer.serializer import Serializer
-from ipsurv.util.sys_util import AppException, System
+from ipsurv.util.sys_util import AppException, Output
 
 
 class SurveyIps:
@@ -113,9 +113,9 @@ class SurveyIps:
 
         self.pipeline.post_collect(data, target, args, skip)
 
-        if System.is_logging():
-            System.output_data('COLLECTED_DATA', data.get_values())
-            System.output_data('REQUESTS', data.get('requests'), logging.DEBUG)
+        if Output.is_logging():
+            Output.output_data('COLLECTED_DATA', data.get_values())
+            Output.output_data('REQUESTS', data.get('requests'), logging.DEBUG)
 
     def _survey_by_collectors(self, collectors, target, args, data, is_source):
         requires = []

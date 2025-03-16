@@ -1,11 +1,11 @@
 from ipsurv.core.object_factory import ObjectFactory
 from ipsurv.ip_surv_cmd import IpSurvCmd
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output, System
 
 
 def main():
     if System.get_python_ver() <= 3.2 and not System.load_module('ipaddress'):
-        System.warn('"ipaddress" module is required. Please install by `pip install ipaddress`.')
+        Output.warn('"ipaddress" module is required. Please install by `pip install ipaddress`.')
 
     factory = ObjectFactory()
 

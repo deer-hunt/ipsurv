@@ -114,7 +114,7 @@ class Config:
         'interactive': {'default': 0, 'type': int, 'help': 'Enable INTERACTIVE mode.\n[1: Line-break to send, 2: Ctrl-key to send]', 'metavar': '{int}'},
         'ssl_context': {'default': None, 'type': str.upper, 'help': 'SSL context. [SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3]', 'choices': ['SSLV3', 'TLS1.0', 'TLS1.1', 'TLS1.2', 'TLS1.3']},
         'output_send': {'default': 0, 'type': int, 'help': 'Output Send-data in INSTANT mode. [1: Output & Send, 2: Only output]', 'metavar': '{int}'},
-        'auto_lb': {'default': True, 'type': bool, 'help': 'Append Line-break in INSTANT mode and `TEXT` input format.', 'metavar': '{bool}'},
+        'auto_nl': {'default': True, 'type': bool, 'help': 'Append Line-break in INSTANT mode and `TEXT` input format.', 'metavar': '{bool}'},
 
         'dest': {'default': '', 'type': str, 'help': 'Destination IP or Hostname.', 'metavar': '{string}'},
         'port': {'default': 0, 'type': int, 'help': 'Destination port.', 'metavar': '{int}'},

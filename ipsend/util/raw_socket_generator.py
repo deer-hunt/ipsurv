@@ -34,16 +34,16 @@ class IPHeaderGenerator:
             dest_ip
         ]
 
-        byte_data = struct.pack('!BBHHHBBH4s4s', *header)
+        binary = struct.pack('!BBHHHBBH4s4s', *header)
 
-        checksum = self.calculate_checksum(byte_data)
+        checksum = self.calculate_checksum(binary)
 
         header[7] = checksum
         ip_header_data = struct.pack('!BBHHHBBH4s4s', *header)
 
-        byte_data = ip_header_data + ip_header.payload_data
+        binary = ip_header_data + ip_header.payload_data
 
-        return byte_data
+        return binary
 
     def calculate_checksum(self, header):
         if len(header) % 2 == 1:
@@ -97,16 +97,16 @@ class ICMPHeaderGenerator(HeaderGenerator):
             icmp_header.sequence
         ]
 
-        byte_data = struct.pack('!BBHHH', *header)
+        binary = struct.pack('!BBHHH', *header)
 
-        checksum = self.calculate_checksum(byte_data + icmp_header.payload_data)
+        checksum = self.calculate_checksum(binary + icmp_header.payload_data)
 
         header[2] = checksum
         icmp_header_data = struct.pack('!BBHHH', *header)
 
-        byte_data = icmp_header_data + icmp_header.payload_data
+        binary = icmp_header_data + icmp_header.payload_data
 
-        return byte_data
+        return binary
 
 
 class TCPHeaderGenerator(HeaderGenerator):
@@ -128,20 +128,20 @@ class TCPHeaderGenerator(HeaderGenerator):
             tcp_header.urgent_pointer
         ]
 
-        byte_data = struct.pack('!HHLLHHHH', *header)
+        binary = struct.pack('!HHLLHHHH', *header)
 
-        total_length = len(byte_data) + len(tcp_header.payload_data)
+        total_length = len(binary) + len(tcp_header.payload_data)
 
         pseudo_header = self.create_pseudo_header(src_ip, dest_ip, socket.IPPROTO_TCP, total_length)
 
-        checksum = self.calculate_checksum(pseudo_header + byte_data + tcp_header.payload_data)
+        checksum = self.calculate_checksum(pseudo_header + binary + tcp_header.payload_data)
 
         header[6] = checksum
         tcp_header_data = struct.pack('!HHLLHHHH', *header)
 
-        byte_data = tcp_header_data + tcp_header.payload_data
+        binary = tcp_header_data + tcp_header.payload_data
 
-        return byte_data
+        return binary
 
 
 class UDPHeaderGenerator(HeaderGenerator):
@@ -159,15 +159,15 @@ class UDPHeaderGenerator(HeaderGenerator):
             0
         ]
 
-        byte_data = struct.pack('!HHHH', *header)
+        binary = struct.pack('!HHHH', *header)
 
         pseudo_header = self.create_pseudo_header(src_ip, dest_ip, socket.IPPROTO_UDP, udp_header.udph_length)
 
-        checksum = self.calculate_checksum(pseudo_header + byte_data + udp_header.payload_data)
+        checksum = self.calculate_checksum(pseudo_header + binary + udp_header.payload_data)
 
         header[3] = checksum
         udp_header_data = struct.pack('!HHHH', *header)
 
-        byte_data = udp_header_data + udp_header.payload_data
+        binary = udp_header_data + udp_header.payload_data
 
-        return byte_data
+        return binary

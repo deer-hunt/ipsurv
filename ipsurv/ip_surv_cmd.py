@@ -4,7 +4,7 @@ from ipsurv.configs import Config, Constant
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.survey_ips import SurveyIps
 from ipsurv.survey_self import SurveySelf
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output, System
 from ipsurv import __version__
 
 
@@ -37,7 +37,7 @@ class IpSurvCmd:
             else:
                 self._survey_self(args, data_factory, serializer)
         else:
-            System.warn('No target data.')
+            Output.warn('No target data.')
 
         self.pipeline.complete_process(mode, args, rows)
 

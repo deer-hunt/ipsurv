@@ -109,7 +109,7 @@ class IpsCapCmd:
     def signal_stop(self, sig, frame, args):
         self.capture_thread.trigger_stop()
 
-        self.view_helper.show_stopped()
+        self.view_helper.stopped()
 
         self._complete(args)
 

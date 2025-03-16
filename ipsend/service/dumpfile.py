@@ -15,18 +15,18 @@ class DumpFile:
         if not os.path.exists(self.dirname):
             os.makedirs(self.dirname)
 
-    def write(self, dest, port, byte_data):
+    def write(self, dest, port, binary):
         filename = self.get_filename(dest, port)
         path = self.dirname + '/' + filename
 
         logging.log(logging.INFO, 'DUMPFILE_PATH: ' + path)
 
         with open(path, 'ab') as file:
-            self.pipeline.pre_writefile(dest, port, byte_data, file)
+            self.pipeline.pre_writefile(dest, port, binary, file)
 
-            file.write(byte_data)
+            file.write(binary)
 
-            self.pipeline.post_writefile(dest, port, byte_data, file)
+            self.pipeline.post_writefile(dest, port, binary, file)
 
         return path
 

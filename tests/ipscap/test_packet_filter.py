@@ -110,10 +110,10 @@ class TestPacketFilter:
 
     def create_bytes_by_binary(self, packet_filter):
         hex_data = "test"
-        byte_data = packet_filter.create_bytes_by_binary(hex_data)
-        assert byte_data == b'test'
+        binary = packet_filter.create_bytes_by_binary(hex_data)
+        assert binary == b'test'
 
     def test_create_byte_by_hex(self, packet_filter):
         hex_data = "48656c6c6f20776f726c64"
-        byte_data = packet_filter.create_bytes_by_hex(hex_data)
-        assert byte_data == b'Hello world'
+        binary = packet_filter.create_bytes_by_hex(hex_data)
+        assert binary == b'Hello world'

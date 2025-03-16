@@ -24,7 +24,7 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
                    [--output {NONE,TEXT,BINARY,HEX,BASE64}]
                    [--interactive {int}]
                    [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
-                   [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
+                   [--output_send {int}] [--auto_nl {bool}] [--dest {string}]
                    [--port {int}] [--timeout {float}] [--dumpfile]
                    [--ip_flags {int}] [--ip_identification {int}]
                    [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]
@@ -50,7 +50,7 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
 | --interactive {int}                                             | Enable INTERACTIVE mode. <br>[1: Line-break to send, 2: Ctrl-key to send]                                                                    |
 | --ssl_context               | SSL context.<br>[SSLv3, TLS1.0, TLS1.1, TLS1.2, TLS1.3]                                                                                      |
 | --output_send {int}                                             | Output Send-data in INSTANT mode. [1: Output & Send, 2: Only output]                                                                         |
-| --auto_lb {bool}                                                | Append Line-break in INSTANT mode and `TEXT` input format.                                                                                   |
+| --auto_nl {bool}                                                | Append Line-break in INSTANT mode and `TEXT` input format.                                                                                   |
 | --dest {string}                                                 | Destination IP or Hostname.                                                                                                                  |
 | --port {int}                                                    | Destination port.                                                                                                                            |
 | --dumpfile                                              | Dump response data to files. Dir: `./dump_logs/`                                                                                                                    |

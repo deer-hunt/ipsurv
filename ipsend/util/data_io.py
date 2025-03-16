@@ -12,23 +12,23 @@ class DataInput:
     INPUT_BASE64 = 'BASE64'
 
     def __init__(self, mode=None):
-        self._mode = mode
+        self.mode = mode
 
     def initialize(self, mode):
-        self._mode = mode
+        self.mode = mode
 
     def get_data(self, input_data):
-        if self._mode == self.INPUT_TEXT:
+        if self.mode == self.INPUT_TEXT:
             input_data = input_data.replace("\\n", "\n")
 
             input_data = input_data.encode()
-        elif self._mode == self.INPUT_BINARY:
+        elif self.mode == self.INPUT_BINARY:
             input_data = codecs.decode(input_data, 'unicode_escape').encode('latin1')
-        elif self._mode == self.INPUT_HEX:
+        elif self.mode == self.INPUT_HEX:
             input_data = self.decode_hex(input_data)
-        elif self._mode == self.INPUT_BASE64:
+        elif self.mode == self.INPUT_BASE64:
             input_data = self.decode_base64(input_data)
-        elif self._mode == self.INPUT_RAW or not self._mode:
+        elif self.mode == self.INPUT_RAW or not self.mode:
             pass
         else:
             raise Exception('Unknown input mode.')
@@ -42,21 +42,21 @@ class DataInput:
             if len(hex_data) % 2 != 0:
                 raise Exception()
 
-            byte_data = bytes.fromhex(hex_data)
+            binary = bytes.fromhex(hex_data)
         except Exception:
             raise Exception('Hex data decode error.')
 
-        return byte_data
+        return binary
 
     def decode_base64(self, base64_data):
         try:
-            base64_byte_data = base64_data.encode('utf-8')
+            base64_binary = base64_data.encode('utf-8')
 
-            byte_data = base64.b64decode(base64_byte_data)
+            binary = base64.b64decode(base64_binary)
         except Exception:
             raise Exception('Base64 data decode error.')
 
-        return byte_data
+        return binary
 
 
 class DataOutput:
@@ -66,21 +66,21 @@ class DataOutput:
     OUTPUT_BASE64 = 'BASE64'
 
     def __init__(self, mode=None):
-        self._mode = mode
+        self.mode = mode
 
     def initialize(self, mode):
-        self._mode = mode
+        self.mode = mode
 
     def get_data(self, data):
         v = None
 
-        if self._mode == self.OUTPUT_TEXT:
+        if self.mode == self.OUTPUT_TEXT:
             v = data.decode('utf-8', errors='ignore')
-        elif self._mode == self.OUTPUT_BINARY:
+        elif self.mode == self.OUTPUT_BINARY:
             v = data
-        elif self._mode == self.OUTPUT_HEX:
+        elif self.mode == self.OUTPUT_HEX:
             v = self.get_hex_data(data)
-        elif self._mode == self.OUTPUT_BASE64:
+        elif self.mode == self.OUTPUT_BASE64:
             v = self.get_base64_data(data)
         else:
             raise Exception('Unknown output mode.')
@@ -102,12 +102,12 @@ class DataOutput:
 
 
 class InteractiveInput:
-    def __init__(self, ctrlkey=False):
-        self._ctrlkey = ctrlkey
-        self._lines = ''
+    def __init__(self, multiline=False):
+        self.multiline = multiline
+        self.lines = ''
 
     def get_input(self):
-        if not self._ctrlkey:
+        if not self.multiline:
             input = self.get_line()
         else:
             input = self.get_stdin_read()
@@ -117,14 +117,14 @@ class InteractiveInput:
     def get_line(self):
         line = input()
 
-        self._lines += line + '\n'
+        self.lines += line + '\n'
 
-        lines = self._lines
+        lines = self.lines
 
         if not (re.search(r'(\r\n|\r|\n){2}$', lines) and lines.strip()):
             return None
 
-        self._lines = ''
+        self.lines = ''
 
         return lines
 

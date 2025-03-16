@@ -11,15 +11,15 @@ Command:
 
 
 class MyPipeline(Pipeline):
-    def pre_send(self, byte_data):
-        print(byte_data)
+    def pre_send(self, binary):
+        print(binary)
 
-        return byte_data
+        return binary
 
-    def post_receive(self, byte_data):
-        print(byte_data)
+    def post_receive(self, binary):
+        print(binary)
 
-        return byte_data
+        return binary
 
 
 class MyObjectFactory(ObjectFactory):

@@ -2,7 +2,7 @@ import logging
 import time
 from abc import ABC, abstractmethod
 from ipsurv.core.entity import Target, ValueData
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output
 
 
 class DataCollector(ABC):
@@ -51,15 +51,15 @@ class DataCollector(ABC):
             error = str(e)
             response['error'] = error
 
-            if System.get_log_level() == logging.INFO:
+            if Output.get_log_level() == logging.INFO:
                 logging.log(logging.INFO, error_name + ':' + error)
             else:
                 logging.log(logging.DEBUG, error_name, exc_info=True)
 
         response_time = self._get_measure_time(begin_time)
 
-        if System.is_logging():
-            System.output_data(name + '_DATA', response, logging.DEBUG)
+        if Output.is_logging():
+            Output.output_data(name + '_DATA', response, logging.DEBUG)
 
             logging.log(logging.INFO, name + ':' + ('OK' if success else 'NG'))
             logging.log(logging.INFO, name + '_TIME(ms):' + str(response_time))

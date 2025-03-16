@@ -6,7 +6,7 @@ from ipscap.configs import Constant
 from ipscap.core.pipeline import Pipeline
 from ipscap.util.raw_socket_entity import IPHeader
 from ipsurv.util.args_util import ArgsHelper
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output
 from ipscap.util.evaluation_parser import EvaluationParser, EvaluationParserException
 from ipsurv.util.sys_util import AppException
 
@@ -31,10 +31,10 @@ class ArgsBuilder:
         ArgsHelper.init_logging(args.verbose, args.log)
 
         if args.verbose > 0:
-            System.warn('Enable verbose mode. Current:' + str(args.verbose) + ' [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]')
+            Output.warn('Enable verbose mode. Current:' + str(args.verbose) + ' [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]')
 
             if args.log is not None:
-                System.warn('Enable log.(File:' + args.log + ')')
+                Output.warn('Enable log.(File:' + args.log + ')')
 
         return parser, args
 
@@ -51,7 +51,7 @@ class ArgsBuilder:
 
         self._assign_shorten_option(args)
 
-        if System.is_logging():
+        if Output.is_logging():
             self.logging(args)
 
         self._configure(parser, args)
@@ -232,12 +232,12 @@ class ArgsBuilder:
         except EvaluationParserException as e:
             raise AppException(str(e))
 
-        System.output_data('PARSED_CONDITION', parsed_cond)
+        Output.output_data('PARSED_CONDITION', parsed_cond)
 
     def logging(self, args):
         params = vars(args)
 
-        System.output_data('ARGUMENTS', params)
+        Output.output_data('ARGUMENTS', params)
 
     def _notice(self, args):
         pass

@@ -1,5 +1,5 @@
 from ipsurv.data_collector.data_collector import DataCollector
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output
 import logging
 
 
@@ -35,7 +35,7 @@ class GeoIpCollector(DataCollector):
         self.requester.initialize(path, files)
 
         if self.requester.geoip2 is not None:
-            if System.is_logging():
+            if Output.is_logging():
                 logging.log(logging.INFO, 'GEOIP:ENABLED')
                 logging.log(logging.INFO, 'GEOIP_DATA_PATH:' + self.requester.data_path)
                 logging.log(logging.INFO, 'GEOIP_DATA_FILES:' + str(self.requester.data_files))

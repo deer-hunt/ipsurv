@@ -78,8 +78,8 @@ if os.name == 'posix':
 
             assert 'GROUPS:' in captured.out
 
-        def test_show_stopped(self, capfd, view_helper):
-            view_helper.show_stopped()
+        def test_stopped(self, capfd, view_helper):
+            view_helper.stopped()
 
             captured = capfd.readouterr()
 

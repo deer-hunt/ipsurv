@@ -2,9 +2,10 @@ import argparse
 import json
 import logging
 import os
+import select
 import sys
 from abc import ABC, abstractmethod
-import select
+from distutils.util import strtobool
 
 
 class StrAction(argparse.Action):
@@ -126,6 +127,16 @@ class ArgsHelper:
                 target_parser.add_argument(*params, **options)
             else:
                 target_parser.add_argument(arg, **options)
+
+    @staticmethod
+    def is_bool(v):
+        try:
+            if v == 1 or strtobool(v):
+                return True
+        except Exception:
+            pass
+
+        return False
 
 
 class StdinLoader:

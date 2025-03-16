@@ -12,10 +12,10 @@ class Socket:
         self._hostname = None
         self._port = None
         self._sock = None
+        self._mode = None
         self._data_input = None
         self._data_output = None
         self._dumpfile = None
-        self._mode = None
         self._timeout = -1
         self._pipeline = pipeline
 
@@ -32,8 +32,12 @@ class Socket:
 
         return error
 
-    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
-        pass
+    def initialize(self, mode, data_input, data_output, dumpfile, timeout):
+        self._mode = mode
+        self._data_input = data_input
+        self._data_output = data_output
+        self._dumpfile = dumpfile
+        self._timeout = timeout
 
     def create(self, hostname, port=0):
         pass
@@ -65,12 +69,9 @@ class RichSocket(Socket):
     def __init__(self, pipeline):
         super().__init__(pipeline)
 
-    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
-        self._data_input = data_input
-        self._data_output = data_output
-        self._dumpfile = dumpfile
-        self._mode = mode
-        self._timeout = timeout
+    def initialize(self, mode, data_input, data_output, dumpfile, timeout):
+        super().initialize(mode, data_input, data_output, dumpfile, timeout)
+
         self._ssl_context = None
 
     def set_ssl_context(self, ssl_context):
@@ -122,31 +123,31 @@ class RichSocket(Socket):
         return sock
 
     def send(self, data):
-        byte_data = self._data_input.get_data(data)
+        binary = self._data_input.get_data(data)
 
-        byte_data = self._pipeline.pre_send(byte_data)
+        binary = self._pipeline.pre_send(binary)
 
         if self._mode != Constant.MODE_UDP:
-            self._sock.sendall(byte_data)
+            self._sock.sendall(binary)
         else:
-            self._sock.sendto(byte_data, (self._hostname, self._port))
+            self._sock.sendto(binary, (self._hostname, self._port))
 
     def receive(self, bufsize=Constant.RECV_BUF_SIZE):
         while True:
             if self._mode:
-                byte_data = self._sock.recv(bufsize)
+                binary = self._sock.recv(bufsize)
             else:
-                byte_data, _ = self._sock.recvfrom(bufsize)
+                binary, _ = self._sock.recvfrom(bufsize)
 
-            byte_data = self._pipeline.post_receive(byte_data)
+            binary = self._pipeline.post_receive(binary)
 
-            if not byte_data:
+            if not binary:
                 break
 
-            self._data_output.output_binary(byte_data)
+            self._data_output.output_binary(binary)
 
             if self._dumpfile:
-                self._dumpfile.write(self._hostname, self._port, byte_data)
+                self._dumpfile.write(self._hostname, self._port, binary)
 
         self.close()
 
@@ -157,12 +158,8 @@ class RawSocket(Socket):
 
         self._mode = None
 
-    def initialize(self, data_input, data_output, dumpfile, mode, timeout):
-        self._data_input = data_input
-        self._data_output = data_output
-        self._dumpfile = dumpfile
-        self._mode = mode
-        self._timeout = timeout
+    def initialize(self, mode, data_input, data_output, dumpfile, timeout):
+        super().initialize(mode, data_input, data_output, dumpfile, timeout)
 
     def connected(self):
         return (self._sock)
@@ -197,22 +194,22 @@ class RawSocket(Socket):
         return proto
 
     def send(self, data):
-        byte_data = self._data_input.get_data(data)
+        binary = self._data_input.get_data(data)
 
-        byte_data = self._pipeline.pre_send(byte_data)
+        binary = self._pipeline.pre_send(binary)
 
-        self._sock.sendto(byte_data, (self._hostname, 0))
+        self._sock.sendto(binary, (self._hostname, 0))
 
     def receive(self, bufsize=Constant.RECV_BUF_SIZE):
         while True:
-            byte_data, _ = self._sock.recvfrom(bufsize)
+            binary, _ = self._sock.recvfrom(bufsize)
 
-            byte_data = self._pipeline.post_receive(byte_data)
+            binary = self._pipeline.post_receive(binary)
 
-            self._data_output.output_binary(byte_data)
+            self._data_output.output_binary(binary)
 
             if self._dumpfile:
-                self._dumpfile.write(self._hostname, self._port, byte_data)
+                self._dumpfile.write(self._hostname, self._port, binary)
 
         self.close()
 

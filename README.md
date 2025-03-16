@@ -67,6 +67,7 @@ $ conda install conda-forge::ipsurv
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
 | `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP-header and TCP-header, UDP-header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It support only Unix/Linux.   |
 | `ipsend` | `ipsend` is a network transmission tool that supports TCP, SSL, UDP, and Raw sockets, as well as interactive transmission.   |
+| `ipserver` | `ipserver` is simple server on "TCP, UDP, SSL, HTTP, HTTPS" for debugging or network investigation. It supports interactive mode and forwarding, running python on HTTP, or any other. |
 
 It’s best to refer to the help to recognize the functions.
 
@@ -406,7 +407,7 @@ usage: ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
                    [--output {NONE,TEXT,BINARY,HEX,BASE64}]
                    [--interactive {int}]
                    [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
-                   [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
+                   [--output_send {int}] [--auto_nl {bool}] [--dest {string}]
                    [--port {int}] [--timeout {float}] [--dumpfile]
                    [--ip_flags {int}] [--ip_identification {int}]
                    [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]

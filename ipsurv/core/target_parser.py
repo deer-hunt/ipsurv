@@ -8,7 +8,7 @@ from ipsurv.core.entity import Target
 from ipsurv.core.entity import ValueData
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.requester.dns_resolver import DnsResolveRequester
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output
 import ipaddress
 
 
@@ -55,11 +55,11 @@ class TargetParser(ABC):
 
         self._assign_data_target(data, target)
 
-        if System.is_logging():
+        if Output.is_logging():
             logging.log(logging.DEBUG, 'TARGET_RAW:' + target.raw)
             logging.log(logging.INFO, 'TARGET_IDENTIFIER:' + str(target.identifier))
 
-            System.output_data('TARGET_DATA', target.get_values())
+            Output.output_data('TARGET_DATA', target.get_values())
 
         return target
 

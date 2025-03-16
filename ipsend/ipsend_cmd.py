@@ -60,7 +60,7 @@ class IpSendCmd:
             self.dumpfile.initialize(Constant.DUMPFILE_DIR)
 
         self.socket = self._create_socket(args.mode, args.fixed_ssl_context)
-        self.socket.initialize(self.data_input, self.data_output, self.dumpfile, args.mode, args.timeout)
+        self.socket.initialize(args.mode, self.data_input, self.data_output, self.dumpfile, args.timeout)
 
         self.pipeline.initialize(self.config)
 
@@ -93,7 +93,7 @@ class IpSendCmd:
         self._complete()
 
     def signal_stop(self, sig, frame):
-        self.view_helper.show_stopped()
+        self.view_helper.stopped()
 
         self._complete()
 
@@ -103,8 +103,8 @@ class IpSendCmd:
         data = self._create_send_data(args)
 
         if args.output_send > 0:
-            byte_data = self.data_input.get_data(data)
-            self.data_output.output_binary(byte_data)
+            binary = self.data_input.get_data(data)
+            self.data_output.output_binary(binary)
 
             if args.output_send == 2:
                 return
@@ -122,7 +122,7 @@ class IpSendCmd:
             data = args.data
 
             if args.mode in Constant.RICH_SOCKET_MODES:
-                if args.auto_lb and args.input == Constant.INPUT_TEXT:
+                if args.auto_nl and args.input == Constant.INPUT_TEXT:
                     data += '\n'
         else:
             packet_generator = PacketGenerator(self.factory, self.data_input)

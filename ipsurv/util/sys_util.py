@@ -44,6 +44,17 @@ class System:
         return module
 
     @classmethod
+    def exit(cls, msg, error=False):
+        if error is False:
+            Output.line(msg)
+        else:
+            Output.warn(msg)
+
+        os._exit(error)
+
+
+class Output:
+    @classmethod
     def is_logging(cls, min_level=logging.INFO):
         level = cls.get_log_level()
 
@@ -58,6 +69,10 @@ class System:
         level = logger.getEffectiveLevel()
 
         return level
+
+    @classmethod
+    def get_formatted_data(cls, data, indent=2):
+        return pprint.pformat(data, indent=indent)
 
     @classmethod
     def output_data(cls, title, data, level=logging.INFO, indent=2):
@@ -77,10 +92,5 @@ class System:
         print('\033[33m' + msg + '\033[0m', flush=True)
 
     @classmethod
-    def exit(cls, msg, error=False):
-        if error is False:
-            cls.line(msg)
-        else:
-            cls.warn(msg)
-
-        os._exit(error)
+    def info(cls, msg):
+        print('\033[32m' + msg + '\033[0m', flush=True)

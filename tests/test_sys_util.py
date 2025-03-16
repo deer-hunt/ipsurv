@@ -1,6 +1,6 @@
 import pytest
 
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output, System
 from ipsurv.util.network_util import DnsUtil
 import socket
 import re
@@ -22,13 +22,13 @@ class TestSystem:
         assert not is_match
 
     def test_line(self, capfd):
-        System.line('ABC')
+        Output.line('ABC')
 
         captured = capfd.readouterr()
         assert re.search("ABC", captured.out.strip())
 
     def test_warn(self, capfd):
-        System.warn('ABC')
+        Output.warn('ABC')
 
         captured = capfd.readouterr()
         assert re.search("ABC", captured.out.strip())

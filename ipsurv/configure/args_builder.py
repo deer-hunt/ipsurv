@@ -8,7 +8,7 @@ from ipsurv.configure.args_validators import FormatValidator, TimeoutValidator
 from ipsurv.configs import Constant
 from ipsurv.core.pipeline import Pipeline
 from ipsurv.util.args_util import ArgsHelper, StdinLoader
-from ipsurv.util.sys_util import System
+from ipsurv.util.sys_util import Output
 
 
 class ArgsBuilder:
@@ -50,10 +50,10 @@ class ArgsBuilder:
         ArgsHelper.init_logging(args.verbose, args.log)
 
         if args.verbose > 0:
-            System.warn('Enable verbose mode. Current:' + str(args.verbose) + ' [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]')
+            Output.warn('Enable verbose mode. Current:' + str(args.verbose) + ' [Level - 1:TRACE_ERROR, 2:INFO, 3:DEBUG]')
 
             if args.log is not None:
-                System.warn('Enable log.(File:' + args.log + ')')
+                Output.warn('Enable log.(File:' + args.log + ')')
 
         return parser, args
 
@@ -70,7 +70,7 @@ class ArgsBuilder:
 
         self._assign_shorten_option(args)
 
-        if System.is_logging():
+        if Output.is_logging():
             self.logging(args, env_args, env_conf)
 
         self.pipeline.pre_configure(args, env_args, env_conf)
@@ -109,7 +109,7 @@ class ArgsBuilder:
             args.format = 'hostname'
 
     def _configure(self, parser, args):
-        debug = True if System.get_log_level() == logging.DEBUG else False
+        debug = True if Output.get_log_level() == logging.DEBUG else False
 
         try:
             args.fixed_delimiter = self._fix_delimiter(args)
@@ -131,16 +131,16 @@ class ArgsBuilder:
         ArgsHelper.add_arguments(parser, arguments, env_args)
 
     def logging(self, args, env_args, env_conf):
-        System.output_data('ENV(' + Constant.ENV_ARGS_VAR + ')', env_args)
+        Output.output_data('ENV(' + Constant.ENV_ARGS_VAR + ')', env_args)
 
-        System.output_data('ENV(' + Constant.ENV_CONF_VAR + ')', env_conf)
+        Output.output_data('ENV(' + Constant.ENV_CONF_VAR + ')', env_conf)
 
         params = vars(args)
 
-        System.output_data('ARGUMENTS', params)
+        Output.output_data('ARGUMENTS', params)
 
         v = json.dumps(params, ensure_ascii=False)
-        System.output_body('ARGUMENTS_JSON', v, level=logging.INFO)
+        Output.output_body('ARGUMENTS_JSON', v, level=logging.INFO)
 
     def _validate_group(self, v):
         v = v.strip()
@@ -220,16 +220,16 @@ class ArgsBuilder:
     def _notice(self, args):
         if args.json:
             if args.delimiter:
-                System.warn('"delimiter" option is ignored in "json" mode.')
+                Output.warn('"delimiter" option is ignored in "json" mode.')
 
             if args.enclose:
-                System.warn('"enclose" option is ignored in "json" mode.')
+                Output.warn('"enclose" option is ignored in "json" mode.')
         else:
             if args.exhaustive:
-                System.warn('You must use "exhaustive" option with "json" option.')
+                Output.warn('You must use "exhaustive" option with "json" option.')
 
             if args.json_list:
-                System.warn('You must use "json_list" option with "json" option.')
+                Output.warn('You must use "json_list" option with "json" option.')
 
     def read_lines(self, args):
         if len(args.target) > 0:

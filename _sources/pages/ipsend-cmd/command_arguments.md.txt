@@ -185,7 +185,7 @@ Output Send-data in INSTANT mode.
 --output_send=1
 ```
 
-### `--auto_lb`
+### `--auto_nl`
 
 Append Line-break in INSTANT mode and `TEXT` input format.
 
@@ -195,7 +195,7 @@ Append Line-break in INSTANT mode and `TEXT` input format.
 - **Example:**
 
 ```
---auto_lb=True
+--auto_nl=True
 ```
 
 ### `--dest`

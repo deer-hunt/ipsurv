@@ -76,7 +76,7 @@
 <span class="w">                   </span><span class="o">[</span>--output<span class="w"> </span><span class="o">{</span>NONE,TEXT,BINARY,HEX,BASE64<span class="o">}]</span>
 <span class="w">                   </span><span class="o">[</span>--interactive<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
 <span class="w">                   </span><span class="o">[</span>--ssl_context<span class="w"> </span><span class="o">{</span>SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3<span class="o">}]</span>
-<span class="w">                   </span><span class="o">[</span>--output_send<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--auto_lb<span class="w"> </span><span class="o">{</span>bool<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--dest<span class="w"> </span><span class="o">{</span>string<span class="o">}]</span>
+<span class="w">                   </span><span class="o">[</span>--output_send<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--auto_nl<span class="w"> </span><span class="o">{</span>bool<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--dest<span class="w"> </span><span class="o">{</span>string<span class="o">}]</span>
 <span class="w">                   </span><span class="o">[</span>--port<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--timeout<span class="w"> </span><span class="o">{</span>float<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--dumpfile<span class="o">]</span>
 <span class="w">                   </span><span class="o">[</span>--ip_flags<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--ip_identification<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
 <span class="w">                   </span><span class="o">[</span>--ip_ttl<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--ip_protocol<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--src_ip<span class="w"> </span><span class="o">{</span>int<span class="o">}]</span>
@@ -127,7 +127,7 @@
 <tr class="row-odd"><td><p>–output_send {int}</p></td>
 <td><p>Output Send-data in INSTANT mode. [1: Output &amp; Send, 2: Only output]</p></td>
 </tr>
-<tr class="row-even"><td><p>–auto_lb {bool}</p></td>
+<tr class="row-even"><td><p>–auto_nl {bool}</p></td>
 <td><p>Append Line-break in INSTANT mode and <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> input format.</p></td>
 </tr>
 <tr class="row-odd"><td><p>–dest {string}</p></td>
@@ -209,6 +209,10 @@
 <h2>Command Examples<a class="headerlink" href="#command-examples" title="Permalink to this headline">¶</a></h2>
 <p><strong>INSTANT mode</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET /index.html HTTP/1.1\n&quot; --dest=google.com --http
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 80
 
 HTTP/1.1 200 OK
 Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -222,6 +226,10 @@ X-XSS-Protection: 0
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET / HTTP/1.1\n&quot; --dest=google.com --https
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 443
 
 HTTP/1.1 200 OK
 Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -231,6 +239,11 @@ Content-Type: text/html; charset=ISO-8859-1
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend &quot;GET / HTTP/1.1\n&quot; --dest=wikipedia.org --mode=SSL --port=443
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: wikipedia.org
+Port: 443
+SSL context: auto
 
 HTTP/1.1 400 Bad Request
 date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
@@ -241,6 +254,10 @@ x-cache-status: int-front
 </div>
 <p><strong>INTERACTIVE mode</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: google.com
+Port: 80
 
 python3 -m ipsend --mode=TCP --dest=google.com --port=80 --interactive=1
 [INTERACTIVE] / Line-break to send
@@ -254,6 +271,12 @@ Date: Mon, 27 Jan 2025 10:25:13 GMT
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=wikipedia.org --https -I
+Mode: SSL
+Input: TEXT / Output: TEXT
+Destination: wikipedia.org
+Port: 443
+SSL context: auto
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -264,6 +287,12 @@ HTTP/1.1 400 Bad Request
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=google.com --https -I --output=BASE64
+Mode: SSL
+Input: TEXT / Output: BASE64
+Destination: google.com
+Port: 443
+SSL context: auto
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -274,6 +303,11 @@ SFRUUC8xLjEgMjAwIE9LDQpEYXRlOiBNb24sIDI3IEphbiAyMDI1IDEwOjI4OjA4IEdNVA0KRXhwaXJl
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --dest=gmail-smtp-in.l.google.com --port=25 -I
+Mode: TCP
+Input: TEXT / Output: TEXT
+Destination: gmail-smtp-in.l.google.com
+Port: 25
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.
@@ -297,6 +331,11 @@ Please input send-data. Press `Ctrl+D` to send.
 </div>
 <p><strong>Various output</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ipsend --mode=TCP --dest=wikipedia.org --http -I --output=HEX
+Mode: TCP
+Input: TEXT / Output: HEX
+Destination: wikipedia.org
+Port: 80
+
 [INTERACTIVE] / Line-break to send
 
 Please input send-data. Input a line break to send.

@@ -62,6 +62,8 @@ Commands
              * `ipscap` must be executed as the "root" user. It does not support Windows.
    --------  ---------------------------------------------------------------------------------------------------
    `ipsend`  `ipsend` is a network transmission tool that supports TCP, SSL, UDP, and Raw sockets, as well as interactive transmission.
+   --------  ---------------------------------------------------------------------------------------------------
+   ipserver  `ipserver` is simple server on "TCP, UDP, SSL, HTTP, HTTPS" for debugging or network investigation. `https://github.com/deer-hunt/ipserver <https://github.com/deer-hunt/ipserver>`_.
    ========  ===================================================================================================
 
 
@@ -280,6 +282,20 @@ Introduction
    $ ipsend '47 45 54 20 2f 69 6e 64 65 78 2e 68 74 6d 6c 20 48 54 54 50 2f 31 2e 31 0a 0a 0a' --mode=TCP --dest=172.217.31.174 --port=80 --input=HEX
    $ ipsend 'R0VUIC9pbmRleC5odG1sIEhUVFAvMS4xCkhvc3Q6IHd3dy5nb29nbGUuY29tCgo=' --mode=TCP --dest=172.217.31.174 --port=80 --input=BASE64
 
+   $ ipsend "GET /index.html HTTP/1.1\n" --dest=google.com --http
+
+   Mode: TCP
+   Input: TEXT / Output: TEXT
+   Destination: google.com
+   Port: 80
+
+   HTTP/1.1 200 OK
+   Date: Sat, 25 Jan 2025 ~~:~~:~~ GMT
+   Expires: -1
+   Cache-Control: private, max-age=0
+   Content-Type: text/html; charset=ISO-8859-1
+   ~~~~~~~~~~~
+
 
 **Command options**
 
@@ -288,19 +304,26 @@ Introduction
 .. code-block:: shell
 
    ipsend [-h] [--verbose {0,1,2,3}] [--debug] [--log {string}]
-             [--mode {TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD}]
-             [--input {TEXT,BINARY,HEX,BASE64}]
-             [--output {NONE,TEXT,BINARY,HEX,BASE64}]
-             [--interactive {int}]
-             [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
-             [--output_send {int}] [--auto_lb {bool}] [--dest {string}]
-             [--port {int}] [--timeout {float}] [--ip_flags {int}]
-             [--ip_identification {int}] [--ip_ttl {int}]
-             [--ip_protocol {int}] [--src_ip {int}] [--src_port {int}]
-             [--dest_ip {int}] [--dest_port {int}] [--tcp_flags {str}]
-             [--tcp_seq {int}] [--tcp_ack {int}] [--tcp_window {int}]
-             [--icmp_type {int}] [--icmp_code {int}] [--icmp_id {int}]
-             [--icmp_seq {int}] [-I] [--http] [--https] [--version]
+                   [--mode {TCP,UDP,SSL,IP_HEADER,TCP_HEADER,UDP_HEADER,ICMP_HEADER,IP_PAYLOAD,TCP_PAYLOAD,UDP_PAYLOAD,ICMP_PAYLOAD}]
+                   [--input {TEXT,BINARY,HEX,BASE64}]
+                   [--output {NONE,TEXT,BINARY,HEX,BASE64}]
+                   [--interactive {int}]
+                   [--ssl_context {SSLV3,TLS1.0,TLS1.1,TLS1.2,TLS1.3}]
+                   [--output_send {int}] [--auto_nl {bool}] [--dest {string}]
+                   [--port {int}] [--timeout {float}] [--dumpfile]
+                   [--ip_flags {int}] [--ip_identification {int}]
+                   [--ip_ttl {int}] [--ip_protocol {int}] [--src_ip {int}]
+                   [--src_port {int}] [--dest_ip {int}] [--dest_port {int}]
+                   [--tcp_flags {str}] [--tcp_seq {int}] [--tcp_ack {int}]
+                   [--tcp_window {int}] [--icmp_type {int}]
+                   [--icmp_code {int}] [--icmp_id {int}] [--icmp_seq {int}]
+                   [-I] [--http] [--https] [--version]
+
+
+Related OSS
+--------------------------
+
+- `IpServer <https://github.com/deer-hunt/ipserver/>`_
 
 
 

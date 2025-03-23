@@ -44,7 +44,7 @@ class Pipeline(ABC):
     def get_filename(self, dest, port, filename):
         return filename
 
-    def pre_writefile(self, dest, port, binary, file):
+    def pre_dump_write(self, dest, port, binary, file):
         pass
 
     def post_writefile(self, dest, port, binary, file):

@@ -22,7 +22,7 @@ class DumpFile:
         logging.log(logging.INFO, 'DUMPFILE_PATH: ' + path)
 
         with open(path, 'ab') as file:
-            self.pipeline.pre_writefile(dest, port, binary, file)
+            self.pipeline.pre_dump_write(dest, port, binary, file)
 
             file.write(binary)
 

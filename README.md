@@ -67,7 +67,7 @@ $ conda install conda-forge::ipsurv
 | `ipsurv` | `ipsurv` is surveying IP tool. You can conduct bulk surveys of specified IPs, URLs, and more. It also allows retrieving country codes for IP addresses, performing ping tests, and checking ports. |
 | `ipscap` | `ipscap` is packet capture tool like `tcpdump` which supports "ICMP, TCP, UDP" protocols. `ipscap` has various filtering options, displays IP-header and TCP-header, UDP-header, and dumping files functions. <br><br>* `ipscap` must be executed as "root" user. And It support only Unix/Linux.   |
 | `ipsend` | `ipsend` is a network transmission tool that supports TCP, SSL, UDP, and Raw sockets, as well as interactive transmission.   |
-| `ipserver` | `ipserver` is simple server on "TCP, UDP, SSL, HTTP, HTTPS" for debugging or network investigation. It supports interactive mode and forwarding, running python on HTTP, or any other. |
+| `ipserver` | `ipserver` is simple server on "TCP, UDP, SSL, HTTP, HTTPS" for debugging or network investigation. [https://github.com/deer-hunt/ipserver](https://github.com/deer-hunt/ipserver) |
 
 It’s best to refer to the help to recognize the functions.
 
@@ -91,7 +91,7 @@ IpSurv's documentation site is [https://deer-hunt.github.io/ipsurv/](https://dee
 
 ### Features
 
-- Grouping by IP or subnet.
+- Grouping by IP or Subnet.
 - Skip duplicate by the group.
 - Autodetect IP in line. Trying to resolve the name automatically.
 - Autodetect delimiter-char.
@@ -457,3 +457,7 @@ $ ipsurv ***** --debug     #DEBUG  This option is equivalent to "--verbose=3"
 - [dnspython](https://github.com/rthalley/dnspython)
 - [geoip2](https://github.com/maxmind/GeoIP2-python) [Optional]
 
+
+## Related OSS
+
+- [IpServer](https://github.com/deer-hunt/ipserver/)

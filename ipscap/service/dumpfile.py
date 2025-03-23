@@ -22,7 +22,7 @@ class DumpFile:
         logging.log(logging.INFO, 'DUMPFILE_PATH: ' + path)
 
         with open(path, 'ab') as file:
-            self.pipeline.pre_writefile(ip_header, protocol_header, file)
+            self.pipeline.pre_dump_write(ip_header, protocol_header, file)
 
             if append_header:
                 file.write(ip_header.header_data)

@@ -55,14 +55,18 @@ optional arguments:
   --json {0,1,2}        Output JSON data. *2: Output formatted JSON.
   --json_list           Output JSON list. It makes it easier to parse JSON.
   --exhaustive          Output exhaustive internal values in JSON. Use with "json" option.
+  --version             Show version information.
+
+Check response:
   --icmp {0,1}          Check ICMP.
   --tcp {number}        Check TCP port. Specify default port.
   --udp {number}        Check UDP port. Specify default port.
   --http {0,1,2}        Check HTTP response.
+
+Shortcut:
   --json_all            `--json_all` is equivalent to `--json=2 --exhaustive`.
   --geoip_only          `--geoip_only` is equivalent to `--collect=geoip --format=area`.
   --host_only           `--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.
-  --version             Show version information.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 

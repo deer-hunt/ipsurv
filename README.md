@@ -21,7 +21,7 @@
 </div>
 
 <div>
-<img width="100" height="100" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
+<img width="120" height="120" src="https://raw.githubusercontent.com/deer-hunt/ipsurv/main/docs/images/ipsurv-logo.png" align="left" />
 
 `IpSurv` are investigation tools for surveying IP addresses, network investigation, test and debugging - "ipsurv, ipscap, ipsend". Those tools allow for packet capture, such as tcpdump, and packet sending tests. Each tools and internal program are extensible using Python.
 

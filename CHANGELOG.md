@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.2](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.2) (2025-03-24)
+
+- Changed minor updates.
+
 ## [1.3.1](https://github.com/deer-hunt/ipsurv/releases/tag/v1.3.1) (2025-03-03)
 
 - Fixed some bugs.

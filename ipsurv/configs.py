@@ -83,16 +83,21 @@ class Config:
         'json_list': {'default': False, 'help': 'Output JSON list. It makes it easier to parse JSON.', 'action': 'store_true'},
         'exhaustive': {'default': False, 'help': 'Output exhaustive internal values in JSON. Use with "json" option.', 'action': 'store_true'},
 
-        'icmp': {'default': False, 'type': strtobool, 'help': 'Check ICMP.', 'choices': [0, 1]},
-        'tcp': {'default': 0, 'type': int, 'help': 'Check TCP port. Specify default port.', 'metavar': '{number}'},
-        'udp': {'default': 0, 'type': int, 'help': 'Check UDP port. Specify default port.', 'metavar': '{number}'},
-        'http': {'default': 0, 'type': int, 'help': 'Check HTTP response.', 'choices': [0, 1, 2]},
+        'icmp': {'default': False, 'type': strtobool, 'help': 'Check ICMP.', 'choices': [0, 1], 'group': 'check'},
+        'tcp': {'default': 0, 'type': int, 'help': 'Check TCP port. Specify default port.', 'metavar': '{number}', 'group': 'check'},
+        'udp': {'default': 0, 'type': int, 'help': 'Check UDP port. Specify default port.', 'metavar': '{number}', 'group': 'check'},
+        'http': {'default': 0, 'type': int, 'help': 'Check HTTP response.', 'choices': [0, 1, 2], 'group': 'check'},
 
-        'json_all': {'default': False, 'help': '`--json_all` is equivalent to `--json=2 --exhaustive`.', 'action': 'store_true'},
-        'geoip_only': {'default': False, 'help': '`--geoip_only` is equivalent to `--collect=geoip --format=area`.', 'action': 'store_true'},
-        'host_only': {'default': False, 'help': '`--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.', 'action': 'store_true'},
+        'json_all': {'default': False, 'help': '`--json_all` is equivalent to `--json=2 --exhaustive`.', 'action': 'store_true', 'group': 'shortcut'},
+        'geoip_only': {'default': False, 'help': '`--geoip_only` is equivalent to `--collect=geoip --format=area`.', 'action': 'store_true', 'group': 'shortcut'},
+        'host_only': {'default': False, 'help': '`--host_only` is equivalent to `--collect=dnsreverse --format=hostname`.', 'action': 'store_true', 'group': 'shortcut'},
 
         'version': {'default': False, 'help': 'Show version information.', 'action': 'store_true'}
+    }
+
+    ARGUMENTS_GROUP_NAMES = {
+        'check': 'Check response',
+        'shortcut': 'Shortcut'
     }
 
     ENV_CONFS = ['ipinfo_token', 'geoip']

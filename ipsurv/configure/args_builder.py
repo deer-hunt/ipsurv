@@ -128,7 +128,7 @@ class ArgsBuilder:
 
         arguments['group']['type'] = self._validate_group
 
-        ArgsHelper.add_arguments(parser, arguments, env_args)
+        ArgsHelper.add_arguments(parser, arguments, env_args, group_names=self.config.ARGUMENTS_GROUP_NAMES)
 
     def logging(self, args, env_args, env_conf):
         Output.output_data('ENV(' + Constant.ENV_ARGS_VAR + ')', env_args)
